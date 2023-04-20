@@ -33,7 +33,7 @@ export default function Home() {
 				<div className="relative overflow-hidden" id="hero">
 					<Image className="absolute top-0 w-full h-full object-cover" src={`${darkMode ? '/home/hero/wave/dark/wave.webp' : '/home/hero/wave/light/wave.webp'}`} fill={true} alt="" priority={true} />
 					<Navbar />
-					<section className="relative flex items-center justify-center xl:px-20 2xl:px-0 min-h-[80rem] xl:min-h-[50rem] lazy-load-1" style={{height: 'calc(100vh - 5rem)', zIndex: '1'}}>
+					<section className="relative flex items-center justify-center xl:px-20 2xl:px-0 min-h-[80rem] xl:min-h-[50rem]" style={{height: 'calc(100vh - 5rem)', zIndex: '1'}}>
 						<div className="max-w-7xl flex flex-col xl:flex-row items-center gap-12 w-full">
 							<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[37rem] px-20 xl:px-0">
 								<div className={`flex flex-col gap-5`}>
@@ -54,7 +54,7 @@ export default function Home() {
 						</div>
 					</section>
 				</div>
-				<section className={`px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden lazy-load-1`} id="our-services">
+				<section className={`px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
 					<div className="max-w-7xl mx-auto z-10 relative">
 						<div className="flex items-center gap-20 justify-between w-full">
 							<div className="blur-shadow -left-28 -top-28"></div>
@@ -107,7 +107,7 @@ export default function Home() {
 						</div>
 					</div>
 				</section>
-				<section className={`relative overflow-hidden ${darkMode ? 'section-bg-dark border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 px-20 2xl:px-0 border-t lazy-load-1`} id="our-technologies">
+				<section className={`relative overflow-hidden ${darkMode ? 'section-bg-dark border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 px-20 2xl:px-0 border-t`} id="our-technologies">
 					<div className="blur-shadow -top-6 -left-6"></div>
 					<div className="flex flex-col gap-20 overflow-hidden max-w-7xl mx-auto">
 						<div className="flex flex-col gap-4 text-white relative">
@@ -146,7 +146,7 @@ export default function Home() {
 						</Link>
 					</div>
 				</section>
-				<section className="flex flex-col gap-16 py-28 text-center lazy-load-1" id="start-my-project">
+				<section className="flex flex-col gap-16 py-28 text-center" id="start-my-project">
 					<div className="flex flex-col gap-8">
 						<div className={`${darkMode ? 'subtitle-dark' : 'subtitle-light'} text-lg uppercase font-semibold`}>
 							<span>Haben sie eine Idee?</span>

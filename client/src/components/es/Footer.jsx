@@ -9,7 +9,7 @@ export default function Footer() {
     const { darkMode } = useContextProvider();
 
     return (
-        <footer className={`${darkMode ? 'text-dark border-neutral-900' : 'text-light border-neutral-200'} lazy-load-4 border-t`}>
+        <footer className={`${darkMode ? 'text-dark border-neutral-900' : 'text-light border-neutral-200'} border-t`}>
             <div className="flex flex-col items-start gap-16 py-16 px-16 xl:px-0 max-w-6xl w-full mx-auto">
                 <div className="grid md:grid-cols-3 gap-y-10 md:gap-y-0 w-full">
                     <FooterColumn title={"Navegación"}>

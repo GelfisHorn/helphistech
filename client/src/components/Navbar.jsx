@@ -147,7 +147,7 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
         <>
             <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-60" onClick={closeMenu}></div>
             <div className={`${closeAnimation ? 'full-screen-menu-close' : 'full-screen-menu-open'} fixed top-0 right-0 w-[85vw] h-screen ${darkMode ? 'bg-darkmode text-dark-text border-l border-neutral-900' : 'bg-white text-black'} shadow-lg transition-colors z-10`}>
-                <div className={`${closeAnimation ? 'hidden' : null} h-full lazy-load-1`}>
+                <div className={`${closeAnimation ? 'hidden' : null} h-full`}>
                     <div className="flex items-center justify-between absolute top-4 left-4 right-4">
                         <Image src={darkMode ? '/logo/dark/logo.webp' : '/logo/light/logo.webp'} width={50} height={50} alt="HelphisTech Logo" />
                         <button onClick={closeMenu} className="text-3xl">
