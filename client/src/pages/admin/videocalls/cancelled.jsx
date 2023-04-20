@@ -82,7 +82,7 @@ function VideoCall({ videocall }) {
     const { _id, full_name, email, date, hour, state, createdAt } = videocall;
 
     return (
-        <div className={`gap-5 px-5 py-4 shadow-md rounded-sm ${darkMode ? 'bg-neutral-900' : 'bg-white'}`}>
+        <div className={`gap-5 px-5 py-4 shadow-md rounded-sm ${darkMode ? 'bg-[#101010]' : 'bg-white'}`}>
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
                     <div className="font-bold uppercase">Nombre completo</div>
