@@ -7,7 +7,7 @@ const router = express.Router()
 // Get specific project
 router.post('/get', checkAuth, getProject)
 
-router.route('')
+router.route('/')
     // Get all projects
     .get(checkAuth, getProjects)
     // Create project

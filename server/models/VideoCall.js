@@ -16,6 +16,11 @@ const videoCallSchema = mongoose.Schema({
     hour: {
         type: String,
         required: true
+    },
+    state: {
+        type: String,
+        default: 'pending',
+        enum: ['pending', 'concluded', 'cancelled']
     }
 }, {
     timestamps: true
