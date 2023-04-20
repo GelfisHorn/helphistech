@@ -1,3 +1,5 @@
+// Nextjs
+import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider"
 
@@ -6,7 +8,7 @@ export default function Navbar() {
     const { auth, darkMode } = useContextProvider();
 
     // On click account button -> show/hide account menu
-    const handleAccountMenu = () => {
+    const handleLogout = () => {
         // ...
     }
 
@@ -14,14 +16,9 @@ export default function Navbar() {
         <div className={`w-full h-14 px-10 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-100'}`}>
             <div className="flex items-center justify-between h-full">
                 <div className="text-light-main uppercase font-semibold text-lg">
-                    <span>Helphis Tech</span>
+                    <Image src={darkMode ? '/logo/dark/full-logo.webp' : '/logo/light/full-logo.webp'} width={150} height={36.8} alt="HelphisTech Logo" />
                 </div>
-                <div className="hidden sm:flex items-center gap-2 cursor-pointer rounded-md transition-colors" onClick={handleAccountMenu}>
-                    <div className={`${darkMode ? 'text-dark-text' : 'text-black'}`}>{auth.name}</div>
-                    <div className={`grid place-content-center w-10 h-10 ${darkMode ? 'bg-dark-main' : 'bg-light-main'} text-white rounded-full select-none`}>
-                        <span className={`font-medium text-xl`}>{auth.name && auth.name.split('')[0]}</span>
-                    </div>
-                </div>
+                <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-2 px-4 rounded-sm transition-colors" onClick={handleLogout}>Cerrar sesión</button>
                 <div className="block sm:hidden text-2xl"><i className="fa-regular fa-bars"></i></div>
             </div>
         </div>
