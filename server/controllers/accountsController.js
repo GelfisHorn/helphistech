@@ -2,7 +2,7 @@ import User from "../models/User.js"
 
 const getAccounts = async (req, res) => {
     try {
-        const accounts = await User.find();
+        const accounts = await User.find().select('-password -token -updatedAt -__v');
         return res.status(200).json(accounts);
     } catch (error) {
         return res.status(404).json({ msg: 'Hubo un error al obtener las cuentas' });
@@ -16,7 +16,7 @@ const getAccount = async (req, res) => {
     const accountId = req.body._id;
 
     try {
-        const account = await User.findById(accountId);
+        const account = await User.findById(accountId).select('-password -token -updatedAt -__v');
         return res.status(200).json(account);
     } catch (error) {
         return res.status(404).json({ msg: 'Hubo un error al obtener las cuentas' });
