@@ -11,9 +11,9 @@ export default function Footer() {
     return (
         <footer className={`${darkMode ? 'text-dark border-neutral-900' : 'text-light border-neutral-200'} border-t`}>
             <div className="flex flex-col items-start gap-16 py-16 px-16 xl:px-0 max-w-6xl w-full mx-auto">
-                <div className="grid md:grid-cols-3 gap-y-10 md:gap-y-0 w-full">
+                <div className="grid md:grid-cols-3 gap-y-10 justify-center md:justify-start text-center md:text-left md:gap-y-0 w-full">
                     <FooterColumn title={"Navigation"}>
-                        <div className={`flex flex-col gap-2 ${darkMode ? 'text-dark' : 'text-light'}`}>
+                        <div className={`flex flex-col gap-2 items-center md:items-start ${darkMode ? 'text-dark' : 'text-light'}`}>
                             <Link href={"#"}>
                                 <span className="hover:underline hover:text-primary transition-colors">Home</span>
                             </Link>
@@ -29,7 +29,7 @@ export default function Footer() {
                         </div>
                     </FooterColumn>
                     <FooterColumn title={"Social media"}>
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 items-center md:items-start">
                             <Link className="flex items-center gap-2 hover:text-primary transition-colors" href={"https://linkedin.com"}>
                                 <div className="grid place-content-center w-4">
                                     <Image src={darkMode ? "/footer/darkmode/linkedin2.webp" : "/footer/linkedin.webp"} width={30} height={26} alt="Linkedin image" />    
@@ -57,7 +57,7 @@ export default function Footer() {
                         </div>
                     </FooterColumn>
                     <FooterColumn title={"Contact"}>
-                        <div className={`flex flex-col gap-2`}>
+                        <div className={`flex flex-col gap-2 items-center md:items-start`}>
                             <div>
                                 <a className="flex items-center gap-2 hover:text-primary transition-colors" href="mailto:helphis.tech@gmail.com">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-[1.1rem] h-[1.1rem] ${darkMode ? 'text-dark' : 'text-light'}`}>
