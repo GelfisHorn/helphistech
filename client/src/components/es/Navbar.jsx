@@ -127,7 +127,7 @@ export default function Navbar() {
 
 function NavbarMobileMenu({ closeAnimation, closeMenu }) {
 
-    const { darkMode, handleDarkMode, language } = useContextProvider();
+    const { darkMode, handleDarkMode, language, setLanguage } = useContextProvider();
 
     const router = useRouter();
     function handleChangeLanguage(e) {
