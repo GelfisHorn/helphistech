@@ -88,6 +88,9 @@ export default function Navbar() {
                                 </select>
                             </div>
                         </div>
+                        <Link className="hover:underline hover:text-primary" href="/login">
+                            <span>Anmeldung</span>
+                        </Link>
                         <Link href={"/contact"}>
                             <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
                                 <span>Kontakt</span>
