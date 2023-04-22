@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 // Nextjs
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image"
 // Components
@@ -8,7 +10,15 @@ import useContextProvider from "@/hooks/useAppContextProvider"
 
 export default function Login() {
 
-    const { darkMode } = useContextProvider();
+    const router = useRouter();
+
+    const { auth, darkMode } = useContextProvider();
+
+    useEffect(() => {
+        if(auth.email) {
+            router.push('/admin');
+        }
+    }, [])
 
     return (
         <>
