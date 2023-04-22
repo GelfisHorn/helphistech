@@ -78,8 +78,8 @@ function VideoCallComponent({ closeVideoCallForm }) {
     const [ hour, setHour ] = useState('');
 
     function showMessage(error, text, timeout) {
-        document.getElementById("quote-project-form").scrollIntoView({ behavior: 'smooth' });
         setMessage({ error, text })
+        document.getElementById("quote-project-form").scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
             setMessage({ error: false, text: '' })
         }, timeout)
@@ -272,8 +272,8 @@ function FormComponent() {
     }
 
     function showMessage(error, text, timeout) {
-        document.getElementById("quote-project-form").scrollIntoView({ behavior: 'smooth' });
         setMessage({ error, text })
+        document.getElementById("quote-project-form").scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
             setMessage({ error: false, text: '' })
         }, timeout)
