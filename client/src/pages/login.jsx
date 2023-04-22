@@ -18,7 +18,7 @@ export default function Login() {
         if(auth.email) {
             router.push('/admin');
         }
-    }, [])
+    }, [auth])
 
     return (
         <>
