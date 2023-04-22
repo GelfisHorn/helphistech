@@ -15,9 +15,9 @@ export default function ProjectQuote() {
     return (
         <Layout title={"kontaktiere uns"} metaDesc={"Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."}>
             <div className="flex flex-col items-center justify-center gap-20 py-20 px-6 sm:px-10 md:px-20 max-w-7xl 2xl:max-w-[90rem] mx-auto lg:h-full">
-                <div className={`flex flex-col gap-5 lg:h-full w-full transition-colors`}>
+                <div className={`flex flex-col gap-5 lg:h-full w-full transition-colors text-center xl:text-left`}>
                     <div className={`flex flex-col gap-5 w-full`}>
-                        <div className={`text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                        <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                             <h1 className="w-full">Lass uns zusammen arbeiten!</h1>
                             {/* <br /> 
                             <span className="w-full"></span> */}
@@ -25,15 +25,15 @@ export default function ProjectQuote() {
                         <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Lassen Sie uns Ihnen helfen, noch besser zu werden in dem, was Sie tun. <br /> Füllen Sie das folgende Formular aus und wir werden Sie in den nächsten 24 Stunden kontaktieren.</div>
                     </div>
                 </div>
-                <div className="flex items-start gap-10 lg:gap-20">
-                    <div className="lg:w-3/5 py-5" id="quote-project-form">
+                <div className="flex flex-col xl:flex-row items-center xl:items-start gap-10 xl:gap-20 w-full">
+                    <div className="w-full xl:w-3/5 py-5" id="quote-project-form">
                         { showVideoCallForm ? (
                             <VideoCallComponent closeVideoCallForm={() => setShowVideoCallForm(false)} />
                         ) : (
                             <FormComponent />
                         )}
                     </div>
-                    <div className="flex flex-col items-end text-right gap-3 w-2/5 py-5">
+                    <div className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
                         <h2 className="text-2xl font-medium w-full">Planen Sie einen Videoanruf</h2>
                         <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Vereinbaren Sie einen Videoanruf und sprechen Sie direkt mit uns!</div>
                         <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
@@ -373,6 +373,7 @@ function FormComponent() {
                 <Section 
                     title={"Welche Art von Projekt?"} 
                     classes={``}
+                    step={'01'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2">
                         <div onClick={() => setType('website')} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${type === 'website' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${type === 'website' && 'bg-black text-white'}`}`}>
@@ -389,6 +390,7 @@ function FormComponent() {
                 <Section 
                     title={"Kontaktinformationen"}  
                     classes={``}
+                    step={'02'}
                 >
                     <div className="flex flex-col gap-2">
                         <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
@@ -402,6 +404,7 @@ function FormComponent() {
                 <Section 
                     title={"Erzählen Sie uns mehr über Ihr Projekt"} 
                     classes={``}
+                    step={'03'}
                 >
                     <Input props={{
                         placeholder: 'Beschreibung', 
@@ -414,6 +417,7 @@ function FormComponent() {
                     title={"Wie hoch ist Ihr geschätztes Budget für das Projekt?"} 
                     subtitle={"Budget in USD angegeben"}  
                     classes={``}
+                    step={'04'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-5 items-center gap-2">
                         <div onClick={() => setBudget({ from: 1, to: 5000 })} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${budget.from === 1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${budget.from === 1 && 'bg-black text-white'}`}`}>
@@ -437,6 +441,7 @@ function FormComponent() {
             <section id="step2" className={`flex flex-col gap-6 ${step == 2 ? 'block' : 'hidden'}`}>
                 <Section 
                     title={"Welche Art von Geschäft hat der Kunde?"} 
+                    step={'05'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
                         <div onClick={() => setBusinessType('retail')} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${business_type === 'retail' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${business_type === 'retail' && 'bg-black text-white'}`}`}>
@@ -455,6 +460,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Was ist die Vision und Mission des Unternehmens?"} 
+                    step={'06'}
                 >
                     <div className="grid grid-cols-1 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(company_vision, setCompanyVision, "increase-profitability")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${company_vision.indexOf("increase-profitability") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${company_vision.indexOf("increase-profitability") > -1 && 'bg-black text-white'}`}`}>
@@ -473,6 +479,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Wer ist die Zielgruppe des Unternehmens?"} 
+                    step={'07'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "children")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("children") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("children") > -1 && 'bg-black text-white'}`}`}>
@@ -497,6 +504,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Welche Dienstleistungen oder Produkte bietet das Unternehmen an?"} 
+                    step={'08'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setServiceOrProduct('products')} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${service_or_product === 'products' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${service_or_product === 'products' && 'bg-black text-white'}`}`}>
@@ -512,6 +520,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Was ist die voraussichtliche Lieferzeit?"} 
+                    step={'09'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setExpectedDeliverTime({ from: 0, to: 1 })} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 0 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 0 && 'bg-black text-white'}`}`}>
@@ -535,6 +544,7 @@ function FormComponent() {
             <section id="step3" className={`flex flex-col gap-6 ${step == 3 || step == 4 ? 'block' : 'hidden'}`}>
                 <Section 
                     title={"Welche Funktionalitäten soll das Web haben?"} 
+                    step={'10'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(functionalities, setFunctionalities, "contact-form")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${functionalities.indexOf("contact-form") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${functionalities.indexOf("contact-form") > -1 && 'bg-black text-white'}`}`}>
@@ -556,6 +566,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Soll das Web responsive sein oder ein bestimmtes Design haben?"} 
+                    step={'11'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(web_design_type, setWebDesignType, "responsive")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${web_design_type.indexOf("responsive") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${web_design_type.indexOf("responsive") > -1 && 'bg-black text-white'}`}`}>
@@ -568,6 +579,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Werden E-Commerce-Funktionalitäten im Web benötigt?"} 
+                    step={'12'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setEcommerceFunc(true)} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${ecommerce_funtionabilites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${ecommerce_funtionabilites && 'bg-black text-white'}`}`}>
@@ -580,6 +592,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Hat der Kunde Inhalte (Texte, Bilder, Videos) für das Web?"} 
+                    step={'13'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setContentToInclude(true)} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${content_to_include && 'bg-black text-white'}`}`}>
@@ -592,6 +605,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Welche Programmiersprache und Technologien werden für die Entwicklung bevorzugt?"} 
+                    step={'14'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(preferred_technologies, setPreferredTechnologies, "React")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${preferred_technologies.indexOf("React") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${preferred_technologies.indexOf("React") > -1 && 'bg-black text-white'}`}`}>
@@ -628,6 +642,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Wer wird nach Abschluss des Projekts für die Verwaltung des Webs verantwortlich sein?"} 
+                    step={'15'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setResponsibleForManaging("client")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${responsible_for_managing == 'client' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${responsible_for_managing == 'client' && 'bg-black text-white'}`}`}>
@@ -642,7 +657,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"Wie sieht die Marketing- und Positionierungsstrategie des Kunden aus?"} 
+                    title={"Wie sieht die Marketing- und Positionierungsstrategie des Kunden aus?"}
+                    step={'16'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(marketing_strategy, setMarketingStrategy, "social-media")} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${marketing_strategy.indexOf("social-media") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${marketing_strategy.indexOf("social-media") > -1 && 'bg-black text-white'}`}`}>
@@ -661,6 +677,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Gibt es konkurrierende Websites, die als Referenzen betrachtet werden sollten?"} 
+                    step={'17'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setCompetitorWebsites(true)} className={`grid place-content-center border rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${competitor_websites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${competitor_websites && 'bg-black text-white'}`}`}>
@@ -673,7 +690,7 @@ function FormComponent() {
                 </Section>
             </section>
             <div className="flex gap-2">
-                <div className="w-10"></div>
+                <div className="w-10 hidden xl:block"></div>
                 <div className="flex items-center gap-2 text-white w-full">
                     <button type={'button'} onClick={handlePrevStep} className={`btn-primary ${step == 1 ? 'hidden' : 'block'} flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -696,16 +713,21 @@ function FormComponent() {
 function Section({title, subtitle, children, classes, step}) {
     
     const { darkMode } = useContextProvider();
-    
+
     return (
         <div className="flex items-start gap-2">
-            <div className="mt-1 w-10">
-                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step || '01'}</div>
+            <div className="mt-1 w-10 hidden xl:block">
+                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step}</div>
             </div>
             <div className={`flex flex-col gap-3 ${classes} w-full`}>
-                <div className="flex flex-col">
-                    <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{title}</div>
-                    { subtitle && <div className="text-neutral-400">{subtitle}</div> }
+                <div className="flex xl:hidden gap-2 items-center">
+                    <div className="w-10">
+                        <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step}</div>
+                    </div>
+                    <div className="flex flex-col">
+                        <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{title}</div>
+                        { subtitle && <div className="text-neutral-400">{subtitle}</div> }
+                    </div>
                 </div>
                 <div>{children}</div>
             </div>

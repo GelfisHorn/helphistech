@@ -15,25 +15,25 @@ export default function ProjectQuote() {
     return (
         <Layout title={"Contactanos"} metaDesc={"Ofrecemos servicios de desarrollo web personalizados para empresas de todos los tamaños. Creamos sitios web, plataformas de comercio electrónico y aplicaciones web que se adaptan perfectamente a tus necesidades."}>
             <div className="flex flex-col items-center justify-center gap-20 py-20 px-6 sm:px-10 md:px-20 max-w-7xl 2xl:max-w-[90rem] mx-auto lg:h-full">
-                <div className={`flex flex-col gap-5 lg:h-full w-full transition-colors`}>
+                <div className={`flex flex-col gap-5 lg:h-full w-full transition-colors text-center xl:text-left`}>
                     <div className={`flex flex-col gap-5 w-full`}>
-                        <div className={`text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                        <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                             <h1 className="w-full">¡Trabajemos juntos!</h1>
                             {/* <br /> 
                             <span className="w-full"></span> */}
                         </div>
-                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Permítanos ayudarlo a ser aún mejor en lo que hace. <br /> Rellena el siguiente formulario y nos pondremos en contacto contigo en las próximas 24 horas.</div>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Permítanos ayudarlo a ser aún mejor en lo que hace.<br className="hidden sm:block" /> Rellena el siguiente formulario y nos pondremos en contacto contigo en las próximas 24 horas.</div>
                     </div>
                 </div>
-                <div className="flex items-start gap-10 lg:gap-20">
-                    <div className="lg:w-3/5 py-5" id="quote-project-form">
+                <div className="flex flex-col xl:flex-row items-center xl:items-start gap-10 xl:gap-20 w-full">
+                    <div className="w-full xl:w-3/5 py-5" id="quote-project-form">
                         { showVideoCallForm ? (
                             <VideoCallComponent closeVideoCallForm={() => setShowVideoCallForm(false)} />
                         ) : (
                             <FormComponent />
                         )}
                     </div>
-                    <div className="flex flex-col items-end text-right gap-3 w-2/5 py-5">
+                    <div className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
                         <h2 className="text-2xl font-medium w-full">Agenda una videollamada</h2>
                         <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Agenda una videollamada y ten una conversación directamente con nosotros!</div>
                         <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
@@ -690,7 +690,7 @@ function FormComponent() {
                 </Section>
             </section>
             <div className="flex gap-2">
-                <div className="w-10"></div>
+                <div className="w-10 hidden xl:block"></div>
                 <div className="flex items-center gap-2 text-white w-full">
                     <button type={'button'} onClick={handlePrevStep} className={`btn-primary ${step == 1 ? 'hidden' : 'block'} flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -716,13 +716,18 @@ function Section({title, subtitle, children, classes, step}) {
 
     return (
         <div className="flex items-start gap-2">
-            <div className="mt-1 w-10">
+            <div className="mt-1 w-10 hidden xl:block">
                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step}</div>
             </div>
             <div className={`flex flex-col gap-3 ${classes} w-full`}>
-                <div className="flex flex-col">
-                    <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{title}</div>
-                    { subtitle && <div className="text-neutral-400">{subtitle}</div> }
+                <div className="flex xl:hidden gap-2 items-center">
+                    <div className="w-10">
+                        <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step}</div>
+                    </div>
+                    <div className="flex flex-col">
+                        <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{title}</div>
+                        { subtitle && <div className="text-neutral-400">{subtitle}</div> }
+                    </div>
                 </div>
                 <div>{children}</div>
             </div>
