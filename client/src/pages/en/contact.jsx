@@ -722,8 +722,8 @@ function Section({title, subtitle, children, classes, step}) {
                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step}</div>
             </div>
             <div className={`flex flex-col gap-3 ${classes} w-full`}>
-                <div className="flex xl:hidden gap-2 items-center">
-                    <div className="w-10">
+                <div className="flex gap-2 items-center">
+                    <div className="w-10 xl:hidden">
                         <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>{step}</div>
                     </div>
                     <div className="flex flex-col">
