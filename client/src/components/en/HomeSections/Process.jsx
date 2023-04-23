@@ -18,9 +18,11 @@ export default function ProcessSection() {
                     <div className="flex flex-col gap-10">
                         <div>
                             <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                <div className="flex items-center gap-2">How the <span className="text-primary hidden xs:block">development</span></div>
-                                <div className="text-primary xs:hidden">development</div>
-                                <div>process works</div>
+                                <div className="hidden xs:block">How the <span className="text-primary">development</span></div>
+                                <div className="hidden xs:block">process works</div>
+                                <div className="xs:hidden">How the</div>
+                                <div className="xs:hidden text-primary">development</div>
+                                <div className="xs:hidden">process works</div>
                             </h2>
                         </div>
                         <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>

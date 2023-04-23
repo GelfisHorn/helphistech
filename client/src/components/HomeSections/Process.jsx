@@ -10,20 +10,24 @@ export default function ProcessSection() {
     return (
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-process">
             <div className="flex flex-col gap-20 max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 items-center sm:items-start">
                     <div className="blur-shadow -left-28 -top-28 -z-10"></div>
                     <div className="flex flex-col">
-                        <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Proceso de desarrollo</span>
+                        <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Entwicklungsprozess</span>
                     </div>
                     <div className="flex flex-col gap-10">
                         <div>
                             <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                <div>Cómo funciona el</div>
-                                <div>proceso de <span className="text-primary">desarrollo</span></div>
+                                <div className="hidden xs:block">Wie der <span className="text-primary">Entwicklung</span></div>
+                                <div className="hidden xs:block">prozess funktioniert</div>
+                                <div className="xs:hidden">Wie der</div>
+                                <div className="xs:hidden text-primary">Entwicklung</div>
+                                <div className="xs:hidden">prozess</div>
+                                <div className="xs:hidden">funktioniert</div>
                             </h2>
                         </div>
                         <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-                            <p className="text-center sm:text-left">Si necesitas una presencia en línea efectiva para tu negocio o proyecto, un sitio web es una parte vital del proceso. Aquí hay un desglose del proceso de desarrollo web para que sepas qué esperar al trabajar con nosotros.</p>
+                            <p className="text-center sm:text-left">Wenn Sie für Ihr Unternehmen oder Projekt eine effektive Online-Präsenz benötigen, ist eine Website ein wesentlicher Bestandteil des Prozesses. Hier ist eine Aufschlüsselung des Webentwicklungsprozesses, damit Sie wissen, was Sie erwartet, wenn Sie mit uns zusammenarbeiten.</p>
                         </div>
                     </div>
                 </div>
@@ -46,16 +50,16 @@ export default function ProcessSection() {
                             </div>
                             <div className="grid grid-cols-3 gap-20">
                                 <ProcessItem 
-                                    title={"Planificación"}
-                                    description={"Trabajamos contigo para conocer tus necesidades y objetivos para el sitio web. Luego, diseñamos y desarrollamos un sitio web que satisfaga tus necesidades y deseos, incluyendo las funcionalidades, apariencia y comportamiento que deseas."} 
+                                    title={"Planung"}
+                                    description={"Wir arbeiten mit Ihnen zusammen, um Ihre Bedürfnisse und Ziele für die Website zu verstehen. Anschließend entwerfen und entwickeln wir eine Website, die Ihren Bedürfnissen und Wünschen entspricht, einschließlich der Funktionalität, des Aussehens und des Verhaltens, die Sie wünschen."} 
                                 />
                                 <ProcessItem 
-                                    title={"Diseño y prototipado"}
-                                    description={"Una vez que hayamos entendido lo que necesitas, crearemos un prototipo de tu sitio web utilizando Figma o una herramienta similar. Este prototipo mostrará la apariencia y el comportamiento del sitio web. Si hay algo que no te gusta o quieres cambiar, lo hacemos aquí antes de avanzar al siguiente paso."} 
+                                    title={"Design und Prototyping"}
+                                    description={"Sobald wir verstanden haben, was Sie brauchen, erstellen wir mit Figma oder einem ähnlichen Tool einen Prototyp Ihrer Website. Dieser Prototyp zeigt das Erscheinungsbild und Verhalten der Website. Wenn Ihnen etwas nicht gefällt oder Sie etwas ändern möchten, erledigen wir das hier, bevor wir mit dem nächsten Schritt fortfahren."} 
                                 />
                                 <ProcessItem 
-                                    title={"Desarrollo del backend"}
-                                    description={'Después de diseñar y crear el prototipo, trabajaremos en la parte del sitio web llamada "backend" que maneja las operaciones del servidor. Utilizamos tecnologías modernas y confiables para garantizar un funcionamiento sin problemas y almacenar el contenido y manejar las bases de datos.'} 
+                                    title={"Backend-Entwicklung"}
+                                    description={`Nach dem Design und dem Prototyping arbeiten wir an dem Teil der Website, der als Backend bezeichnet wird und den Serverbetrieb abwickelt. Wir verwenden moderne und zuverlässige Technologien, um einen reibungslosen Betrieb zu gewährleisten und Inhalte zu speichern und Datenbanken zu verwalten.`} 
                                 />
                             </div>
                         </div>
@@ -76,16 +80,16 @@ export default function ProcessSection() {
                             </div>
                             <div className="grid grid-cols-3 gap-20">
                                 <ProcessItem 
-                                    title={"Desarrollo del frontend"}
-                                    description={"El frontend es la parte del sitio web que los usuarios ven y con la que interactúan. Aquí es donde creamos la interfaz de usuario del sitio web utilizando HTML, CSS y JavaScript. Nos aseguramos de que el sitio web sea responsivo y se vea bien en cualquier dispositivo."} 
+                                    title={"Frontend-Entwicklung"}
+                                    description={"Das Frontend ist der Teil der Website, den Benutzer sehen und mit dem sie interagieren. Hier erstellen wir die Benutzeroberfläche der Website mit HTML, CSS und JavaScript. Wir stellen sicher, dass die Website responsive ist und auf jedem Gerät gut aussieht."} 
                                 />
                                 <ProcessItem 
-                                    title={"Optimización del SEO"}
-                                    description={"Para ayudar a las personas a encontrar tu sitio web, lo optimizamos para los motores de búsqueda. Hacemos investigación de palabras clave para asegurarnos de que tu sitio web esté optimizado para los términos de búsqueda que más le importan a tu negocio o proyecto."} 
+                                    title={"SEO-Optimierung"}
+                                    description={"Damit die Leute Ihre Website finden, optimieren wir sie für Suchmaschinen. Wir führen Keyword-Recherchen durch, um sicherzustellen, dass Ihre Website für die Suchbegriffe optimiert ist, die für Ihr Unternehmen oder Projekt am wichtigsten sind."} 
                                 />
                                 <ProcessItem 
                                     title={"Marketing"}
-                                    description={'Si deseas que más personas visiten tu sitio web, podemos ayudarte con el marketing en línea. Esto puede incluir publicidad en Google Ads y meta ads, así como marketing en redes sociales.'} 
+                                    description={'Wenn Sie möchten, dass mehr Menschen Ihre Website besuchen, können wir Ihnen beim Online-Marketing helfen. Dies kann Werbung auf Google Ads und Meta-Anzeigen sowie Social-Media-Marketing umfassen.'} 
                                 />
                             </div>
                         </div>
@@ -97,8 +101,8 @@ export default function ProcessSection() {
                             </div>
                             <div className="grid grid-cols-1 gap-20">
                                 <ProcessItem 
-                                    title={"Mantenimiento"}
-                                    description={"Una vez que tu sitio web está en línea, seguimos trabajando contigo para mantenerlo actualizado y optimizado. Realizamos actualizaciones regulares de seguridad y software para asegurarnos de que tu sitio web esté protegido contra amenazas en línea y siga siendo fácil de usar."} 
+                                    title={"Wartung"}
+                                    description={"Sobald Ihre Website online ist, arbeiten wir weiterhin mit Ihnen zusammen, um sie auf dem neuesten Stand zu halten und zu optimieren. Wir führen regelmäßig Sicherheits- und Software-Updates durch, um sicherzustellen, dass Ihre Website vor Online-Bedrohungen geschützt und benutzerfreundlich bleibt."} 
                                 />
                             </div>
                         </div>
@@ -117,7 +121,7 @@ function ProcessItem({ title, description }) {
     return (
         <div className="flex flex-col gap-3">
             <div className="text-xl">{title}</div>
-            <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
+            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{description}</div>
             <Link className="w-fit" href={"#"}>
                 <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                     <div>Ver más</div>
