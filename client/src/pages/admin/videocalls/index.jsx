@@ -116,7 +116,7 @@ function VideoCall({ videocall }) {
                 </div>
                 <div className="flex flex-col">
                     <div className="font-bold uppercase">Correo electrónico</div>
-                    <a href={`mailto:${email}`} className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} adminpanel-description`}>{email}</a>    
+                    <a href={`mailto:${email}`} className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} text-ellipsis-5`}>{email}</a>    
                 </div>
                 <div className="flex flex-col">
                     <div className="font-bold uppercase">Fecha y hora</div>

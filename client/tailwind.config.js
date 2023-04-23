@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: '400px'
+      },
       colors: {
         // Light mode
         "light-main": "rgb(99 102 241)",

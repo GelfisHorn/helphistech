@@ -120,7 +120,7 @@ function Project({ project }) {
                 </div>
                 <div className="flex flex-col">
                     <div className="font-bold uppercase">Descripción</div>
-                    <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} adminpanel-description`}>{description}</div>    
+                    <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} text-ellipsis-5`}>{description}</div>    
                 </div>
                 <div className="flex flex-col">
                     <div className="font-bold uppercase">Presupuesto</div>
