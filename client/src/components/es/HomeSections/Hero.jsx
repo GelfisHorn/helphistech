@@ -24,7 +24,7 @@ export default function HeroSection() {
                             <p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>Ofrecemos soluciones personalizadas para ayudar a que su empresa se destaque en línea. Desde el diseño y desarrollo de sitios web hasta la programación de aplicaciones y la optimización de motores de búsqueda, nuestro equipo de expertos puede ayudarlo a alcanzar sus objetivos en línea.</p>
                         </div>
                         <div className="flex justify-center xl:justify-start">
-                            <Link href={"/project-quote"}>
+                            <Link href={"/es/contact"}>
                                 <button className="btn-primary text-white uppercase w-fit py-4 px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">Start a project with us</button>
                             </Link>
                         </div>
