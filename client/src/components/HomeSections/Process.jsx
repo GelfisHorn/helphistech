@@ -121,7 +121,7 @@ function ProcessItem({ title, description }) {
     return (
         <div className="flex flex-col gap-3">
             <div className="text-xl">{title}</div>
-            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{description}</div>
+            <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
             <Link className="w-fit" href={"#"}>
                 <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                     <div>Ver más</div>
