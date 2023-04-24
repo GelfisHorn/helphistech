@@ -42,6 +42,13 @@ export default function Navbar() {
         }
     }
 
+    function handleScrollTo(hash) {
+        const element = document.getElementById(`${hash}`);
+        if(element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     return(
         <>
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
@@ -52,18 +59,21 @@ export default function Navbar() {
                         </Link>
                     </div>
                     <nav className="hidden xl:flex items-center gap-5 font-light text-lg">
-                        <Link href={"#"}>
+                        <div className="cursor-pointer" onClick={() => handleScrollTo("hero")}>
                             <span className="hover:underline hover:text-primary transition-colors">Home</span>
-                        </Link>
-                        <Link href={"#"} >
-                            <span className="hover:underline hover:text-primary transition-colors">Our services</span>
-                        </Link>
-                        <Link href={"#"} >
-                            <span className="hover:underline hover:text-primary transition-colors">Our projects</span>
-                        </Link>
-                        <Link href={"#"} >
-                            <span className="hover:underline hover:text-primary transition-colors">Our technologies</span>
-                        </Link>
+                        </div>
+                        <div className="cursor-pointer" onClick={() => handleScrollTo("our-services")}>
+                            <span className="hover:underline hover:text-primary transition-colors">Services</span>
+                        </div>
+                        <div className="cursor-pointer" onClick={() => handleScrollTo("our-process")}>
+                            <span className="hover:underline hover:text-primary transition-colors">Process</span>
+                        </div>
+                        <div className="cursor-pointer" onClick={() => handleScrollTo("our-technologies")}>
+                            <span className="hover:underline hover:text-primary transition-colors">Technologies</span>
+                        </div>
+                        <div className="cursor-pointer" onClick={() => handleScrollTo("my-project")}>
+                            <span className="hover:underline hover:text-primary transition-colors">Start my project</span>
+                        </div>
                     </nav>
                     <div className="hidden sm:flex items-center gap-3">
                         <div onClick={handleDarkMode} className={`text-2xl cursor-pointer transition-colors`}>
@@ -99,23 +109,26 @@ export default function Navbar() {
                     </div>
                     <div onClick={handleShowMenu} className="block sm:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
                         </svg>
                     </div>
                 </div>
                 <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg ${darkMode ? 'font-light' : 'font-normal'}`}>
-                    <Link href={"#"}>
+                    <div className="cursor-pointer" onClick={() => handleScrollTo("hero")}>
                         <span className="hover:underline hover:text-primary transition-colors">Home</span>
-                    </Link>
-                    <Link href={"#"}>
-                        <span className="hover:underline hover:text-primary transition-colors">Our services</span>
-                    </Link>
-                    <Link href={"#"}>
-                        <span className="hover:underline hover:text-primary transition-colors">Our projects</span>
-                    </Link>
-                    <Link href={"#"}>
-                        <span className="hover:underline hover:text-primary transition-colors">Our technologies</span>
-                    </Link>
+                    </div>
+                    <div className="cursor-pointer" onClick={() => handleScrollTo("our-services")}>
+                        <span className="hover:underline hover:text-primary transition-colors">Services</span>
+                    </div>
+                    <div className="cursor-pointer" onClick={() => handleScrollTo("our-process")}>
+                        <span className="hover:underline hover:text-primary transition-colors">Process</span>
+                    </div>
+                    <div className="cursor-pointer" onClick={() => handleScrollTo("our-technologies")}>
+                        <span className="hover:underline hover:text-primary transition-colors">Technologies</span>
+                    </div>
+                    <div className="cursor-pointer" onClick={() => handleScrollTo("my-project")}>
+                        <span className="hover:underline hover:text-primary transition-colors">Start my project</span>
+                    </div>
                 </nav>
             </header>
             { showMenu && (
@@ -146,10 +159,18 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
         }
     }
 
+    function handleScrollTo(hash) {
+        const element = document.getElementById(`${hash}`);
+        if(element) {
+            closeMenu();
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     return (
         <>
-            <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-60" onClick={closeMenu}></div>
-            <div className={`${closeAnimation ? 'full-screen-menu-close' : 'full-screen-menu-open'} fixed top-0 right-0 w-[85vw] h-screen ${darkMode ? 'bg-darkmode text-dark-text border-l border-neutral-900' : 'bg-white text-black'} shadow-lg transition-colors z-10`}>
+            <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-60 z-20" onClick={closeMenu}></div>
+            <div className={`${closeAnimation ? 'full-screen-menu-close' : 'full-screen-menu-open'} fixed top-0 right-0 w-[85vw] h-screen ${darkMode ? 'bg-darkmode text-dark-text border-l border-neutral-900' : 'bg-white text-black'} shadow-lg transition-colors z-20`}>
                 <div className={`${closeAnimation ? 'hidden' : null} h-full`}>
                     <div className="flex items-center justify-between absolute top-4 left-4 right-4">
                         <Image src={darkMode ? '/logo/dark/logo.webp' : '/logo/light/logo.webp'} width={50} height={50} alt="HelphisTech Logo" />
@@ -162,18 +183,21 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                     <div className="flex flex-col justify-between items-center gap-10 h-full mx-auto pt-24 pb-16">
                         <div className="flex flex-col items-center gap-10 w-full px-6">
                             <div className={`flex flex-col text-xl ${darkMode ? 'font-normal' : 'font-medium'} items-start gap-5 w-full`}>
-                                <Link href={"#"}>
+                                <div className="cursor-pointer" onClick={() => handleScrollTo("hero")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Home</span>
-                                </Link>
-                                <Link href={"#"} >
-                                    <span className="hover:underline hover:text-primary transition-colors">Our services</span>
-                                </Link>
-                                <Link href={"#"} >
-                                    <span className="hover:underline hover:text-primary transition-colors">Our projects</span>
-                                </Link>
-                                <Link href={"#"} >
-                                    <span className="hover:underline hover:text-primary transition-colors">Our technologies</span>
-                                </Link>
+                                </div>
+                                <div className="cursor-pointer" onClick={() => handleScrollTo("our-services")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Services</span>
+                                </div>
+                                <div className="cursor-pointer" onClick={() => handleScrollTo("our-process")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Process</span>
+                                </div>
+                                <div className="cursor-pointer" onClick={() => handleScrollTo("our-technologies")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Technologies</span>
+                                </div>
+                                <div className="cursor-pointer" onClick={() => handleScrollTo("my-project")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Start my project</span>
+                                </div>
                             </div>
                         </div>
                         <div className="flex flex-col gap-5 items-center">
