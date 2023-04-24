@@ -22,7 +22,7 @@ export default function Layout({ title, metaDesc, children }) {
                 <title>{title} | Helphis Tech</title>
                 <meta name="description" content={metaDesc || "Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."} />
             </Head>
-            <div className={`${darkMode ? 'bg-darkmode text-zinc-200' : 'bg-white text-black'} transition-colors`}>
+            <div className={`${darkMode ? 'bg-darkmode text-zinc-300' : 'bg-white text-[#202020]'} transition-colors`}>
                 {/* Navbar */}
                 { language == 'de' && <NavbarDE /> }
                 { language == 'en' && <NavbarEN /> }

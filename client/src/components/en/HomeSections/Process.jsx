@@ -112,7 +112,7 @@ export default function ProcessSection() {
     )
 }
 
-function ProcessItem({ title, description }) {
+function ProcessItem({ title, description, hash }) {
 
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
@@ -121,9 +121,9 @@ function ProcessItem({ title, description }) {
         <div className="flex flex-col gap-3">
             <div className="text-xl">{title}</div>
             <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
-            <Link className="w-fit" href={"#"}>
+            <Link className="w-fit" href={`/en/custom-web-development#${hash}`}>
                 <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
-                    <div>Ver más</div>
+                    <div>See more</div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                     </svg>
