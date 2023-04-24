@@ -95,7 +95,7 @@ function ServicesOption({ title, description, href }) {
 			{ showDescription && (
 				<div className={`flex flex-col gap-5 ${closeDropdown ? 'dropdown-description-hide' : 'dropdown-description-show'}`}>
 					<p className={`font-light ${darkMode ? 'description-dark' : 'description-light'}`}>{description}</p>
-					<Link className="text-primary hover:text-primary-2 hover:underline transition-colors" href={"#"}>
+					<Link className="text-primary hover:text-primary-2 hover:underline transition-colors" href={"/contact"}>
 						<div className="flex items-center gap-2">
 							<div>Ich bin interessiert</div>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
