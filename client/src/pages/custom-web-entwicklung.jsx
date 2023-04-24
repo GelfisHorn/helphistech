@@ -8,7 +8,7 @@ export default function CustomWebDevelopment() {
     
     const { darkMode } = useContextProvider();
 
-    function scrollTo(hash) {
+    function handleScrollTo(hash) {
         const element = document.getElementById(`${hash}-section`);
         if(element) {
             element.scrollIntoView({ behavior: 'smooth' });
@@ -18,7 +18,7 @@ export default function CustomWebDevelopment() {
     useEffect(() => {
         const hash = location.hash;
         if(hash) {
-            scrollTo(hash.split('#')[1]);
+            handleScrollTo(hash.split('#')[1]);
         }
     }, [])
 
