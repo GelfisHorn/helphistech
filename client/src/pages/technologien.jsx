@@ -28,7 +28,7 @@ export default function TechnologiesPage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={`grid grid-cols-3 gap-10 gap-y-20`}>
+                            <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 gap-y-20`}>
                                 <TechnologyItem 
                                     image={"/technologies/react.webp"}
                                     imageAlt={"React image"}
@@ -112,7 +112,7 @@ function TechnologyItem({ image, darkImg, imageAlt, description, href }) {
         <div className={``}>
             <div className="flex flex-col gap-5">
                 <div className={`grid place-content-center aspect-square ${darkMode ? 'bg-[#090909]' : 'bg-[#E9E9E9]'}`}>
-                    <div className={`grid place-content-center aspect-square border ${darkMode ? 'border-[#181818]' : 'border-white'} m-10 px-10`}>
+                    <div className={`grid place-content-center aspect-square border ${darkMode ? 'border-[#181818]' : 'border-white'} m-10 px-5 sm:px-10`}>
                         { darkMode && darkImg ? (
                             <Image src={darkImg} width={400} height={250} alt={imageAlt} />
                         ) : (
