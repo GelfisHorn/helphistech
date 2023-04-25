@@ -111,8 +111,8 @@ function TechnologyItem({ image, darkImg, imageAlt, description, href }) {
     return (
         <div className={``}>
             <div className="flex flex-col gap-5">
-                <div className={`grid place-content-center aspect-square ${darkMode ? 'bg-[#090909]' : 'bg-[#E9E9E9]'}`}>
-                    <div className={`grid place-content-center aspect-square border ${darkMode ? 'border-[#181818]' : 'border-white'} m-10 px-5 sm:px-10`}>
+                <div className={`grid place-content-center aspect-square ${darkMode ? 'bg-[#121212]' : 'bg-[#E9E9E9]'}`}>
+                    <div className={`grid place-content-center aspect-square border ${darkMode ? 'border-[#252525]' : 'border-white'} m-10 px-5 sm:px-10`}>
                         { darkMode && darkImg ? (
                             <Image src={darkImg} width={400} height={250} alt={imageAlt} />
                         ) : (
