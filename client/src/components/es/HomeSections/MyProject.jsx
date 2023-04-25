@@ -18,7 +18,7 @@ export default function MyProjectSection() {
                     <span className={`${darkMode ? 'title-dark' : 'title-light'} text-[2.25rem] sm:text-[3rem] md:text-[3.75rem] lg:text-[4.5rem] font-semibold`}>Solo necesitamos una idea o un problema para que podamos llevar a cabo tu proyecto</span>
                 </div>
             </div>
-            <Link href={'/es/contact'}>
+            <Link href={'/es/contacto'}>
                 <button className="text-2xl transition-colors font-semibold border-b-2 border-primary text-primary hover:border-white hover:text-white" onClick={null}>Empezar mi proyecto</button>
             </Link>
         </section>

@@ -51,14 +51,17 @@ export default function ProcessSection() {
                                 <ProcessItem 
                                     title={"Planificación"}
                                     description={"Trabajamos contigo para conocer tus necesidades y objetivos para el sitio web. Luego, diseñamos y desarrollamos un sitio web que satisfaga tus necesidades y deseos, incluyendo las funcionalidades, apariencia y comportamiento que deseas."} 
+                                    hash={"plan"}
                                 />
                                 <ProcessItem 
                                     title={"Diseño y prototipado"}
                                     description={"Una vez que hayamos entendido lo que necesitas, crearemos un prototipo de tu sitio web utilizando Figma o una herramienta similar. Este prototipo mostrará la apariencia y el comportamiento del sitio web. Si hay algo que no te gusta o quieres cambiar, lo hacemos aquí antes de avanzar al siguiente paso."} 
+                                    hash={"design"}
                                 />
                                 <ProcessItem 
                                     title={"Desarrollo del Back-end"}
                                     description={'Después de diseñar y crear el prototipo, trabajaremos en la parte del sitio web llamada "backend" que maneja las operaciones del servidor. Utilizamos tecnologías modernas y confiables para garantizar un funcionamiento sin problemas y almacenar el contenido y manejar las bases de datos.'} 
+                                    hash={"backend"}
                                 />
                             </div>
                         </div>
@@ -81,14 +84,17 @@ export default function ProcessSection() {
                                 <ProcessItem 
                                     title={"Desarrollo del Front-end"}
                                     description={"El frontend es la parte del sitio web que los usuarios ven y con la que interactúan. Aquí es donde creamos la interfaz de usuario del sitio web utilizando HTML, CSS y JavaScript. Nos aseguramos de que el sitio web sea responsivo y se vea bien en cualquier dispositivo."} 
+                                    hash={"frontend"}
                                 />
                                 <ProcessItem 
                                     title={"Optimización del SEO"}
                                     description={"Para ayudar a las personas a encontrar tu sitio web, lo optimizamos para los motores de búsqueda. Hacemos investigación de palabras clave para asegurarnos de que tu sitio web esté optimizado para los términos de búsqueda que más le importan a tu negocio o proyecto."} 
+                                    hash={"seo"}
                                 />
                                 <ProcessItem 
                                     title={"Marketing"}
                                     description={'Si deseas que más personas visiten tu sitio web, podemos ayudarte con el marketing en línea. Esto puede incluir publicidad en Google Ads y meta ads, así como marketing en redes sociales.'} 
+                                    hash={"marketing"}
                                 />
                             </div>
                         </div>
@@ -102,6 +108,7 @@ export default function ProcessSection() {
                                 <ProcessItem 
                                     title={"Mantenimiento"}
                                     description={"Una vez que tu sitio web está en línea, seguimos trabajando contigo para mantenerlo actualizado y optimizado. Realizamos actualizaciones regulares de seguridad y software para asegurarnos de que tu sitio web esté protegido contra amenazas en línea y siga siendo fácil de usar."} 
+                                    hash={"maintenance"}
                                 />
                             </div>
                         </div>
