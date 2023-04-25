@@ -13,24 +13,22 @@ export default function ServicesPage() {
 
     return (
         <Layout title={"Our services"}>
-            <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 overflow-hidden`}>
+            <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-20 overflow-hidden`}>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
-                    <div className="flex items-center gap-20 justify-between w-full">
-                        <div className="flex flex-col gap-20">
+                    <div className="flex items-center justify-between w-full">
+                        <div className="flex flex-col gap-[4.5rem]">
                             <div className="flex items-center sm:items-start gap-5 relative">
                                 <div className="flex flex-col justify-center sm:items-start gap-10">
-                                    <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                        <div>What</div>
-                                        <div className="text-primary">Services</div>
-                                        <div>{"We're Offering"}</div>
-                                    </h2>
+                                    <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                                        <h1 className="text-center sm:text-left w-full">What Services We're Offering</h1>
+                                    </div>
                                     <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
                                         <p className="text-center sm:text-left">At HelphisTech, we offer a wide range of web development services to help businesses create a strong online presence and achieve their digital goals. Our team of experienced developers is skilled in creating custom websites, web applications, and e-commerce platforms that are tailored to meet the unique needs of each client.</p>
                                         {/* We use the latest technologies and industry best practices to ensure that our projects are of the highest quality, and we work closely with our clients to ensure that they are satisfied with the final product. */}
                                     </div>
                                 </div>
                             </div>
-                            <div className={`flex flex-col divide-y border-t ${darkMode ? 'border-[#19191F]' : 'border-neutral-300'}`}>
+                            <div className={`flex flex-col divide-y`}>
                                 <ServicesOption
                                     title={"Custom Website Development"}
                                     description={"We specialize in creating custom websites that are designed to meet the specific needs of our clients. Our websites are responsive, user-friendly, and optimized for search engines to ensure maximum visibility."}

@@ -13,23 +13,21 @@ export default function ServicesPage() {
 
     return (
         <Layout title={"Our services"}>
-            <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 overflow-hidden`}>
+            <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-20 overflow-hidden`}>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
-                    <div className="flex items-center gap-20 justify-between w-full">
-                        <div className="flex flex-col gap-20">
+                    <div className="flex items-center justify-between w-full">
+                        <div className="flex flex-col gap-[4.5rem]">
                             <div className="flex items-center sm:items-start gap-5 relative">
                                 <div className="flex flex-col justify-center sm:items-start gap-10">
-                                    <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                        <div>Qué</div>
-                                        <div className="text-primary">Servicios</div>
-                                        <div>{"Ofrecemos"}</div>
-                                    </h2>
+                                    <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                                        <h1 className="text-center sm:text-left w-full">Qué Servicios Ofrecemos</h1>
+                                    </div>
                                     <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
                                         <p className="text-center sm:text-left">En HelphisTech, ofrecemos una amplia gama de servicios de desarrollo web para ayudar a las empresas a crear una sólida presencia en línea y lograr sus objetivos digitales. Nuestro equipo de desarrolladores experimentados está capacitado para crear sitios web personalizados, aplicaciones web y plataformas de comercio electrónico que se adaptan para satisfacer las necesidades únicas de cada cliente.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className={`flex flex-col divide-y border-t ${darkMode ? 'border-[#19191F]' : 'border-neutral-300'}`}>
+                            <div className={`flex flex-col divide-y`}>
                                 <ServicesOption
                                     title={"Desarrollo personalizado de sitios web"}
                                     description={"Nos especializamos en la creación de sitios web personalizados que están diseñados para satisfacer las necesidades específicas de nuestros clientes. Nuestros sitios web son receptivos, fáciles de usar y están optimizados para motores de búsqueda para garantizar la máxima visibilidad."}

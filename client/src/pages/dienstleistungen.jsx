@@ -13,24 +13,22 @@ export default function ServicesPage() {
 
     return (
         <Layout title={"Unsere Dienstleistungen"}>
-            <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 overflow-hidden`}>
+            <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-20 overflow-hidden`}>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
-                    <div className="flex items-center gap-20 justify-between w-full">
-                        <div className="flex flex-col gap-20">
+                    <div className="flex items-center justify-between w-full">
+                        <div className="flex flex-col gap-[4.5rem]">
                             <div className="flex items-center sm:items-start gap-5 relative">
                                 <div className="flex flex-col justify-center sm:items-start gap-10">
-                                    <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                        <div>Welche</div>
-                                        <div className="text-primary">Dienstleistungen</div>
-                                        <div>{"wir anbieten"}</div>
-                                    </h2>
+                                    <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                                        <h1 className="text-center sm:text-left w-full">Welche Dienstleistungen wir anbieten</h1>
+                                    </div>
                                     <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
                                         <p className="text-center sm:text-left">Bei HelphisTech bieten wir eine breite Palette von Webentwicklungsdiensten an, um Unternehmen dabei zu helfen, eine starke Online-Präsenz zu schaffen und ihre digitalen Ziele zu erreichen. Unser Team aus erfahrenen Entwicklern ist in der Erstellung benutzerdefinierter Websites, Webanwendungen und E-Commerce-Plattformen geschult, die auf die individuellen Bedürfnisse jedes Kunden zugeschnitten sind.</p>
                                         {/* We use the latest technologies and industry best practices to ensure that our projects are of the highest quality, and we work closely with our clients to ensure that they are satisfied with the final product. */}
                                     </div>
                                 </div>
                             </div>
-                            <div className={`flex flex-col divide-y border-t ${darkMode ? 'border-[#19191F]' : 'border-neutral-300'}`}>
+                            <div className={`flex flex-col divide-y`}>
                                 <ServicesOption
                                     title={"Maßgeschneiderte Softwareentwicklung"}
                                     description={"Wir sind darauf spezialisiert, kundenspezifische Websites zu erstellen, die auf die spezifischen Bedürfnisse unserer Kunden zugeschnitten sind. Unsere Websites sind reaktionsschnell, benutzerfreundlich und für Suchmaschinen optimiert, um eine maximale Sichtbarkeit zu gewährleisten."}
