@@ -12,7 +12,7 @@ export default function ServicesPage() {
 	const { darkMode } = useContextProvider();
 
     return (
-        <Layout title={"Our services"}>
+        <Layout title={"Nuestros servicios"} lang={'es'}>
             <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-20 overflow-hidden`}>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                     <div className="flex items-center justify-between w-full">

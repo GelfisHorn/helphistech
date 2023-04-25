@@ -40,7 +40,7 @@ export default function TechnologiesSection() {
                             <TechnologyImage src={"/technologies/socketio.webp"} alt={"Socket.io technology image"} darkmode={"/technologies/darkmode/socketio.webp"} />
                         </div>
                     </div>
-                    <Link className="flex justify-center" href={"#"}>
+                    <Link className="flex justify-center" href={"/en/technologies"}>
                         <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                             <div>See more</div>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

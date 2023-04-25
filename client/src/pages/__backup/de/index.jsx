@@ -21,7 +21,7 @@ export default function DEHome() {
 	const { darkMode, handleShowProjectQuote } = useContextProvider();
 
 	return (
-		<Layout title="Home">
+		<Layout title="Home" lang={'de'}>
 			<div className="flex items-center justify-center sm:justify-start max-w-6xl 2xl:max-w-[90rem] mx-auto pb-16 px-6 md:px-10 min-h-[65rem] lg:min-h-[40rem]" style={{height: 'calc(100vh - 5rem)'}} id="index_section_home">
 				<div className="flex flex-col lg:flex-row items-center gap-10 w-full lazy-load-1">
 					<div className="flex flex-col items-center gap-12">

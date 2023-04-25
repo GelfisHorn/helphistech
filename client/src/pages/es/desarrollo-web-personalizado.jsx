@@ -23,7 +23,7 @@ export default function CustomWebDevelopment() {
     }, [])
 
     return (
-        <Layout title={"E-Commercer Development"}>
+        <Layout title={"Nuestro proceso de trabajo"} lang={'es'}>
             <div className="py-20 px-6 sm:px-10 lg:px-20 2xl:px-0">
                 <div className="flex flex-col gap-28 max-w-7xl 2xl:max-w-[90rem] mx-auto">
                     <div className={`flex flex-col gap-5 w-full text-center xs:text-left`}>

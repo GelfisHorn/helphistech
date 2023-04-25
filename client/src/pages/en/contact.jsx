@@ -13,7 +13,7 @@ export default function ProjectQuote() {
     const [ showVideoCallForm, setShowVideoCallForm ] = useState(false);
 
     return (
-        <Layout title={"Contact us"} metaDesc={"We offer customized web development services for businesses of all sizes. We create websites, e-commerce platforms, and web applications that are perfectly tailored to your needs."}>
+        <Layout title={"Contact us"} metaDesc={"We offer customized web development services for businesses of all sizes. We create websites, e-commerce platforms, and web applications that are perfectly tailored to your needs."} lang={'en'}>
             <div className="flex flex-col items-center justify-center gap-20 py-20 px-6 sm:px-10 md:px-20 max-w-7xl 2xl:max-w-[90rem] mx-auto lg:h-full">
                 <div className={`flex flex-col gap-5 lg:h-full w-full transition-colors text-center xl:text-left`}>
                     <div className={`flex flex-col gap-5 w-full`}>

@@ -11,10 +11,10 @@ import FooterES from "./es/Footer";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 
-export default function Layout({ title, metaDesc, children }) {
+export default function Layout({ title, metaDesc, lang, children }) {
 
     // Get functions and variables from context
-    const { language, darkMode } = useContextProvider();
+    const { darkMode } = useContextProvider();
 
     return(
         <>
@@ -24,15 +24,15 @@ export default function Layout({ title, metaDesc, children }) {
             </Head>
             <div className={`${darkMode ? 'bg-darkmode text-zinc-300' : 'bg-white text-[#202020]'} transition-colors`}>
                 {/* Navbar */}
-                { language == 'de' && <NavbarDE /> }
-                { language == 'en' && <NavbarEN /> }
-                { language == 'es' && <NavbarES /> }
+                { lang == 'de' && <NavbarDE /> }
+                { lang == 'en' && <NavbarEN /> }
+                { lang == 'es' && <NavbarES /> }
                 {/* Page content */}
                 {children}
                 {/* Footer */}
-                { language == 'de' && <FooterDE /> }
-                { language == 'en' && <FooterEN /> }
-                { language == 'es' && <FooterES /> }
+                { lang == 'de' && <FooterDE /> }
+                { lang == 'en' && <FooterEN /> }
+                { lang == 'es' && <FooterES /> }
             </div>
         </>
     )
