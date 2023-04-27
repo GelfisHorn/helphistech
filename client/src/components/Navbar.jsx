@@ -91,7 +91,7 @@ export default function Navbar() {
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="text-lg">
-                                <select className="cursor-pointer bg-transparent outline-none" name="" id="" value={language} onChange={handleChangeLanguage}>
+                                <select className="cursor-pointer bg-transparent outline-none" name="" id="" value={'de'} onChange={handleChangeLanguage}>
                                     <option value="de">DE</option>
                                     <option value="en">EN</option>
                                     <option value="es">ES</option>
