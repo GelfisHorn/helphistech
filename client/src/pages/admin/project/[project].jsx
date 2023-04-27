@@ -168,7 +168,7 @@ export default function ProjectDynamic() {
                                 <div className="font-semibold">{currencyFormatter(budget.to)}</div>    
                             </div>    
                         </div>
-                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t pt-3`}>
+                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
                             <div className="font-bold uppercase">Información de contacto</div>
                             <div className="flex flex-col gap-2">
                                 <div className="flex flex-col">
@@ -183,30 +183,24 @@ export default function ProjectDynamic() {
                                 </div>
                             </div>
                         </div>
+                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-row items-center gap-2 border-t pt-3`}>
+                            <div className="uppercase font-semibold text-lg">Estado</div>
+                            <div className={`${projectState == 'onhold' ? 'bg-yellow-500' : projectState == 'inprogress' ? 'bg-orange-500' : projectState == 'completed' ? 'bg-light-main' :  'bg-red-500'} w-fit px-4 py-1 rounded-full text-white uppercase font-semibold select-none transition-colors flex justify-center`}>
+                                <span>{projectState == 'onhold' ? 'En espera' : projectState == 'inprogress' ? 'En desarrollo' : projectState == 'completed' ? 'Completado' : 'Cancelado'}</span>
+                            </div>
+                        </div>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10 sm:gap-0">
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-5">
                             <div className="flex flex-col gap-2">
-                                <div className="uppercase font-semibold text-lg">Estado</div>
-                                <button className={`${projectState == 'cancelled' ? 'cursor-default' : null} flex items-center gap-4 w-fit`} onClick={handleChangeState}>
-                                    <div className={`${projectState == 'onhold' ? 'bg-yellow-500' : projectState == 'inprogress' ? 'bg-orange-500' : projectState == 'completed' ? 'bg-light-main' :  'bg-red-500'} w-40 py-2 rounded-md text-white uppercase font-semibold select-none transition-colors`}>{projectState == 'onhold' ? 'En espera' : projectState == 'inprogress' ? 'En desarrollo' : projectState == 'completed' ? 'Completado' : 'Cancelado'}</div>
-                                </button>
-                            </div>
-                            {/* <div className="flex items-center gap-1"> 
-                                <div className="uppercase font-bold">Completado por:</div>
-                                <div className="text-lg">{auth.name}</div>
-                            </div> */}
-                        </div>
-                        {/* <div className="flex flex-col gap-2">
-                            <div className="uppercase font-semibold text-lg">Cambiar Estado</div>
-                            <div className="flex justify-end gap-4">
-                                <select name="" id="" className="bg-zinc-500 text-white px-4 py-2 rounded-md outline-none">
-                                    <option value="onhold">En espera</option>
-                                    <option value="inprogress">En progreso</option>
-                                    <option value="complete">Completado</option>
+                                <div className="uppercase font-semibold text-lg">Cambiar Estado</div>
+                                <select value={projectState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-white text-black' : 'bg-black text-white'} py-1 rounded-lg outline-none w-fit px-4`}>
+                                    <option value="onhold">Pendiente</option>
+                                    <option value="inprogress">En desarrollo</option>
+                                    <option value="completed">Completado</option>
                                 </select>
                             </div>
-                        </div> */}
+                        </div>
                         <div className="pt-2">
                             {auth.permissions === 'superadmin' && (
                                 <div className="flex items-start">
