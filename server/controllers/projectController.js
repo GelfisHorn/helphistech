@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Project from "../models/Project.js";
+import ProjectComment from '../models/ProjectComment.js'
 
 const ObjectId = mongoose.Types.ObjectId;
 const getProject = async (req, res) => {
@@ -14,12 +15,13 @@ const getProject = async (req, res) => {
         return res.status(404).json({ msg: 'id no válido' })
     }
 
-    try {
-        const project = await Project.findById(_id).select('-updatedAt -__v');
-        return res.status(200).json(project);
-    } catch (error) {
-        return res.status(404).json({ msg: 'Hubo un error al obtener los proyectos' })
-    }
+    Promise.all([Project.findById(_id).select('-updatedAt -__v'), ProjectComment.find({ project: _id }).populate({ path: 'user', select: 'name' }).select('-__v -project')])
+        .then(values => {
+            return res.status(200).json({ project: values[0], comments: values[1] });
+        })
+        .catch(error => {
+            return res.status(404).json({ msg: 'Hubo un error al obtener los proyectos' })
+        })
 }
 
 const getProjects = async (req, res) => {
@@ -120,10 +122,90 @@ const cancelProject = async (req, res) => {
     }
 }
 
+const createComment = async (req, res) => {
+    const user = req.user;
+    const reqUserId = req.body.userId;
+    const projectId = req.body.projectId;
+    const message = req.body.message;
+
+    if(user._id.toString() != reqUserId) {
+        return res.status(400).json({ msg: 'El usuario es incorrecto' });
+    }
+
+    const project = await Project.findById(projectId);
+    if(!project) {
+        return res.status(404).json({ msg: 'Este proyecto no existe' })
+    }
+
+    try {
+        const projectComment = new ProjectComment({ user: user._id.toString(), project: project._id.toString(), message });
+        await projectComment.save();
+        return res.status(200).json({ comment: { _id: projectComment._id, user: { _id: user._id, name: user.name }, message, createdAt: projectComment.createdAt }, msg: 'Comentario creado correctamente' });
+    } catch (error) {
+        return res.status(500).json({ msg: 'Hubo un error al crear el comentario' });
+    }
+}
+
+const editComment = async (req, res) => {
+    const user = req.user;
+    const commentId = req.body.commentId;
+    const message = req.body.message;
+
+    if(!ObjectId.isValid(commentId)) {
+        return res.status(404).json({ msg: 'Este comentario no existe' })
+    }
+
+    const comment = await ProjectComment.findById(commentId);
+    if(!comment) {
+        return res.status(404).json({ msg: 'Este comentario no existe' })
+    }
+
+    if(user._id.toString() != comment.user.toString()) {
+        return res.status(400).json({ msg: 'El usuario es incorrecto' });
+    }
+
+    try {
+        comment.message = message;
+        await comment.save();
+        return res.status(200).json({ msg: 'Comentario editado correctamente' });
+    } catch (error) {
+        return res.status(500).json({ msg: 'Hubo un error al editar el comentario' });
+    }
+}
+
+const deleteComment = async (req, res) => {
+    const user = req.user;
+    const commentId = req.body.commentId;
+
+    if(!ObjectId.isValid(commentId)) {
+        return res.status(404).json({ msg: 'Este comentario no existe' })
+    }
+
+    const comment = await ProjectComment.findById(commentId);
+    if(!comment) {
+        return res.status(404).json({ msg: 'Este comentario no existe' })
+    }
+
+    if(user._id.toString() != comment.user.toString()) {
+        return res.status(400).json({ msg: 'El usuario es incorrecto' });
+    }
+
+    try {
+        await comment.deleteOne();
+        return res.status(200).json({ msg: 'Comentario elimiado correctamente' });
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ msg: 'Hubo un error al eliminar el comentario' });
+    }
+}
+
 export {
     getProject,
     getProjects,
     createProject,
     changeProjectState,
-    cancelProject
+    cancelProject,
+    createComment,
+    editComment,
+    deleteComment
 }
