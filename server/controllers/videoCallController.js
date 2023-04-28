@@ -85,12 +85,8 @@ const changeState = async (req, res) => {
     }
 }
 
-const cancelVideocall = async (req, res) => {
+const cancelVideoCall = async (req, res) => {
     const videocallId = req.body._id;
-
-    if(req.user.permissions !== 'superadmin') {
-        return res.status(406).json({ msg: 'Permisos insuficientes' });
-    }
 
     // Check if videocall ID is valid
     if(!ObjectId.isValid(videocallId)) {
@@ -112,10 +108,33 @@ const cancelVideocall = async (req, res) => {
     }
 }
 
+const deleteVideoCall = async (req, res) => {
+    const videocallId = req.body._id;
+
+    // Check if videocall ID is valid
+    if(!ObjectId.isValid(videocallId)) {
+        return res.status(406).json({ msg: 'El id no es válido' });
+    }
+
+    // Check if videocall exists
+    const videocall = await VideoCall.findById(videocallId);
+    if(!videocall) {
+        return res.status(404).json({ msg: 'Esta videollamada no existe' });
+    }
+
+    try {
+        await videocall.deleteOne();
+        return res.status(200).json({ msg: 'Eliminiaste la videollamada' });
+    } catch (error) {
+        return res.status(500).json({ msg: 'Hubo un error al eliminar la videollamada' });
+    }
+}
+
 export {
     getVideoCall,
     getVideoCalls,
     createVideoCall,
     changeState,
-    cancelVideocall
+    cancelVideoCall,
+    deleteVideoCall
 }
