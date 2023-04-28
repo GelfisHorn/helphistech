@@ -132,6 +132,31 @@ export default function VideoCallDynamic() {
         router.push(`/admin/videocalls`)
     }
 
+    const [ showDeleteModal, setShowDeleteModal ] = useState(false);
+    function handleShowDeleteModal() {
+        setShowDeleteModal(!showDeleteModal);
+    }
+    async function handleDeleteVideoCall() {
+        handleShowDeleteModal();
+
+        // Get authentication token from localStorage
+        const token = localStorage.getItem('auth-token');
+        if(!token) {
+            setFetchingAuth(false);
+            return;
+        }
+
+        const config = {
+            headers: {
+                "Content-Type": "application-json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        await axios.post('/api/admin/videocalls/delete', { _id: videoCallId, config });
+        router.push(`/admin/videocalls`);
+    }
+
     return (
         <Layout title={'Videollamada'}>
             { Object.keys(videoCall).length != 0 && (
@@ -163,55 +188,95 @@ export default function VideoCallDynamic() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-10 sm:gap-0">
-                        <div className="flex flex-col gap-5">
-                            <div className="flex flex-col gap-2">
-                                <div className="uppercase font-semibold text-lg">Cambiar Estado</div>
-                                <select value={videoCallState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-white text-black' : 'bg-black text-white'} py-1 rounded-lg outline-none w-fit px-4`}>
-                                    <option value="pending">Pendiente</option>
-                                    <option value="concluded">Concluido</option>
-                                </select>
+                    <div className="flex flex-col gap-16">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-10 sm:gap-0">
+                            <div className="flex flex-col gap-5">
+                                <div className="flex flex-col gap-2">
+                                    <div className="uppercase font-semibold text-lg">Cambiar Estado</div>
+                                    <select value={videoCallState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-white text-black' : 'bg-black text-white'} py-1 rounded-lg outline-none w-fit px-4`}>
+                                        <option value="pending">Pendiente</option>
+                                        <option value="concluded">Concluido</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="pt-2">
+                                {auth.permissions === 'superadmin' && (
+                                    <div className="flex items-start">
+                                        <button onClick={handleShowModal} className={`${videoCallState != 'cancelled' ? 'bg-red-500 hover:border-red-500 hover:text-red-500' : 'bg-light-main hover:border-light-main hover:text-light-main'} hover:bg-transparent text-white py-2 px-4 rounded-sm uppercase font-semibold border-2 border-transparent transition-colors whitespace-nowrap`}>{videoCallState != 'cancelled' ? 'Cancelar videollamada' : 'Recuperar videollamada'}</button>
+                                    </div>
+                                )}
                             </div>
                         </div>
-                        <div className="pt-2">
-                            {auth.permissions === 'superadmin' && (
-                                <div className="flex items-start">
-                                    <button onClick={handleShowModal} className={`${videoCallState != 'cancelled' ? 'bg-red-500 hover:border-red-500 hover:text-red-500' : 'bg-light-main hover:border-light-main hover:text-light-main'} hover:bg-transparent text-white py-2 px-4 rounded-sm uppercase font-semibold border-2 border-transparent transition-colors whitespace-nowrap`}>{videoCallState != 'cancelled' ? 'Cancelar videollamada' : 'Recuperar videollamada'}</button>
+                        { videoCallState == 'cancelled' && auth.permissions === 'superadmin' && (
+                            <>
+                                <div className="flex flex-col gap-1 items-start">
+                                    <div className="uppercase text-lg font-medium">Eliminar videollamada</div>
+                                    <button onClick={handleShowDeleteModal} className="py-2 px-6 rounded-sm bg-red-500 hover:bg-red-800">Eliminar videollamada</button>
                                 </div>
-                            )}
-                        </div>
+                                <Modal showModal={showDeleteModal}>
+                                    <div className="flex flex-col gap-1">
+                                        <div className={'text-red-700 text-xl font-semibold uppercase'}>Eliminar Videollamada</div>
+                                        <div className="text-lg">¿Estás seguro que deseas eliminar esta videollamada?</div>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <button className="bg-light-main hover:bg-indigo-900 text-white rounded-sm px-4 py-2 uppercase font-semibold transition-colors" onClick={handleShowDeleteModal}>Cancelar</button>
+                                        <button className="bg-red-500 hover:bg-red-900 text-white rounded-sm px-4 py-2 uppercase font-semibold transition-colors" onClick={handleDeleteVideoCall}>Confirmar</button>
+                                    </div>
+                                </Modal>
+                            </>
+                        )}
                     </div>
                 </div>
             )}
-            { showCancelMenu && 
-                <CancelVideoCallMenu 
-                    closeAnim={closeCancelMenuAnim} 
-                    confirm={videoCallState != 'cancelled' ? handleCancelVideoCall : handleRecoverVideoCall} 
-                    cancel={handleCloseModal} 
-                    videoCallState={videoCallState} 
-                />
-            }
-        </Layout>
-    )
-}
-
-function CancelVideoCallMenu({ closeAnim, confirm, cancel, videoCallState }) {
-
-    const { darkMode } = useContextProvider();
-
-    return (
-        <>
-            <div className="fixed bg-black opacity-75 top-0 left-0 w-screen h-screen"></div>
-            <div className={`${darkMode ? 'bg-neutral-900 text-dark-text' : 'bg-white text-black'} ${closeAnim ? 'modal-close' : 'modal-open'} fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col gap-7 shadow-md px-5 py-4 rounded-sm`}>
+            <Modal showModal={showCancelMenu}>
                 <div className="flex flex-col gap-1">
                     <div className={`${videoCallState != 'cancelled' ? 'text-red-700' : 'text-light-main'} text-xl font-semibold uppercase`}>{videoCallState != 'cancelled' ? 'Cancelar videollamada' : 'Recuperar videollamada'}</div>
                     <div className="text-lg">¿Estás seguro que deseas {videoCallState != 'cancelled' ? 'cancelar' : 'recuperar'} esta videollamada?</div>
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-red-500 hover:bg-red-900 text-white rounded-sm px-4 py-2 uppercase font-semibold transition-colors" onClick={cancel}>Cancelar</button>
-                    <button className="bg-light-main hover:bg-indigo-900 text-white rounded-sm px-4 py-2 uppercase font-semibold transition-colors" onClick={confirm}>Confirmar</button>
+                    <button className="bg-red-500 hover:bg-red-900 text-white rounded-sm px-4 py-2 uppercase font-semibold transition-colors" onClick={handleCloseModal}>Cancelar</button>
+                    <button className="bg-light-main hover:bg-indigo-900 text-white rounded-sm px-4 py-2 uppercase font-semibold transition-colors" onClick={videoCallState == 'cancelled' ? handleRecoverVideoCall : handleCancelVideoCall}>Confirmar</button>
                 </div>
-            </div>
-        </>
+            </Modal>
+        </Layout>
+    )
+}
+
+function Modal({ showModal, children }) {
+
+    const { darkMode } = useContextProvider();
+
+    const [ show, setShow ] = useState(false);
+    const [ closeAnim, setCloseAnim ] = useState(false);
+
+    function handleShowModal() {
+        setShow(true);
+    }
+
+    function handleCloseModal() {
+        setCloseAnim(true);
+        setTimeout(() => {
+            setCloseAnim(false);
+            setShow(false);
+        }, 170)
+    }
+
+    useEffect(() => {
+        if(showModal) {
+            handleShowModal();
+            return;
+        }
+        handleCloseModal();
+    }, [showModal])
+
+    return (
+        show && (
+            <>
+                <div className="fixed bg-black opacity-75 top-0 left-0 w-screen h-screen"></div>
+                <div className={`${darkMode ? 'bg-neutral-900 text-dark-text' : 'bg-white text-black'} ${closeAnim ? 'modal-close' : 'modal-open'} fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col gap-7 shadow-md px-5 py-4 rounded-md`}>
+                    {children}
+                </div>
+            </>
+        )
     )
 }
