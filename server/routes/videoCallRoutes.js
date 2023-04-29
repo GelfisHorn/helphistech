@@ -1,6 +1,6 @@
 import express from 'express'
 import checkAuth from '../middleware/checkAuth.js'
-import { getVideoCall, getVideoCalls, createVideoCall, changeState, cancelVideoCall, deleteVideoCall } from '../controllers/videoCallController.js'
+import { listActiveVideoCalls, getVideoCall, getVideoCalls, createVideoCall, changeState, cancelVideoCall, deleteVideoCall } from '../controllers/videoCallController.js'
 import checkSuperAdmin from '../middleware/checkSuperAdmin.js'
 
 const router = express.Router()
@@ -15,5 +15,7 @@ router.route('/')
     .get(checkAuth, getVideoCalls)
     .put(checkAuth, changeState)
     .delete(checkAuth, checkSuperAdmin, cancelVideoCall);
+
+router.get("/active", listActiveVideoCalls)
 
 export default router

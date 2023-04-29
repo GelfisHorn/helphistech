@@ -26,7 +26,7 @@ module.exports = {
         'hero-dark': "url('/home/hero/wave/dark/wave.webp')",
       },
       width: {
-        modal: "min(90%, 600px)"
+        modal: "min(90%, 700px)"
       }
     },
   },

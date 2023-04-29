@@ -2,6 +2,16 @@ import mongoose from "mongoose";
 import VideoCall from "../models/VideoCall.js";
 
 const ObjectId = mongoose.Types.ObjectId;
+
+const listActiveVideoCalls = async (req, res) => {
+    try {
+        const videocalls = await VideoCall.find({ date: { $gt: new Date()}, state: "pending" }).select("date hour")
+        return res.status(200).json(videocalls);
+    } catch (error) {
+        console.log(error.message);
+        return res.status(404).json({ msg: 'Hubo un error al obtener las videollamadas' })
+    }
+}
 const getVideoCall = async (req, res) => {
     
     const _id = req.body._id;
@@ -131,6 +141,7 @@ const deleteVideoCall = async (req, res) => {
 }
 
 export {
+    listActiveVideoCalls,
     getVideoCall,
     getVideoCalls,
     createVideoCall,
