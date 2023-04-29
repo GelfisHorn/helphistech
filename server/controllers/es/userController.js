@@ -5,8 +5,126 @@ import createJWT from '../../helpers/createJWT.js'
 
 const ObjectId = mongoose.Types.ObjectId;
 
+/**
+ * Get Account (only superadmin)
+ */
+const getAccount = async (req, res) => {
+    const id = req.params.id;
+
+    if(!id) {
+        return res.status(400).json({ msg: 'Es necesario un ID de usuario' });
+    }
+    
+    if(!ObjectId.isValid(id)) {
+        return res.status(400).json({ msg: 'Este usuario no existe' });
+    }
+
+    try {
+        const account = await User.findById(id).select('-__v -createdAt -updatedAt -permissions -disabled -confirmed -password');
+        return res.status(200).json(account);
+    } catch (error) {
+        return res.status(400).json({ msg: 'Hubo un error al obtener el usuario' });
+    }
+}
+/**
+ * Create Account (only superadmin)
+ */
+const createAccount = async (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if(name == '') {
+        return res.status(400).json({ msg: '"name" es obligatorio' });
+    }
+    if(email == '') {
+        return res.status(400).json({ msg: '"email" es obligatorio' });
+    }
+    if(password == '' || String(password).length < 16) {
+        return res.status(400).json({ msg: '"password" es obligatorio y debe tener mínimo 16 caracteres' });
+    }
+
+    const userExists = await User.findOne({ email });
+    if(userExists) {
+        return res.status(409).json({ msg: 'Este e-mail ya pertenece a un usuario' });
+    }
+
+    try {
+        const newUser = new User({ name, email, password });
+        await newUser.save();
+        return res.status(200).json({ msg: 'Se creó el usuario correctamente' });
+    } catch (error) {
+        return res.status(400).json({ msg: 'Hubo un error al crear el usuario' });
+    }
+}
+/**
+ * Edit Account (only superadmin)
+ */
+const editAccount = async (req, res) => {
+    const id = req.body._id;
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if(name == '') {
+        return res.status(400).json({ msg: '"name" es obligatorio' });
+    }
+    if(email == '') {
+        return res.status(400).json({ msg: '"email" es obligatorio' });
+    }
+    if(password && String(password).length < 16) {
+        return res.status(400).json({ msg: '"password" debe tener mínimo 16 caracteres' });
+    }
+
+    const user = await User.findById(id);
+    if(!user) {
+        return res.status(409).json({ msg: 'Este usuario no existe' });
+    }
+    const emailExists = await User.findOne({ email });
+    if(emailExists && emailExists._id != id && emailExists.email == email) {
+        return res.status(409).json({ msg: 'Este email ya existe para un usuario' });
+    }
+
+    try {
+        user.name = name;
+        user.email = email;
+        password ? user.password = password : null;
+        await user.save();
+        return res.status(200).json({ msg: 'Se aplicaron los cambios al usuario correctamente' });
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({ msg: 'Hubo un error al aplicar los cambios' });
+    }
+}
+/**
+ * Delete Account (only superadmin)
+ */
+const deleteAccount = async (req, res) => {
+    const id = req.body.accountId;
+    if(!id) {
+        return res.status(400).json({ msg: 'Es necesario un ID de usuario' });
+    }
+    
+    if(!ObjectId.isValid(id)) {
+        return res.status(400).json({ msg: 'Este usuario no existe' });
+    }
+
+    const user = await User.findById(id);
+    if(!user) {
+        return res.status(409).json({ msg: 'Este usuario no existe' });
+    }
+
+    try {
+        await user.deleteOne();
+        return res.status(200).json({ msg: 'El usuario se eliminó correctamente' });
+    } catch (error) {
+        return res.status(400).json({ msg: 'Hubo un error al obtener el usuario' });
+    }
+}
+
 const authenticate = async (req, res) => {
-    const { email, password } = req.body
+    const email = req.body.email;
+    const password = req.body.password;
 
     // Check if user exists
     const user = await User.findOne({ email })
@@ -157,6 +275,10 @@ const disable = async (req, res) => {
 }
 
 export {
+    getAccount,
+    createAccount,
+    editAccount,
+    deleteAccount,
     authenticate,
     confirm,
     resetPassword,
