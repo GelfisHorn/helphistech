@@ -5,8 +5,38 @@ import createJWT from '../../helpers/createJWT.js'
 
 const ObjectId = mongoose.Types.ObjectId;
 
+const createAccount = async (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if(name == '') {
+        return res.status(400).json({ msg: '"name" es obligatorio' });
+    }
+    if(email == '') {
+        return res.status(400).json({ msg: '"email" es obligatorio' });
+    }
+    if(password == '' || password.length < 16) {
+        return res.status(400).json({ msg: '"password" es obligatorio y debe tener mínimo 16 caracteres' });
+    }
+
+    const userExists = await User.findOne({ email });
+    if(userExists) {
+        return res.status(409).json({ msg: 'Este e-mail ya pertenece a un usuario' });
+    }
+
+    try {
+        const newUser = new User({ name, email, password });
+        await newUser.save();
+        return res.status(200).json({ msg: 'Se creó el usuario correctamente' });
+    } catch (error) {
+        return res.status(400).json({ msg: 'Hubo un error al crear el usuario' });
+    }
+}
+
 const authenticate = async (req, res) => {
-    const { email, password } = req.body
+    const email = req.body.email;
+    const password = req.body.password;
 
     // Check if user exists
     const user = await User.findOne({ email })
@@ -157,6 +187,7 @@ const disable = async (req, res) => {
 }
 
 export {
+    createAccount,
     authenticate,
     confirm,
     resetPassword,
