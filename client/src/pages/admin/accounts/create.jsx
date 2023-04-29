@@ -17,7 +17,7 @@ export default function CreateAccount() {
 
     const AccountSchema = Yup.object().shape({
         name: Yup.string()
-          .min(5, 'El nombre es muy corto.')
+          .min(4, 'El nombre es muy corto.')
           .max(50, 'El nombre es muy largo.')
           .required('El nombre es obligatorio'),
         email: Yup.string().
