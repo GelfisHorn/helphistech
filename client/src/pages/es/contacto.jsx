@@ -126,7 +126,7 @@ function VideocallModal({ closeVideoCallForm }) {
                 transition={{ duration: .3 }}
                 className="fixed top-0 h-full w-full z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center"
             >
-                <motion.div className={`max-sm:w-full max-sm:h-screen max-sm:py-5 max-sm:px-2 px-5 py-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
+                <motion.div className={`max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
                     initial={{ x: -30 }}
                     animate={{ x: 0 }}
                     exit={{ x: -30 }}
@@ -179,7 +179,7 @@ function VideocallModal({ closeVideoCallForm }) {
                                     </div>
                                     <DayPicker/>
                                 </div>
-                                <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center self-end">
+                                <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center self-end py-6">
                                     <button type="button" onClick={closeVideoCallForm} className={`btn-primary flex max-w-[240px] items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
@@ -238,7 +238,7 @@ function VideocallModal({ closeVideoCallForm }) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center">
+                                    <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center py-6">
                                         <button type={'button'} onClick={closeVideoCallForm} className={`btn-primary max-w-[240px] flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />

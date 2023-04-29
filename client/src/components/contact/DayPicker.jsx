@@ -78,8 +78,8 @@ export default function DayPicker () {
     setSelectedDate(state => ({ ...state, month: state.month+1 }))
   }
 
-  return <div className="">
-    <div className="w-full max-w-[400px] max-sm:mx-auto text-sm">
+  return <div className="flex max-md:flex-col gap-x-6 gap-y-4">
+    <div className="h-[320px] w-full max-w-[400px] max-sm:mx-auto text-sm mx-auto">
       <div className="bg-zinc-800 rounded-md ">
         <div className="px-3 py-1 flex items-center justify-between">
           <p>
@@ -118,6 +118,11 @@ export default function DayPicker () {
           </button>
         ))}
       </div>
+    </div>
+    <div className="flex flex-col gap-3 max-md:px-2 w-full md:max-w-[200px] mx-auto">
+      <button type="button" className="border border-zinc-700 w-full py-3 rounded-md">16:00</button>
+      <button type="button" className="border border-zinc-700 w-full py-3 rounded-md">18:00</button>
+      <button type="button" className="border border-zinc-700 w-full py-3 rounded-md">20:00</button>
     </div>
   </div>
 }
