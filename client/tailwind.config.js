@@ -24,8 +24,14 @@ module.exports = {
       backgroundImage: {
         'hero-light': "url('/home/hero/wave/light/wave.webp')",
         'hero-dark': "url('/home/hero/wave/dark/wave.webp')",
+      },
+      width: {
+        modal: "min(90%, 700px)"
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+    
+  ]
 }

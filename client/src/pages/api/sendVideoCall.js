@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-	const { full_name, email, date, hour } = req.body;
+	const { full_name, email, date, hour, description } = req.body;
 	try {
         const { data } = await axios.request({
             url: `${process.env.SERVER_URI}/v1/videocall`,
             method: 'POST',
-            data: { full_name, email, date, hour }
+            data: { full_name, email, date, hour, description }
         })
 		return res.status(200).json(data);
 	} catch (error) {

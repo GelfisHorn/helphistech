@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 // Layout
 import Layout from "@/components/Layout";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
+import DayPicker from "@/components/contact/DayPicker";
 
 export default function ProjectQuote() {
 
@@ -27,11 +29,7 @@ export default function ProjectQuote() {
                 </div>
                 <div className="flex flex-col xl:flex-row items-center xl:items-start gap-10 xl:gap-20 w-full">
                     <div className="w-full xl:w-3/5 py-5" id="quote-project-form">
-                        { showVideoCallForm ? (
-                            <VideoCallComponent closeVideoCallForm={() => setShowVideoCallForm(false)} />
-                        ) : (
-                            <FormComponent />
-                        )}
+                        <FormComponent/>
                     </div>
                     <div className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
                         <h2 className="text-2xl font-medium w-full">Agenda una videollamada</h2>
@@ -44,147 +42,204 @@ export default function ProjectQuote() {
                         </button>
                     </div>
                 </div>
+                <AnimatePresence>
+                    {showVideoCallForm && <VideocallModal closeVideoCallForm={() => setShowVideoCallForm(false)} />}
+                </AnimatePresence>
             </div>
         </Layout>
     )
 }
 
-// Date picker imports
-import { format } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
 
-function VideoCallComponent({ closeVideoCallForm }) {
-
+function VideocallModal({ closeVideoCallForm }) {
     const { darkMode } = useContextProvider();
+    
+    // toggles overflow while rendered
+    useEffect(() => {
+        document.body.classList.add("body-in-modal-open")
+        return () => 
+        document.body.classList.remove("body-in-modal-open")
+    },[])
 
+    const FORM_STEPS = {
+        DATE_PICKER: 1,
+        CONTACT_INFO: 2
+    }
+    //step and send controller
+    const [ formStep, setFormStep ] = useState(FORM_STEPS.DATE_PICKER)
     // on submit show message
     const [ message, setMessage ] = useState({ error: false, text: '' });
-
-    // date picker settings
-    // const [ showDatePicker, setShowDatePicker ] = useState(false);
-    const today = new Date();
-    const day = today.getDate();
-    const year = today.getFullYear();
-    const month = (today.getMonth());
-    const disabledDays = [
-        { from: new Date(year, month, 1), to: new Date(year, month, (day + 3))}
-    ]
 
     const [ full_name, setFullName ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ date, setDate ] = useState('');
     const [ hour, setHour ] = useState('');
+    const [ description, setDescription ] = useState('');
 
     function showMessage(error, text, timeout) {
         setMessage({ error, text })
-        document.getElementById("quote-project-form").scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
             setMessage({ error: false, text: '' })
         }, timeout)
     }
 
-    function resetForm() {
-        setFullName('');
-        setEmail('');
-        setDate('');
-        setHour('');
-    }
-
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if([full_name, email, date, hour].includes('')) {
+        if([full_name, email, date, hour, description].includes('')) {
             showMessage(true, 'Todos los campos son obligatorios', 5000)
             return;
         }
 
-
         try {
-            await axios.post('/api/sendVideoCall', { full_name, email, date, hour });
+            await axios.post('/api/sendVideoCall', { full_name, email, date, hour, description });
             showMessage(false, 'Se agendó tu videollamada correctamente', 5000);
-            resetForm();
+            setTimeout(closeVideoCallForm, 1500)
         } catch (error) {
             showMessage(true, 'Hubo un error al agendar tu videollamada', 5000);
         }
     }
 
     return (
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            { message.text && (
-                <div className={`${message.error ? 'bg-red-500' : 'bg-primary'} py-2 w-full text-white uppercase font-semibold text-center rounded-md`}>{message.text}</div>
-            )}
-            <div className="flex items-start gap-2">
-                <div className="mt-1 w-10">
-                    <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>01</div>
-                </div>
-                <div className={'flex flex-col gap-3 w-full'}>
-                    <div className="flex flex-col">
-                        <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>Nombre completo</div>
-                    </div>
-                    <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                        <input value={full_name} className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Ingresa tu nombre completo'} onChange={(e) => setFullName(e.target.value)} />
-                    </div>
-                </div>
-            </div>
-            <div className="flex items-start gap-2">
-                <div className="mt-1 w-10">
-                    <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>02</div>
-                </div>
-                <div className={'flex flex-col gap-3 w-full'}>
-                    <div className="flex flex-col">
-                        <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>E-mail de contacto</div>
-                    </div>
-                    <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
-                        <input value={email} className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'email'} placeholder={'Ingresa tu e-mail'} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                </div>
-            </div>
-            <div className="flex items-start gap-2">
-                <div className="mt-1 w-10">
-                    <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>03</div>
-                </div>
-                <div className={'flex flex-col gap-3 w-full'}>
-                    <div className="flex flex-col">
-                        <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>Elige una fecha y hora de encuentro</div>
-                        <div className="text-neutral-400">Zona horaria: GMT+2</div>
-                    </div>
-                    <div className="flex justify-between items-start">
-                        <DayPicker
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            disabled={disabledDays}
-                            fromMonth={new Date(year, month)}
-                            toMonth={new Date(year, (month + 4))}
-                        />
-                        <select name="" id="" className={`bg-transparent video-call-select outline-none border rounded-full ${darkMode ? 'border-neutral-800' : 'border-neutral-200'} px-2 py-1`} value={hour} onChange={(e) => setHour(e.target.value)}>
-                            <option value="">Seleccionar hora</option>
-                            <option value="14:00">14:00</option>
-                            <option value="16:00">16:00</option>
-                            <option value="20:00">20:00</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div className="flex gap-2">
-                <div className="w-10"></div>
-                <div className="flex items-center gap-2 text-white w-full">
-                    <button type={'button'} onClick={closeVideoCallForm} className={`btn-primary flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                        </svg>
-                        <span>Volver</span>
-                    </button>                    
-                    <button type={'submit'} className={`btn-primary flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
-                        <span>Enviar</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </form>
+        <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                transition={{ duration: .3 }}
+                className="fixed top-0 h-full w-full z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center"
+            >
+                <motion.div className={`max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
+                    initial={{ x: -30 }}
+                    animate={{ x: 0 }}
+                    exit={{ x: -30 }}
+                    transition={{ type: "spring", bounce: 0, duration: .3 }}
+                >
+                    <form className="flex flex-col justify-between gap-5 relative h-full" onSubmit={handleSubmit}>
+                       <AnimatePresence>
+                            { message.text && (
+                                <motion.div
+                                initial={{ y: -30, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -30, opacity: 0 }}
+                                whileTap={{ scale: .9 }}
+                                transition={{ type: "spring", bounce: 0, duration: .4 }}
+                                onClick={() => setMessage({ error: false, text: '' })}
+                                className={`${message.error ? 'bg-red-500' : 'bg-primary'} py-2 w-full text-white uppercase font-semibold text-center rounded-md absolute top-0`}>{message.text}</motion.div>
+                            )}
+                        </AnimatePresence>
+                        {
+                            formStep === FORM_STEPS.DATE_PICKER && (
+                            <>
+                                <div className="flex flex-col gap-5 ">
+                                    <div className="flex items-start gap-2">
+                                        <div className="mt-1 w-10">
+                                            <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>01</div>
+                                        </div>
+                                        <div className={'flex flex-col gap-3 w-full'}>
+                                            <div className="flex flex-col">
+                                                <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>Elige una fecha y hora de encuentro</div>
+                                                <div className="text-neutral-400">Zona horaria: GMT+2</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <DayPicker setDate={setDate} setHour={setHour} date={date} hour={hour} />
+                                </div>
+                                <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center self-end py-6">
+                                    <button type="button" onClick={closeVideoCallForm} className={`btn-primary flex max-w-[240px] items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                        </svg>
+                                        <span>Cerrar</span>
+                                    </button>                    
+                                    
+                                    <button 
+                                        type="button"
+                                        onClick={() => setFormStep(FORM_STEPS.CONTACT_INFO)}
+                                        disabled={!date || !hour}
+                                        className={`btn-primary flex max-w-[240px] items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full disabled:pointer-events-none`}>
+                                        <span>Siguiente</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </>
+                            )
+                        }
+                        {
+                            formStep === FORM_STEPS.CONTACT_INFO && (
+                                <>
+                                    <div className="flex flex-col gap-5">
+                                        <button type="button" onClick={() => setFormStep(FORM_STEPS.DATE_PICKER)} className="py-1 px-3 pr-5 rounded-full border border-zinc-300 flex items-center w-fit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M15 6l-6 6l6 6"></path>
+                                            </svg>
+                                            <span>Volver a elegir la fecha</span>
+                                        </button>
+                                        <span className="text-sm text-zinc-500">Seleccionado: {date.toLocaleDateString()} - {hour}</span>
+                                        <div className="flex items-start gap-2">
+                                            <div className="mt-1 w-10">
+                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>02</div>
+                                            </div>
+                                            <div className={'flex flex-col gap-3 w-full'}>
+                                                <div className="flex flex-col">
+                                                    <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>Nombre completo</div>
+                                                </div>
+                                                <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                                                    <input value={full_name} className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Ingresa tu nombre completo'} onChange={(e) => setFullName(e.target.value)} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <div className="mt-1 w-10">
+                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>03</div>
+                                            </div>
+                                            <div className={'flex flex-col gap-3 w-full'}>
+                                                <div className="flex flex-col">
+                                                    <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>E-mail de contacto</div>
+                                                </div>
+                                                <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                                                    <input value={email} className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'email'} placeholder={'Ingresa tu e-mail'} onChange={(e) => setEmail(e.target.value)} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <div className="mt-1 w-10">
+                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>04</div>
+                                            </div>
+                                            <div className={'flex flex-col gap-3 w-full'}>
+                                                <div className="flex flex-col">
+                                                    <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>Descripción de la reunión</div>
+                                                </div>
+                                                <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}>
+                                                    <input value={description} className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Ingresa una breve descripción o asunto'} onChange={(e) => setDescription(e.target.value)} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center py-6">
+                                        <button type={'button'} onClick={closeVideoCallForm} className={`btn-primary max-w-[240px] flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                            </svg>
+                                            <span>Cerrar</span>
+                                        </button>                    
+                                        
+                                        <button type={'submit'} className={`btn-primary max-w-[240px] flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
+                                            <span>Enviar</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                            </svg>
+                                        </button>
+                                        
+                                    </div>
+                                </>
+                            )
+                        }
+                        
+                    </form>
+                </motion.div>
+            </motion.div>   
+        </>
     )
 }
 
