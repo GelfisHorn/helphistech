@@ -29,7 +29,7 @@ export default function ProjectQuote() {
                 </div>
                 <div className="flex flex-col xl:flex-row items-center xl:items-start gap-10 xl:gap-20 w-full">
                     <div className="w-full xl:w-3/5 py-5" id="quote-project-form">
-                            <FormComponent/>
+                        <FormComponent/>
                     </div>
                     <div className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
                         <h2 className="text-2xl font-medium w-full">Agenda una videollamada</h2>
@@ -83,14 +83,10 @@ function VideocallModal({ closeVideoCallForm }) {
         }, timeout)
     }
 
-    useEffect(() => {
-        console.log({ hour, date })
-    }, [date, hour])
-
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if([full_name, email, date, hour].includes('')) {
+        if([full_name, email, date, hour, description].includes('')) {
             showMessage(true, 'Todos los campos son obligatorios', 5000)
             return;
         }
@@ -179,7 +175,7 @@ function VideocallModal({ closeVideoCallForm }) {
                                             </svg>
                                             <span>Volver a elegir la fecha</span>
                                         </button>
-                                        <span className="text-sm text-zinc-500">Selected: {date.toLocaleDateString()} - {hour}</span>
+                                        <span className="text-sm text-zinc-500">Seleccionado: {date.toLocaleDateString()} - {hour}</span>
                                         <div className="flex items-start gap-2">
                                             <div className="mt-1 w-10">
                                                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>02</div>
