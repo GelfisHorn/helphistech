@@ -49,8 +49,9 @@ async function createVideoCall(req, res) {
     const email = req.body.email;
     const date = req.body.date;
     const hour = req.body.hour;
+    const description = req.body.description
 
-    if([full_name, email, date, hour].includes('')) {
+    if([full_name, email, date, hour, description].includes('')) {
         return res.status(400).json({ msg: 'All fields are required. (full_name, email, platform, date, hour, timezone)' })
     }
 
@@ -59,7 +60,7 @@ async function createVideoCall(req, res) {
     }
 
     try {
-        const newVideoCall = new VideoCall({full_name, email, date, hour});
+        const newVideoCall = new VideoCall({full_name, email, date, hour, description});
         await newVideoCall.save();
         return res.status(200).json({ msg: 'ok' })
     } catch (error) {

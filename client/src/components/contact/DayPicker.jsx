@@ -28,15 +28,14 @@ const getFormattedDate = (dateString, asObject = false, noDay = false) => {
   return asObject ? {year, month, day} : day + "/" + month + "/" + year 
 }
 
-export default function DayPicker () {
+export default function DayPicker ({ setDate, setHour, date, hour }) {
   const [videocalls, setVideocalls] = useState([])
   const [currentDate] = useState(getFormattedDate(null, true))
   const [selectedDate, setSelectedDate] = useState(getFormattedDate(null, true, true))
   
   useEffect(() => {
     // fetching of past pending and active videocall dates
-    // setSelectedDate(state => ({...state, month: MONTHS.NOV}))
-    console.table(selectedDate);
+
     async function getPendingActiveVideocalls() {
       const pendingVideocalls = {}
 
@@ -51,8 +50,8 @@ export default function DayPicker () {
         pendingVideocalls[formattedDate].push(videocall.hour)
       })
       setVideocalls(pendingVideocalls)
-      console.log(pendingVideocalls)
     }
+
     getPendingActiveVideocalls()
   },[])
 
@@ -60,7 +59,6 @@ export default function DayPicker () {
     if(!day) {
       return false
     }
-    // adding here the checker from previous call agended
     if(currentDate.month !== selectedDate.month){
       return true
     }
@@ -69,13 +67,33 @@ export default function DayPicker () {
     }
     return false
   }
+  const isHourAvailable = (hour) => {
+    const datesArr = videocalls[`${selectedDate.day}/${selectedDate.month}/${selectedDate.year}`]
+    if(datesArr){
+      const match = datesArr.find(date => date === hour)
+      if(match) {
+        return false 
+      }
+    }
+    return true
+  }
   const decrementMonth = () => {
     if(selectedDate.month === currentDate.month) return
-    setSelectedDate(state => ({ ...state, month: state.month-1 }))
+    if(selectedDate.month === 1){
+      setSelectedDate({ month: 12, year: selectedDate.year-1, day: "*" })
+    } else {
+      setSelectedDate(state => ({ ...state, month: state.month-1, day: "*" }))
+    }
+    setHour("")
   }
   const incrementMonth = () => {
     if(selectedDate.month + 1 === currentDate.month + 4) return
-    setSelectedDate(state => ({ ...state, month: state.month+1 }))
+    if(selectedDate.month === 12){
+      setSelectedDate({ month: 1, year: selectedDate.year+1, day: "*" })
+    } else {
+      setSelectedDate(state => ({ ...state, month: state.month+1, day: "*"  }))
+    }
+    setHour("")
   }
 
   return <div className="flex max-md:flex-col gap-x-6 gap-y-4">
@@ -90,13 +108,13 @@ export default function DayPicker () {
           {/* month controls */}
           <div className="flex gap-2 -mr-2">
           <button type="button" onClick={decrementMonth} disabled={selectedDate.month === currentDate.month} className="disabled:text-zinc-600">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 m-1" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" stroke-Linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 m-1" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M15 6l-6 6l6 6"></path>
             </svg>
           </button>
           <button type="button" onClick={incrementMonth} disabled={selectedDate.month + 1 === currentDate.month + 4} className="disabled:text-zinc-600">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 m-1" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" stroke-Linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 m-1" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M9 6l6 6l-6 6"></path>
             </svg>
@@ -112,17 +130,32 @@ export default function DayPicker () {
 
       <div className="grid grid-cols-7 place-items-center gap-1 mt-2">
         {getDaysInMonth(selectedDate.year, selectedDate.month).map((dayNumber, i) => (
-          <button type="button" key={i} className={`hover:text-primary hover:bg-zinc-800 transition-colors ease-out duration-100 w-9 aspect-square rounded-full grid place-content-center ${
-          isDaySelectable(dayNumber) || "pointer-events-none text-zinc-700"}`}>
+          <button type="button" key={i} 
+          onClick={() => {
+            setSelectedDate({...selectedDate, day: dayNumber})
+            setDate(new Date(selectedDate.year, selectedDate.month-1, dayNumber))
+            setHour("")
+          }}
+          className={`hover:text-primary hover:bg-zinc-800 transition-colors ease-out duration-100 w-9 aspect-square rounded-full grid place-content-center
+            ${isDaySelectable(dayNumber) || "pointer-events-none text-zinc-700"} 
+            ${videocalls[`${dayNumber}/${selectedDate.month}/${selectedDate.year}`]?.length === 3 && "pointer-events-none text-zinc-700"}
+            ${dayNumber === selectedDate.day && "bg-primary-2"}
+          `}>
             {dayNumber}
           </button>
         ))}
       </div>
     </div>
     <div className="flex flex-col gap-3 max-md:px-2 w-full md:max-w-[200px] mx-auto">
-      <button type="button" className="border border-zinc-700 w-full py-3 rounded-md">16:00</button>
-      <button type="button" className="border border-zinc-700 w-full py-3 rounded-md">18:00</button>
-      <button type="button" className="border border-zinc-700 w-full py-3 rounded-md">20:00</button>
+      <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md hover:bg-zinc-800 transition-colors duration-75 ease-out ${(isHourAvailable("14:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "14:00" && "bg-zinc-800"}`}
+        onClick={() => setHour("14:00")}
+      >14:00</button>
+      <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md hover:bg-zinc-800 transition-colors duration-75 ease-out ${(isHourAvailable("16:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "16:00" && "bg-zinc-800"}`}
+        onClick={() => setHour("16:00")}
+      >16:00</button>
+      <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md hover:bg-zinc-800 transition-colors duration-75 ease-out ${(isHourAvailable("20:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "20:00" && "bg-zinc-800"}`}
+        onClick={() => setHour("20:00")}
+      >20:00</button>
     </div>
   </div>
 }
