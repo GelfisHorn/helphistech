@@ -278,7 +278,7 @@ export default function ProjectDynamic() {
                             </form>
                         </div>
                         <div className="flex flex-col gap-2">
-                            {projectComments.map((comment, index) => (
+                            {projectComments.length != 0 && projectComments.map((comment, index) => (
                                 <ProjectComment 
                                     key={index}
                                     comment={comment}
@@ -286,6 +286,9 @@ export default function ProjectDynamic() {
                                     setComments={setProjectComments}
                                 />
                             ))}
+                            {projectComments.length == 0 && (
+                                <div className="text-center">No hay comentarios</div>
+                            )}
                         </div>
                     </div>
                 </div>
