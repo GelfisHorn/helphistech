@@ -6,6 +6,15 @@ import { useRouter } from "next/router";
 import useContextProvider from "../../hooks/useAppContextProvider";
 import { useEffect, useState } from "react";
 
+// Redirects routes
+const REDIRECTS = {
+    "hero": "/es",
+    "our-services": "/es/servicios",
+    "our-process": "/es/desarrollo-web-personalizado",
+    "our-technologies": "/es/tecnologias",
+    "my-project": "/es/contacto",
+}
+
 export default function Navbar() {
     
     // Mobile hamburger menu
@@ -42,12 +51,15 @@ export default function Navbar() {
         }
     }
 
-    function handleScrollTo(hash) {
-        const element = document.getElementById(`${hash}`);
-        if(element) {
-            closeMenu();
-            element.scrollIntoView({ behavior: 'smooth' });
+    function handleNavButton(hash) {
+        if(router.pathname === '/es') {
+            const element = document.getElementById(`${hash}`);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            return;
         }
+        router.push(REDIRECTS[hash]);
     }
 
     return(
@@ -60,20 +72,20 @@ export default function Navbar() {
                         </Link>
                     </div>
                     <nav className={`hidden xl:flex items-center gap-5 ${darkMode ? 'font-light' : 'font-normal'} text-lg`}>
-                        <div className="cursor-pointer" onClick={() => handleScrollTo("hero")}>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                             <span className="hover:underline hover:text-primary transition-colors">Inicio</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleScrollTo("our-services")}>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
                             <span className="hover:underline hover:text-primary transition-colors">Servicios</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleScrollTo("our-process")}>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
                             <span className="hover:underline hover:text-primary transition-colors">Proceso</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleScrollTo("our-technologies")}>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                             <span className="hover:underline hover:text-primary transition-colors">Tecnologías</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleScrollTo("my-project")}>
-                            <span className="hover:underline hover:text-primary transition-colors">Empezar mi proyecto</span>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
+                            <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/es' ? 'Empezar mi proyecto' : 'Contacto'}</span>
                         </div>
                     </nav>
                     <div className="hidden sm:flex items-center gap-3">
@@ -115,20 +127,20 @@ export default function Navbar() {
                     </div>
                 </div>
                 <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg ${darkMode ? 'font-light' : 'font-normal'}`}>
-                    <div className="cursor-pointer" onClick={() => handleScrollTo("hero")}>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                         <span className="hover:underline hover:text-primary transition-colors">Inicio</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleScrollTo("our-services")}>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
                         <span className="hover:underline hover:text-primary transition-colors">Servicios</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleScrollTo("our-process")}>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
                         <span className="hover:underline hover:text-primary transition-colors">Proceso</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleScrollTo("our-technologies")}>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                         <span className="hover:underline hover:text-primary transition-colors">Tecnologías</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleScrollTo("my-project")}>
-                        <span className="hover:underline hover:text-primary transition-colors">Empezar mi proyecto</span>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
+                        <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/es' ? 'Empezar mi proyecto' : 'Contacto'}</span>
                     </div>
                 </nav>
             </header>
@@ -160,11 +172,15 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
         }
     }
 
-    function handleScrollTo(hash) {
-        const element = document.getElementById(`${hash}`);
-        if(element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+    function handleNavButton(hash) {
+        if(router.pathname === '/es') {
+            const element = document.getElementById(`${hash}`);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            return;
         }
+        router.push(REDIRECTS[hash]);
     }
 
     return (
@@ -183,20 +199,20 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                     <div className="flex flex-col justify-between items-center gap-10 h-full mx-auto pt-24 pb-16">
                         <div className="flex flex-col items-center gap-10 w-full px-6">
                             <div className={`flex flex-col text-xl ${darkMode ? 'font-normal' : 'font-medium'} items-start gap-5 w-full`}>
-                                <div className="cursor-pointer" onClick={() => handleScrollTo("hero")}>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Inicio</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleScrollTo("our-services")}>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Servicios</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleScrollTo("our-process")}>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Proceso</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleScrollTo("our-technologies")}>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Tecnologías</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleScrollTo("my-project")}>
-                                    <span className="hover:underline hover:text-primary transition-colors">Empezar mi proyecto</span>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/es' ? 'Empezar mi proyecto' : 'Contacto'}</span>
                                 </div>
                             </div>
                         </div>
