@@ -2,6 +2,7 @@
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import { motion } from "framer-motion";
 
 export default function MyProjectSection() {
 
@@ -14,13 +15,21 @@ export default function MyProjectSection() {
                 <div className={`${darkMode ? 'subtitle-dark' : 'subtitle-light'} text-lg uppercase font-semibold`}>
                     <span>Haben sie eine Idee?</span>
                 </div>
-                <div className="lg:w-3/4 2xl:w-2/4 mx-auto">
+                <motion.div 
+                initial={{ y: 80, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }}
+                viewport={{ once: true }}
+                className="lg:w-3/4 2xl:w-2/4 mx-auto">
                     <span className={`${darkMode ? 'title-dark' : 'title-light'} text-[2.25rem] sm:text-[3rem] md:text-[3.75rem] lg:text-[4.5rem] font-semibold`}>Wir brauchen nur eine Idee oder ein Problem, damit wir Ihr Projekt umsetzen können</span>
-                </div>
+                </motion.div>
             </div>
-            <Link href={'/contact'}>
-                <button className="text-2xl transition-colors font-semibold border-b-2 border-primary text-primary hover:border-white hover:text-white" onClick={null}>Starten Sie Ihr Projekt</button>
-            </Link>
+            <motion.div
+            initial={{ x: -30, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }}
+            viewport={{ once: true }}
+            >
+                <Link href={'/contact'}>
+                    <button className="text-2xl transition-colors font-semibold border-b-2 border-primary text-primary hover:border-white hover:text-white" onClick={null}>Starten Sie Ihr Projekt</button>
+                </Link>
+            </motion.div>
         </section>
     )
 }

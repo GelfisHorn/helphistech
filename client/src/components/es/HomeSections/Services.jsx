@@ -3,20 +3,23 @@ import { useState } from "react";
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import { motion } from "framer-motion";
 
 export default function OurServicesSection() {
     
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
-    
     return (
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                 <div className="flex items-center gap-20 justify-between w-full">
                     <div className="blur-shadow -left-28 -top-28"></div>
                     <div className="flex flex-col gap-20">
-                        <div className="flex flex-col items-center sm:items-start gap-5 relative">
-                            <div className="flex flex-col">
+                        <motion.div 
+                        initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .9 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col items-center sm:items-start gap-5 relative">
+                            <div className="">
                                 <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Nuestros Servicios</span>
                             </div>
                             <div className="flex flex-col xl:flex-row justify-center sm:items-start gap-10 xl:gap-20">
@@ -30,7 +33,7 @@ export default function OurServicesSection() {
                                     <p className="text-center sm:text-left">En HelphisTech, ofrecemos una amplia gama de servicios de desarrollo web para ayudar a las empresas a crear una sólida presencia en línea y lograr sus objetivos digitales. Nuestro equipo de desarrolladores experimentados está capacitado para crear sitios web personalizados, aplicaciones web y plataformas de comercio electrónico que se adaptan para satisfacer las necesidades únicas de cada cliente.</p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                         <div className={`flex flex-col divide-y`}>
                             <ServicesOption
                                 title={"Desarrollo personalizado de sitios web"}
