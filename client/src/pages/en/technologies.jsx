@@ -94,6 +94,18 @@ export default function TechnologiesPage() {
                                     description={"Socket.IO is a JavaScript library that enables real-time communication between the server and the client in web applications. Socket.IO is based on the WebSockets protocol and provides an abstraction layer to simplify the implementation of bidirectional communications between the server and the client."}
                                     href={"https://socket.io"}
                                 />
+                                <TechnologyItem 
+                                    image={"/technologies/html.webp"}
+                                    imageAlt={"HTML image"}
+                                    description={"HTML is a markup language used to create web pages. It is used to define the structure and content of a page, as well as to define the presentation of the content in a web browser. HTML is a key component of web technology and is used in conjunction with other languages such as CSS and JavaScript to create interactive and dynamic web pages."}
+                                    href={"#"}
+                                />
+                                <TechnologyItem 
+                                    image={"/technologies/css.webp"}
+                                    imageAlt={"CSS image"}
+                                    description={"CSS is a design language used to describe how HTML content is presented on a web page. It is used to define the visual appearance of a web page, including color, typography, layout, and other aspects of presentation."}
+                                    href={"#"}
+                                />
                             </div>
                         </div>
                     </div>
