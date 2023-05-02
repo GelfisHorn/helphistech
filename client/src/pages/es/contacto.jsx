@@ -461,12 +461,7 @@ function FormComponent() {
                     classes={``}
                     step={'03'}
                 >
-                    <Input props={{
-                        placeholder: 'Descripción', 
-                        ref: description, 
-                        type: 'text', 
-                        required: false
-                    }} />
+                    <textarea rows="7" placeholder="Descripción" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}></textarea>
                 </Section>
                 <Section 
                     title={"¿Cuál es tu presupuesto estimado?"} 
