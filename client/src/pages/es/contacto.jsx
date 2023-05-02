@@ -289,6 +289,7 @@ function FormComponent() {
     const [ marketing_strategy, setMarketingStrategy ] = useState([]);
     // Are there competitor websites that should be taken into account as references?
     const [ competitor_websites, setCompetitorWebsites ] = useState(false);
+    const [ competitor_websites_examples, setCompetitorWebsitesExamples ] = useState("");
     // 
     function setMultiOptionState(state, setter, value) {
         if(state.indexOf(value) > -1) {
@@ -321,6 +322,7 @@ function FormComponent() {
         setResponsibleForManaging('');
         setMarketingStrategy([]);
         setCompetitorWebsites(false);
+        setCompetitorWebsitesExamples("")
         // 
         setStep(1);
     }
@@ -337,7 +339,7 @@ function FormComponent() {
         e.preventDefault();
 
         // If fields are void then return
-        if([type, full_name.current.value, email.current.value, business_type, company_vision, target_audience, service_or_product, web_design_type, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites].includes('')) {
+        if([type, full_name.current.value, email.current.value, business_type, company_vision, target_audience, service_or_product, web_design_type, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites, competitor_websites_examples].includes('')) {
             showMessage(true, 'Debes completar todos los campos.', 5000)
             return;
         }
@@ -375,7 +377,8 @@ function FormComponent() {
                 preferred_technologies,
                 responsible_for_managing,
                 marketing_strategy,
-                competitor_websites
+                competitor_websites,
+                competitor_websites_examples
             },
             budget
         }
@@ -737,6 +740,9 @@ function FormComponent() {
                             <span>No</span>
                         </div>
                     </div>
+                    {competitor_websites && (
+                        <textarea rows="7" placeholder="Ingrese las diferentes urls separadas por coma. Ejemplo: 'exampleurl.com, anotherexampleurl.dev, anotherone.com'" value={competitor_websites_examples} onChange={(e) => setCompetitorWebsitesExamples(e.target.value)} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}></textarea>
+                    )}
                 </Section>
             </section>
             <div className="flex gap-2">

@@ -289,6 +289,8 @@ function FormComponent() {
     const [ marketing_strategy, setMarketingStrategy ] = useState([]);
     // Are there competitor websites that should be taken into account as references?
     const [ competitor_websites, setCompetitorWebsites ] = useState(false);
+    const [ competitor_websites_examples, setCompetitorWebsitesExamples ] = useState("");
+
     // 
     function setMultiOptionState(state, setter, value) {
         if(state.indexOf(value) > -1) {
@@ -321,6 +323,7 @@ function FormComponent() {
         setResponsibleForManaging('');
         setMarketingStrategy([]);
         setCompetitorWebsites(false);
+        setCompetitorWebsitesExamples("")
         // 
         setStep(1);
     }
@@ -375,7 +378,8 @@ function FormComponent() {
                 preferred_technologies,
                 responsible_for_managing,
                 marketing_strategy,
-                competitor_websites
+                competitor_websites,
+                competitor_websites_examples
             },
             budget
         }
@@ -462,12 +466,7 @@ function FormComponent() {
                     classes={``}
                     step={'03'}
                 >
-                    <Input props={{
-                        placeholder: 'Description', 
-                        ref: description, 
-                        type: 'text', 
-                        required: false
-                    }} />
+                    <textarea rows="7" placeholder="Description" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}></textarea>
                 </Section>
                 <Section 
                     title={"What is your estimated budget for the project?"} 
@@ -743,6 +742,9 @@ function FormComponent() {
                             <span>No</span>
                         </div>
                     </div>
+                    {competitor_websites && (
+                        <textarea rows="7" placeholder="Enter the different URLs separated by comma. Example: 'exampleurl.com, anotherexampleurl.dev, anotherone.com'" value={competitor_websites_examples} onChange={(e) => setCompetitorWebsitesExamples(e.target.value)} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-200'}`}></textarea>
+                    )}
                 </Section>
             </section>
             <div className="flex gap-2">

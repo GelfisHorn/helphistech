@@ -43,6 +43,7 @@ const projectSchema = mongoose.Schema({
         responsible_for_managing: String,
         marketing_strategy: [String],
         competitor_websites: Boolean,
+        competitor_websites_examples: String
     },
     state: {
         type: String,
