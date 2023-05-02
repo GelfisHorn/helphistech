@@ -141,8 +141,8 @@ export default function DayPicker ({ setDate, setHour, date, hour }) {
             setHour("")
           }}
           className={`hover:text-primary ${darkMode ? "hover:bg-zinc-800" : "hover:bg-zinc-300" } transition-colors ease-out duration-100 w-9 aspect-square rounded-full grid place-content-center
-            ${isDaySelectable(dayNumber) || `pointer-events-none ${darkMode ? "text-zinc-700" : "text-zinc-400" }`} 
-            ${videocalls[`${dayNumber}/${selectedDate.month}/${selectedDate.year}`]?.length === 3 && `pointer-events-none ${darkMode ? "text-zinc-700" : "text-zinc-400" }`}
+            ${!isDaySelectable(dayNumber) && `pointer-events-none ${darkMode ? "text-zinc-700" : "text-zinc-400" }`} 
+            ${videocalls[`${dayNumber}/${selectedDate.month}/${selectedDate.year}`]?.length >= 3 && `pointer-events-none ${darkMode ? "text-zinc-700" : "text-zinc-400"}`}
             ${dayNumber === selectedDate.day && "bg-primary-2 text-zinc-200"}
           `}>
             {dayNumber}

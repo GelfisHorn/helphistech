@@ -337,9 +337,8 @@ function FormComponent() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-
         // If fields are void then return
-        if([type, full_name.current.value, email.current.value, business_type, company_vision, target_audience, service_or_product, web_design_type, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites, competitor_websites_examples].includes('')) {
+        if([type, full_name.current.value, email.current.value, business_type, company_vision, target_audience, service_or_product, web_design_type, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites].includes('')) {
             showMessage(true, 'Debes completar todos los campos.', 5000)
             return;
         }
