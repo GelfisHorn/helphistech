@@ -16,7 +16,7 @@ export default function TechnologiesSection() {
                 <div className="blur-shadow -top-6 -left-6"></div>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto flex flex-col gap-20 overflow-hidden">
                     <motion.div className="flex flex-col gap-10 text-white relative"
-                    initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .9 }}
+                    initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
                         viewport={{ once: true }}
                     >                        <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-5">
                             <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Technologien</span>

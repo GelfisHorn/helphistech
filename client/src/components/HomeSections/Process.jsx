@@ -12,7 +12,7 @@ export default function ProcessSection() {
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-process">
             <div className="flex flex-col gap-20 max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                 <motion.div className="flex flex-col gap-5 items-center sm:items-start "
-                    initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .9 }}
+                    initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
                     viewport={{ once: true }}
                 >                    
                 {/* <div className="blur-shadow -left-28 -top-28 -z-10"></div> */}

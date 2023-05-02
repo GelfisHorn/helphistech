@@ -17,7 +17,7 @@ export default function ServicesSection() {
                     <div className="blur-shadow -left-28 -top-28"></div>
                     <div className="flex flex-col gap-20">
                         <motion.div 
-                        initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .9 }}
+                        initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
                         viewport={{ once: true }}
                         className="flex flex-col items-center sm:items-start gap-5 relative">
                             <div className="flex flex-col">
