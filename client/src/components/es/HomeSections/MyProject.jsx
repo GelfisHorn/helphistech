@@ -10,7 +10,7 @@ export default function MyProjectSection() {
 	const { darkMode } = useContextProvider();
     
     return (
-        <section className="px-6 sm:px-10 lg:px-20 2xl:px-0 flex flex-col gap-16 py-28 text-center bg-cover bg-fixed bg-center" id="my-project" style={{ backgroundImage: darkMode ? "url(home/waves-variant.svg)" : "" }}>
+        <section className="px-6 sm:px-10 lg:px-20 2xl:px-0 flex flex-col gap-16 py-28 text-center bg-cover bg-fixed bg-center" id="my-project" style={{ backgroundImage: darkMode ? "url(home/waves-variant.svg)" : "url(home/waves-light.svg)" }}>
             <div className="flex flex-col gap-8">
                 <div className={`${darkMode ? 'subtitle-dark' : 'subtitle-light'} text-lg uppercase font-semibold`}>
                     <span>Tienes una idea?</span>

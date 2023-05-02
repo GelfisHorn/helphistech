@@ -15,7 +15,7 @@ export default function ProcessSection() {
                     initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .9 }}
                     viewport={{ once: true }}
                 >
-                    <div className="blur-shadow -left-28 -top-28 -z-10"></div>
+                    {/* <div className="blur-shadow -left-28 -top-28 -z-10"></div> */}
                     <div className="flex flex-col">
                         <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Proceso de desarrollo</span>
                     </div>
