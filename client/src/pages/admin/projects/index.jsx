@@ -11,6 +11,7 @@ import currencyFormatter from "@/hooks/currencyFormatter";
 import moment from "moment";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Projects() {
     
@@ -18,6 +19,7 @@ export default function Projects() {
 
     // Projects data
     const [ projects, setProjects ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     // On component load fetch projects
     useEffect(() => {
@@ -39,13 +41,19 @@ export default function Projects() {
             }
         }
 
-        const { data } = await axios.post(`/api/admin/getProjects`, { config });
-        const sortedByDate = data.sort(function(a,b){
-            // Turn your strings into dates, and then subtract them
-            // to get a value that is either negative, positive, or zero.
-            return new Date(b.createdAt) - new Date(a.createdAt);
-        });
-        setProjects(sortedByDate);
+        try {
+            const { data } = await axios.post(`/api/admin/getProjects`, { config });
+            const sortedByDate = data.sort(function(a,b){
+                // Turn your strings into dates, and then subtract them
+                // to get a value that is either negative, positive, or zero.
+                return new Date(b.createdAt) - new Date(a.createdAt);
+            });
+            setProjects(sortedByDate);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     const [ projectsFilter, setProjectFilter ] = useState('all');
@@ -67,7 +75,7 @@ export default function Projects() {
     }
 
     return (
-        <Layout title={"Proyectos"}>
+        <Layout title={"Proyectos recibidos"}>
             <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col h-full`}>
                 <div className={`flex items-center justify-between sm:text-lg pb-3 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
                     <div className="uppercase font-semibold">Filtros</div>
@@ -81,10 +89,13 @@ export default function Projects() {
                     </div>
                 </div>
                 <div className={`${filteredProjects.length === 0 ? 'grid place-content-center' : 'flex flex-col gap-1'} py-3 h-full`}>
-                    {filteredProjects.length !== 0 && filteredProjects.map((project, i) => (
+                    {loading && (
+                        <LoadingSpinner />
+                    )}
+                    {!loading && filteredProjects.length !== 0 && filteredProjects.map((project, i) => (
                         <Project key={i} project={project} />
                     ))}
-                    {filteredProjects.length === 0 && (
+                    {!loading && filteredProjects.length === 0 && (
                         <div className="grid place-content-center text-center">
                             <span className="text-xl uppercase font-semibold">No hay proyectos aún.</span>
                             <span className="text-light-description">Prueba usando diferentes filtros.</span>

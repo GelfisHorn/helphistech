@@ -11,6 +11,7 @@ import currencyFormatter from "@/hooks/currencyFormatter";
 import moment from "moment";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function VideoCallDynamic() {
     
@@ -21,6 +22,7 @@ export default function VideoCallDynamic() {
     const videoCallId = router.query.videocall;
 
     // videocall data
+    const [ loading, setLoading ] = useState(true);
     const [ videoCall, setVideoCall ] = useState({});
     const { _id, full_name, email, date, hour, state, createdAt } = videoCall;
 
@@ -48,9 +50,15 @@ export default function VideoCallDynamic() {
             }
         }
 
-        const { data } = await axios.post(`/api/admin/getVideoCall`, { _id: videoCallId, config });
-        setVideoCall(data);
-        setVideoCallState(data.state)
+        try {
+            const { data } = await axios.post(`/api/admin/getVideoCall`, { _id: videoCallId, config });
+            setVideoCall(data);
+            setVideoCallState(data.state)
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     async function handleChangeState(state) {
@@ -159,7 +167,12 @@ export default function VideoCallDynamic() {
 
     return (
         <Layout title={'Videollamada'}>
-            { Object.keys(videoCall).length != 0 && (
+            {loading && (
+                <div className="grid place-content-center h-full">
+                    <LoadingSpinner />
+                </div>
+            )}
+            {!loading && Object.keys(videoCall).length != 0 && (
                 <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col gap-3 px-5 rounded-lg`}>
                     <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-5 border-b py-3`}>
                         <div className="flex flex-col">
@@ -226,6 +239,17 @@ export default function VideoCallDynamic() {
                             </>
                         )}
                     </div>
+                </div>
+            )}
+            {!loading && Object.keys(videoCall).length == 0 && (
+                <div className={`grid place-content-center gap-2 ${darkMode ? 'text-dark-text' : 'text-black'} h-full`}>
+                    <h3 className="text-2xl">Esta videollamada no existe.</h3>
+                    <button className="flex items-center justify-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.push('/admin/videocalls')}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                        <span>Volver a videollamadas</span>
+                    </button>
                 </div>
             )}
             <Modal showModal={showCancelMenu}>

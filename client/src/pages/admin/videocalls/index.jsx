@@ -3,14 +3,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // Nextjs
 import { useRouter } from "next/router";
-// Components
-import Layout from "@/components/admin/AdminLayout";
 // Hooks
 import currencyFormatter from "@/hooks/currencyFormatter";
 // Date and Hour Formatter
 import moment from "moment";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+// Components
+import Layout from "@/components/admin/AdminLayout";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function VideoCalls() {
     
@@ -18,6 +19,7 @@ export default function VideoCalls() {
 
     // videocalls data
     const [ videoCalls, setVideoCalls ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     // On component load fetch videocalls
     useEffect(() => {
@@ -39,13 +41,19 @@ export default function VideoCalls() {
             }
         }
 
-        const { data } = await axios.post(`/api/admin/getVideoCalls`, { config });
-        const sortedByDate = data.sort(function(a,b){
-            // Turn your strings into dates, and then subtract them
-            // to get a value that is either negative, positive, or zero.
-            return new Date(b.createdAt) - new Date(a.createdAt);
-        });
-        setVideoCalls(sortedByDate);
+        try {
+            const { data } = await axios.post(`/api/admin/getVideoCalls`, { config });
+            const sortedByDate = data.sort(function(a,b){
+                // Turn your strings into dates, and then subtract them
+                // to get a value that is either negative, positive, or zero.
+                return new Date(b.createdAt) - new Date(a.createdAt);
+            });
+            setVideoCalls(sortedByDate);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     const [ filterByState ] = useState('all');
@@ -67,7 +75,7 @@ export default function VideoCalls() {
     }
 
     return (
-        <Layout title={"Proyectos"}>
+        <Layout title={"Videollamadas recibidas"}>
             <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col h-full`}>
                 <div className={`flex items-center justify-between sm:text-lg pb-3 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
                     <div className="uppercase font-semibold">Filtros</div>
@@ -80,10 +88,13 @@ export default function VideoCalls() {
                     </div>
                 </div>
                 <div className={`${filteredByState.length === 0 ? 'grid place-content-center' : 'flex flex-col gap-1'} py-3 h-full`}>
-                    {filteredByState.length !== 0 && filteredByState.map((videocall, i) => (
+                    {loading && (
+                        <LoadingSpinner />
+                    )}
+                    {!loading && filteredByState.length !== 0 && filteredByState.map((videocall, i) => (
                         <VideoCall key={i} videocall={videocall} />
                     ))}
-                    {filteredByState.length === 0 && (
+                    {!loading && filteredByState.length === 0 && (
                         <div className="grid place-content-center text-center">
                             <span className="text-xl uppercase font-semibold">No hay videollamadas aún.</span>
                             <span className="text-light-description">Prueba usando diferentes filtros.</span>

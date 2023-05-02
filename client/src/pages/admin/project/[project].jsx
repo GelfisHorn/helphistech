@@ -3,14 +3,15 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 // Nextjs
 import { useRouter } from "next/router"
-// Components
-import Layout from "@/components/admin/AdminLayout";
 // Hooks
 import currencyFormatter from "@/hooks/currencyFormatter";
 // Date and Hour Formatter
 import moment from "moment";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+// Components
+import Layout from "@/components/admin/AdminLayout";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function ProjectDynamic() {
     
@@ -21,6 +22,7 @@ export default function ProjectDynamic() {
     const projectId = router.query.project;
 
     // Project data
+    const [ loading, setLoading ] = useState(true);
     const [ project, setProject ] = useState({});
     const [ projectComments, setProjectComments ] = useState([]);
     const { website_type, contact_information, budget, description, state } = project;
@@ -56,6 +58,8 @@ export default function ProjectDynamic() {
             setProjectState(data.project.state)
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -185,7 +189,12 @@ export default function ProjectDynamic() {
 
     return (
         <Layout title={'Proyecto'}>
-            { Object.keys(project).length != 0 && (
+            {loading && (
+                <div className="grid place-content-center h-full">
+                    <LoadingSpinner />
+                </div>
+            )}
+            {!loading && Object.keys(project).length != 0 && (
                 <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col gap-3 px-5 rounded-lg`}>
                     <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col border-b py-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
@@ -279,6 +288,17 @@ export default function ProjectDynamic() {
                             ))}
                         </div>
                     </div>
+                </div>
+            )}
+            {!loading && Object.keys(project).length == 0 && (
+                <div className={`grid place-content-center gap-2 ${darkMode ? 'text-dark-text' : 'text-black'} h-full`}>
+                    <h3 className="text-2xl">Este proyecto no existe.</h3>
+                    <button className="flex items-center justify-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.push('/admin/projects')}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                        <span>Volver a proyectos</span>
+                    </button>
                 </div>
             )}
             { showCancelMenu && 

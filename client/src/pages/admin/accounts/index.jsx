@@ -11,12 +11,15 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import moment from "moment";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+// Components
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Accounts() {
 
     const { auth, darkMode } = useContextProvider();
 
     const [ accounts, setAccounts ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
         if(auth._id) {
@@ -44,18 +47,26 @@ export default function Accounts() {
             setAccounts(accounts);
         } catch (error) {
             console.log(error.response.data)
+        } finally {
+            setLoading(false);
         }
     }
 
     return (
         <SuperAdminPermissions>
             <AdminLayout title={"Cuentas"}>
-                <div className={`flex flex-col gap-1 ${darkMode ? 'text-dark-text' : 'text-black'}`}>
-                    { accounts.length != 0 ? accounts.map((account, index) => (
-                        <Account account={account} key={index} />
-                    )) : (
+                <div className={`flex flex-col gap-1 ${darkMode ? 'text-dark-text' : 'text-black'} h-full`}>
+                    {loading && (
                         <div className="grid place-content-center h-full">
-                            <h1 className={`uppercase text-xl font-semibold`}>Aún no hay cuentas que mostrar</h1>
+                            <LoadingSpinner />
+                        </div>
+                    )}
+                    {!loading && accounts.length != 0 && accounts.map((account, index) => (
+                        <Account account={account} key={index} />
+                    ))}
+                    {!loading && accounts.length == 0 && (
+                        <div className="grid place-content-center text-center">
+                            <span className="text-xl uppercase font-semibold">No hay cuentas aún.</span>
                         </div>
                     )}
                 </div>
@@ -96,13 +107,13 @@ function Account({account}) {
                     <div className={`${darkMode ? 'text-zinc-400' : 'text-black'}`}>{moment(account.createdAt).format('LLL')}</div>
                 </div>
             </div>
-            <button className="absolute top-3 right-3 p-2 hover:bg-zinc-500 rounded-full transition-colors">
-                <Link href={`/admin/accounts/edit/${account._id}`}>
+            <Link href={`/admin/accounts/edit/${account._id}`}>
+                <button className="absolute top-3 right-3 p-2 hover:bg-zinc-500 rounded-full transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
                     </svg>
-                </Link>
-            </button>
+                </button>
+            </Link>
         </div>
     )
 }
