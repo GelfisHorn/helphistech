@@ -6,6 +6,7 @@ import Image from "next/image";
 import Layout from "@/components/Layout";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import { motion } from "framer-motion";
 
 export default function ServicesPage() {
 
@@ -20,12 +21,12 @@ export default function ServicesPage() {
                         <div className="flex flex-col">
                             <div className="flex items-center sm:items-start gap-5 relative px-6 sm:px-10 lg:px-20 2xl:px-40 py-28 2xl:py-36">
                                 <div className="flex flex-col justify-center sm:items-start gap-10">
-                                    <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                                    <motion.div  initial={{ x:-40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                                         <h1 className="text-center sm:text-left w-full">Welche Dienstleistungen wir anbieten</h1>
-                                    </div>
-                                    <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
+                                    </motion.div>
+                                    <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
                                         <p className="text-center sm:text-left">Bei HelphisTech bieten wir eine breite Palette von Webentwicklungsdiensten an, um Unternehmen dabei zu helfen, eine starke Online-Präsenz zu schaffen und ihre digitalen Ziele zu erreichen. Unser Team aus erfahrenen Entwicklern ist in der Erstellung benutzerdefinierter Websites, Webanwendungen und E-Commerce-Plattformen geschult, die auf die individuellen Bedürfnisse jedes Kunden zugeschnitten sind.</p>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             </div>
                             <div className={`flex flex-col divide-y bg-[#080808] px-6 sm:px-10 lg:px-20 2xl:px-40`}>
@@ -86,27 +87,29 @@ function ServicesOption({ title, p1, p2, image, alt, side }) {
                         <p className={`font-light ${darkMode ? 'description-dark' : 'description-light'}`}>{p1}</p>
                         <p className={`font-light ${darkMode ? 'description-dark' : 'description-light'}`}>{p2}</p>
                     </div>
-                    <Link className="text-primary hover:text-primary-2 hover:underline transition-colors" href={"/es/contacto"}>
-                        <div className={`flex items-center gap-2 ${side == 'right' ? `flex-row-reverse lg:flex-row` : ''}`}>
-                            { side == 'right' && (
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 rotate-180 lg:rotate-0`}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                                </svg>
-                                
-                            )}
-                            <div>Ich bin interessiert</div>
-                            { side == 'left' && (
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                </svg>
-                            )}
-                        </div>
-                    </Link>
+                    <motion.div initial={{ x: side === "right" ? 60 : -60, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .4 }} viewport={{ once: true }}>
+                        <Link className="text-primary hover:text-primary-2 hover:underline transition-colors" href={"/es/contacto"}>
+                            <div className={`flex items-center gap-2 ${side == 'right' ? `flex-row-reverse lg:flex-row` : ''}`}>
+                                { side == 'right' && (
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 rotate-180 lg:rotate-0`}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                    </svg>
+                                    
+                                )}
+                                <div>Ich bin interessiert</div>
+                                { side == 'left' && (
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                    </svg>
+                                )}
+                            </div>
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
-            <div className="">
+            <motion.div initial={{ y: 70, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
                 <Image className="max-w-[15rem] xs:max-w-[20rem] 2xl:max-w-[25rem]" src={image} width={1000} height={1000} alt={alt} priority />
-            </div>
+            </motion.div>
         </div>
 	)
 }
