@@ -12,6 +12,7 @@ import currencyFormatter from "@/hooks/currencyFormatter";
 // Date and hour formatter
 import moment from "moment";
 import SuperAdminPermissions from "@/components/admin/SuperAdminPermissions";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function CancelledProjects() {
     
@@ -19,6 +20,7 @@ export default function CancelledProjects() {
 
     // Projects data
     const [ projects, setProjects ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     // On component load fetch projects
     useEffect(() => {
@@ -46,6 +48,8 @@ export default function CancelledProjects() {
             setProjects(projects);
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -54,10 +58,13 @@ export default function CancelledProjects() {
             <AdminLayout title={'Proyectos canelados'}>
                 <div className={`${darkMode ? 'text-dark-text' : 'text-black'} h-full lazy-load-1`}>
                     <div className={`${projects.length === 0 ? 'grid place-content-center' : 'flex flex-col gap-1'} py-3 h-full`}>
-                        {projects.length !== 0 && projects.map((project, i) => (
+                        {loading && (
+                            <LoadingSpinner />
+                        )}
+                        {!loading && projects.length !== 0 && projects.map((project, i) => (
                             <Project key={i} project={project} />
                         ))}
-                        {projects.length === 0 && (
+                        {!loading && projects.length === 0 && (
                             <div className="grid place-content-center text-center">
                                 <span className="text-xl uppercase font-semibold">No hay proyectos cancelados aún.</span>
                             </div>

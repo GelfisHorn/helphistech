@@ -25,6 +25,10 @@ module.exports = {
         'hero-light': "url('/home/hero/wave/light/wave.webp')",
         'hero-dark': "url('/home/hero/wave/dark/wave.webp')",
       },
+      height: {
+        'sidebar-xs': 'calc(100vh - 3.5rem)',
+        'sidebar': 'calc(100vh - 7rem)'
+      },
       width: {
         modal: "min(90%, 700px)"
       }

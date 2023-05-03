@@ -11,7 +11,9 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import currencyFormatter from "@/hooks/currencyFormatter";
 // Date and hour formatter
 import moment from "moment";
+// Components
 import SuperAdminPermissions from "@/components/admin/SuperAdminPermissions";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function CancelledVideoCalls() {
     
@@ -19,6 +21,7 @@ export default function CancelledVideoCalls() {
 
     // VideoCalls data
     const [ videoCalls, setVideoCalls ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     // On component load fetch videoCalls
     useEffect(() => {
@@ -46,6 +49,8 @@ export default function CancelledVideoCalls() {
             setVideoCalls(videoCalls);
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -54,10 +59,13 @@ export default function CancelledVideoCalls() {
             <AdminLayout title={'Proyectos canelados'}>
                 <div className={`${darkMode ? 'text-dark-text' : 'text-black'} h-full lazy-load-1`}>
                     <div className={`${videoCalls.length === 0 ? 'grid place-content-center' : 'flex flex-col gap-1'} py-3 h-full`}>
-                        {videoCalls.length !== 0 && videoCalls.map((videocall, i) => (
+                        {loading && (
+                            <LoadingSpinner />
+                        )}
+                        {!loading && videoCalls.length !== 0 && videoCalls.map((videocall, i) => (
                             <VideoCall key={i} videocall={videocall} />
                         ))}
-                        {videoCalls.length === 0 && (
+                        {!loading && videoCalls.length === 0 && (
                             <div className="grid place-content-center text-center">
                                 <span className="text-xl uppercase font-semibold">No hay videollamadas canceladas aún.</span>
                             </div>

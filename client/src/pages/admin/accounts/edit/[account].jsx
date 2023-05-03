@@ -11,6 +11,8 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Form validation
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+// Components
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function AccountDynamic() {
 
@@ -19,12 +21,13 @@ export default function AccountDynamic() {
     const router = useRouter();
     const accountId = router.query.account;
 
-    const [ account, setAccount ] = useState({});
+    const [account, setAccount] = useState({});
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        if(accountId) {
+        if (accountId) {
             // Get authentication token from localStorage
             const token = localStorage.getItem('auth-token');
-            if(!token) {
+            if (!token) {
                 return;
             }
 
@@ -39,18 +42,20 @@ export default function AccountDynamic() {
                 (async () => {
                     const { data } = await axios.post('/api/admin/accounts/getAccount', { _id: accountId, config });
                     setAccount(data);
+                    setLoading(false);
                 })();
             } catch (error) {
                 console.log(error.response.data.msg);
+                setLoading(false);
             }
         }
     }, [accountId])
 
     const AccountSchema = Yup.object().shape({
         name: Yup.string()
-          .min(5, 'El nombre es muy corto.')
-          .max(50, 'El nombre es muy largo.')
-          .required('El nombre es obligatorio'),
+            .min(5, 'El nombre es muy corto.')
+            .max(50, 'El nombre es muy largo.')
+            .required('El nombre es obligatorio'),
         email: Yup.string().
             email('El formato es incorrecto').
             required('El correo electrónico es obligatorio'),
@@ -60,7 +65,7 @@ export default function AccountDynamic() {
     });
 
     // On user submit form show a message
-    const [ message, setMessage ] = useState({ error: false, text: '' });
+    const [message, setMessage] = useState({ error: false, text: '' });
 
     function showMessage(error, text, timeout) {
         setMessage({ error, text })
@@ -69,7 +74,7 @@ export default function AccountDynamic() {
         }, timeout)
     }
 
-    const [ showDeleteModal, setShowDeleteModal ] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     function handleShowDeleteModal() {
         setShowDeleteModal(!showDeleteModal);
     }
@@ -79,7 +84,7 @@ export default function AccountDynamic() {
 
         // Get authentication token from localStorage
         const token = localStorage.getItem('auth-token');
-        if(!token) {
+        if (!token) {
             setFetchingAuth(false);
             return;
         }
@@ -90,7 +95,7 @@ export default function AccountDynamic() {
                 Authorization: `Bearer ${token}`
             }
         }
-        
+
         try {
             const { data } = await axios.post('/api/admin/accounts/deleteAccount', { accountId: account._id, config });
             showMessage(false, data.msg, 3000);
@@ -105,8 +110,13 @@ export default function AccountDynamic() {
     return (
         <SuperAdminPermissions>
             <AdminLayout title={"Editar cuenta"}>
-                <div className={`${darkMode ? 'text-zinc-200' : 'text-black'}`}>
-                    { Object.keys(account).length != 0 ? (
+                <div className={`${darkMode ? 'text-zinc-200' : 'text-black'} h-full`}>
+                    {loading && (
+                        <div className="grid place-content-center h-full">
+                            <LoadingSpinner />
+                        </div>
+                    )}
+                    {!loading && Object.keys(account).length != 0 && (
                         <div className="flex flex-col gap-10 py-10 w-[30rem] mx-auto">
                             <div className="text-2xl sm:text-3xl text-center">Editar cuenta</div>
                             <Formik
@@ -117,20 +127,20 @@ export default function AccountDynamic() {
                                     password: ''
                                 }}
                                 validationSchema={AccountSchema}
-                                onSubmit={ async (values) => {
+                                onSubmit={async (values) => {
                                     // Form values
                                     const name = values.name;
                                     const email = values.email;
                                     const password = values.password;
 
                                     // If type, name, email and phone are void return
-                                    if([name, email].includes('')) {
+                                    if ([name, email].includes('')) {
                                         return;
                                     }
 
                                     // Get authentication token from localStorage
                                     const token = localStorage.getItem('auth-token');
-                                    if(!token) {
+                                    if (!token) {
                                         setFetchingAuth(false);
                                         return;
                                     }
@@ -154,18 +164,18 @@ export default function AccountDynamic() {
                                     }
                                 }}
                             >
-                                {({ errors, touched }) => (   
+                                {({ errors, touched }) => (
                                     <Form className="flex flex-col gap-10">
                                         <div className={`flex flex-col gap-4 ${darkMode ? 'text-zinc-300' : 'text-black'}`}>
-                                            { message.text && (
+                                            {message.text && (
                                                 <div className={`${message.error ? 'bg-red-500' : 'bg-light-main'} py-2 w-full text-white uppercase font-semibold text-center rounded-md`}>{message.text}</div>
                                             )}
                                             <div>
                                                 <label htmlFor="name" className="block text-left">Nombre</label>
                                                 <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-full px-3`}>
-                                                    <Field 
+                                                    <Field
                                                         className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
-                                                        name="name" 
+                                                        name="name"
                                                         type="text"
                                                         id="name"
                                                         placeholder="Nombre completo"
@@ -178,9 +188,9 @@ export default function AccountDynamic() {
                                             <div>
                                                 <label htmlFor="email" className="block text-left">Correo electrónico</label>
                                                 <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-full px-3`}>
-                                                    <Field 
+                                                    <Field
                                                         className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
-                                                        name="email" 
+                                                        name="email"
                                                         type="email"
                                                         id="email"
                                                         placeholder="Correo electrónico"
@@ -193,9 +203,9 @@ export default function AccountDynamic() {
                                             <div>
                                                 <label htmlFor="password" className="block text-left">Contraseña</label>
                                                 <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-full px-3`}>
-                                                    <Field 
+                                                    <Field
                                                         className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
-                                                        name="password" 
+                                                        name="password"
                                                         type="password"
                                                         id="password"
                                                         placeholder="Contraseña"
@@ -230,8 +240,17 @@ export default function AccountDynamic() {
                                 </div>
                             </Modal>
                         </div>
-                    ) : (
-                        <div>Cargando...</div>
+                    )}
+                    {!loading && Object.keys(account).length == 0 && (
+                        <div className={`grid place-content-center gap-2 ${darkMode ? 'text-dark-text' : 'text-black'} h-full`}>
+                            <h3 className="text-2xl">Esta cuenta no existe.</h3>
+                            <button className="flex items-center justify-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.push('/admin/accounts')}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                </svg>
+                                <span>Volver a cuentas</span>
+                            </button>
+                        </div>
                     )}
                 </div>
             </AdminLayout>
@@ -243,8 +262,8 @@ function Modal({ showModal, children }) {
 
     const { darkMode } = useContextProvider();
 
-    const [ show, setShow ] = useState(false);
-    const [ closeAnim, setCloseAnim ] = useState(false);
+    const [show, setShow] = useState(false);
+    const [closeAnim, setCloseAnim] = useState(false);
 
     function handleShowModal() {
         setShow(true);
@@ -259,7 +278,7 @@ function Modal({ showModal, children }) {
     }
 
     useEffect(() => {
-        if(showModal) {
+        if (showModal) {
             handleShowModal();
             return;
         }

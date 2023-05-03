@@ -17,7 +17,7 @@ export default function Sidebar() {
     }
 
     return (
-        <div className={`flex flex-col justify-between gap-10 w-[3.5rem] lg:w-[17rem] border-r ${darkMode ? 'border-neutral-900' : 'border-neutral-100'}`} style={{height: 'calc(100vh - 3.5rem)'}}>
+        <div className={`flex flex-col justify-between gap-10 w-[3.5rem] lg:w-[17rem] border-r ${darkMode ? 'border-neutral-900' : 'border-neutral-100'} h-sidebar xs:h-sidebar-xs`}>
 
             <div className="flex flex-col gap-3 lg:px-5 pt-5">
                 <SidebarSection title={"Panel de control"} permissions={"admin"}>
