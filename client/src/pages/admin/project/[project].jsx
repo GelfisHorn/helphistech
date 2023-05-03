@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 // Nextjs
 import { useRouter } from "next/router"
+import Link from "next/link";
 // Hooks
 import currencyFormatter from "@/hooks/currencyFormatter";
 // Date and Hour Formatter
@@ -12,6 +13,59 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Layout from "@/components/admin/AdminLayout";
 import LoadingSpinner from "@/components/LoadingSpinner";
+
+// Parse company and project data
+const COMPANY = {
+    "business_type": {
+        "retail": "Minorista",
+        "service": "Servicio",
+        "manufacturing": "Fabricación"
+    },
+    "company_vision": {
+        "increase-profitability": "Aumentar la rentabilidad",
+        "enhance-customer-satisfaction": "Mejorar la satisfacción del cliente",
+        "promote-sustainability": "Promover la sostenibilidad"
+    },
+    "target_audience": {
+        "children": "Niños",
+        "teenagers": "Adolecentes",
+        "young-adults": "Jovenes adultos",
+        "adults": "Adultos",
+        "seniors": "Mayores"
+    },
+    "service_or_product": {
+        "products": "Productos",
+        "services": "Servicios"
+    },
+    "expected_deilvertime": {
+        0: "Menos de 1 mes",
+        1: "Entre 1 y 3 meses",
+        3: "Entre 3 y 6 meses",
+        6: "Más de 6 meses"
+    }
+}
+
+const PROJECT = {
+    "functionalities": {
+        "contact-form": "Formulario de contacto",
+        "image-gallery": "Galería de imágenes",
+        "blog-section": "Sección blog",
+        "social-media-integration": "Integración de redes sociales"
+    },
+    "web_design_type": {
+        "responsive": "Responsive",
+        "specific-design": "Diseño específico"
+    },
+    "responsible_for_managing": {
+        "client": "El cliente",
+        "developer": "El desarrollador"
+    },
+    "marketing_strategy": {
+        "social-media": "Redes sociales",
+        "email-marketing": "Correo electrónico",
+        "SEO": "SEO",
+    }
+}
 
 export default function ProjectDynamic() {
     
@@ -25,7 +79,7 @@ export default function ProjectDynamic() {
     const [ loading, setLoading ] = useState(true);
     const [ project, setProject ] = useState({});
     const [ projectComments, setProjectComments ] = useState([]);
-    const { website_type, contact_information, budget, description, state } = project;
+    const { project_info, company_info, website_type, contact_information, budget, description, state } = project;
 
     const [ projectState, setProjectState ] = useState(state);
 
@@ -187,6 +241,9 @@ export default function ProjectDynamic() {
         }
     }
 
+    const [ showCompanyInfo, setShowCompanyInfo ] = useState(false);
+    const [ showProjectInfo, setShowProjectInfo ] = useState(false);
+
     return (
         <Layout title={'Proyecto'}>
             {loading && (
@@ -199,17 +256,17 @@ export default function ProjectDynamic() {
                     <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col border-b py-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
                             <div className="flex flex-col sm:flex-row sm:gap-2 text-xl">
-                                <div className="uppercase font-semibold">Tipo de software</div>
-                                <div className="font-semibold text-light-main">{website_type == 'website' ? 'Sitio web' : website_type == 'ecommerce' ? 'E-Commerce' : website_type == 'app' && 'Aplicación'}</div>    
+                                <div className="uppercase font-semibold">Proyecto:</div>
+                                <div>{website_type == 'website' ? 'Sitio web' : website_type == 'ecommerce' ? 'E-Commerce' : website_type == 'app' && 'Aplicación'}</div>    
                             </div>
                             <div className="flex sm:justify-end font-semibold">{moment(project.createdAt).format('LLL')}</div>
                         </div>
                         <div className="flex flex-col gap-2 py-3">
-                            <div className="font-bold uppercase">Descripción</div>
+                            <div className="text-lg font-semibold uppercase">Descripción</div>
                             <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>{description ? description : "Sin descripción"}</div>    
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col py-3 border-t`}>
-                            <div className="font-bold uppercase">Presupuesto</div>
+                            <div className="text-lg font-semibold uppercase">Presupuesto</div>
                             <div className="flex flex-col xs:flex-row xs:items-center gap-1">
                                 <div className="flex items-center gap-1">
                                     <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Entre</div>
@@ -222,19 +279,136 @@ export default function ProjectDynamic() {
                             </div>    
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
-                            <div className="font-bold uppercase">Información de contacto</div>
+                            <div className="text-lg font-semibold uppercase">Información de contacto</div>
                             <div className="flex flex-col gap-2">
                                 <div className="flex flex-col">
-                                    <div className="uppercase font-bold text-sm">Nombre completo</div>
-                                    <div className="">{contact_information.full_name}</div>
+                                    <div className="uppercase font-medium">Nombre completo</div>
+                                    <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{contact_information.full_name}</div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="uppercase font-bold text-sm">Correo electrónico</div>
-                                    <div className="">
+                                    <div className="uppercase font-medium">Correo electrónico</div>
+                                    <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
                                         <a href={`mailto:${contact_information.email}`}>{contact_information.email}</a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
+                            <div className="text-lg font-semibold uppercase">Información de la compañía</div>
+                            { showCompanyInfo && (
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Tipo de negocio</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{COMPANY["business_type"][company_info.business_type]}</div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Visión</div>
+                                        <div className="flex flex-col">
+                                            {company_info.company_vision.map((vision, index) => (
+                                                <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                                    {COMPANY["company_vision"][vision]}
+                                                    {(company_info.company_vision.length - 1) > index ? ',' : ''}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Público objetivo</div>
+                                        <div className="flex flex-col">
+                                            {company_info.target_audience.map((audience, index) => (
+                                                <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                                    {COMPANY["target_audience"][audience]}
+                                                    {(company_info.target_audience.length - 1) > index ? ',' : ''}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Negocio</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                            {COMPANY["service_or_product"][company_info.service_or_product]}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Plazo de entrega</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                            {COMPANY["expected_deilvertime"][company_info.expected_deilvertime.from]}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                            <div onClick={() => setShowCompanyInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showCompanyInfo ? 'Ocultar' : 'Mostrar'}</div>
+                        </div>
+                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
+                            <div className="text-lg font-semibold uppercase">Información del proyecto</div>
+                            {showProjectInfo && (
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Funcionabilidades</div>
+                                        <div className="flex flex-col">
+                                            {project_info.functionalities.map((func, index) => (
+                                                <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                                    {PROJECT["functionalities"][func]}
+                                                    {(project_info.functionalities.length - 1) > index ? ',' : ''}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Tipo de diseño</div>
+                                        <div className="flex flex-col">
+                                            {project_info.web_design_type.map((design, index) => (
+                                                <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                                    {PROJECT["web_design_type"][design]}
+                                                    {(project_info.web_design_type.length - 1) > index ? ',' : ''}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Funcionabilidades de e-commerce</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{project_info.ecommerce_funtionabilites ? 'Sí' : 'No'}</div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Contenido del cliente</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{project_info.content_to_include ? 'Sí' : 'No'}</div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Tecnologías preferidas</div>
+                                        <div className="flex flex-col">
+                                            {project_info.preferred_technologies.map((tech, index) => (
+                                                <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                                    {tech}
+                                                    {(project_info.preferred_technologies.length - 1) > index ? ',' : ''}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Responsable del matenimiento</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{PROJECT["responsible_for_managing"][project_info.responsible_for_managing]}</div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Estrategia de marketing</div>
+                                        <div className="flex flex-col">
+                                            {project_info.marketing_strategy.map((strat, index) => (
+                                                <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
+                                                    {PROJECT["marketing_strategy"][strat]}
+                                                    {(project_info.marketing_strategy.length - 1) > index ? ',' : ''}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="uppercase font-medium">Sitios web de la cometencia</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{project_info.competitor_websites ? 'Sí' : 'No'}</div>
+                                        {project_info?.competitor_websites_examples ? project_info.competitor_websites_examples.map(url => (
+                                            <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url}>{url}</Link>
+                                        )) : null}
+                                    </div>
+                                </div>
+                            )}
+                            <div onClick={() => setShowProjectInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showProjectInfo ? 'Ocultar' : 'Mostrar'}</div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col xs:flex-row xs:items-center gap-2 border-t pt-3`}>
                             <div className="uppercase font-semibold text-lg">Estado</div>
