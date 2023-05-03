@@ -6,7 +6,8 @@
 @tailwind utilities;
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
+		@apply bg-zinc-900 scrollbar-thin scrollbar-thumb-primary scrollbar-track-zinc-900 h-32;
 }
 
 body {
@@ -21,6 +22,17 @@ p,
 span,
 div {
 	transition: color 50ms;
+}
+
+/* to remove/add scroll during modal toggling  */
+.body-in-modal-open {
+		overflow-y: hidden !important;
+	}
+@media(min-width: 768px) {
+	.body-in-modal-open {
+		overflow-y: hidden !important;
+		padding-right: 8px;
+	}
 }
 
 /* DARKMODE */
@@ -73,22 +85,6 @@ img {
 	user-drag: none;
 }
 
-/* Scrollbar width */
-::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
-}
-
-/* Scrollbar Track */
-::-webkit-scrollbar-track {
-	background: transparent;
-}
-
-/* Scrollbar Handle */
-::-webkit-scrollbar-thumb {
-	background: #866bfe;
-}
-
 /* Text selection */
 ::-moz-selection {
 	/* Code for Firefox */
@@ -101,7 +97,7 @@ img {
 	background: #866bfe;
 }
 
-/* Remove autofull background on inputs */
+/* Remove autofill background on inputs */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

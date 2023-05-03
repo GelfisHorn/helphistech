@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import { motion } from "framer-motion";
 
 export default function TechnologiesSection() {
 
@@ -14,8 +15,10 @@ export default function TechnologiesSection() {
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className="blur-shadow -top-28 -left-28"></div>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto flex flex-col gap-20 overflow-hidden">
-                    <div className="flex flex-col gap-4 text-white relative">
-                        <div className="flex flex-col items-center sm:items-start gap-5">
+                    <motion.div className="flex flex-col gap-10 text-white relative"
+                    initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
+                        viewport={{ once: true }}
+                    >                        <div className="flex flex-col items-center sm:items-start gap-5">
                             <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Our technologies</span>
                             <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>
                                 <div className="flex flex-col md:flex-row gap-5 md:gap-2">These are the <span className="text-primary">Technologies</span></div> 
@@ -25,7 +28,7 @@ export default function TechnologiesSection() {
                         <div className={`2xl:text-lg ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
                             <p className="text-center sm:text-left">The appropriate technology enriches the project. Here are some of the ones we use the most:</p>
                         </div>
-                    </div>
+                    </motion.div>
                     <div className="overflow-x-scroll hide-scroll">
                         <div className="grid grid-cols-5 gap-y-10 gap-x-14 xl:gap-x-28 select-none min-w-[60rem]">
                             <TechnologyImage src={"/technologies/react.webp"} alt={"React technology image"} />

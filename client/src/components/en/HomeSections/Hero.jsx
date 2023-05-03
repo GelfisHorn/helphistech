@@ -6,6 +6,7 @@ import Link from "next/link";
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Navbar from "@/components/en/Navbar";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
     
@@ -18,22 +19,22 @@ export default function HeroSection() {
             <Navbar />
             <section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{height: 'calc(100vh - 5rem)', zIndex: '1'}}>
                 <div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
-                    <div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[39rem]">
-                        <div className={`flex flex-col gap-5`}>
+                		<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[39rem]">
+												<motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
                             <h1 className={`${darkMode ? 'title-dark' : 'title-light'} text-4xl leading-[4rem] md:text-5xl md:leading-[4.5rem] lg:text-6xl lg:leading-[5rem] 2xl:text-7xl 2xl:leading-[5.5rem] font-bold`}>Custom web development for your business</h1>
                             <p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>We offer customized solutions to help your business stand out online. From website design and development to app programming and search engine optimization, our team of experts can help you achieve your online goals.</p>
-                        </div>
+												</motion.div>
                         <div className="flex justify-center xl:justify-start">
                             <Link href={"/en/contact"}>
                                 <button className="btn-primary text-white uppercase w-fit py-4 px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">Start a project with us</button>
                             </Link>
                         </div>
                     </div>
-                    <div className="">
+                    <motion.div initial={{ y: -60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }} viewport={{ once: true }} >
                         <VideoPlayer 
                             url={"https://res.cloudinary.com/drdor2wz7/video/upload/v1681591174/helphistech_eynapv.mp4"} 
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </div>

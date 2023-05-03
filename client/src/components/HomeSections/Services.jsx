@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import { motion } from "framer-motion";
 
 export default function ServicesSection() {
     
@@ -15,7 +16,10 @@ export default function ServicesSection() {
                 <div className="flex items-center gap-20 justify-between w-full">
                     <div className="blur-shadow -left-28 -top-28"></div>
                     <div className="flex flex-col gap-20">
-                        <div className="flex flex-col items-center sm:items-start gap-5 relative">
+                        <motion.div 
+                        initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
+                        viewport={{ once: true }}
+                        className="flex flex-col items-center sm:items-start gap-5 relative">
                             <div className="flex flex-col">
                                 <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Dienstleistungen</span>
                             </div>
@@ -30,7 +34,7 @@ export default function ServicesSection() {
                                     {/* We use the latest technologies and industry best practices to ensure that our projects are of the highest quality, and we work closely with our clients to ensure that they are satisfied with the final product. */}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                         <div className={`flex flex-col divide-y`}>
                             <ServicesOption
                                 title={"Maßgeschneiderte Softwareentwicklung"}

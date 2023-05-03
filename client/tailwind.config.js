@@ -28,8 +28,14 @@ module.exports = {
       height: {
         'sidebar-xs': 'calc(100vh - 3.5rem)',
         'sidebar': 'calc(100vh - 7rem)'
+      },
+      width: {
+        modal: "min(90%, 700px)"
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+    
+  ]
 }

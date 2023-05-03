@@ -1,6 +1,7 @@
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import { motion } from "framer-motion";
 
 export default function ProcessSection() {
     
@@ -10,8 +11,11 @@ export default function ProcessSection() {
     return (
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-process">
             <div className="flex flex-col gap-20 max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
-                <div className="flex flex-col gap-5 items-center sm:items-start">
-                    <div className="blur-shadow -left-28 -top-28 -z-10"></div>
+                <motion.div className="flex flex-col gap-5 items-center sm:items-start "
+                    initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
+                    viewport={{ once: true }}
+                >
+                    {/* <div className="blur-shadow -left-28 -top-28 -z-10"></div> */}
                     <div className="flex flex-col">
                         <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Proceso de desarrollo</span>
                     </div>
@@ -29,8 +33,8 @@ export default function ProcessSection() {
                             <p className="text-center sm:text-left">Si necesitas una presencia en línea efectiva para tu negocio o proyecto, un sitio web es una parte vital del proceso. Aquí hay un desglose del proceso de desarrollo web para que sepas qué esperar al trabajar con nosotros.</p>
                         </div>
                     </div>
-                </div>
-                <div className="pb-10 overflow-x-scroll w-full">
+                </motion.div>
+                <div className="pb-10 overflow-x-scroll w-full scrollbar-thin">
                     <div className="flex items-start gap-20 w-[186.66rem] 2xl:w-[210rem]">
                         <div className="flex flex-col gap-5">
                             <div className="grid grid-cols-3 gap-20">
