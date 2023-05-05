@@ -39,7 +39,7 @@ export default function CustomWebDevelopment() {
                             <p>Hier ist eine Aufschlüsselung des Webentwicklungsprozesses, damit Sie wissen, was Sie erwartet, wenn Sie mit uns zusammenarbeiten.</p>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 bg-[#080808] px-6 sm:px-10 lg:px-20 2xl:px-40 py-28">
+                    <div className={`grid grid-cols-1 ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40 py-28`}>
                         <div className="grid grid-rows-7 gap-5">
                             <ProcessItem 
                                 title={"Kick-off-Meeting und Planung"}

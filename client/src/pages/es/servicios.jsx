@@ -29,7 +29,7 @@ export default function ServicesPage() {
                                     </motion.div>
                                 </div>
                             </div>
-                            <div className={`flex flex-col divide-y bg-[#080808] px-6 sm:px-10 lg:px-20 2xl:px-40`}>
+                            <div className={`flex flex-col divide-y ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40`}>
                                 <ServicesOption
                                     title={"Desarrollo personalizado de sitios web"}
                                     p1={"Este servicio se enfoca en diseñar y desarrollar sitios web únicos y personalizados que se adapten a las necesidades específicas de tus clientes. Al trabajar en estrecha colaboración con tus clientes, podrás crear un sitio web que refleje su marca, valores y objetivos de negocio."}
