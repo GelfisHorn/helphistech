@@ -5,6 +5,8 @@ import Image from "next/image";
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Layout from "@/components/Layout";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CustomWebDevelopment() {
     
@@ -28,16 +30,14 @@ export default function CustomWebDevelopment() {
         <Layout title={"Unser Arbeitsprozess"} lang={'de'}>
             <main>
                 <div className="flex flex-col">
-                    <div className={`flex flex-col gap-5 w-full text-center xs:text-left px-6 sm:px-10 lg:px-20 2xl:px-40 py-28 2xl:py-36`}>
-                        <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                    <div className={`flex flex-col gap-10 w-full text-center xs:text-left px-6 sm:px-10 lg:px-20 2xl:px-40 py-28 2xl:py-36`}>
+                        <motion.div  initial={{ x:-40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                             <h1 className="w-full">Unser Arbeitsprozess</h1>
-                            {/* <br /> 
-                            <span className="w-full"></span> */}
-                        </div>
-                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>
+                        </motion.div>
+                        <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`${darkMode ? 'description-dark' : 'description-light'}`}>
                             <p>Wenn Sie für Ihr Unternehmen oder Projekt eine effektive Online-Präsenz benötigen, ist eine Website ein wesentlicher Bestandteil des Prozesses.</p>
                             <p>Hier ist eine Aufschlüsselung des Webentwicklungsprozesses, damit Sie wissen, was Sie erwartet, wenn Sie mit uns zusammenarbeiten.</p>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className={`grid grid-cols-1 ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40 py-28`}>
                         <div className="grid grid-rows-7 gap-5">
@@ -99,6 +99,16 @@ export default function CustomWebDevelopment() {
                                 last={true}
                             />
                         </div>
+                        <motion.div  initial={{ x:40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
+                            <div className="flex justify-center">
+                                <Link href="/contact" className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors">
+                                    <span>Kontaktiere uns</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                    </svg>
+                                </Link>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </main>
@@ -119,12 +129,18 @@ function ProcessItem({ title, description, number, hash, last, image, alt }) {
                     <div className={`${last ? 'w-0' : 'w-[1px]'} h-36 bg-primary-2 opacity-30`}></div>
                 </div>
                 <div className="flex flex-col gap-3">
-                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{title}</div>
-                    <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
+                    <motion.div  initial={{ x:-40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
+                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{title}</div>
+                    </motion.div>
+                    <motion.div  initial={{ x:40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
+                    </motion.div>
                 </div>
             </div>
             <div className="hidden lg:block">
-                <Image className="max-w-[20rem]" src={image} width={200} height={200} priority alt={alt} />
+                <motion.div initial={{ y: 70, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
+                    <Image className="max-w-[20rem]" src={image} width={200} height={200} priority alt={alt} />
+                </motion.div>
             </div>
         </div>
     )

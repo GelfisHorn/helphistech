@@ -20,19 +20,19 @@ export default function ProjectQuote() {
                 <div className="flex flex-col items-center justify-center gap-20 py-20 px-6 sm:px-10 md:px-20 max-w-7xl 2xl:max-w-[90rem] mx-auto lg:h-full">
                     <div className={`flex flex-col gap-5 lg:h-full w-full transition-colors text-center xl:text-left`}>
                         <div className={`flex flex-col gap-5 w-full`}>
-                            <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                            <motion.div  initial={{ x:-40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                                 <h1 className="w-full">Let's work together!</h1>
-                                {/* <br /> 
-                                <span className="w-full"></span> */}
-                            </div>
-                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Let us help you become even better at what you do. <br /> Fill in the following form and we will contact you in the next 24 hours.</div>
+                            </motion.div>
+                            <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`${darkMode ? 'description-dark' : 'description-light'}`}>Let us help you become even better at what you do. <br /> Fill in the following form and we will contact you in the next 24 hours.</motion.div>
                         </div>
                     </div>
                     <div className="flex flex-col xl:flex-row items-center xl:items-start gap-10 xl:gap-20 w-full">
                         <div className="w-full xl:w-3/5 py-5" id="quote-project-form">
-                            <FormComponent />
+                            <motion.div initial={{ y: 70, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
+                                <FormComponent />
+                            </motion.div>
                         </div>
-                        <div className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
+                        <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
                             <h2 className="text-2xl font-medium w-full">Schedule a video call</h2>
                             <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Schedule a video call and have a conversation directly with us!</div>
                             <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
@@ -41,7 +41,7 @@ export default function ProjectQuote() {
                                     <path strokeLinecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                                 </svg>
                             </button>
-                        </div>
+                        </motion.div>
                     </div>
                     <AnimatePresence>
                         {showVideoCallForm && <VideocallModal closeVideoCallForm={() => setShowVideoCallForm(false)} />}

@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import useContextProvider from "@/hooks/useAppContextProvider";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function TechnologiesPage() {
 
@@ -20,12 +21,12 @@ export default function TechnologiesPage() {
                         <div className="flex flex-col gap-28">
                             <div className="flex items-center sm:items-start gap-5 relative">
                                 <div className="flex flex-col justify-center sm:items-start gap-10">
-                                    <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
+                                    <motion.div  initial={{ x:-40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                                         <h1 className="text-center sm:text-left w-full">Dies sind die Technologien, die wir am häufigsten verwenden</h1>
-                                    </div>
-                                    <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
+                                    </motion.div>
+                                    <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
                                         <p className="text-center sm:text-left">Wir bei HelphisTech sind bestrebt, qualitativ hochwertige Software unter Verwendung innovativer Technologien und modernster Tools bereitzustellen. Unser Entwicklerteam verwendet für jedes spezifische Projekt die richtigen Tools. Zu den von uns verwendeten Technologien gehören React, Nextjs, Angular, Nodejs, Express, MongoDB und MySQL. Wir bei HelphisTech glauben, dass Technologie ein mächtiges Werkzeug ist, um Innovation und Effizienz voranzutreiben, und wir streben danach, die besten Lösungen für jedes Projekt zu verwenden, das wir in Angriff nehmen.</p>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             </div>
                             <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 gap-y-20`}>
@@ -121,7 +122,7 @@ function TechnologyItem({ image, darkImg, imageAlt, description, href }) {
     const { darkMode } = useContextProvider();
 
     return (
-        <div className={``}>
+        <motion.div initial={{ y: 70, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
             <div className="flex flex-col gap-5">
                 <div className={`grid place-content-center aspect-square ${darkMode ? 'bg-[#101010]' : 'bg-[#E9E9E9]'}`}>
                     <div className={`grid place-content-center aspect-square border ${darkMode ? 'border-[#222222]' : 'border-white'} m-10 px-5 sm:px-10`}>
@@ -142,6 +143,6 @@ function TechnologyItem({ image, darkImg, imageAlt, description, href }) {
                     </Link>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
