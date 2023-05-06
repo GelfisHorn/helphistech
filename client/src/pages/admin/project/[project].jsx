@@ -399,13 +399,17 @@ export default function ProjectDynamic() {
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Sitios web de la cometencia</div>
-                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{project_info.competitor_websites ? 'Sí' : 'No'}</div>
-                                        {project_info?.competitor_websites_examples ? project_info.competitor_websites_examples.map(url => (
-                                            <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url}>{url}</Link>
-                                        )) : null}
-                                    </div>
+                                    { project_info.competitor_websites ? (
+                                        <div className="flex flex-col">
+                                            <div className="uppercase font-medium">Sitios web de la cometencia</div>
+                                            {project_info?.competitor_websites_examples ? project_info.competitor_websites_examples.split(',').map((url, index) => (
+                                                <div className="flex items-center">
+                                                    <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url.slice(0,6) == 'https://' ? url.trim() : `https://${url.trim()}`} target="_blank">{url}</Link>
+                                                    {(project_info.competitor_websites_examples.split(',').length - 1) > index ? ',' : ''}
+                                                </div>
+                                            )) : null}
+                                        </div>
+                                    ) : null}
                                 </div>
                             )}
                             <div onClick={() => setShowProjectInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showProjectInfo ? 'Ocultar' : 'Mostrar'}</div>
