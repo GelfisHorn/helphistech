@@ -29,7 +29,7 @@ export default function ServicesPage() {
                                     </motion.div>
                                 </div>
                             </div>
-                            <div className={`flex flex-col divide-y bg-[#080808] px-6 sm:px-10 lg:px-20 2xl:px-40`}>
+                            <div className={`flex flex-col divide-y ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40`}>
                                 <ServicesOption
                                     title={"Maßgeschneiderte Softwareentwicklung"}
                                     p1={"Dieser Service konzentriert sich auf das Design und die Entwicklung einzigartiger und individueller Websites, die speziell auf die Bedürfnisse Ihrer Kunden zugeschnitten sind. Durch eine enge Zusammenarbeit mit Ihren Kunden können Sie eine Website erstellen, die ihre Marke, Werte und Geschäftsziele widerspiegelt."}
