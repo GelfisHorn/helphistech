@@ -239,6 +239,9 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                     </select>
                                 </div>
                             </div>
+                            <Link className="hover:underline hover:text-primary" href="/en/login">
+                                <span>Login</span>
+                            </Link>
                             <Link href={'/en/contact'}>
                                 <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>Contact us</button>
                             </Link>

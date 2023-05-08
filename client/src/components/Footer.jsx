@@ -1,4 +1,5 @@
 // Nextjs
+import { useRouter } from "next/router";
 import Link from "next/link"
 import Image from "next/image";
 // Context
@@ -6,7 +7,20 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 
 export default function Footer() {
 
+    const router = useRouter();
+
     const { darkMode } = useContextProvider();
+
+    function handleNavButton(hash) {
+        if(router.pathname === '/web-seiten') {
+            const element = document.getElementById(`${hash}`);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+            return;
+        }
+        router.push(REDIRECTS[hash]);
+    }
 
     return (
         <footer className={`${darkMode ? 'text-dark border-neutral-900' : 'text-light border-neutral-200'} border-t`}>
@@ -14,18 +28,21 @@ export default function Footer() {
                 <div className="grid md:grid-cols-3 gap-y-10 justify-center md:justify-start text-center md:text-left md:gap-y-0 w-full">
                     <FooterColumn title={"Navigation"}>
                         <div className={`flex flex-col gap-2 ${darkMode ? 'text-dark' : 'text-light'}`}>
-                            <Link href={"#"} >
+                            <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                                 <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
-                            </Link>
-                            <Link href={"#"} >
+                            </div>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
                                 <span className="hover:underline hover:text-primary transition-colors">Dienstleistungen</span>
-                            </Link>
-                            <Link href={"#"} >
-                                <span className="hover:underline hover:text-primary transition-colors">Projekte</span>
-                            </Link>
-                            <Link href={"#"} >
+                            </div>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
+                                <span className="hover:underline hover:text-primary transition-colors">Verfahren</span>
+                            </div>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                                 <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
-                            </Link>
+                            </div>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
+                                <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/web-seiten' ? 'Mein Projekt' : 'Kontakt'}</span>
+                            </div>
                         </div>
                     </FooterColumn>
                     <FooterColumn title={"Sozialen Medien"}>
