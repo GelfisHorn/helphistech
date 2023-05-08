@@ -240,6 +240,9 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                     </select>
                                 </div>
                             </div>
+                            <Link className="hover:underline hover:text-primary" href="/login">
+                                <span>Anmeldung</span>
+                            </Link>
                             <Link href={'/contact'}>
                                 <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>Kontakt</button>
                             </Link>
