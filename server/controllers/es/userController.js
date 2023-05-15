@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 import User from "../../models/User.js"
+import Client from "../../models/Client.js"
 import createToken from "../../helpers/createToken.js"
 import createJWT from '../../helpers/createJWT.js'
 
@@ -30,17 +31,15 @@ const getAccount = async (req, res) => {
  * Create Account (only superadmin)
  */
 const createAccount = async (req, res) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
+    const { name = null, surname = null, position = null, email = null, password = null, permissions = null } = req.body;
 
-    if(name == '') {
+    if(name == null) {
         return res.status(400).json({ msg: '"name" es obligatorio' });
     }
-    if(email == '') {
+    if(email == null) {
         return res.status(400).json({ msg: '"email" es obligatorio' });
     }
-    if(password == '' || String(password).length < 16) {
+    if(password == null || String(password).length < 16) {
         return res.status(400).json({ msg: '"password" es obligatorio y debe tener mínimo 16 caracteres' });
     }
 
@@ -50,11 +49,12 @@ const createAccount = async (req, res) => {
     }
 
     try {
-        const newUser = new User({ name, email, password });
+        const newUser = new User({ name, surname, position, email, password, permissions });
         await newUser.save();
         return res.status(200).json({ msg: 'Se creó el usuario correctamente' });
-    } catch (error) {
-        return res.status(400).json({ msg: 'Hubo un error al crear el usuario' });
+    } catch (err) {
+        const error = new Error(err)
+        return res.status(400).json({ msg: error.message });
     }
 }
 /**
