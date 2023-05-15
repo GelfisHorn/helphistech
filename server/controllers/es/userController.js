@@ -1,6 +1,5 @@
 import mongoose from "mongoose"
 import User from "../../models/User.js"
-import Client from "../../models/Client.js"
 import createToken from "../../helpers/createToken.js"
 import createJWT from '../../helpers/createJWT.js'
 
