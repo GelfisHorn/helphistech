@@ -23,8 +23,9 @@ const checkAuth = async (req, res, next) => {
             }
 
             return next()
-        } catch (error) {
-            return res.status(404).json({ msg: 'There was a mistake' })
+        } catch (err) {
+            const error = new Error(err);
+            return res.status(404).json({ msg: error.message })
         }
     }
 

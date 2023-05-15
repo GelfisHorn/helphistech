@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const projectSchema = mongoose.Schema({
+    client: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User',
+        default: null
+    },
     website_type: {
         type: String,
         trim: true,

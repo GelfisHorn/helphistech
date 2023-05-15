@@ -7,6 +7,13 @@ const userSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+    surname: {
+        type: String,
+        trim: true
+    },
+    position: {
+        type: String
+    },
     email: {
         type: String,
         required: true,
@@ -31,8 +38,8 @@ const userSchema = mongoose.Schema({
     },
     permissions: {
         type: String,
-        default: 'admin',
-        enum: ['admin', 'superadmin']
+        default: null,
+        enum: [null, 'client', 'developer', 'admin', 'superadmin']
     }
 }, {
     timestamps: true
