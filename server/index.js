@@ -16,6 +16,8 @@ import userRoutesES from './routes/es/userRoutes.js';
 import projectRoutes from './routes/projectRoutes.js'
 import accountsRoutes from './routes/accountsRoutes.js'
 import videoCallRoutes from './routes/videoCallRoutes.js'
+// Client routes
+import clientRoutes from './routes/clientRoutes.js'
 
 const app = express();
 app.use(express.json());
@@ -51,6 +53,8 @@ app.use('/v1/es/users', userRoutesES);
 app.use('/v1/projects', projectRoutes);
 app.use('/v1/accounts', accountsRoutes);
 app.use('/v1/videocall', videoCallRoutes);
+// Client routes
+app.use('/v1/client', clientRoutes)
 
 // Server
 const PORT = process.env.PORT || 4000;
