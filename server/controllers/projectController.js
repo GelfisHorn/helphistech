@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
+// Models
+import User from "../models/User.js";
 import Project from "../models/Project.js";
 import ProjectComment from '../models/ProjectComment.js'
+// Config
+import permissions from "../config/permissions.js";
 
 const ObjectId = mongoose.Types.ObjectId;
 const getProject = async (req, res) => {
@@ -98,7 +102,7 @@ const changeProjectState = async (req, res) => {
 const cancelProject = async (req, res) => {
     const projectId = req.body._id;
 
-    if(req.user.permissions !== 'superadmin') {
+    if(req.user.permissions !== permissions.superadmin) {
         return res.status(406).json({ msg: 'Permisos insuficientes' });
     }
 
