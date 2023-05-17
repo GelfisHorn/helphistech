@@ -141,7 +141,7 @@ function SidebarItem({ children, icon, href, permissions }) {
 
     return (
         <Link href={href} className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex justify-center`}>
-            <button className={`${darkMode ? 'text-dark-text hover:bg-dark-main' : 'text-black hover:bg-light-main'} flex items-center justify-center lg:justify-start gap-2 lg:rounded-md py-2 lg:px-4 w-full hover:text-white uppercase font-semibold text-left transition-colors select-none`}>
+            <button className={`${darkMode ? 'text-dark-text' : 'text-black'} hover:bg-primary flex items-center justify-center lg:justify-start gap-2 lg:rounded-md py-2 lg:px-4 w-full hover:text-white uppercase font-semibold text-left transition-colors select-none`}>
                 <div className="text-neutral-400">{icon}</div>
                 <div className="hidden lg:block">{children}</div>
             </button>
