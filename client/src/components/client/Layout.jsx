@@ -10,28 +10,37 @@ import useContextProvider from "@/hooks/useAppContextProvider"
 
 export default function ClientLayout({ children, title }) {
     
-    const { darkMode, auth } = useContextProvider();
-
     const router = useRouter();
 
+    const { darkMode, auth, fetchingAuth } = useContextProvider();
+
+    useEffect(() => {
+        if(!fetchingAuth && Object.keys(auth).length === 0) {
+            router.push('/');
+            return;
+        }
+    }, [auth, fetchingAuth])
+
     return (
-        <>
-            <Head>
-                <title>{title}</title>
-            </Head>
-            <div className={darkMode ? 'bg-darkmode' : 'bg-white'}>
-                <div>
-                    <Navbar />
-                </div>
-                <div className="flex overflow-hidden">
+        Object.keys(auth).length !== 0 && (
+            <>
+                <Head>
+                    <title>{`${title} - HelphisTech`}</title>
+                </Head>
+                <div className={darkMode ? 'bg-darkmode text-zinc-200' : 'bg-white text-black'}>
                     <div>
-                        <Sidebar />
+                        <Navbar />
                     </div>
-                    <div className="w-full py-6 px-2 sm:px-4 lg:px-8 overflow-y-scroll lazy-load-1" style={{height: 'calc(100vh - 3.5rem)'}}>
-                        {children}
+                    <div className="flex overflow-hidden">
+                        <div>
+                            <Sidebar />
+                        </div>
+                        <div className="w-full py-6 px-2 sm:px-4 lg:px-8 overflow-y-scroll lazy-load-1" style={{height: 'calc(100vh - 3.5rem)'}}>
+                            {children}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </>
+        )
     )
 }
