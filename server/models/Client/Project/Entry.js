@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const entrySchema = mongoose.Schema({
+    user: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'User'
+    },
     project: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Project'
