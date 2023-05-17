@@ -40,23 +40,14 @@ const getProjects = async (req, res) => {
 const createProject = async (req, res) => {
     const website_type = req.body.website_type;
     const contact_information = req.body.contact_information;
-    const budget = req.body.budget;
 
-    if(!website_type || !budget || !contact_information) {
+    if(!website_type || !contact_information) {
         return res.status(406).json({ msg: 'Hay campos requeridos vacíos' });
     }
 
     if(website_type === 'website' || website_type === 'ecommerce' || website_type === 'app') {
-        if(Object.keys(budget).length === 0) {
-            return res.status(406).json({ msg: "'bugdet' debe ser un objecto { from, to }" });
-        }
-
-        if(!budget?.from || !budget?.to) {
-            return res.status(406).json({ msg: "'bugdet' debe ser un objecto { from, to }" });
-        }
-    
-        if(!contact_information?.full_name || !contact_information?.email) {
-            return res.status(406).json({ msg: "'contact_information' debe ser un objecto { full_name, email, phone_number, country }" });
+        if(!contact_information?.company_name || !contact_information?.full_name || !contact_information?.email) {
+            return res.status(406).json({ msg: "'contact_information' debe ser un objecto { company_name, full_name, email }" });
         }
     
         try {

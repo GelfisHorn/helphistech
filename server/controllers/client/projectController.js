@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 // Models
 import Project from "../../models/Project.js";
+import ClientComments from '../../models/Client/ClientComment.js'
 import User from "../../models/User.js";
 
 const ObjectId = mongoose.Types.ObjectId;
@@ -11,17 +12,19 @@ async function getProject(req, res) {
         return res.status(400).json({ msg: 'El id del proyecto es incorrecto' });
     }
     
-    const project = await Project.findById(id).populate({ path: 'client', select: '_id name email' });
+    const project = await Project.findOne({ client: id }).populate({ path: 'client', select: '_id name email' });
     if(!project) {
-        return res.status(404).json({ msg: 'Este proyecto no existe' });
+        return res.status(404).json({ msg: 'Este proyecto no existe o no tiene un cliente asignado' });
     }
+
+    const projectComments = await ClientComments.find({ project: project._id }).populate({ path: 'user', select: '_id name surname'});
 
     if(project.client && project.client._id.toString() !== req.user._id.toString()) {
         return res.status(403).json({ msg: 'No tienes acceso a este proyecto' });
     }
 
     try {
-        return res.status(200).json(project);
+        return res.status(200).json({ project, comments: projectComments });
     } catch (err) {
         const error = new Error(err);
         return res.status(500).json({ msg: error.message });
