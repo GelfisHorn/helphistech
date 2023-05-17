@@ -14,7 +14,7 @@ export default function ClientProjectEntry() {
 
     const router = useRouter();
 
-    const { auth, darkMode } = useContextProvider();
+    const { auth, darkMode, clientProject } = useContextProvider();
 
     const { entry: entryId } = router.query;
 
@@ -87,7 +87,7 @@ export default function ClientProjectEntry() {
     }
 
     return (
-        <Layout title={loading ? 'Cargando...' : !loading && Object.keys(entry).length != 0 ? entry.title : 'Esta entrada no existe'}>
+        <Layout title={loading ? 'Aufladen...' : !loading && Object.keys(entry).length != 0 ? entry.title : 'Dieser Eintrag existiert nicht'}>
             {loading && (
                 <div className='grid place-content-center h-full'>
                     <LoadingSpinner />
@@ -99,14 +99,14 @@ export default function ClientProjectEntry() {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                         </svg>
-                        <span>Volver</span>
+                        <span>Zurückkehren</span>
                     </button>
                     <div className='flex flex-col gap-1'>
                         <div className={`text-2xl`}>{entry.title}</div>
                         <div className={`${darkMode ? 'description-dark' : 'description-light'} text-lg`}>{entry.description}</div>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <div className="uppercase font-medium text-lg">Imágenes</div>
+                        <div className="uppercase font-medium text-lg">Bilder</div>
                         {entry.images.length != 0 ? (
                             <div className='grid grid-cols-4 gap-2'>
                                 <div className="aspect-video bg-neutral-700 rounded-md"></div>
@@ -115,30 +115,30 @@ export default function ClientProjectEntry() {
                                 <div className="aspect-video bg-neutral-700 rounded-md"></div>
                             </div>
                         ) : 
-                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>No hay imágenes</div>
+                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Keine Bilder</div>
                         }
                     </div>
                     <div className="flex flex-col gap-1">
-                        <div className="uppercase font-medium text-lg">Horas de trabajo</div>
+                        <div className="uppercase font-medium text-lg">Arbeitsstunden</div>
                         <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.work_hours}</div>
                     </div>
                     <div className="flex flex-col gap-1">
-                        <div className="uppercase font-medium text-lg">Fecha</div>
+                        <div className="uppercase font-medium text-lg">Datum</div>
                         <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{moment(entry.createdAt).format('LLL')}</div>
                     </div>
                     <div className={`flex flex-col gap-5 pt-5 pb-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
-                        {(entry.user === auth._id || auth.permissions === 'superadmin') && (
+                        {clientProject?.project?.client?._id === auth._id && (
                             <div className={`flex flex-col gap-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pb-4`}>
-                                <div className="text-xl">Haz un comentario</div>
+                                <div className="text-xl">Machen Sie einen Kommentar</div>
                                 <form className="flex flex-col gap-2" onSubmit={handleSendComment}>
                                     <textarea 
                                         ref={commentTextarea}
                                         className={`bg-transparent border ${darkMode ? 'border-neutral-900 placeholder:text-neutral-500' : 'border-neutral-200 placeholder:text-neutral-300'} w-full px-3 py-2 resize-none outline-none`} 
-                                        placeholder="Mensaje" 
+                                        placeholder="Nachricht" 
                                         rows="3">
                                     </textarea>
                                     <div className="flex justify-end">
-                                        <button type="submit" className="py-2 px-6 bg-primary text-white uppercase rounded-sm font-medium">Comentar</button>
+                                        <button type="submit" className="py-2 px-6 bg-primary text-white uppercase rounded-sm font-medium">Kommentar</button>
                                     </div>
                                 </form>
                             </div>
@@ -178,7 +178,7 @@ function EntryComment({ comment, comments, setComments }) {
     
     const { darkMode, auth } = useContextProvider();
     
-    const { _id, user, message, createdAt } = comment;
+    const { _id, user, message, seen, createdAt } = comment;
 
     // Edit comment state
     const [ editingComment, setEditingComment ] = useState(false);
@@ -250,11 +250,58 @@ function EntryComment({ comment, comments, setComments }) {
         }
     }
 
+    // Mark comment as seen
+    async function handleMarkAsSeen() {
+        // If project is already marked as seen
+        if(seen) {
+            return;
+        }
+
+        // Get authentication token from localStorage
+        const token = localStorage.getItem('auth-token');
+        if(!token) {
+            setFetchingAuth(false);
+            return;
+        }
+
+        const config = {
+            headers: {
+                "Content-Type": "application-json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        try {
+            await axios.post('/api/client/project/entry/comment/seen', { commentId: _id, config });
+            const newComments = comments.map(comment => {
+                if(comment._id == _id) {
+                    comment.seen = true;
+                    return comment;
+                }
+                return comment;
+            })
+            setComments(newComments);
+        } catch (error) {
+            console.log(error.response.data.msg)
+        }
+    }
+
     return (
         <div className={`flex flex-col px-5 py-4 rounded-md shadow-md ${darkMode ? 'bg-[#101010]' : 'bg-zinc-100'}`}>
             <div className="flex items-center justify-between">
-                <div className={`${darkMode ? 'text-neutral-300' : 'text-neutral-700'}`}>HelphisTech</div>
-                { (auth._id === user || auth.permissions === 'superadmin') && (
+                <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center gap-1">
+                        <div>{`${user.surname ? `${user.name} ${user.surname}` : `${user.name}` }` }</div>
+                        <div className={`text-sm ${darkMode ? 'description-dark' : 'description-light'}`}>{seen ? '(Seen)' : ''}</div>
+                    </div>
+                    {auth.permissions != 'client' && !seen && (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="cursor-pointer w-7 h-7 p-1 hover:bg-neutral-700 rounded-full transition-colors" onClick={handleMarkAsSeen}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    )}
+                </div>
+                { (auth._id === user._id || auth.permissions === 'superadmin') && (
                     <div className="flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="cursor-pointer w-7 h-7 p-1 hover:bg-neutral-700 rounded-md transition-colors" onClick={handleEditingComment}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
@@ -275,8 +322,8 @@ function EntryComment({ comment, comments, setComments }) {
                         rows="3">
                     </textarea>
                     <div className="flex justify-end gap-2">
-                        <button onClick={handleEditingComment} className="py-1 px-3 bg-red-500 hover:bg-red-800 transition-colors rounded-sm">Cancelar</button>
-                        <button onClick={handleEditComment} className="py-1 px-3 bg-primary hover:bg-primary-2 transition-colors rounded-sm">Guardar</button>
+                        <button onClick={handleEditingComment} className="py-1 px-3 bg-red-500 hover:bg-red-800 transition-colors rounded-sm">Stornieren</button>
+                        <button onClick={handleEditComment} className="py-1 px-3 bg-primary hover:bg-primary-2 transition-colors rounded-sm">Halten</button>
                     </div>
                 </div>
             ) : (
@@ -285,12 +332,12 @@ function EntryComment({ comment, comments, setComments }) {
             <div className={`text-right text-sm font-semibold ${darkMode ? 'text-neutral-400' : 'text-neutral-600'}`}>{moment(createdAt).format('LLL')}</div>
             <Modal showModal={showModal}>
                 <div className="flex flex-col gap-1">
-                    <div className={`text-red-500 text-xl font-semibold uppercase`}>Eliminar comentario</div>
-                    <div className="text-lg">¿Estás seguro que deseas eliminar este comentario?</div>
+                    <div className={`text-red-500 text-xl font-semibold uppercase`}>Kommentar löschen</div>
+                    <div className="text-lg">Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?</div>
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-red-500 hover:bg-red-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleShowModal}>Cancelar</button>
-                    <button className="bg-light-main hover:bg-indigo-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleDeleteComment}>Confirmar</button>
+                    <button className="bg-red-500 hover:bg-red-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleShowModal}>Stornieren</button>
+                    <button className="bg-light-main hover:bg-indigo-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleDeleteComment}>Bestätigen</button>
                 </div>
             </Modal>
         </div>
