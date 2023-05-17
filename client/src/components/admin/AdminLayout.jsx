@@ -20,15 +20,19 @@ export default function AdminLayout({ children, title }) {
         if(!fetchingAuth && Object.keys(auth).length === 0) {
             router.push('/');
         }
+
+        if(!fetchingAuth && auth.permissions === 'client') {
+            router.push('/client');
+        }
     }, [auth, fetchingAuth])
 
     return (
-        Object.keys(auth).length !== 0 && (
+        (Object.keys(auth).length !== 0 && auth.permissions !== 'client') && (
             <div>
                 <Head>
                     <title>{title} | Helphis Tech</title>
                 </Head>
-                <div className={darkMode ? 'bg-darkmode' : 'bg-white'}>
+                <div className={darkMode ? 'bg-darkmode text-zinc-200' : 'bg-white text-black'}>
                     <div>
                         <Navbar />
                     </div>
