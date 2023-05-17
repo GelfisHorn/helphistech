@@ -396,15 +396,15 @@ function FormComponent() {
     const [ step, setStep ] = useState(1);
 
     function handleNextStep() {
-        if(step == 1 && [type, full_name.current.value, email.current.value].includes('')) {
+        if(step == 1 && ([type, full_name.current.value, email.current.value].includes('') || target_audience.length == 0 || expected_deilvertime.from == null)) {
             showMessage(true, 'Debes completar todos los campos.', 5000)
             return;
         }
-        if(step == 2 && [business_type, company_vision, target_audience, service_or_product].includes('')) {
+        if(step == 2 && [business_type, company_vision, service_or_product].includes('')) {
             showMessage(true, 'Debes completar todos los campos.', 5000)
             return;
         }
-        if(step == 3 && [ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites, description.current.value].includes('')) {
+        if(step == 3 && [ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites].includes('')) {
             showMessage(true, 'Debes completar todos los campos.', 5000)
             return;
         }
@@ -462,6 +462,53 @@ function FormComponent() {
                         </div>
                     </div>
                 </Section>
+                <Section 
+                    title={"¿Cuál es el plazo de entrega previsto?"} 
+                    step={'03'}
+                >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
+                        <div onClick={() => setExpectedDeliverTime({ from: 0, to: 1 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 0 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 0 && 'bg-black text-white'}`}`}>
+                            <span>{"< 1 mes"}</span>
+                        </div>
+                        <div onClick={() => setExpectedDeliverTime({ from: 1, to: 3 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 1 && 'bg-black text-white'}`}`}>
+                            <span>1 - 3 meses</span>
+                        </div>
+                        <div onClick={() => setExpectedDeliverTime({ from: 3, to: 6 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 3 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 3 && 'bg-black text-white'}`}`}>
+                            <span>3 - 6 meses</span>
+                        </div>
+                        <div onClick={() => setExpectedDeliverTime({ from: 6, to: 0 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 6 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 6 && 'bg-black text-white'}`}`}>
+                            <span>{"> 6 meses"}</span>
+                        </div>
+                    </div>
+                    <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
+                        <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Otro (Especificar)'} onChange={(e) => setExpectedDeliverTime(e.target.value)} />
+                    </div>
+                </Section>
+                <Section 
+                    title={"¿Cuál es el público objetivo de la empresa?"} 
+                    step={'04'}
+                >
+                    <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
+                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "children")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("children") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("children") > -1 && 'bg-black text-white'}`}`}>
+                            <span>Niños</span>
+                        </div>
+                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "teenagers")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("teenagers") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("teenagers") > -1 && 'bg-black text-white'}`}`}>
+                            <span>Adolescentes</span>
+                        </div>
+                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "young-adults")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("young-adults") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("young-adults") > -1 && 'bg-black text-white'}`}`}>
+                            <span>Adultos jovenes</span>
+                        </div>
+                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "adults")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("adults") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("adults") > -1 && 'bg-black text-white'}`}`}>
+                            <span>Adultos</span>
+                        </div>
+                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "seniors")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("seniors") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("seniors") > -1 && 'bg-black text-white'}`}`}>
+                            <span>Mayores</span>
+                        </div>
+                    </div>
+                    <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
+                        <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Otro (Especificar)'} onChange={(e) => setTargetAudience([e.target.value])} />
+                    </div>
+                </Section>
                 {/* <Section 
                     title={"¿Cuál es tu presupuesto estimado?"} 
                     subtitle={"Presupuesto estimado en USD"}  
@@ -490,7 +537,7 @@ function FormComponent() {
             <section id="step2" className={`flex flex-col gap-6 ${step == 2 ? 'block' : 'hidden'}`}>
                 <Section 
                     title={"¿Qué tipo de negocio tiene el cliente?"} 
-                    step={'03'}
+                    step={'05'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
                         <div onClick={() => setBusinessType('retail')} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${business_type === 'retail' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${business_type === 'retail' && 'bg-black text-white'}`}`}>
@@ -509,7 +556,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Cuál es la visión y misión de la empresa?"} 
-                    step={'04'}
+                    step={'06'}
                 >
                     <div className="grid grid-cols-1 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(company_vision, setCompanyVision, "increase-profitability")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${company_vision.indexOf("increase-profitability") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${company_vision.indexOf("increase-profitability") > -1 && 'bg-black text-white'}`}`}>
@@ -527,33 +574,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"¿Cuál es el público objetivo de la empresa?"} 
-                    step={'05'}
-                >
-                    <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
-                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "children")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("children") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("children") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Niños</span>
-                        </div>
-                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "teenagers")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("teenagers") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("teenagers") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Adolescentes</span>
-                        </div>
-                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "young-adults")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("young-adults") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("young-adults") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Adultos jovenes</span>
-                        </div>
-                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "adults")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("adults") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("adults") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Adultos</span>
-                        </div>
-                        <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "seniors")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("seniors") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("seniors") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Mayores</span>
-                        </div>
-                    </div>
-                    <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
-                        <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Otro (Especificar)'} onChange={(e) => setTargetAudience([e.target.value])} />
-                    </div>
-                </Section>
-                <Section 
                     title={"¿Qué ofrece la empresa?"} 
-                    step={'06'}
+                    step={'07'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setServiceOrProduct('products')} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${service_or_product === 'products' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${service_or_product === 'products' && 'bg-black text-white'}`}`}>
@@ -565,28 +587,6 @@ function FormComponent() {
                     </div>
                     <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
                         <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Otro (Especificar)'} onChange={(e) => setServiceOrProduct(e.target.value)} />
-                    </div>
-                </Section>
-                <Section 
-                    title={"¿Cuál es el plazo de entrega previsto?"} 
-                    step={'07'}
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
-                        <div onClick={() => setExpectedDeliverTime({ from: 0, to: 1 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 0 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 0 && 'bg-black text-white'}`}`}>
-                            <span>{"< 1 mes"}</span>
-                        </div>
-                        <div onClick={() => setExpectedDeliverTime({ from: 1, to: 3 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 1 && 'bg-black text-white'}`}`}>
-                            <span>1 - 3 meses</span>
-                        </div>
-                        <div onClick={() => setExpectedDeliverTime({ from: 3, to: 6 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 3 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 3 && 'bg-black text-white'}`}`}>
-                            <span>3 - 6 meses</span>
-                        </div>
-                        <div onClick={() => setExpectedDeliverTime({ from: 6, to: 0 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 6 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 6 && 'bg-black text-white'}`}`}>
-                            <span>{"> 6 meses"}</span>
-                        </div>
-                    </div>
-                    <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
-                        <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Otro (Especificar)'} onChange={(e) => setExpectedDeliverTime(e.target.value)} />
                     </div>
                 </Section>
             </section>
