@@ -40,12 +40,18 @@ export default function LoginForm() {
         try {
             const { data } = await axios.post('/api/login', { email: emailValue, password: passwordValue, language: 'de' });
             // Set authentication on app state
-            setAuth({ _id: data._id, name: data.name, email: data.email })
+            setAuth({ 
+                _id: data._id, 
+                name: data.name, 
+                surname: data.surname, 
+                email: data.email, 
+                position: data.position,
+                permissions: data.permissions
+            })
             // Set authentication token on local storage
             localStorage.setItem('auth-token', data.token);
             // Throw message on success
             setMessage({ error: false, text: 'Sie haben sich erfolgreich angemeldet' });
-            window.location.href = '/admin';
             setTimeout(() => {
                 setMessage({ error: false, text: '' });
             }, 3000);
