@@ -11,6 +11,10 @@ const clientCommentSchema = mongoose.Schema({
     },
     message: {
         type: String
+    },
+    seen: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true

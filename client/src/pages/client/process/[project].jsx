@@ -12,7 +12,7 @@ import moment from "moment";
 
 export default function ClientProjectProcess() {
     
-    const { auth } = useContextProvider();
+    const { auth, clientProcess, setClientProcess } = useContextProvider();
 
     const [ loading, setLoading ] = useState(true);
     // Entries/Process state
@@ -20,10 +20,14 @@ export default function ClientProjectProcess() {
     const [ hoursCount, setHoursCount ] = useState(0);
 
     useEffect(() => {
-        if(Object.keys(auth).length != 0) {
+        if(clientProcess.length !== 0) {
+            setEntries(clientProcess);
+            setLoading(false);
+        }
+        if(Object.keys(auth).length != 0 && clientProcess.length === 0) {
             getProcess();
         }
-    }, [auth]);
+    }, [auth, clientProcess]);
 
     useEffect(() => {
         calculateHours(entries);
@@ -50,6 +54,7 @@ export default function ClientProjectProcess() {
                 // to get a value that is either negative, positive, or zero.
                 return new Date(b.createdAt) - new Date(a.createdAt);
             });
+            setClientProcess(sortedByDate)
             setEntries(sortedByDate);
         } catch (err) {
             const error = new Error(err.response.data.msg);
@@ -70,7 +75,7 @@ export default function ClientProjectProcess() {
     }
 
     return (
-        <Layout title={"Proceso"}>
+        <Layout title={loading ? 'Aufladen...' : 'Verfahren'}>
             {loading && (
                 <div className="grid place-content-center h-full w-full">
                     <LoadingSpinner />
@@ -78,13 +83,13 @@ export default function ClientProjectProcess() {
             )}
             {!loading && entries.length != 0 ? (
                 <div className="flex flex-col divide-y px-3">
-                    <div className="pb-3 text-lg">Total de horas: {hoursCount}</div>
+                    <div className="pb-3 text-lg">Gesamtstunden: {hoursCount}</div>
                     {entries.map((entry, index) => (
                         <EntryRow key={index} entry={entry} entries={entries} setEntries={setEntries} />
                     ))}
                 </div>
             ) : (
-                <div className="grid place-content-center h-full text-lg">Aún no hay contenido que mostrar</div>
+                <div className="grid place-content-center h-full text-lg">Es sind noch keine Inhalte zum Anzeigen vorhanden</div>
             )}
         </Layout>
     )
@@ -169,27 +174,27 @@ function EntryRow({ entry, entries, setEntries }) {
         <div className={`${darkMode ? 'border-neutral-800' : 'border-neutral-400'} rounded-sm py-4 relative`}>
             <div className="flex flex-col gap-2">
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Titulo</div>
+                    <div className="uppercase font-semibold">der Überschrift</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.title}</div>
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Descripción</div>
+                    <div className="uppercase font-semibold">Beschreibung</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.description}</div>
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Imágenes</div>
+                    <div className="uppercase font-semibold">Bilder</div>
                     {entry.images.length != 0 ? (
-                        <div className="text-primary hover:text-primary-2 transition-colors cursor-pointer w-fit">Mostrar</div>
+                        <div className="text-primary hover:text-primary-2 transition-colors cursor-pointer w-fit">Zeigen</div>
                     ) : 
-                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>No hay imágenes</div>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Keine Bilder</div>
                     }
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Horas de trabajo</div>
+                    <div className="uppercase font-semibold">Arbeitsstunden</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.work_hours}</div>
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Fecha</div>
+                    <div className="uppercase font-semibold">Datum</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{moment(entry.createdAt).format('LL')}</div>
                 </div>
             </div>

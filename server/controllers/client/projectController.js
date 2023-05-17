@@ -3,10 +3,12 @@ import mongoose from "mongoose";
 import Project from "../../models/Project.js";
 import ClientComments from '../../models/Client/ClientComment.js'
 import User from "../../models/User.js";
+import permissions from "../../config/permissions.js";
 
 const ObjectId = mongoose.Types.ObjectId;
 async function getProject(req, res) {
     const { id = null } = req.params;
+    const { user } = req;
 
     if(!id || !ObjectId.isValid(id)) {
         return res.status(400).json({ msg: 'El id del proyecto es incorrecto' });
@@ -19,7 +21,7 @@ async function getProject(req, res) {
 
     const projectComments = await ClientComments.find({ project: project._id }).populate({ path: 'user', select: '_id name surname'});
 
-    if(project.client && project.client._id.toString() !== req.user._id.toString()) {
+    if(user.permissions === permissions.client && user._id.toString() !== project?.client?._id?.toString()) {
         return res.status(403).json({ msg: 'No tienes acceso a este proyecto' });
     }
 

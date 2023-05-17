@@ -15,7 +15,7 @@ router.use('/entry', entryRoutes);
 router.use('/comment', commentRoutes);
 
 router.route('/:id')
-    .get(checkClient, getProject)
+    .get(getProject)
     .post(assignClient)
 
 export default router

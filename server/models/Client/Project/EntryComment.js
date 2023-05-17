@@ -9,7 +9,11 @@ const entryCommentSchema = mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'ProjectEntry'
     },
-    message: String
+    message: String,
+    seen: {
+        type: Boolean,
+        default: false
+    }
 }, {
     timestamps: true
 })

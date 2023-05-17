@@ -69,6 +69,7 @@ const AppContextProvider = ({children}) => {
 
     // Client project state
     const [ clientProject, setClientProject ] = useState({});
+    const [ clientProcess, setClientProcess ] = useState([]);
 
     return (
         <AppContext.Provider value={{
@@ -80,7 +81,9 @@ const AppContextProvider = ({children}) => {
             handleDarkMode,
             darkMode,
             clientProject,
-            setClientProject
+            setClientProject,
+            clientProcess,
+            setClientProcess
         }}>
             {children}
         </AppContext.Provider>

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Project from '../../models/Project.js'
 import ClientComment from '../../models/Client/ClientComment.js'
+import permissions from "../../config/permissions.js";
 
 const ObjectId = mongoose.Types.ObjectId;
 async function create(req, res) {
@@ -67,6 +68,29 @@ async function edit(req, res) {
     }
 }
 
+async function seen(req, res) {
+    const { id } = req.params;
+
+    if(!id || !ObjectId.isValid(id)) {
+        const error = new Error("Comment id isn't valid")
+        return res.status(400).json({ msg: error.message })
+    }
+
+    const comment = await ClientComment.findById(id);
+    if(!comment) {
+        return res.status(400).json({ msg: "This comment doesn't exists" })
+    }
+
+    try {
+        comment.seen = true;
+        comment.save();
+        return res.status(200).json({ msg: "Comment marked as seen" });
+    } catch (err) {
+        const error = new Error(err)
+        return res.status(400).json({ msg: error.message })
+    }
+}
+
 async function remove(req, res) {
     const commentId = req.params.id;
 
@@ -97,5 +121,6 @@ async function remove(req, res) {
 export {
     create,
     edit,
+    seen,
     remove
 }
