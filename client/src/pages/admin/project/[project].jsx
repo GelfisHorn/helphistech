@@ -244,6 +244,60 @@ export default function ProjectDynamic() {
     const [ showCompanyInfo, setShowCompanyInfo ] = useState(false);
     const [ showProjectInfo, setShowProjectInfo ] = useState(false);
 
+    // Create entry modal state
+    const [ showEntryModal, setShowEntryModal ] = useState(false);
+    // Switch "showEntryModal" state
+    const handleShowEntryModal = () => setShowEntryModal(!showEntryModal);
+
+    // Entry modal fields state
+    const entryTitle = useRef('');
+    const entryDescription = useRef('');
+    const entryImages = '';
+    // const entryImages = useRef('');
+    const entryWorkHours = useRef('');
+    // Create entry
+    async function handleCreateEntry(e) {
+        e.preventDefault();
+
+        const title = entryTitle.current.value;
+        const description = entryDescription.current.value;
+        const work_hours = entryWorkHours.current.value;
+
+        if([title, description, work_hours].includes('')) {
+            return;
+        }
+
+        // Get authentication token from localStorage
+        const token = localStorage.getItem('auth-token');
+
+        const config = {
+            headers: {
+                "Content-Type": "application-json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        handleShowEntryModal();
+
+        async function resetForm() {
+            Promise.resolve(() => {
+                entryTitle.current.value = '';
+                entryDescription.current.value = '';
+                entryWorkHours.current.value = '';
+            });
+        }
+
+        const entry = { title, description, images: entryImages, work_hours };
+        try {
+            const { data } = await axios.post('/api/admin/projects/project/entry/create', { projectId, entry, config });
+            await resetForm();
+            router.push(`/client/process/entry/${data._id}`);
+        } catch (err) {
+            const error = new Error(err.response.data.msg);
+            console.error(error.message);
+        }
+    } 
+
     return (
         <Layout title={'Proyecto'}>
             {loading && (
@@ -440,7 +494,48 @@ export default function ProjectDynamic() {
                             )}
                         </div>
                     </div>
-                    <div className={`flex flex-col gap-5 pt-16 pb-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
+                    {auth.permissions === 'developer' && (
+                        <>
+                            <div className={`flex flex-col gap-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pt-5 pb-2`}>
+                                <div className="uppercase font-medium text-lg">Desarrollador</div>
+                                <div className="flex items-center justify-between ">
+                                    <button className="text-primary hover:text-primary-2 transition-colors hover:underline" onClick={() => router.push(`/client/process/${projectId}`)}>Ver entradas</button>
+                                    <button className="text-primary hover:text-primary-2 transition-colors hover:underline" onClick={handleShowEntryModal}>Crear entrada</button>
+                                </div>
+                            </div>
+                            <Modal showModal={showEntryModal}>
+                                <div className="flex flex-col gap-10">
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex flex-col gap-1">
+                                            <label htmlFor="title">Titulo</label>
+                                            <input id="title" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-1 px-2`} type="text" ref={entryTitle} placeholder="Escribe un titulo" />
+                                        </div>
+                                        <div className="flex flex-col gap-1">
+                                            <label>Descripción</label>
+                                            <textarea rows={4} className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-1 px-2 resize-none`} type="text" ref={entryDescription} placeholder="Escribe un descripción" />
+                                        </div>
+                                        <div className="flex flex-col gap-1">
+                                            <label htmlFor="title">Imágenes {"(en desarrollo)"}</label>
+                                            <div className="grid grid-cols-3 gap-2">
+                                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
+                                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
+                                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col gap-1">
+                                            <label htmlFor="hours">Horas</label>
+                                            <input id="hours" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-1 px-2`} type="text" ref={entryWorkHours} placeholder="Horas de trabajo" />
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center justify-between gap-2">
+                                        <button className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-sm" onClick={handleShowEntryModal}>Cancelar</button>
+                                        <button className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm" onClick={handleCreateEntry}>Crear</button>
+                                    </div>
+                                </div>
+                            </Modal>
+                        </>
+                    )}
+                    <div className={`flex flex-col gap-5 py-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
                         <div className={`flex flex-col gap-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pb-4`}>
                             <div className="text-xl">Comentarios</div>
                             <form className="flex flex-col gap-2" onSubmit={handleSendComment}>
@@ -654,8 +749,8 @@ function Modal({ showModal, children }) {
     return (
         show && (
             <>
-                <div className="fixed bg-black opacity-75 top-0 left-0 w-screen h-screen"></div>
-                <div className={`${darkMode ? 'bg-neutral-900 text-dark-text' : 'bg-white text-black'} ${closeAnim ? 'modal-close' : 'modal-open'} fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col gap-7 shadow-md px-5 py-4 rounded-md`}>
+                <div className="fixed bg-black opacity-75 top-0 left-0 w-screen h-screen z-10"></div>
+                <div className={`${darkMode ? 'bg-neutral-900 text-dark-text' : 'bg-white text-black'} ${closeAnim ? 'modal-close' : 'modal-open'} fixed top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col gap-7 shadow-md px-5 py-4 rounded-md z-10 w-[95%] xs:w-[22rem] md:w-[25rem]`}>
                     {children}
                 </div>
             </>
