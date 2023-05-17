@@ -119,7 +119,7 @@ function Project({ project }) {
         router.push(`/admin/project/${id}`)
     }
 
-    const { _id, website_type, budget, description, state, createdAt } = project;
+    const { _id, website_type, description, state, createdAt } = project;
 
     return (
         <div className={`gap-5 px-5 py-4 shadow-md rounded-sm ${darkMode ? 'bg-[#101010]' : 'bg-white'}`}>
@@ -133,7 +133,7 @@ function Project({ project }) {
                     <div className="font-bold uppercase">Descripción</div>
                     <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} text-ellipsis-5`}>{description}</div>    
                 </div>
-                <div className="flex flex-col">
+                {/* <div className="flex flex-col">
                     <div className="font-bold uppercase">Presupuesto</div>
                     <div className="flex items-center gap-1">
                         <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>Entre</div>
@@ -141,7 +141,7 @@ function Project({ project }) {
                         <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>y</div>
                         <div className="font-semibold">{currencyFormatter(budget.to)}</div>    
                     </div>    
-                </div>
+                </div> */}
                 <div className="font-semibold text-sm">{moment(createdAt).format('LLL')}</div>
                 <div className="flex flex-col sm:flex-row gap-5 sm:gap-0 sm:justify-between">
                     <div className="flex items-center gap-4">

@@ -79,7 +79,7 @@ export default function ProjectDynamic() {
     const [ loading, setLoading ] = useState(true);
     const [ project, setProject ] = useState({});
     const [ projectComments, setProjectComments ] = useState([]);
-    const { project_info, company_info, website_type, contact_information, budget, description, state } = project;
+    const { project_info, company_info, website_type, contact_information, description, state } = project;
 
     const [ projectState, setProjectState ] = useState(state);
 
@@ -319,7 +319,7 @@ export default function ProjectDynamic() {
                             <div className="text-lg font-semibold uppercase">Descripción</div>
                             <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>{description ? description : "Sin descripción"}</div>    
                         </div>
-                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col py-3 border-t`}>
+                        {/* <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col py-3 border-t`}>
                             <div className="text-lg font-semibold uppercase">Presupuesto</div>
                             <div className="flex flex-col xs:flex-row xs:items-center gap-1">
                                 <div className="flex items-center gap-1">
@@ -331,7 +331,7 @@ export default function ProjectDynamic() {
                                     <div className="font-semibold">{currencyFormatter(budget.to)}</div>     
                                 </div>       
                             </div>    
-                        </div>
+                        </div> */}
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
                             <div className="text-lg font-semibold uppercase">Información de contacto</div>
                             <div className="flex flex-col gap-2">
