@@ -12,6 +12,9 @@ const projectSchema = mongoose.Schema({
         enum: ['website', 'ecommerce', 'app']
     },
     contact_information: {
+        company_name: {
+            type: String
+        },
         full_name: {
             type: String
         },
