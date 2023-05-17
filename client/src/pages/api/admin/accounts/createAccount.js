@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-	const { name, email, password, config } = req.body;
+	const { name, surname, position, permissions, email, password, config } = req.body;
 
 	try {
         const { data } = await axios.request({
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
             headers: {
                 'Authorization': config.headers.Authorization
             },
-            data: { name, email, password }
+            data: { name, surname, position, permissions, email, password }
         }) 
 		return res.status(200).json(data);
 	} catch (error) {
