@@ -9,6 +9,8 @@ import Layout from "@/components/client/Layout";
 import LoadingSpinner from "@/components/LoadingSpinner";
 // Date and Hour Formatter
 import moment from "moment";
+// Hasher for cloudinary signature
+import sha1 from 'sha1';
 
 export default function ClientProjectProcess() {
     
@@ -156,6 +158,7 @@ function EntryRow({ entry, entries, setEntries }) {
         }
 
         try {
+            await deleteImages();
             await axios.post('/api/client/project/entry/delete', { entryId: entry._id, config });
             const newEntries = entries.filter(item => item._id !== entry._id);
             const sortedByDate = newEntries.sort(function(a,b){
@@ -167,6 +170,34 @@ function EntryRow({ entry, entries, setEntries }) {
         } catch (err) {
             const error = new Error(err.response.data.msg);
             console.error(error.message);
+        }
+
+        async function deleteImages() {
+            for(const image of images) {
+                const public_id = `entries/${image.split('/')[8].split('.')[0]}`;
+                const timestamp = Math.floor(Date.now() / 1000);
+                const api_key = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;  
+                const api_secret = process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET;
+                const signature = sha1(`public_id=${public_id}&timestamp=${timestamp}` + api_secret)
+                let formData = new FormData();
+                formData.append('public_id', public_id);
+                formData.append('signature', signature);
+                formData.append('api_key', api_key);
+                formData.append('timestamp', timestamp);
+                try {
+                    await axios.request({
+                        url: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/destroy`,
+                        maxBodyLength: Infinity,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        data: formData
+                    })
+                } catch (error) {
+                    console.log(error.response.data)
+                }
+            }
         }
     }
 

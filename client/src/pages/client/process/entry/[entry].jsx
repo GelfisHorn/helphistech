@@ -9,6 +9,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Date and Hour Formatter
 import moment from 'moment';
+import Image from 'next/image';
 
 export default function ClientProjectEntry() {
 
@@ -86,6 +87,14 @@ export default function ClientProjectEntry() {
         }
     }
 
+    // Show fullScreen image state and handler
+    const [ showImage, setShowImage ] = useState(false);
+    const [ imageToShow, setImageToShow ] = useState("");
+    function handleShowImage(url) {
+        setShowImage(!showImage);
+        setImageToShow(url || "");
+    }
+
     return (
         <Layout title={loading ? 'Aufladen...' : !loading && Object.keys(entry).length != 0 ? entry.title : 'Dieser Eintrag existiert nicht'}>
             {loading && (
@@ -109,14 +118,21 @@ export default function ClientProjectEntry() {
                         <div className="uppercase font-medium text-lg">Bilder</div>
                         {entry.images.length != 0 ? (
                             <div className='grid grid-cols-4 gap-2'>
-                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
+                                {entry.images.map((image, index) => (
+                                    <Image className='rounded-md cursor-pointer' key={index} src={image} width={1920} height={1080} alt={"Entry image"} loading='eager' onClick={() => handleShowImage(image)} />
+                                ))}
                             </div>
                         ) : 
                             <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Keine Bilder</div>
                         }
+                        { showImage && (
+                            <div onClick={handleShowImage}>
+                                <div className="fixed bg-black opacity-75 top-0 left-0 w-screen h-screen"></div>
+                                <div className={`fixed left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 p-10 overflow-y-scroll h-screen hide-scroll`} style={{width: 'calc(100vw - 5rem)'}}>
+                                    <Image className={`rounded-md border-2 ${darkMode ? 'border-neutral-700' : 'border-neutral-400'}`} src={imageToShow} width={1920} height={1080} alt={"Entry image"} loading='eager' />
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <div className="flex flex-col gap-1">
                         <div className="uppercase font-medium text-lg">Arbeitsstunden</div>

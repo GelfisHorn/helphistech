@@ -16,7 +16,7 @@ export default function ClientSidebar() {
         if(Object.keys(auth).length !== 0 && Object.keys(clientProject).length === 0) {
             getProject();
         }
-    }, [])
+    }, [auth, clientProject])
 
     async function getProject() {
         // Get authentication token from localStorage
@@ -33,7 +33,7 @@ export default function ClientSidebar() {
         }
 
         try {
-            const { data } = await axios.post(`/api/client/getProject`, {config, clientId: auth._id});
+            const { data } = await axios.post(`/api/client/getProject`, { config, clientId: auth._id });
             setClientProject(data);
         } catch (err) {
             const error = new Error(err);
@@ -62,6 +62,26 @@ export default function ClientSidebar() {
                         <span className="text-sm font-medium">{`${auth.name} ${auth.surname}`}</span>
                     </div>
                 </div>
+                <SidebarSection title={"Admin"} permissions={["superadmin", "admin"]}>
+                    <SidebarItem 
+                        permissions={["superadmin", "admin"]}
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                        }
+                        href={`/admin`}
+                    >Inicio</SidebarItem>
+                </SidebarSection>
+                <SidebarSection title={"Proyectos"} permissions={["developer"]}>
+                    <SidebarItem 
+                        permissions={["developer"]}
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                        }
+                        href={`/admin/projects`}
+                    >Recibidos</SidebarItem>
+                </SidebarSection>
                 <SidebarSection title={"Schalttafel"} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
