@@ -48,8 +48,8 @@ export default function ClientSidebar() {
 
     return (
         <div className={`flex flex-col justify-between gap-10 w-[3.5rem] lg:w-[17rem] border-r ${darkMode ? 'border-neutral-900' : 'border-neutral-100'}`} style={{height: 'calc(100vh - 3.5rem)'}}>
-            <div className="flex flex-col gap-3 lg:px-5 pt-5">
-                <div className={`flex justify-center lg:justify-start items-center gap-3 border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-300'} pb-4`}>
+            <div className="flex flex-col gap-3 pt-5">
+                <div className={`flex justify-center lg:justify-start items-center gap-3 border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-300'} pb-4 px-5`}>
                     <div>
                         <div className={`grid place-content-center h-9 w-9 lg:h-10 lg:w-10 rounded-full ${darkMode ? 'bg-neutral-700' : 'bg-neutral-300'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={`${darkMode ? '#BFBFBF' : '#fff'}`} className="w-6 h-6">
@@ -62,7 +62,7 @@ export default function ClientSidebar() {
                         <span className="text-sm font-medium">{`${auth.name} ${auth.surname}`}</span>
                     </div>
                 </div>
-                <SidebarSection title={"Panel de control"} permissions={["superadmin", "admin", "client"]}>
+                <SidebarSection title={"Schalttafel"} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
                         icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -70,9 +70,9 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={`/client`}
-                    >Inicio</SidebarItem>
+                    >Startseite</SidebarItem>
                 </SidebarSection>
-                <SidebarSection title={"Proyecto"} permissions={["superadmin", "admin", "client"]}>
+                <SidebarSection title={"Projekt"} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
                         icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -80,7 +80,7 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={`${!clientProject?.project?.client?._id ? '/client' : `/client/project/${clientProject?.project?.client?._id}`}`}
-                    >Mi proyecto</SidebarItem>
+                    >Mein Projekt</SidebarItem>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
                         icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -88,7 +88,7 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={`${!clientProject?.project?.client?._id ? '/client' : `/client/process/${clientProject?.project?.client?._id}`}`}
-                    >Proceso</SidebarItem>
+                    >Verfahren</SidebarItem>
                 </SidebarSection>
             </div>
             <div className={`border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} lg:px-5 pb-5 pt-5`}>
@@ -100,7 +100,7 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={"/myaccount"}
-                    >Mi cuenta</SidebarItem>
+                    >Mein Konto</SidebarItem>
                 </div>
             </div>
 
@@ -113,7 +113,7 @@ function SidebarSection({ children, title, permissions }) {
     const { darkMode, auth } = useContextProvider();
 
     return (
-        <div className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex flex-col gap-2`}>
+        <div className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex flex-col gap-2 px-5`}>
             <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} hidden lg:block uppercase font-semibold text-sm`}>{title}</div>
             <div className="flex flex-col gap-1">{children}</div>
         </div>
@@ -126,7 +126,7 @@ function SidebarItem({ children, icon, href, permissions }) {
 
     return (
         <Link href={href} className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex justify-center`}>
-            <button className={`${darkMode ? 'text-dark-text hover:bg-dark-main' : 'text-black hover:bg-light-main'} flex items-center justify-center lg:justify-start gap-2 lg:rounded-md py-2 lg:px-4 w-full hover:text-white uppercase font-semibold text-left transition-colors select-none`}>
+            <button className={`${darkMode ? 'text-dark-text' : 'text-black'} hover:bg-primary flex items-center justify-center lg:justify-start gap-2 lg:rounded-md py-2 lg:px-4 w-full hover:text-white uppercase font-semibold text-left transition-colors select-none`}>
                 <div className="text-neutral-400">{icon}</div>
                 <div className="hidden lg:block">{children}</div>
             </button>
