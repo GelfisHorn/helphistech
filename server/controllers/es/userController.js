@@ -143,10 +143,13 @@ const authenticate = async (req, res) => {
     }
 
     if(await user.checkPassword(password)) {
-        res.json({
+        res.status(200).json({
             _id: user._id,
             name: user.name,
+            surname: user.surname,
+            position: user.position,
             email: user.email,
+            permissions: user.permissions,
             token: createJWT(user._id)
         })
     } else {
