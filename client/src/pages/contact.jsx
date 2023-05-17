@@ -261,6 +261,7 @@ function FormComponent() {
     // Estimated budget
     const [ budget, setBudget ] = useState({});
     // Tell us more
+    const company_name = useRef('');
     const full_name = useRef('');
     const email = useRef('');
     const description = useRef('');
@@ -279,8 +280,6 @@ function FormComponent() {
     
     // 3RD FORM -  What functionalities should the web have?
     const [ functionalities, setFunctionalities ] = useState([]);
-    // Should the web be responsive or have a specific design?
-    const [ web_design_type, setWebDesignType ] = useState([]);
     // Are e-commerce functionalities needed on the web?
     const [ ecommerce_funtionabilites, setEcommerceFunc ] = useState(false);
     // Does the client have any content (text, images, videos) to include on the web?
@@ -308,6 +307,7 @@ function FormComponent() {
     function resetForm() {
         setType('');
         setBudget({})
+        company_name.current.value = '';
         full_name.current.value = '';
         email.current.value = '';
         description.current.value = '';
@@ -319,7 +319,6 @@ function FormComponent() {
         setExpectedDeliverTime({ from: null, to: null });
         // 
         setFunctionalities([]);
-        setWebDesignType([]);
         setEcommerceFunc(false);
         setContentToInclude(false);
         setPreferredTechnologies([]);
@@ -343,7 +342,7 @@ function FormComponent() {
         e.preventDefault();
 
         // If fields are void then return
-        if([type, full_name.current.value, email.current.value, business_type, company_vision, target_audience, service_or_product, web_design_type, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites].includes('')) {
+        if([type, company_name.current.value, full_name.current.value, email.current.value, business_type, company_vision, target_audience, service_or_product, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites].includes('')) {
             showMessage(true, 'Sie müssen alle Felder ausfüllen.', 5000)
             return;
         }
@@ -362,6 +361,7 @@ function FormComponent() {
         const project = { 
             website_type: type, 
             contact_information: { 
+                company_name: company_name.current.value, 
                 full_name: full_name.current.value, 
                 email: email.current.value
             },
@@ -375,7 +375,6 @@ function FormComponent() {
             },
             project_info: {
                 functionalities,
-                web_design_type,
                 ecommerce_funtionabilites,
                 content_to_include,
                 preferred_technologies,
@@ -384,7 +383,7 @@ function FormComponent() {
                 competitor_websites,
                 competitor_websites_examples
             },
-            budget
+            // budget
         }
         // Send project to server
         try {
@@ -400,7 +399,7 @@ function FormComponent() {
     const [ step, setStep ] = useState(1);
 
     function handleNextStep() {
-        if(step == 1 && [type, full_name.current.value, email.current.value, description.current.value].includes('')) {
+        if(step == 1 && [type, full_name.current.value, email.current.value].includes('')) {
             showMessage(true, 'Sie müssen alle Felder ausfüllen.', 5000)
             return;
         }
@@ -408,7 +407,7 @@ function FormComponent() {
             showMessage(true, 'Sie müssen alle Felder ausfüllen.', 5000)
             return;
         }
-        if(step == 3 && [web_design_type, ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites].includes('')) {
+        if(step == 3 && [ecommerce_funtionabilites, content_to_include, preferred_technologies, responsible_for_managing, marketing_strategy, competitor_websites, description.current.value].includes('')) {
             showMessage(true, 'Sie müssen alle Felder ausfüllen.', 5000)
             return;
         }
@@ -433,9 +432,26 @@ function FormComponent() {
             )}
             <section id="step1" className={`flex flex-col gap-6 ${step == 1 ? 'block' : 'hidden'}`}>
                 <Section 
-                    title={"Welche Art von Projekt?"} 
+                    title={"Kontaktinformationen"}  
                     classes={``}
                     step={'01'}
+                >
+                    <div className="flex flex-col gap-2">
+                        <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
+                            <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Name des Unternehmens oder Projekts'} ref={company_name} />
+                        </div>
+                        <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
+                            <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Vollständiger Name'} ref={full_name} />
+                        </div>
+                        <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
+                            <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'email'} placeholder={'E-Mail'} ref={email} />
+                        </div>
+                    </div>
+                </Section>
+                <Section 
+                    title={"Welche Art von Projekt?"} 
+                    classes={``}
+                    step={'02'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2">
                         <div onClick={() => setType('website')} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${type === 'website' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${type === 'website' && 'bg-black text-white'}`}`}>
@@ -449,28 +465,7 @@ function FormComponent() {
                         </div>
                     </div>
                 </Section>
-                <Section 
-                    title={"Kontaktinformationen"}  
-                    classes={``}
-                    step={'02'}
-                >
-                    <div className="flex flex-col gap-2">
-                        <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
-                            <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'text'} placeholder={'Vollständiger Name'} ref={full_name} />
-                        </div>
-                        <div className={`flex items-center border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}>
-                            <input className={`bg-transparent outline-none py-2 w-full ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'}`} type={'email'} placeholder={'E-Mail'} ref={email} />
-                        </div>
-                    </div>
-                </Section>
-                <Section 
-                    title={"Erzählen Sie uns mehr über Ihr Projekt"} 
-                    classes={``}
-                    step={'03'}
-                >
-                    <textarea rows="7" placeholder="Beschreibung" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
-                </Section>
-                <Section 
+                {/* <Section 
                     title={"Wie hoch ist Ihr geschätztes Budget für das Projekt?"} 
                     subtitle={"Budget in USD angegeben"}  
                     classes={``}
@@ -493,12 +488,12 @@ function FormComponent() {
                             <span>{'> 30K'}</span>
                         </div>
                     </div>
-                </Section>
+                </Section> */}
             </section>
             <section id="step2" className={`flex flex-col gap-6 ${step == 2 ? 'block' : 'hidden'}`}>
                 <Section 
                     title={"Welche Art von Geschäft hat der Kunde?"} 
-                    step={'05'}
+                    step={'03'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
                         <div onClick={() => setBusinessType('retail')} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${business_type === 'retail' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${business_type === 'retail' && 'bg-black text-white'}`}`}>
@@ -517,7 +512,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Was ist die Vision und Mission des Unternehmens?"} 
-                    step={'06'}
+                    step={'04'}
                 >
                     <div className="grid grid-cols-1 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(company_vision, setCompanyVision, "increase-profitability")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${company_vision.indexOf("increase-profitability") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${company_vision.indexOf("increase-profitability") > -1 && 'bg-black text-white'}`}`}>
@@ -536,7 +531,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Wer ist die Zielgruppe des Unternehmens?"} 
-                    step={'07'}
+                    step={'05'}
                 >
                     <div className="grid grid-cols-2 sm:grid-cols-3 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(target_audience, setTargetAudience, "children")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${target_audience.indexOf("children") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${target_audience.indexOf("children") > -1 && 'bg-black text-white'}`}`}>
@@ -560,8 +555,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"Welche Dienstleistungen oder Produkte bietet das Unternehmen an?"} 
-                    step={'08'}
+                    title={"Was bietet das Unternehmen an?"} 
+                    step={'06'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setServiceOrProduct('products')} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${service_or_product === 'products' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${service_or_product === 'products' && 'bg-black text-white'}`}`}>
@@ -577,7 +572,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Was ist die voraussichtliche Lieferzeit?"} 
-                    step={'09'}
+                    step={'07'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setExpectedDeliverTime({ from: 0, to: 1 })} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${expected_deilvertime.from == 0 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${expected_deilvertime.from == 0 && 'bg-black text-white'}`}`}>
@@ -601,7 +596,7 @@ function FormComponent() {
             <section id="step3" className={`flex flex-col gap-6 ${step == 3 || step == 4 ? 'block' : 'hidden'}`}>
                 <Section 
                     title={"Welche Funktionalitäten soll das Web haben?"} 
-                    step={'10'}
+                    step={'08'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(functionalities, setFunctionalities, "contact-form")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${functionalities.indexOf("contact-form") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${functionalities.indexOf("contact-form") > -1 && 'bg-black text-white'}`}`}>
@@ -622,21 +617,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"Soll das Web responsive sein oder ein bestimmtes Design haben?"} 
-                    step={'11'}
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
-                        <div onClick={() => setMultiOptionState(web_design_type, setWebDesignType, "responsive")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${web_design_type.indexOf("responsive") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${web_design_type.indexOf("responsive") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Responsive</span>
-                        </div>
-                        <div onClick={() => setMultiOptionState(web_design_type, setWebDesignType, "specific-design")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${web_design_type.indexOf("specific-design") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${web_design_type.indexOf("specific-design") > -1 && 'bg-black text-white'}`}`}>
-                            <span>Spezifisches Design</span>
-                        </div>
-                    </div>
-                </Section>
-                <Section 
                     title={"Werden E-Commerce-Funktionalitäten im Web benötigt?"} 
-                    step={'12'}
+                    step={'09'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setEcommerceFunc(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${ecommerce_funtionabilites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${ecommerce_funtionabilites && 'bg-black text-white'}`}`}>
@@ -649,7 +631,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Hat der Kunde Inhalte (Texte, Bilder, Videos) für das Web?"} 
-                    step={'13'}
+                    step={'10'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setContentToInclude(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${content_to_include && 'bg-black text-white'}`}`}>
@@ -662,7 +644,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Welche Programmiersprache und Technologien werden für die Entwicklung bevorzugt?"} 
-                    step={'14'}
+                    step={'11'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(preferred_technologies, setPreferredTechnologies, "React")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${preferred_technologies.indexOf("React") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${preferred_technologies.indexOf("React") > -1 && 'bg-black text-white'}`}`}>
@@ -699,7 +681,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Wer wird nach Abschluss des Projekts für die Verwaltung des Webs verantwortlich sein?"} 
-                    step={'15'}
+                    step={'12'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setResponsibleForManaging("client")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${responsible_for_managing == 'client' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${responsible_for_managing == 'client' && 'bg-black text-white'}`}`}>
@@ -715,7 +697,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Wie sieht die Marketing- und Positionierungsstrategie des Kunden aus?"}
-                    step={'16'}
+                    step={'13'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(marketing_strategy, setMarketingStrategy, "social-media")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${marketing_strategy.indexOf("social-media") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${marketing_strategy.indexOf("social-media") > -1 && 'bg-black text-white'}`}`}>
@@ -734,7 +716,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"Gibt es konkurrierende Websites, die als Referenzen betrachtet werden sollten?"} 
-                    step={'17'}
+                    step={'14'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setCompetitorWebsites(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${competitor_websites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${competitor_websites && 'bg-black text-white'}`}`}>
@@ -747,6 +729,13 @@ function FormComponent() {
                     {competitor_websites && (
                         <textarea rows="7" placeholder="Geben Sie die verschiedenen URLs durch Komma getrennt ein. Beispiel: 'exampleurl.com, anotherexampleurl.dev, anotherone.com'" value={competitor_websites_examples} onChange={(e) => setCompetitorWebsitesExamples(e.target.value)} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
                     )}
+                </Section>
+                <Section 
+                    title={"Erzählen Sie uns mehr über Ihr Projekt"} 
+                    classes={``}
+                    step={'15'}
+                >
+                    <textarea rows="7" placeholder="Beschreibung" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
                 </Section>
             </section>
             <div className="flex gap-2">
