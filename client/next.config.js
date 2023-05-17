@@ -9,7 +9,15 @@ const nextConfig = {
         permanent: true
       }
     ]
-  }
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'res.cloudinary.com'
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig
