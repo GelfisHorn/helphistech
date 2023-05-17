@@ -15,9 +15,14 @@ export default function Login() {
     const { auth, darkMode } = useContextProvider();
 
     useEffect(() => {
-        if(auth.email) {
-            router.push('/admin');
+        if(!auth.email) {
+            return;
         }
+        if(auth.permissions === 'client') {
+            router.push('/client');
+            return;
+        }
+        router.push('/admin');
     }, [auth])
 
     return (

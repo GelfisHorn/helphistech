@@ -1,13 +1,16 @@
 import express from 'express'
 import commentRoutes from '../project/entry/commentRoutes.js'
-import { create, edit, remove } from '../../../controllers/client/project/entryController.js'
+import { getEntries, get, create, edit, remove } from '../../../controllers/client/project/entryController.js'
 
 const router = express.Router();
 
 // Entry comments routes (developer comments)
 router.use('/comment', commentRoutes)
 
+router.get('/', getEntries);
+
 router.route('/:id')
+    .get(get)
     .post(create)
     .put(edit)
     .delete(remove)

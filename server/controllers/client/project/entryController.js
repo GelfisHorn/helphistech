@@ -1,8 +1,40 @@
 import mongoose from "mongoose";
+// Models
 import Project from "../../../models/Project.js";
 import Entry from '../../../models/Client/Project/Entry.js'
+import EntryComment from "../../../models/Client/Project/EntryComment.js";
 
 const ObjectId = mongoose.Types.ObjectId;
+async function getEntries(req, res) {
+    try {
+        const entries = await Entry.find().select('-__v -updatedAt');
+        return res.status(200).json(entries);
+    } catch (err) {
+        const error = new Error(err);
+        return res.status(500).json({ msg: error.message })
+    }
+}
+
+async function get(req, res) {
+
+    const { id } = req.params;
+
+    if(!id || !ObjectId.isValid(id)) {
+        const error = new Error('Entry id is required');
+        return res.status(400).json({ msg: error.message })
+    }
+
+    
+    try {
+        const entry = await Entry.findById(id).select('-__v -updatedAt');
+        const comments = await EntryComment.find({ entry: id }).select('-__v -updatedAt');
+        return res.status(200).json({ entry, comments });
+    } catch (err) {
+        const error = new Error(err);
+        return res.status(500).json({ msg: error.message })
+    }
+}
+
 async function create(req, res) {
     const projectId = req.params.id;
     const { title = null, description = null, images = null, work_hours = null } = req.body;
@@ -24,9 +56,9 @@ async function create(req, res) {
     }
 
     try {
-        const newEntry = new Entry({ project: projectId, title, description, images, work_hours });
+        const newEntry = new Entry({ user: req.user._id, project: projectId, title, description, images, work_hours });
         await newEntry.save();
-        return res.status(200).json({ msg: "Entry created successfully" });
+        return res.status(200).json(newEntry);
     } catch (err) {
         const error = new Error(err)
         return res.status(400).json({ msg: error.message })
@@ -90,6 +122,8 @@ async function remove(req, res) {
 }
 
 export {
+    getEntries,
+    get,
     create,
     edit,
     remove

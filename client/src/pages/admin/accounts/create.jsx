@@ -10,6 +10,8 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
+// Account config
+import { POSITION, PERMISSIONS } from '../../../config/user'
 
 export default function CreateAccount() {
     
@@ -20,6 +22,10 @@ export default function CreateAccount() {
           .min(4, 'El nombre es muy corto.')
           .max(50, 'El nombre es muy largo.')
           .required('El nombre es obligatorio'),
+        surname: Yup.string()
+          .min(4, 'El apellido es muy corto.')
+          .max(50, 'El apellido es muy largo.')
+          .required('El apellido es obligatorio'),
         email: Yup.string().
             email('El formato es incorrecto').
             required('El correo electrónico es obligatorio'),
@@ -39,14 +45,19 @@ export default function CreateAccount() {
         }, timeout)
     }
 
+    // Form fields state
+    const [ position, setPosition ] = useState('');
+    const [ permissions, setPermissions ] = useState('');
+
     return (
         <SuperAdminPermissions>
             <AdminLayout title={"Crear cuenta"}>
-                <div className="flex flex-col gap-8 justify-center py-10 px-2 sm:px-0 sm:w-[30rem] mx-auto text-center h-full">
+                <div className="flex flex-col gap-8 justify-center py-10 px-2 sm:px-0 sm:w-[30rem] mx-auto text-center">
                     <div className={`${darkMode ? 'text-zinc-200' : 'text-black'} uppercase text-2xl sm:text-3xl`}>Crear cuentas</div>
                     <Formik
                         initialValues={{
                             name: '',
+                            surname: '',
                             email: '',
                             password: ''
                         }}
@@ -54,11 +65,12 @@ export default function CreateAccount() {
                         onSubmit={ async (values) => {
                             // Form values
                             const name = values.name;
+                            const surname = values.surname;
                             const email = values.email;
                             const password = values.password;
 
                             // If type, name, email and phone are void return
-                            if([name, email, password].includes('')) {
+                            if([name, surname, position, permissions, email, password].includes('')) {
                                 return;
                             }
 
@@ -76,14 +88,20 @@ export default function CreateAccount() {
                                 }
                             }
 
+                            function resetForm() {
+                                values.name = ''
+                                values.surname = ''
+                                values.email = ''
+                                values.password = '' 
+                                setPosition('');
+                                setPermissions('');
+                            }
+
                             // Send project to server
                             try {
-                                const { data } = await axios.post('/api/admin/accounts/createAccount', { name, email, password, config });
-                                values.name = '';   
-                                values.email = '';  
-                                values.password = '';  
-                                showMessage(false, data.msg, 5000);
-                                resetForm();   
+                                const { data } = await axios.post('/api/admin/accounts/createAccount', { name, surname, position, permissions, email, password, config });
+                                resetForm();
+                                showMessage(false, data.msg, 5000);  
                             } catch (error) {
                                 showMessage(true, error.response.data.msg, 5000);
                             }
@@ -97,13 +115,13 @@ export default function CreateAccount() {
                                     )}
                                     <div>
                                         <label htmlFor="name" className="block text-left">Nombre</label>
-                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-full px-3`}>
+                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
                                             <Field 
                                                 className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
                                                 name="name" 
                                                 type="text"
                                                 id="name"
-                                                placeholder="Nombre completo"
+                                                placeholder="Nombre"
                                             />
                                         </div>
                                         {errors.name && touched.name ? (
@@ -111,8 +129,45 @@ export default function CreateAccount() {
                                         ) : null}
                                     </div>
                                     <div>
+                                        <label htmlFor="surname" className="block text-left">Apellido</label>
+                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
+                                            <Field 
+                                                className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
+                                                name="surname" 
+                                                type="text"
+                                                id="surname"
+                                                placeholder="Apellido"
+                                            />
+                                        </div>
+                                        {errors.surname && touched.surname ? (
+                                            <div className="text-left text-sm text-red-500">{errors.surname}</div>
+                                        ) : null}
+                                    </div>
+                                    <div>
+                                        <label htmlFor="position" className="block text-left">Posición</label>
+                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
+                                            <select name="position" id="position" className="w-full py-2 outline-none bg-transparent" value={position} onChange={e => setPosition(e.target.value)}>
+                                                <option value="">Seleccionar opción</option>
+                                                {Object.values(POSITION).map(pos => (
+                                                    <option value={pos}>{pos}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label htmlFor="permissions" className="block text-left">Permisos</label>
+                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
+                                            <select name="permissions" id="permissions" className="w-full py-2 outline-none bg-transparent" value={permissions} onChange={e => setPermissions(e.target.value)}>
+                                                <option value="">Seleccionar opción</option>
+                                                {Object.keys(PERMISSIONS).map(perm => (
+                                                    <option value={perm}>{PERMISSIONS[perm]}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
                                         <label htmlFor="email" className="block text-left">Correo electrónico</label>
-                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-full px-3`}>
+                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
                                             <Field 
                                                 className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
                                                 name="email" 
@@ -127,7 +182,7 @@ export default function CreateAccount() {
                                     </div>
                                     <div>
                                         <label htmlFor="password" className="block text-left">Contraseña</label>
-                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-full px-3`}>
+                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
                                             <Field 
                                                 className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
                                                 name="password" 
@@ -141,7 +196,7 @@ export default function CreateAccount() {
                                         ) : null}
                                     </div>
                                 </div>
-                                <button type="submit" className={`flex items-center justify-center gap-2 rounded-full py-2 w-full text-lg font-medium text-white bg-primary hover:bg-primary-2 transition-colors`}>
+                                <button type="submit" className={`flex items-center justify-center gap-2 rounded-md py-2 w-full text-lg font-medium text-white bg-primary hover:bg-primary-2 transition-colors`}>
                                     <span>Crear cuenta</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
