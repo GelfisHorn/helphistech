@@ -27,7 +27,7 @@ async function get(req, res) {
     
     try {
         const entry = await Entry.findById(id).select('-__v -updatedAt');
-        const comments = await EntryComment.find({ entry: id }).select('-__v -updatedAt');
+        const comments = await EntryComment.find({ entry: id }).populate({path: 'user', select: '_id name surname'}).select('-__v -updatedAt');
         return res.status(200).json({ entry, comments });
     } catch (err) {
         const error = new Error(err);
