@@ -1,5 +1,4 @@
 import express from 'express'
-// import checkAuth from '../middleware/checkAuth.js'
 import { create, edit, remove } from '../../controllers/client/commentController.js'
 
 /**
