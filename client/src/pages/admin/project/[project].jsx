@@ -68,7 +68,7 @@ const PROJECT = {
 }
 
 export default function ProjectDynamic() {
-    
+
     const { auth, darkMode } = useContextProvider();
 
     const router = useRouter();
@@ -252,8 +252,7 @@ export default function ProjectDynamic() {
     // Entry modal fields state
     const entryTitle = useRef('');
     const entryDescription = useRef('');
-    const entryImages = '';
-    // const entryImages = useRef('');
+    const [ entryImages, setEntryImages ] = useState([]);
     const entryWorkHours = useRef('');
     // Create entry
     async function handleCreateEntry(e) {
@@ -279,22 +278,49 @@ export default function ProjectDynamic() {
 
         handleShowEntryModal();
 
+        try {
+            const images = await uploadImages();
+            const entry = { title, description, images, work_hours };
+            const { data } = await axios.post('/api/admin/projects/project/entry/create', { projectId, entry, config });
+            await resetForm();
+            router.push(`/client/process/entry/${data._id}`);
+        } catch (err) {
+            const error = new Error(err);
+            console.error(error.message);
+        }
+
+        
+        async function uploadImages() {
+            let images = [];
+            try {
+                for(const image of entryImages) {
+                    let formData = new FormData();
+                    formData.append('file', image);
+                    formData.append('public_id', Math.random().toString(4).substring(2));
+                    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
+                    const { data } = await axios.request({
+                        url: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        data: formData
+                    })
+                    images.push(data.url);
+                }
+                return images;
+            } catch (error) {
+                console.log(error.response.data);
+            }
+
+        }
+
         async function resetForm() {
             Promise.resolve(() => {
                 entryTitle.current.value = '';
                 entryDescription.current.value = '';
                 entryWorkHours.current.value = '';
             });
-        }
-
-        const entry = { title, description, images: entryImages, work_hours };
-        try {
-            const { data } = await axios.post('/api/admin/projects/project/entry/create', { projectId, entry, config });
-            await resetForm();
-            router.push(`/client/process/entry/${data._id}`);
-        } catch (err) {
-            const error = new Error(err.response.data.msg);
-            console.error(error.message);
         }
     } 
 
@@ -515,12 +541,14 @@ export default function ProjectDynamic() {
                                             <textarea rows={4} className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-1 px-2 resize-none`} type="text" ref={entryDescription} placeholder="Escribe un descripción" />
                                         </div>
                                         <div className="flex flex-col gap-1">
-                                            <label htmlFor="title">Imágenes {"(en desarrollo)"}</label>
-                                            <div className="grid grid-cols-3 gap-2">
-                                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                                <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                            </div>
+                                            <label>Imágenes</label>
+                                            <label className={`flex flex-col gap-2 border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} border-dashed rounded-md py-4 text-center hover:text-primary transition-colors cursor-pointer`} htmlFor="file_input">
+                                                <svg className="mx-auto h-12 w-12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                    <path fillRule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clipRule="evenodd" />
+                                                </svg>
+                                                <div className="text-sm">Subir imágenes</div>
+                                            </label>
+                                            <input className="hidden" id="file_input" type="file" multiple={true} onChange={e => setEntryImages(e.target.files)} />
                                         </div>
                                         <div className="flex flex-col gap-1">
                                             <label htmlFor="hours">Horas</label>
