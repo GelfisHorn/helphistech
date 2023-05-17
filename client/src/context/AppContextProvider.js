@@ -67,6 +67,9 @@ const AppContextProvider = ({children}) => {
         darkMode ? localStorage.setItem('darkmode', false) : localStorage.setItem('darkmode', true);
     }
 
+    // Client project state
+    const [ clientProject, setClientProject ] = useState({});
+
     return (
         <AppContext.Provider value={{
             auth, 
@@ -75,7 +78,9 @@ const AppContextProvider = ({children}) => {
             language,
             setLanguage,
             handleDarkMode,
-            darkMode
+            darkMode,
+            clientProject,
+            setClientProject
         }}>
             {children}
         </AppContext.Provider>
