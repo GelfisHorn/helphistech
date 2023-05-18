@@ -2,15 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // Nextjs
 import Link from "next/link";
+import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Layout from "@/components/client/Layout";
 import LoadingSpinner from "@/components/LoadingSpinner";
+// Hooks
+import deleteImages from "@/hooks/deleteImages";
 // Date and Hour Formatter
 import moment from "moment";
-// Hasher for cloudinary signature
-import sha1 from 'sha1';
 
 export default function ClientProjectProcess() {
     
@@ -22,14 +23,14 @@ export default function ClientProjectProcess() {
     const [ hoursCount, setHoursCount ] = useState(0);
 
     useEffect(() => {
-        if(clientProcess.length !== 0) {
+        /* if(clientProcess.length !== 0) {
             setEntries(clientProcess);
             setLoading(false);
-        }
-        if(Object.keys(auth).length != 0 && clientProcess.length === 0) {
+        } */
+        if(Object.keys(auth).length != 0) {
             getProcess();
         }
-    }, [auth, clientProcess]);
+    }, [auth]);
 
     useEffect(() => {
         calculateHours(entries);
@@ -140,6 +141,66 @@ function EntryRow({ entry, entries, setEntries }) {
         }
     }
 
+    // Delete image from edit modal
+    async function deleteImage(image) {
+        try {
+            // Delete cloudinary image
+            await deleteImages([image]);
+
+            // Get authentication token from localStorage
+            const token = localStorage.getItem('auth-token');
+
+            const config = {
+                headers: {
+                    "Content-Type": "application-json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+
+            const images = entry.images.filter(item => item != image);
+            // Delete entry image
+            await axios.post('/api/client/project/entry/edit', { entry: { _id: entry._id, title, description, images, work_hours: workHours}, config });
+            setEntries(item => item.map(mapEntry => {
+                if(mapEntry._id === entry._id) {
+                    return {_id: mapEntry._id, user: mapEntry.user, title, description, images, work_hours: workHours, createdAt: entry.createdAt}
+                }
+                return mapEntry;
+            }));
+        } catch (error) {
+            
+        }
+    }
+
+    // Delete image from edit modal
+    async function deleteImage(image) {
+        try {
+            // Delete cloudinary image
+            await deleteImages([image]);
+
+            // Get authentication token from localStorage
+            const token = localStorage.getItem('auth-token');
+
+            const config = {
+                headers: {
+                    "Content-Type": "application-json",
+                    Authorization: `Bearer ${token}`
+                }
+            }
+
+            const images = entry.images.filter(item => item != image);
+            // Delete entry image
+            await axios.post('/api/client/project/entry/edit', { entry: { _id: entry._id, title, description, images, work_hours: workHours}, config });
+            setEntries(item => item.map(mapEntry => {
+                if(mapEntry._id === entry._id) {
+                    return {_id: mapEntry._id, user: mapEntry.user, title, description, images, work_hours: workHours, createdAt: entry.createdAt}
+                }
+                return mapEntry;
+            }));
+        } catch (error) {
+            
+        }
+    }
+
     // Entry delete modal state and handler
     const [ deleteModal, setDeleteModal ] = useState(false);
     const handleShowDeleteModal = () => setDeleteModal(!deleteModal);
@@ -158,7 +219,7 @@ function EntryRow({ entry, entries, setEntries }) {
         }
 
         try {
-            await deleteImages();
+            await deleteImages(entry.images);
             await axios.post('/api/client/project/entry/delete', { entryId: entry._id, config });
             const newEntries = entries.filter(item => item._id !== entry._id);
             const sortedByDate = newEntries.sort(function(a,b){
@@ -168,36 +229,8 @@ function EntryRow({ entry, entries, setEntries }) {
             });
             setEntries(sortedByDate);
         } catch (err) {
-            const error = new Error(err.response.data.msg);
+            const error = new Error(err);
             console.error(error.message);
-        }
-
-        async function deleteImages() {
-            for(const image of images) {
-                const public_id = `entries/${image.split('/')[8].split('.')[0]}`;
-                const timestamp = Math.floor(Date.now() / 1000);
-                const api_key = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;  
-                const api_secret = process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET;
-                const signature = sha1(`public_id=${public_id}&timestamp=${timestamp}` + api_secret)
-                let formData = new FormData();
-                formData.append('public_id', public_id);
-                formData.append('signature', signature);
-                formData.append('api_key', api_key);
-                formData.append('timestamp', timestamp);
-                try {
-                    await axios.request({
-                        url: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/destroy`,
-                        maxBodyLength: Infinity,
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        },
-                        data: formData
-                    })
-                } catch (error) {
-                    console.log(error.response.data)
-                }
-            }
         }
     }
 
@@ -254,12 +287,23 @@ function EntryRow({ entry, entries, setEntries }) {
                                         <textarea rows={4} className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-1 px-2 resize-none`} type="text" onChange={e => setDescription(e.target.value)} value={description} />
                                     </div>
                                     <div className="flex flex-col gap-1">
-                                        <label htmlFor="title">Imágenes {"(en desarrollo)"}</label>
-                                        <div className="grid grid-cols-3 gap-2">
-                                            <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                            <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                            <div className="aspect-video bg-neutral-700 rounded-md"></div>
-                                        </div>
+                                        <label htmlFor="title">Imágenes</label>
+                                        {entry.images.length > 0 ? (
+                                            <div className="grid grid-cols-3 gap-2">
+                                                {entry.images.map((image, index) => (
+                                                    <div key={index} className="relative">
+                                                        <Image className='rounded-md' src={image} width={1920} height={1080} alt={"Entry image"} loading='eager' />
+                                                        <button className="absolute top-1 right-1 bg-red-500 text-white rounded-md p-1" onClick={() => deleteImage(image)}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>No hay imágenes</div>
+                                        )}
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <label htmlFor="hours">Horas</label>

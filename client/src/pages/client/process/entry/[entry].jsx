@@ -96,13 +96,13 @@ export default function ClientProjectEntry() {
     }
 
     return (
-        <Layout title={loading ? 'Aufladen...' : !loading && Object.keys(entry).length != 0 ? entry.title : 'Dieser Eintrag existiert nicht'}>
+        <Layout title={loading ? 'Aufladen...' : !loading && (entry && Object.keys(entry).length != 0) ? entry.title : 'Dieser Eintrag existiert nicht'}>
             {loading && (
                 <div className='grid place-content-center h-full'>
                     <LoadingSpinner />
                 </div>
             )}
-            {!loading && Object.keys(entry).length != 0 && (
+            {!loading && (entry &&  Object.keys(entry).length != 0) && (
                 <div className="flex flex-col gap-5">
                     <button className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.back()}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -175,14 +175,14 @@ export default function ClientProjectEntry() {
                     </div>
                 </div>
             )} 
-            {!loading && Object.keys(entry).length == 0 && (
+            {!loading && !entry && (
                 <div className="grid place-content-center gap-2 h-full text-center">
-                    <div className="text-lg">Esta entrada no existe</div>
+                    <div className="text-lg">Dieser Eintrag existiert nicht</div>
                     <div className="flex items-center justify-center gap-1 cursor-pointer text-primary hover:text-primary-2 transition-colors" onClick={() => router.back()}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                         </svg>
-                        <span>Volver</span>
+                        <span>Zurückkehren</span>
                     </div>
                 </div>
             )}

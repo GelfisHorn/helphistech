@@ -35,14 +35,14 @@ async function getProject(req, res) {
 
 async function assignClient (req, res) {
     const { id = null } = req.params;
-    const { userId = null } = req.body;
+    const { email = null } = req.body;
 
-    if(!id || !userId) {
-        return res.status(400).json({ msg: 'El id del usuario o del proyecto es incorrecto' });
+    if(!id || !email) {
+        return res.status(400).json({ msg: 'El email del usuario o del proyecto es incorrecto' });
     }
 
-    if(!ObjectId.isValid(id) || !ObjectId.isValid(userId)) {
-        return res.status(400).json({ msg: 'El id del usuario o del proyecto es incorrecto' });
+    if(!ObjectId.isValid(id)) {
+        return res.status(400).json({ msg: 'El id del proyecto es incorrecto' });
     }
 
     const project = await Project.findById(id);
@@ -53,7 +53,7 @@ async function assignClient (req, res) {
         return res.status(404).json({ msg: 'Ya hay un cliente asignado a este proyecto' });
     }
 
-    const user = await User.findById(userId);
+    const user = await User.findOne({ email });
     if(!user) {
         return res.status(404).json({ msg: 'Este usuario no existe' })
     }
@@ -62,10 +62,15 @@ async function assignClient (req, res) {
         return res.status(400).json({ msg: 'Este usuario no es cliente' });
     }
 
+    const alreadyAssigned = await Project.findOne({ client: user._id });
+    if(alreadyAssigned) {
+        return res.status(400).json({ msg: 'Este usuario ya está asignado a un proyecto' });
+    }
+
     try {
         project.client = user._id;
         await project.save();
-        return res.status(200).json({ msg: 'Se asignó el cliente correctamente' })
+        return res.status(200).json(project)
     } catch (err) {
         const error = new Error(err);
         return res.status(500).json({ msg: error.message })

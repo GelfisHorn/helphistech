@@ -6,6 +6,7 @@ import { useRouter } from "next/router"
 import Link from "next/link";
 // Hooks
 import currencyFormatter from "@/hooks/currencyFormatter";
+import uploadImages from "@/hooks/uploadImages";
 // Date and Hour Formatter
 import moment from "moment";
 // Context
@@ -79,7 +80,7 @@ export default function ProjectDynamic() {
     const [ loading, setLoading ] = useState(true);
     const [ project, setProject ] = useState({});
     const [ projectComments, setProjectComments ] = useState([]);
-    const { project_info, company_info, website_type, contact_information, description, state } = project;
+    const { project_info, company_info, website_type, contact_information, description, state } = project || {};
 
     const [ projectState, setProjectState ] = useState(state);
 
@@ -279,40 +280,14 @@ export default function ProjectDynamic() {
         handleShowEntryModal();
 
         try {
-            const images = await uploadImages();
+            const images = await uploadImages(entryImages);
             const entry = { title, description, images, work_hours };
             const { data } = await axios.post('/api/admin/projects/project/entry/create', { projectId, entry, config });
             await resetForm();
-            router.push(`/client/process/entry/${data._id}`);
+            // router.push(`/client/process/entry/${data._id}`);
         } catch (err) {
             const error = new Error(err);
             console.error(error.message);
-        }
-
-        
-        async function uploadImages() {
-            let images = [];
-            try {
-                for(const image of entryImages) {
-                    let formData = new FormData();
-                    formData.append('file', image);
-                    formData.append('public_id', Math.random().toString(4).substring(2));
-                    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
-                    const { data } = await axios.request({
-                        url: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        },
-                        data: formData
-                    })
-                    images.push(data.url);
-                }
-                return images;
-            } catch (error) {
-                console.log(error.response.data);
-            }
-
         }
 
         async function resetForm() {
@@ -324,6 +299,36 @@ export default function ProjectDynamic() {
         }
     } 
 
+    // Assign client state and handler
+    const [ clientEmail, setClientEmail ] = useState('');
+    async function assignClient() {
+        if(clientEmail == '') {
+            return;
+        }
+
+        // Get authentication token from localStorage
+        const token = localStorage.getItem('auth-token');
+
+        const config = {
+            headers: {
+                "Content-Type": "application-json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        try {
+            const { data } = await axios.post('/api/client/project/assignClient', { projectId, email: clientEmail, config });
+            console.log(data);
+            setProject(data);
+            setClientEmail('');
+        } catch (err) {
+            const error = new Error(err);
+            console.error(error.message);
+        }
+    }
+
+    console.log(project)
+
     return (
         <Layout title={'Proyecto'}>
             {loading && (
@@ -331,7 +336,7 @@ export default function ProjectDynamic() {
                     <LoadingSpinner />
                 </div>
             )}
-            {!loading && Object.keys(project).length != 0 && (
+            {!loading && (project && Object.keys(project).length != 0) && (
                 <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col gap-3 px-5 rounded-lg`}>
                     <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col border-b py-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
@@ -494,12 +499,21 @@ export default function ProjectDynamic() {
                             )}
                             <div onClick={() => setShowProjectInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showProjectInfo ? 'Ocultar' : 'Mostrar'}</div>
                         </div>
-                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col xs:flex-row xs:items-center gap-2 border-t pt-3`}>
+                        <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col xs:flex-row xs:items-center gap-2 border-t py-3`}>
                             <div className="uppercase font-semibold text-lg">Estado</div>
                             <div className={`${projectState == 'onhold' ? 'bg-yellow-500' : projectState == 'inprogress' ? 'bg-orange-500' : projectState == 'completed' ? 'bg-light-main' :  'bg-red-500'} w-fit px-4 py-1 rounded-full text-white uppercase font-semibold select-none transition-colors flex justify-center`}>
                                 <span>{projectState == 'onhold' ? 'En espera' : projectState == 'inprogress' ? 'En desarrollo' : projectState == 'completed' ? 'Completado' : 'Cancelado'}</span>
                             </div>
                         </div>
+                        {(auth.permissions == 'superadmin' || auth.permissions == 'admin') && !project.client && (
+                            <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
+                                <div className="uppercase font-semibold text-lg">Asignar cliente</div>
+                                <div className={`flex gap-2 justify-start`}>
+                                    <input className={`${darkMode ? 'border-neutral-600' : 'border-neutral-400'} border bg-transparent rounded-md px-2 outline-none`} type="email" name="" id="" placeholder="Email del cliente" value={clientEmail} onChange={e => setClientEmail(e.target.value)} />
+                                    <button className="py-2 px-4 bg-primary hover:bg-primary-2 rounded-sm transition-colors text-white" onClick={assignClient}>Asignar</button>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-10 sm:gap-0 pb-3">
                         <div className="flex flex-col gap-5">
@@ -594,7 +608,7 @@ export default function ProjectDynamic() {
                     </div>
                 </div>
             )}
-            {!loading && Object.keys(project).length == 0 && (
+            {!loading && !project && (
                 <div className={`grid place-content-center gap-2 ${darkMode ? 'text-dark-text' : 'text-black'} h-full`}>
                     <h3 className="text-2xl">Este proyecto no existe.</h3>
                     <button className="flex items-center justify-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.push('/admin/projects')}>

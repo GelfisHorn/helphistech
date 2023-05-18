@@ -111,6 +111,7 @@ async function remove(req, res) {
     if(!entry) {
         return res.status(400).json({ msg: "Entry doesn't exists" })
     }
+    await EntryComment.find({ entry: entryId }).deleteMany();
 
     try {
         await entry.deleteOne();

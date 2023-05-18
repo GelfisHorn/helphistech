@@ -26,7 +26,11 @@ async function create(req, res) {
     try {
         const newComment = new EntryComment({ user: req.user._id, entry: entryId, message });
         newComment.save();
-        return res.status(200).json(newComment);
+        return res.status(200).json({ 
+            _id: newComment._id, 
+            user: { _id: req.user._id, name: req.user.name, surname: req.user.surname },
+            message
+        });
     } catch (err) {
         const error = new Error(err)
         return res.status(400).json({ msg: error.message })
