@@ -396,6 +396,10 @@ function FormComponent() {
     const [ step, setStep ] = useState(1);
 
     function handleNextStep() {
+        if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.current.value)) {
+            showMessage(true, 'Escribe un email válido.', 5000)
+            return;
+        }
         if(step == 1 && ([type, full_name.current.value, email.current.value].includes('') || target_audience.length == 0 || expected_deilvertime.from == null)) {
             showMessage(true, 'Debes completar todos los campos.', 5000)
             return;
