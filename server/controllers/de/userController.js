@@ -117,26 +117,38 @@ const profile = async (req, res) => {
 }
 
 const editProfile = async (req, res) => {
-    const { name, email, password, userId } = req.body
+    const { name = null, surname = null, email = null, password = null, userId = null } = req.body
 
-    if (ObjectId.isValid(userId)) {
-        const user = await User.findOne({ userId })
-        if(!user) {
-            return
-        }
+    if(!ObjectId.isValid(userId)) {
+        const error = new Error("Die Benutzer-ID ist ungültig");
+        return res.status(400).json({ msg: error.message })
+    }
 
-        if (String(name).length < 20) {
-            try {
-                user.name = name
-                user.email = email
-                user.password = password
-                await user.save()
-                return res.json(user)
-            } catch (error) {
-                return res.json({ msg: 'Beim Speichern der Änderungen ist ein Fehler aufgetreten' })
-            }
+    const user = await User.findById(userId)
+    if(!user) {
+        const error = new Error("Dieser Benutzer existiert nicht");
+        return res.status(400).json({ msg: error.message })
+    }
 
-        }
+    if(password && String(password).length < 16) {
+        const error = new Error("Das Passwort muss mindestens 16 Zeichen lang sein");
+        return res.status(400).json({ msg: error.message })
+    }
+
+    /* if (String(name).length < 20 || String(surname).length < 20) {
+        const error = new Error("Vor- und Nachname müssen weniger als 20 Zeichen lang sein");
+        return res.status(400).json({ msg: error.message })
+    } */
+
+    try {
+        if(name) user.name = name;
+        if(surname) user.surname = surname
+        if(email) user.email = email
+        if(password) user.password = password
+        await user.save()
+        return res.status(200).json({ msg: "Sie haben das Profil korrekt bearbeitet" })
+    } catch (error) {
+        return res.status(500).json({ msg: 'Beim Speichern der Änderungen ist ein Fehler aufgetreten' })
     }
 }
 

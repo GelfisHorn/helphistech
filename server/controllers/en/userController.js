@@ -117,26 +117,38 @@ const profile = async (req, res) => {
 }
 
 const editProfile = async (req, res) => {
-    const { name, email, password, userId } = req.body
+    const { name = null, surname = null, email = null, password = null, userId = null } = req.body
 
-    if (ObjectId.isValid(userId)) {
-        const user = await User.findOne({ userId })
-        if(!user) {
-            return
-        }
+    if(!ObjectId.isValid(userId)) {
+        const error = new Error("The userId is invalid");
+        return res.status(400).json({ msg: error.message })
+    }
 
-        if (String(name).length < 20) {
-            try {
-                user.name = name
-                user.email = email
-                user.password = password
-                await user.save()
-                res.json(user)
-            } catch (error) {
-                res.json({ msg: 'There was an error saving changes' })
-            }
+    const user = await User.findById(userId)
+    if(!user) {
+        const error = new Error("This user does not exist");
+        return res.status(400).json({ msg: error.message })
+    }
 
-        }
+    if(password && String(password).length < 16) {
+        const error = new Error("Password must be 16 or more characters");
+        return res.status(400).json({ msg: error.message })
+    }
+
+    /* if (String(name).length < 20 || String(surname).length < 20) {
+        const error = new Error("First and last name must be less than 20 characters");
+        return res.status(400).json({ msg: error.message })
+    } */
+
+    try {
+        if(name) user.name = name;
+        if(surname) user.surname = surname
+        if(email) user.email = email
+        if(password) user.password = password
+        await user.save()
+        return res.status(200).json({ msg: "You edited the profile correctly" })
+    } catch (error) {
+        return res.status(500).json({ msg: 'There was an error saving changes' })
     }
 }
 
