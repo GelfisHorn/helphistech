@@ -86,6 +86,7 @@ const editAccount = async (req, res) => {
 
     try {
         user.name = name;
+        user.surname = surname;
         user.email = email;
         password ? user.password = password : null;
         await user.save();
@@ -234,26 +235,38 @@ const profile = async (req, res) => {
 }
 
 const editProfile = async (req, res) => {
-    const { name, email, password, userId } = req.body
+    const { name = null, surname = null, email = null, password = null, userId = null } = req.body
 
-    if (ObjectId.isValid(userId)) {
-        const user = await User.findOne({ userId })
-        if(!user) {
-            return
-        }
+    if(!ObjectId.isValid(userId)) {
+        const error = new Error("El userId no es válido");
+        return res.status(400).json({ msg: error.message })
+    }
 
-        if (String(name).length < 20) {
-            try {
-                user.name = name
-                user.email = email
-                user.password = password
-                await user.save()
-                res.json(user)
-            } catch (error) {
-                res.json({ msg: 'Hubo un error al guardar los cambios' })
-            }
+    const user = await User.findById(userId)
+    if(!user) {
+        const error = new Error("Este usuario no existe");
+        return res.status(400).json({ msg: error.message })
+    }
 
-        }
+    if(password && String(password).length < 16) {
+        const error = new Error("La contraseña debe tener 16 o más caracteres");
+        return res.status(400).json({ msg: error.message })
+    }
+
+    /* if (String(name).length < 20 || String(surname).length < 20) {
+        const error = new Error("El nombre y apellido deben tener menos de 20 caracteres");
+        return res.status(400).json({ msg: error.message })
+    } */
+
+    try {
+        if(name) user.name = name;
+        if(surname) user.surname = surname
+        if(email) user.email = email
+        if(password) user.password = password
+        await user.save()
+        return res.status(200).json({ msg: "Editaste el perfil correctamente" })
+    } catch (error) {
+        return res.status(500).json({ msg: 'Hubo un error al guardar los cambios' })
     }
 }
 

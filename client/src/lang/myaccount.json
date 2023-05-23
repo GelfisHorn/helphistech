@@ -1,0 +1,104 @@
+{
+    "de": {
+        "content": {
+            "goback": "Zurück",
+            "personal-info": {
+                "title": "Persönliche Angaben",
+                "name": "Name",
+                "surname": "Nachname",
+                "email": "Email",
+                "placeholders": {
+                    "name": "Schreib deinen Namen",
+                    "surname": "Schreiben Sie Ihren Nachnamen",
+                    "email": "Schreiben Sie Ihre E-Mail"
+                }
+            },
+            "password": {
+                "title": "Passwort",
+                "placeholders": {
+                    "password": "Schreiben Sie Ihr Passwort",
+                    "repeatPassword": "Passwort wiederholen"
+                }
+            },
+            "permissions": "Berechtigungen",
+            "buttons": {
+                "save": "Speichern",
+                "cancel": "Stornieren"
+            }
+        },
+        "permissions": {
+            "superadmin": "Super Administrator",
+            "admin": "Administrator",
+            "client": "Klient",
+            "developer": "Entwickler"
+        }
+    },
+    "en": {
+        "content": {
+            "goback": "Back",
+            "personal-info": {
+                "title": "Personal information",
+                "name": "Name",
+                "surname": "Surname",
+                "email": "Email",
+                "placeholders": {
+                    "name": "Write your name",
+                    "surname": "Write your surname",
+                    "email": "Write your email"
+                }
+            },
+            "password": {
+                "title": "Password",
+                "placeholders": {
+                    "password": "Write your password",
+                    "repeatPassword": "Repeat your password"
+                }
+            },
+            "permissions": "Permissions",
+            "buttons": {
+                "save": "Save",
+                "cancel": "Cancel"
+            }
+        },
+        "permissions": {
+            "superadmin": "Super Administrator",
+            "admin": "Administrator",
+            "client": "Client",
+            "developer": "Developer"
+        }
+    },
+    "es": {
+        "content": {
+            "goback": "Atrás",
+            "personal-info": {
+                "title": "Datos personales",
+                "name": "Nombre",
+                "surname": "Apellido",
+                "email": "Correo electrónico",
+                "placeholders": {
+                    "name": "Escribe tu nombre",
+                    "surname": "Escribe tu apellido",
+                    "email": "Escribe tu correo electrónico"
+                }
+            },
+            "password": {
+                "title": "Contraseña",
+                "placeholders": {
+                    "password": "Escribe tu contraseña",
+                    "repeatPassword": "Repite tu contraseña"
+                }
+            },
+            "permissions": "Permisos",
+            "buttons": {
+                "save": "Guardar",
+                "cancel": "Cancelar"
+            }
+        },
+        "permissions": {
+            "superadmin": "Super Administrador",
+            "admin": "Administrador",
+            "client": "Cliente",
+            "developer": "Desarrollador"
+        }
+    }
+}

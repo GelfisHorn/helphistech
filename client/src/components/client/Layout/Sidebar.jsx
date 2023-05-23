@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import axiosHeaders from "@/hooks/axiosHeaders";
 
 export default function ClientSidebar() {
     
@@ -13,24 +14,14 @@ export default function ClientSidebar() {
     const router = useRouter();
 
     useEffect(() => {
-        if(Object.keys(auth).length !== 0 && Object.keys(clientProject).length === 0) {
+        if((Object.keys(auth).length !== 0 && auth.permissions === "client") && Object.keys(clientProject).length === 0) {
             getProject();
         }
     }, [auth, clientProject])
 
     async function getProject() {
-        // Get authentication token from localStorage
-        const token = localStorage.getItem('auth-token');
-        if(!token) {
-            return;
-        }
-
-        const config = {
-            headers: {
-                "Content-Type": "application-json",
-                Authorization: `Bearer ${token}`
-            }
-        }
+        const config = axiosHeaders();
+        if(!config) return;
 
         try {
             const { data } = await axios.post(`/api/client/getProject`, { config, clientId: auth._id });
