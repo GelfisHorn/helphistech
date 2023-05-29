@@ -1,0 +1,44 @@
+{
+    "de": {
+        "welcome": "Willkommen",
+        "my-project": {
+            "title": "Mein projekt",
+            "company-name": "Name der Firma",
+            "description": "Beschreibung",
+            "read-more": "Weiterlesen"
+        },
+        "process": {
+            "title": "Verfahren",
+            "see-process": "siehe Prozess",
+            "last-tickets": "letzte Tickets"
+        }
+    },
+    "en": {
+        "welcome": "Welcome",
+        "my-project": {
+            "title": "My project",
+            "company-name": "Company name",
+            "description": "Description",
+            "read-more": "Read more"
+        },
+        "process": {
+            "title": "Process",
+            "see-process": "See process",
+            "last-tickets": "Last tickets"
+        }
+    },
+    "es": {
+        "welcome": "Bienvenido",
+        "my-project": {
+            "title": "Mi proyecto",
+            "company-name": "Nombre de la compañia",
+            "description": "Descripción",
+            "read-more": "Leer más"
+        },
+        "process": {
+            "title": "Proceso",
+            "see-process": "Ver proceso",
+            "last-tickets": "Últimos tickets"
+        }
+    }
+}

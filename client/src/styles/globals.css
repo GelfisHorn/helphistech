@@ -432,3 +432,11 @@ button.btn-primary:hover {
 		transform: scale(1.0);
 	}
 }
+
+.blog-bg-dark {
+	background-image: url('/blog-bg-dark.svg');
+}
+
+.blog-bg-light {
+	background-image: url('/blog-bg-light.svg');
+}

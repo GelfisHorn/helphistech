@@ -1,0 +1,38 @@
+{
+    "de": {
+        "home": {
+            "title": "Schalttafel",
+            "home": "Startseite"
+        },
+        "project": {
+            "title": "Projekt",
+            "my-project": "Mein Projekt",
+            "process": "Verfahren"
+        },
+        "account": "Mein konto"
+    },
+    "en": {
+        "home": {
+            "title": "Home",
+            "home": "Home"
+        },
+        "project": {
+            "title": "Project",
+            "my-project": "My project",
+            "process": "Process"
+        },
+        "account": "My account"
+    },
+    "es": {
+        "home": {
+            "title": "Inicio",
+            "home": "Inicio"
+        },
+        "project": {
+            "title": "Proyecto",
+            "my-project": "Mi proyecto",
+            "process": "Proceso"
+        },
+        "account": "Mi cuenta"
+    }
+}

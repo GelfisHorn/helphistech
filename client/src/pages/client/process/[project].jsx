@@ -12,10 +12,12 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import deleteImages from "@/hooks/deleteImages";
 // Date and Hour Formatter
 import moment from "moment";
+// Languages
+import lang from '../../../lang/client/process.json'
 
 export default function ClientProjectProcess() {
     
-    const { auth, clientProcess, setClientProcess } = useContextProvider();
+    const { auth, clientProcess, setClientProcess, language } = useContextProvider();
 
     const [ loading, setLoading ] = useState(true);
     // Entries/Process state
@@ -86,13 +88,13 @@ export default function ClientProjectProcess() {
             )}
             {!loading && entries.length != 0 ? (
                 <div className="flex flex-col divide-y px-3">
-                    <div className="pb-3 text-lg">Gesamtstunden: {hoursCount}</div>
+                    <div className="pb-3 text-lg">{lang[language]["total-hours"]}: {hoursCount}</div>
                     {entries.map((entry, index) => (
                         <EntryRow key={index} entry={entry} entries={entries} setEntries={setEntries} />
                     ))}
                 </div>
             ) : (
-                <div className="grid place-content-center h-full text-lg">Es sind noch keine Inhalte zum Anzeigen vorhanden</div>
+                <div className="grid place-content-center h-full text-lg">{lang[language]["no-entries"]}</div>
             )}
         </Layout>
     )
@@ -100,7 +102,7 @@ export default function ClientProjectProcess() {
 
 function EntryRow({ entry, entries, setEntries }) {
 
-    const { auth, darkMode } = useContextProvider();
+    const { auth, darkMode, language } = useContextProvider();
 
     // Entry edit modal state and handler
     const [ editModal, setEditModal ] = useState(false);
@@ -238,27 +240,28 @@ function EntryRow({ entry, entries, setEntries }) {
         <div className={`${darkMode ? 'border-neutral-800' : 'border-neutral-400'} rounded-sm py-4 relative`}>
             <div className="flex flex-col gap-2">
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">der Überschrift</div>
+                    <div className="uppercase font-semibold">{lang[language].entry.title}</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.title}</div>
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Beschreibung</div>
+                    <div className="uppercase font-semibold">{lang[language].entry.description}</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.description}</div>
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Bilder</div>
-                    {entry.images.length != 0 ? (
+                    <div className="uppercase font-semibold">{lang[language].entry.images}</div>
+                    <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry?.images?.length || []}</div>
+                    {/* {entry.images.length != 0 ? (
                         <div className="text-primary hover:text-primary-2 transition-colors cursor-pointer w-fit">Zeigen</div>
                     ) : 
                         <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Keine Bilder</div>
-                    }
+                    } */}
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Arbeitsstunden</div>
+                    <div className="uppercase font-semibold">{lang[language].entry["work-hours"]}</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.work_hours}</div>
                 </div>
                 <div className="flex flex-col">
-                    <div className="uppercase font-semibold">Datum</div>
+                    <div className="uppercase font-semibold">{lang[language].entry.date}</div>
                     <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{moment(entry.createdAt).format('LL')}</div>
                 </div>
             </div>

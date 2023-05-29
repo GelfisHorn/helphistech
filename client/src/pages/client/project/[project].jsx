@@ -12,6 +12,8 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import currencyFormatter from "@/hooks/currencyFormatter";
 // Date and Hour Formatter
 import moment from "moment";
+// Languages
+import lang from '../../../lang/client/project.json'
 
 // Parse company and project data
 const COMPANY = {
@@ -68,7 +70,7 @@ export default function ClientProject() {
 
     const { project: projectId } = router.query;
 
-    const { auth, darkMode, clientProject, setClientProject } = useContextProvider();
+    const { auth, darkMode, clientProject, setClientProject, language } = useContextProvider();
 
     const [ loading, setLoading ] = useState(true);
     const [ projectComments, setProjectComments ] = useState([]);
@@ -156,13 +158,13 @@ export default function ClientProject() {
                     <div className={`flex flex-col pt-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
                             <div className="flex flex-col sm:flex-row sm:gap-2 text-xl">
-                                <div className="uppercase font-semibold">Projekt:</div>
+                                <div className="uppercase font-semibold">{lang[language]["project-name"]}</div>
                                 <div>{clientProject.project.contact_information.company_name}</div>    
                             </div>
                             <div className="flex sm:justify-end font-semibold">{moment(clientProject.project.createdAt).format('LLL')}</div>
                         </div>
                         <div className="flex flex-col gap-2 py-3">
-                            <div className="text-lg font-semibold uppercase">Beschreibung</div>
+                            <div className="text-lg font-semibold uppercase">{lang[language].description}</div>
                             <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>{clientProject.project.description ? clientProject.project.description : "Sin descripción"}</div>    
                         </div>
                         {/* <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col py-3 border-t`}>
@@ -179,14 +181,14 @@ export default function ClientProject() {
                             </div>    
                         </div> */}
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
-                            <div className="text-lg font-semibold uppercase">Kontaktinformationen</div>
+                            <div className="text-lg font-semibold uppercase">{lang[language].contact.title}</div>
                             <div className="flex flex-col gap-2">
                                 <div className="flex flex-col">
-                                    <div className="uppercase font-medium">Vollständiger Name</div>
+                                    <div className="uppercase font-medium">{lang[language].contact["full-name"]}</div>
                                     <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.contact_information.full_name}</div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="uppercase font-medium">Email</div>
+                                    <div className="uppercase font-medium">{lang[language].contact.email}</div>
                                     <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
                                         <a href={`mailto:${clientProject.project.contact_information.email}`}>{clientProject.project.contact_information.email}</a>
                                     </div>
@@ -194,76 +196,76 @@ export default function ClientProject() {
                             </div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
-                            <div className="text-lg font-semibold uppercase">Firmeninformation</div>
+                            <div className="text-lg font-semibold uppercase">{lang[language].company.title}</div>
                             { showCompanyInfo && (
                                 <div className="flex flex-col gap-2">
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Unternehmensart</div>
-                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{COMPANY["business_type"][clientProject.project.company_info.business_type]}</div>
+                                        <div className="uppercase font-medium">{lang[language].company["business-type"].title}</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{lang[language].company["business-type"][clientProject.project.company_info.business_type]}</div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Vision</div>
+                                        <div className="uppercase font-medium">{lang[language].company["company-vision"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.company_info.company_vision.map((vision, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {COMPANY["company_vision"][vision]}
+                                                    {lang[language].company["company-vision"][vision]}
                                                     {(clientProject.project.company_info.company_vision.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Zielpublikum</div>
+                                        <div className="uppercase font-medium">{lang[language].company["target-audience"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.company_info.target_audience.map((audience, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {COMPANY["target_audience"][audience]}
+                                                    {lang[language].company["target-audience"][audience]}
                                                     {(clientProject.project.company_info.target_audience.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Geschäft</div>
+                                        <div className="uppercase font-medium">{lang[language].company["service-or-product"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                            {COMPANY["service_or_product"][clientProject.project.company_info.service_or_product]}
+                                            {lang[language].company["service-or-product"][clientProject.project.company_info.service_or_product]}
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Lieferfrist</div>
+                                        <div className="uppercase font-medium">{lang[language].company["expected-deilvertime"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                            {COMPANY["expected_deilvertime"][clientProject.project.company_info.expected_deilvertime.from]}
+                                            {lang[language].company["expected-deilvertime"][clientProject.project.company_info.expected_deilvertime.from]}
                                         </div>
                                     </div>
                                 </div>
                             )}
-                            <div onClick={() => setShowCompanyInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showCompanyInfo ? 'Verkleidung' : 'Zeigen'}</div>
+                            <div onClick={() => setShowCompanyInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showCompanyInfo ? lang[language].hide : lang[language].show}</div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
-                            <div className="text-lg font-semibold uppercase">Projekt Information</div>
+                            <div className="text-lg font-semibold uppercase">{lang[language].project.title}</div>
                             {showProjectInfo && (
                                 <div className="flex flex-col gap-2">
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Funktionalitäten</div>
+                                        <div className="uppercase font-medium">{lang[language].project.functionalities.title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.project_info.functionalities.map((func, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {PROJECT["functionalities"][func]}
+                                                    {lang[language].project.functionalities[func]}
                                                     {(clientProject.project.project_info.functionalities.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">E-Commerce-Funktionen</div>
+                                        <div className="uppercase font-medium">{lang[language].project["ecommerce-functionalities"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.project_info.ecommerce_funtionabilites ? 'Ja' : 'No'}</div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Kundeninhalte</div>
+                                        <div className="uppercase font-medium">{lang[language].project["client-content"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.project_info.content_to_include ? 'Ja' : 'No'}</div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">bevorzugte Technologien</div>
+                                        <div className="uppercase font-medium">{lang[language].project["preferred-technologies"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.project_info.preferred_technologies.map((tech, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
@@ -274,15 +276,15 @@ export default function ClientProject() {
                                         </div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">für die Instandhaltung verantwortlich</div>
-                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{PROJECT["responsible_for_managing"][clientProject.project.project_info.responsible_for_managing]}</div>
+                                        <div className="uppercase font-medium">{lang[language].project["responsible-for-managing"].title}</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{lang[language].project["responsible-for-managing"][clientProject.project.project_info.responsible_for_managing]}</div>
                                     </div>
                                     <div className="flex flex-col">
-                                        <div className="uppercase font-medium">Vermarktungsstrategie</div>
+                                        <div className="uppercase font-medium">{lang[language].project["marketing-strategy"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.project_info.marketing_strategy.map((strat, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {PROJECT["marketing_strategy"][strat]}
+                                                    {lang[language].project["marketing-strategy"][strat]}
                                                     {(clientProject.project.project_info.marketing_strategy.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
@@ -290,7 +292,7 @@ export default function ClientProject() {
                                     </div>
                                     { clientProject.project.project_info.competitor_websites ? (
                                         <div className="flex flex-col">
-                                            <div className="uppercase font-medium">Mitbewerber-Websites</div>
+                                            <div className="uppercase font-medium">{lang[language].project["competitor-websites"].title}</div>
                                             {clientProject.project.project_info?.competitor_websites_examples ? clientProject.project.project_info.competitor_websites_examples.split(',').map((url, index) => (
                                                 <div className="flex items-center">
                                                     <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url.slice(0,6) == 'https://' ? url.trim() : `https://${url.trim()}`} target="_blank">{url}</Link>
@@ -301,11 +303,11 @@ export default function ClientProject() {
                                     ) : null}
                                 </div>
                             )}
-                            <div onClick={() => setShowProjectInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showProjectInfo ? 'Verkleidung' : 'Zeigen'}</div>
+                            <div onClick={() => setShowProjectInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showProjectInfo ? lang[language].hide : lang[language].show}</div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t pt-3`}>
                             <Link href={`/client/process/${clientProject.project._id}`} className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors">
-                                <span>Ir a entradas</span>
+                                <span>{lang[language]["go-tickets"]}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                                 </svg>
@@ -315,16 +317,16 @@ export default function ClientProject() {
                     <div className={`flex flex-col gap-5 pt-5 pb-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
                         {clientProject.project.client._id === auth._id && (
                             <div className={`flex flex-col gap-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pb-4`}>
-                                <div className="text-xl">Kommentieren Sie Ihre Zweifel</div>
+                                <div className="text-xl">{lang[language].comments.title}</div>
                                 <form className="flex flex-col gap-2" onSubmit={handleSendComment}>
                                     <textarea 
                                         ref={commentTextarea}
                                         className={`bg-transparent border ${darkMode ? 'border-neutral-900 placeholder:text-neutral-500' : 'border-neutral-200 placeholder:text-neutral-300'} w-full px-3 py-2 resize-none outline-none`} 
-                                        placeholder="Machen Sie einen Kommentar" 
+                                        placeholder={lang[language].comments.placeholder} 
                                         rows="3">
                                     </textarea>
                                     <div className="flex justify-end">
-                                        <button type="submit" className="py-2 px-6 bg-primary text-white uppercase rounded-sm font-medium">Kommentar</button>
+                                        <button type="submit" className="py-2 px-6 bg-primary hover:bg-primary-2 transition-colors text-white uppercase rounded-sm font-medium">{lang[language].comments.button}</button>
                                     </div>
                                 </form>
                             </div>
@@ -339,7 +341,7 @@ export default function ClientProject() {
                                 />
                             ))}
                             {projectComments.length == 0 && (
-                                <div className="text-center">No hay comentarios</div>
+                                <div className="text-center">{lang[language].comments["no-comments"]}</div>
                             )}
                         </div>
                     </div>
@@ -362,7 +364,7 @@ export default function ClientProject() {
 
 function ProjectComment({ comment, comments, setComments }) {
     
-    const { darkMode, auth, clientProject } = useContextProvider();
+    const { darkMode, auth, clientProject, language } = useContextProvider();
 
     const projectId = clientProject.project._id;
     
@@ -482,7 +484,7 @@ function ProjectComment({ comment, comments, setComments }) {
                 <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-1">
                         <div>{`${user.surname ? `${user.name} ${user.surname}` : `${user.name}` }` }</div>
-                        <div className={`text-sm ${darkMode ? 'description-dark' : 'description-light'}`}>{seen ? '(Seen)' : ''}</div>
+                        <div className={`text-sm ${darkMode ? 'description-dark' : 'description-light'}`}>{seen ? `(${lang[language].comments.seen})` : ''}</div>
                     </div>
                     {auth.permissions != 'client' && !seen && (
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="cursor-pointer w-7 h-7 p-1 hover:bg-neutral-700 rounded-full transition-colors" onClick={handleMarkAsSeen}>
@@ -512,8 +514,8 @@ function ProjectComment({ comment, comments, setComments }) {
                         rows="3">
                     </textarea>
                     <div className="flex justify-end gap-2">
-                        <button onClick={handleEditingComment} className="py-1 px-3 text-white bg-red-500 hover:bg-red-800 transition-colors rounded-sm">Stornieren</button>
-                        <button onClick={handleEditComment} className="py-1 px-3 text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">Halten</button>
+                        <button onClick={handleEditingComment} className="py-1 px-3 text-white bg-red-500 hover:bg-red-800 transition-colors rounded-sm">{lang[language].comments.edit.cancel}</button>
+                        <button onClick={handleEditComment} className="py-1 px-3 text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">{lang[language].comments.edit.save}</button>
                     </div>
                 </div>
             ) : (
@@ -522,12 +524,12 @@ function ProjectComment({ comment, comments, setComments }) {
             <div className={`text-right text-sm font-semibold ${darkMode ? 'text-neutral-400' : 'text-neutral-600'}`}>{moment(createdAt).format('LLL')}</div>
             <Modal showModal={showModal}>
                 <div className="flex flex-col gap-1">
-                    <div className={`text-red-500 text-xl font-semibold uppercase`}>Kommentar löschen</div>
-                    <div className="text-lg">Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?</div>
+                    <div className={`text-red-500 text-xl font-semibold uppercase`}>{lang[language].comments.delete.title}</div>
+                    <div className="text-lg">{lang[language].comments.delete.description}</div>
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-red-500 hover:bg-red-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleShowModal}>Stornieren</button>
-                    <button className="bg-light-main hover:bg-indigo-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleDeleteComment}>Bestätigen</button>
+                    <button className="bg-red-500 hover:bg-red-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleShowModal}>{lang[language].comments.delete.cancel}</button>
+                    <button className="bg-light-main hover:bg-indigo-900 text-white rounded-md px-4 py-2 uppercase font-semibold transition-colors" onClick={handleDeleteComment}>{lang[language].comments.delete.confirm}</button>
                 </div>
             </Modal>
         </div>

@@ -1,0 +1,293 @@
+{
+    "de": {
+        "project-name": "Name des Projekts",
+        "description": "Beschreibung",
+        "show": "Zeigen",
+        "hide": "Verkleidung",
+        "go-tickets": "Gehe zu den Tickets",
+        "contact": {
+            "title": "Kontaktinformationen",
+            "full-name": "Vollständiger Name",
+            "email": "E-Mail"
+        },
+        "company": {
+            "title": "Firmeninformation",
+            "business-type": {
+                "title": "Unternehmenstyp",
+                "retail": "Einzelhandel",
+                "service": "Service",
+                "manufacturing": "Herstellung"
+            },
+            "company-vision": {
+                "title": "Unternehmensvision",
+                "increase-profitability": "Steigern Sie die Rentabilität",
+                "enhance-customer-satisfaction": "Verbesserung der Kundenzufriedenheit",
+                "promote-sustainability": "Nachhaltigkeit fördern"
+            },
+            "target-audience": {
+                "title": "Zielpublikum",
+                "children": "Kinder",
+                "teenagers": "Teenager",
+                "young-adults": "Junge Erwachsene",
+                "adults": "Erwachsene",
+                "seniors": "Größer"
+            },
+            "service-or-product": {
+                "title": "Geschäft",
+                "products": "Produkte",
+                "services": "Dienstleistungen"
+            },
+            "expected-deilvertime": {
+                "title": "Lieferfrist",
+                "0": "weniger als 1 Monat",
+                "1": "Zwischen 1 und 3 Monaten",
+                "3": "Zwischen 3 und 6 Monaten",
+                "6": "mehr als 6 Monate"
+            }
+        },
+        "project": {
+            "title": "Projekt Information",
+            "functionalities": {
+                "title": "Funktionalitäten",
+                "contact-form": "Kontakt Formular",
+                "image-gallery": "Bildergalerie",
+                "blog-section": "Blog-Bereich",
+                "social-media-integration": "Social-Media-Integration"
+            },
+            "ecommerce-functionalities": {
+                "title": "E-Commerce-Funktionen"
+            },
+            "client-content": {
+                "title": "Kundeninhalte"
+            },
+            "preferred-technologies": {
+                "title": "bevorzugte Technologien"
+            },
+            "responsible-for-managing": {
+                "title": "Verantwortlicher für die Instandhaltung",
+                "client": "Der Kunde",
+                "developer": "der Entwickler"
+            },
+            "marketing-strategy": {
+                "title": "Vermarktungsstrategie",
+                "social-media": "Soziale Netzwerke",
+                "email-marketing": "Email",
+                "SEO": "SEO"
+            },
+            "competitor-websites": {
+                "title": "Mitbewerber-Websites"
+            }
+        },
+        "comments": {
+            "title": "Fügen Sie weitere Informationen zu Ihrem Projekt hinzu",
+            "placeholder": "Machen Sie einen Kommentar",
+            "button": "Kommentar",
+            "no-comments": "Es gibt keine Kommentare",
+            "seen": "gelessen",
+            "edit": {
+                "save": "Halten",
+                "cancel": "Stornieren"
+            },
+            "delete": {
+                "title": "Kommentar löschen",
+                "description": "Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?",
+                "confirm": "Bestätigen",
+                "cancel": "Stornieren"
+            }
+        }
+    },
+    "en": {
+        "project-name": "Project name",
+        "description": "Description",
+        "show": "Show",
+        "hide": "Hide",
+        "go-tickets": "Go to tickets",
+        "contact": {
+            "title": "Contact information",
+            "full-name": "Full name",
+            "email": "E-Mail"
+        },
+        "company": {
+            "title": "Company information",
+            "business-type": {
+                "title": "Company type",
+                "retail": "Retail",
+                "service": "Service",
+                "manufacturing": "Manufacturing"
+            },
+            "company-vision": {
+                "title": "Company vision",
+                "increase-profitability": "Increase profitability",
+                "enhance-customer-satisfaction": "Enhance customer satisfaction",
+                "promote-sustainability": "Promote sustainability"
+            },
+            "target-audience": {
+                "title": "Target audience",
+                "children": "Children",
+                "teenagers": "Teenagers",
+                "young-adults": "Young adults",
+                "adults": "Adults",
+                "seniors": "Seniors"
+            },
+            "service-or-product": {
+                "title": "Business",
+                "products": "Products",
+                "services": "Services"
+            },
+            "expected-deilvertime": {
+                "title": "Expected delivery time",
+                "0": "Less than 1 month",
+                "1": "Between 1 and 3 months",
+                "3": "Between 3 and 6 months",
+                "6": "More than 6 months"
+            }
+        },
+        "project": {
+            "title": "Project Information",
+            "functionalities": {
+                "title": "Functionalities",
+                "contact-form": "Contact Form",
+                "image-gallery": "Image gallery",
+                "blog-section": "Blog section",
+                "social-media-integration": "Social media integration"
+            },
+            "ecommerce-functionalities": {
+                "title": "E-commerce functionalities"
+            },
+            "client-content": {
+                "title": "Customer content"
+            },
+            "preferred-technologies": {
+                "title": "Preferred technologies"
+            },
+            "responsible-for-managing": {
+                "title": "Maintenance responsible",
+                "client": "The client",
+                "developer": "The developer"
+            },
+            "marketing-strategy": {
+                "title": "Marketing strategy",
+                "social-media": "Social networks",
+                "email-marketing": "Email",
+                "SEO": "SEO"
+            },
+            "competitor-websites": {
+                "title": "Competitor Websites"
+            }
+        },
+        "comments": {
+            "title": "Add more information about your project",
+            "placeholder": "Make a comment",
+            "button": "Comment",
+            "no-comments": "There are no comments",
+            "seen": "Read",
+            "edit": {
+                "save": "Save",
+                "cancel": "Cancel"
+            },
+            "delete": {
+                "title": "Delete comment",
+                "description": "Are you sure you want to delete this comment?",
+                "confirm": "Confirm",
+                "cancel": "Cancel"
+            }
+        }
+    },
+    "es": {
+        "project-name": "Nombre del proyecto",
+        "description": "Descripción",
+        "show": "Mostrar",
+        "hide": "Ocultar",
+        "go-tickets": "Ir a tickets",
+        "contact": {
+            "title": "Información de contacto",
+            "full-name": "Nombre completo",
+            "email": "Correo electrónico"
+        },
+        "company": {
+            "title": "Información de la compañia",
+            "business-type": {
+                "title": "Tipo de compañia",
+                "retail": "Minorista",
+                "service": "Servicio",
+                "manufacturing": "Fabricación"
+            },
+            "company-vision": {
+                "title": "Visión",
+                "increase-profitability": "Aumentar la rentabilidad",
+                "enhance-customer-satisfaction": "Mejorar la satisfacción del cliente",
+                "promote-sustainability": "Promover la sostenibilidad"
+            },
+            "target-audience": {
+                "title": "Público objetivo",
+                "children": "Niños",
+                "teenagers": "Adolecentes",
+                "young-adults": "Jovenes adultos",
+                "adults": "Adultos",
+                "seniors": "Mayores"
+            },
+            "service-or-product": {
+                "title": "Negocio",
+                "products": "Productos",
+                "services": "Servicios"
+            },
+            "expected-deilvertime": {
+                "title": "Plazo de entrega",
+                "0": "Menos de 1 mes",
+                "1": "Entre 1 y 3 meses",
+                "3": "Entre 3 y 6 meses",
+                "6": "Más de 6 meses"
+            }
+        },
+        "project": {
+            "title": "Información del proyecto",
+            "functionalities": {
+                "title": "Funcionabilidades",
+                "contact-form": "Formulario de contacto",
+                "image-gallery": "Galería de imágenes",
+                "blog-section": "Sección blog",
+                "social-media-integration": "Integración de redes sociales"
+            },
+            "ecommerce-functionalities": {
+                "title": "Funcionabilidades de e-commerce"
+            },
+            "client-content": {
+                "title": "Contenido del cliente"
+            },
+            "preferred-technologies": {
+                "title": "Tecnologías preferidas"
+            },
+            "responsible-for-managing": {
+                "title": "Responsable de mantenimiento",
+                "client": "El cliente",
+                "developer": "El desarrollador"
+            },
+            "marketing-strategy": {
+                "title": "Estrategia de marketing",
+                "social-media": "Redes sociales",
+                "email-marketing": "Correo electrónico",
+                "SEO": "SEO"
+            },
+            "competitor-websites": {
+                "title": "Sitios web de la competencia"
+            }
+        },
+        "comments": {
+            "title": "Agrega más información acerca de tu proyecto",
+            "placeholder": "Haz un comentario",
+            "button": "Comentar",
+            "no-comments": "Aún no hay comentarios",
+            "seen": "Leído",
+            "edit": {
+                "save": "Guardar",
+                "cancel": "Cancelar"
+            },
+            "delete": {
+                "title": "Eliminar comentario",
+                "description": "¿Estás seguro que deseas eliminar este comentario?",
+                "confirm": "Confirmar",
+                "cancel": "Cancelar"
+            }
+        }
+    }
+}

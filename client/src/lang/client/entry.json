@@ -1,0 +1,77 @@
+{
+    "de": {
+        "seen": "gelessen",
+        "no-entry": "Dieser Eintrag existiert nicht",
+        "go-back": "Zurückkehren",
+        "images": "Bilder",
+        "no-images": "Keine Bilder",
+        "work-hours": "Arbeitsstunden",
+        "date": "Datum",
+        "comments": {
+            "title": "Machen Sie einen Kommentar",
+            "placeholder": "Machen Sie einen Kommentar",
+            "button": "Kommentar",
+            "no-comments": "Es gibt keine Kommentare",
+            "edit": {
+                "save": "Halten",
+                "cancel": "Stornieren"
+            },
+            "delete": {
+                "title": "Kommentar löschen",
+                "description": "Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?",
+                "confirm": "Bestätigen",
+                "cancel": "Stornieren"
+            }
+        }
+    },
+    "en": {
+        "seen": "Read",
+        "no-entry": "This entry doesn't exist",
+        "go-back": "Back",
+        "images": "Images",
+        "no-images": "No images",
+        "work-hours": "Work hours",
+        "date": "Date",
+        "comments": {
+            "title": "Make a comment",
+            "placeholder": "Make a comment",
+            "button": "Comment",
+            "no-comments": "There are no comments",
+            "edit": {
+                "save": "Save",
+                "cancel": "Cancel"
+            },
+            "delete": {
+                "title": "Delete comment",
+                "description": "Are you sure you want to delete this comment?",
+                "confirm": "Confirm",
+                "cancel": "Cancel"
+            }
+        }
+    },
+    "es": {
+        "seen": "Leído",
+        "no-entry": "Esta entrada no existe",
+        "go-back": "Atrás",
+        "images": "Imágenes",
+        "no-images": "No hay imágenes",
+        "work-hours": "Horas de trabajo",
+        "date": "Fecha",
+        "comments": {
+            "title": "Haz un comentario",
+            "placeholder": "Haz un comentario",
+            "button": "Comentar",
+            "no-comments": "Aún no hay comentarios",
+            "edit": {
+                "save": "Guardar",
+                "cancel": "Cancelar"
+            },
+            "delete": {
+                "title": "Eliminar comentario",
+                "description": "¿Estás seguro que deseas eliminar este comentario?",
+                "confirm": "Confirmar",
+                "cancel": "Cancelar"
+            }
+        }
+    }
+}

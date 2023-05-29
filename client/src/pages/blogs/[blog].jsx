@@ -24,8 +24,8 @@ export default function Blog({ blog, popularBlogs }) {
 
     return (
         blog.title && (
-            <Layout title={`${blog.title} | Blogs`} lang={'de'} metaDesc={blog.metaDescription}>
-                <div className="flex flex-col xl:flex-row items-start gap-20 2xl:gap-28 mx-auto py-20 px-6 sm:px-20 2xl:max-w-[95rem]">
+            <Layout title={`${blog.title} | Blogs`} lang={'de'} metaDesc={blog.metaDescription} bgColor={darkMode ? "#080808" : "F6F6F6"}>
+                <div className={`flex flex-col xl:flex-row items-start gap-20 2xl:gap-28 mx-auto py-20 px-6 sm:px-20 2xl:max-w-[95rem] ${darkMode ? 'bg-gradient-to-br from-[#080808] to-[#070707] blog-bg-dark' : 'bg-gradient-to-br from-[#F6F6F6] to-[#FFF] blog-bg-light'}`}>
                     <div className="flex flex-col gap-20 xl:w-3/4">
                         <div className="flex flex-col gap-5">
                             <h1 className={`${darkMode ? 'title-dark' : 'title-light'} text-[2.5rem] xl:text-5xl font-medium xl:leading-[3.8rem]`}>{blog.title}</h1>
@@ -80,7 +80,7 @@ function BlogElement({ element, type }) {
         ),
         image: (
             <div className="image-container">
-                <Image className="image" src={element?.image?.data?.attributes?.url} fill alt={element?.image?.data?.attributes?.hash} />
+                <Image className="image rounded-md" src={element?.image?.data?.attributes?.url} fill alt={element?.image?.data?.attributes?.hash} />
             </div>
         ),
         video: (
@@ -102,7 +102,7 @@ function BlogPopularBlog({ blog }) {
     return (
         <div className="flex flex-col gap-3">
             <div className="image-container">
-                <Image className="image" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+                <Image className="image rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
             </div>
             {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
             <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/blogs/${url}`}>
