@@ -28,7 +28,7 @@ export default function Layout({ title, metaDesc, lang, children }) {
                 { lang == 'en' && <NavbarEN /> }
                 { lang == 'es' && <NavbarES /> }
                 {/* Page content */}
-                {children}
+                <div style={{minHeight: 'calc(100vh - 5rem)'}}>{children}</div>
                 {/* Footer */}
                 { lang == 'de' && <FooterDE /> }
                 { lang == 'en' && <FooterEN /> }

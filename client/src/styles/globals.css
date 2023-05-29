@@ -24,6 +24,18 @@ div {
 	transition: color 50ms;
 }
 
+.image-container {
+	width: 100%;
+	position: relative !important;
+}
+
+.image-container .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
 /* to remove/add scroll during modal toggling  */
 .body-in-modal-open {
 		overflow-y: hidden !important;
@@ -41,7 +53,7 @@ div {
 }
 
 .title-dark {
-	color: rgb(228 228 231);
+	color: #F1F0FF;
 }
 
 .subtitle-dark {
@@ -62,7 +74,7 @@ div {
 }
 
 .title-light {
-	color: rgb(20, 20, 20);
+	color: #1F1D30;
 }
 
 .subtitle-light {
