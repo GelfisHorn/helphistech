@@ -6,10 +6,12 @@ import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 import axiosHeaders from "@/hooks/axiosHeaders";
+// Languages
+import lang from '../../../lang/client/sidebar.json';
 
 export default function ClientSidebar() {
     
-    const { auth, darkMode, clientProject, setClientProject } = useContextProvider();
+    const { auth, darkMode, clientProject, setClientProject, language } = useContextProvider();
 
     const router = useRouter();
 
@@ -73,7 +75,7 @@ export default function ClientSidebar() {
                         href={`/admin/projects`}
                     >Recibidos</SidebarItem>
                 </SidebarSection>
-                <SidebarSection title={"Schalttafel"} permissions={["client"]}>
+                <SidebarSection title={lang[language].home.title} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
                         icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -81,9 +83,9 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={`/client`}
-                    >Startseite</SidebarItem>
+                    >{lang[language].home.home}</SidebarItem>
                 </SidebarSection>
-                <SidebarSection title={"Projekt"} permissions={["client"]}>
+                <SidebarSection title={lang[language].project.title} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
                         icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -91,7 +93,7 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={`${!clientProject?.project?.client?._id ? '/client' : `/client/project/${clientProject?.project?.client?._id}`}`}
-                    >Mein Projekt</SidebarItem>
+                    >{lang[language].project["my-project"]}</SidebarItem>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
                         icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -99,7 +101,7 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={`${!clientProject?.project?.client?._id ? '/client' : `/client/process/${clientProject?.project?.client?._id}`}`}
-                    >Verfahren</SidebarItem>
+                    >{lang[language].project.process}</SidebarItem>
                 </SidebarSection>
             </div>
             <div className={`border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} lg:px-5 pb-5 pt-5`}>
@@ -111,7 +113,7 @@ export default function ClientSidebar() {
                         </svg>
                         }
                         href={"/myaccount"}
-                    >Mein Konto</SidebarItem>
+                    >{lang[language].account}</SidebarItem>
                 </div>
             </div>
 

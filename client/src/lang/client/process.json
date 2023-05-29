@@ -1,0 +1,35 @@
+{
+    "de": {
+        "total-hours": "Gesamtstunden",
+        "no-entries": "Es sind noch keine Inhalte zum Anzeigen vorhanden",
+        "entry": {
+            "title": "der Überschrift",
+            "description": "Beschreibung",
+            "images": "Bilder",
+            "work-hours": "Arbeitsstunden",
+            "date": "Datum"
+        }
+    },
+    "en": {
+        "total-hours": "Total hours",
+        "no-entries": "There is no content to display yet",
+        "entry": {
+            "title": "Title",
+            "description": "Description",
+            "images": "Images",
+            "work-hours": "Work hours",
+            "date": "Date"
+        }
+    },
+    "es": {
+        "total-hours": "Horas totales",
+        "no-entries": "Aún no hay contenido para mostrar",
+        "entry": {
+            "title": "Título",
+            "description": "Descripción",
+            "images": "Imágenes",
+            "work-hours": "Horas de trabajo",
+            "date": "Fecha"
+        }
+    }
+}
