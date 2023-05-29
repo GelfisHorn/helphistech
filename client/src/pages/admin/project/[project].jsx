@@ -534,7 +534,7 @@ export default function ProjectDynamic() {
                             )}
                         </div>
                     </div>
-                    {auth.permissions === 'developer' && (
+                    {(auth.permissions === 'superadmin' || auth.permissions === 'developer') && (
                         <>
                             <div className={`flex flex-col gap-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pt-5 pb-2`}>
                                 <div className="uppercase font-medium text-lg">Desarrollador</div>
@@ -579,7 +579,7 @@ export default function ProjectDynamic() {
                     )}
                     <div className={`flex flex-col gap-5 py-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
                         <div className={`flex flex-col gap-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pb-4`}>
-                            <div className="text-xl">Comentarios</div>
+                            <div className="text-xl">Comentarios internos para desarrolladores</div>
                             <form className="flex flex-col gap-2" onSubmit={handleSendComment}>
                                 <textarea 
                                     ref={commentTextarea}
