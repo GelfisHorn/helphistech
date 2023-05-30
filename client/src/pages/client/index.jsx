@@ -33,11 +33,17 @@ export default function ClientIndex() {
             return;
         }
 
-        if (!fetchingAuth && (Object.keys(clientProject).length === 0 && Object.keys(clientProcess).length === 0)) {
-            Promise.all([getProject(), getProcess()]).then(() => setLoading(false));
-            return;
+        if (!fetchingAuth && Object.keys(clientProject).length === 0) {
+            (async () => {
+                await getProject()
+                setLoading(false);
+            })();
         }
-    }, [fetchingAuth, auth, clientProject, clientProcess])
+
+        if(clientProject.length !== 0 && (processEntries.length === 0 && clientProcess.length === 0)) {
+            getProcess();
+        }
+    }, [fetchingAuth, auth, clientProject])
 
     async function getProject() {
         // Get authentication token from localStorage
@@ -79,7 +85,7 @@ export default function ClientIndex() {
         }
 
         try {
-            const { data } = await axios.post('/api/client/project/entry/getEntries', { config });
+            const { data } = await axios.post('/api/client/project/entry/getEntries', { project: clientProject.project._id,config });
             const sortedByDate = data.sort(function (a, b) {
                 // Turn your strings into dates, and then subtract them
                 // to get a value that is either negative, positive, or zero.
@@ -88,7 +94,7 @@ export default function ClientIndex() {
             setProcessEntries(sortedByDate.slice(0, 4));
             setClientProcess(sortedByDate);
         } catch (err) {
-            const error = new Error(err.response.data.msg);
+            const error = new Error(err?.response?.data?.msg || "");
             console.error(error.message);
         }
     }
@@ -162,7 +168,7 @@ export default function ClientIndex() {
                                                             </div>
                                                         </Link>
                                                     )) : (
-                                                        <div>No hay entradas aún</div>
+                                                        <div>{lang[language].process["no-entries"]}</div>
                                                     )}
                                                 </div>
                                             </div>

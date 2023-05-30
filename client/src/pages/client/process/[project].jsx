@@ -17,7 +17,7 @@ import lang from '../../../lang/client/process.json'
 
 export default function ClientProjectProcess() {
     
-    const { auth, clientProcess, setClientProcess, language } = useContextProvider();
+    const { auth, clientProject, setClientProcess, language } = useContextProvider();
 
     const [ loading, setLoading ] = useState(true);
     // Entries/Process state
@@ -29,7 +29,7 @@ export default function ClientProjectProcess() {
             setEntries(clientProcess);
             setLoading(false);
         } */
-        if(Object.keys(auth).length != 0) {
+        if(Object.keys(auth).length != 0 && clientProject.length != 0) {
             getProcess();
         }
     }, [auth]);
@@ -53,7 +53,7 @@ export default function ClientProjectProcess() {
         }
 
         try {
-            const { data } = await axios.post('/api/client/project/entry/getEntries', { config });
+            const { data } = await axios.post('/api/client/project/entry/getEntries', { project: clientProject.project._id,config });
             const sortedByDate = data.sort(function(a,b){
                 // Turn your strings into dates, and then subtract them
                 // to get a value that is either negative, positive, or zero.
