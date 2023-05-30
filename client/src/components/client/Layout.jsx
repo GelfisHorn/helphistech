@@ -35,7 +35,7 @@ export default function ClientLayout({ children, title }) {
                         <div>
                             <Sidebar />
                         </div>
-                        <div className="w-full py-6 px-2 sm:px-4 lg:px-8 overflow-y-scroll lazy-load-1" style={{height: 'calc(100vh - 3.5rem)'}}>
+                        <div className={`${darkMode ? 'blog-bg-dark' : 'blog-bg-light'} w-full py-6 px-2 sm:px-4 lg:px-8 overflow-y-scroll lazy-load-1`} style={{height: 'calc(100vh - 3.5rem)'}}>
                             {children}
                         </div>
                     </div>
