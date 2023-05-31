@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 // Nextjs
 import { useRouter } from "next/router"
 import Link from "next/link";
+import Image from "next/image";
 // Hooks
 import currencyFormatter from "@/hooks/currencyFormatter";
 import uploadImages from "@/hooks/uploadImages";
@@ -14,6 +15,11 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Layout from "@/components/admin/AdminLayout";
 import LoadingSpinner from "@/components/LoadingSpinner";
+// Push notification
+import showToast from "@/hooks/showToast";
+// Notifications
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Parse company and project data
 const COMPANY = {
@@ -247,13 +253,28 @@ export default function ProjectDynamic() {
 
     // Create entry modal state
     const [ showEntryModal, setShowEntryModal ] = useState(false);
-    // Switch "showEntryModal" state
-    const handleShowEntryModal = () => setShowEntryModal(!showEntryModal);
-
+    
     // Entry modal fields state
     const entryTitle = useRef('');
     const entryDescription = useRef('');
     const [ entryImages, setEntryImages ] = useState([]);
+    const [ previewEntryImages, setPreviewEntryImages ] = useState([]);
+    // Switch "showEntryModal" state
+    const handleShowEntryModal = () => {
+        setShowEntryModal(!showEntryModal);
+        setPreviewEntryImages([]);
+    };
+    useEffect(() => {
+        if(entryImages.length == 0) return;
+
+        for(const image of entryImages) {
+            const reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.addEventListener('load', () => {
+               setPreviewEntryImages(current => current.concat([reader.result]));
+            });
+        }
+    }, [entryImages])
     const entryWorkHours = useRef('');
     // Create entry
     async function handleCreateEntry(e) {
@@ -284,6 +305,7 @@ export default function ProjectDynamic() {
             const entry = { title, description, images, work_hours };
             const { data } = await axios.post('/api/admin/projects/project/entry/create', { projectId, entry, config });
             await resetForm();
+            showToast("Creaste la entrada correctamente", "success");
             // router.push(`/client/process/entry/${data._id}`);
         } catch (err) {
             const error = new Error(err);
@@ -327,8 +349,6 @@ export default function ProjectDynamic() {
         }
     }
 
-    console.log(project)
-
     return (
         <Layout title={'Proyecto'}>
             {loading && (
@@ -338,6 +358,7 @@ export default function ProjectDynamic() {
             )}
             {!loading && (project && Object.keys(project).length != 0) && (
                 <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col gap-3 px-5 rounded-lg`}>
+                    <ToastContainer />
                     <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col border-b py-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
                             <div className="flex flex-col sm:flex-row sm:gap-2 text-xl">
@@ -563,6 +584,15 @@ export default function ProjectDynamic() {
                                                 <div className="text-sm">Subir imágenes</div>
                                             </label>
                                             <input className="hidden" id="file_input" type="file" multiple={true} onChange={e => setEntryImages(e.target.files)} />
+                                            {previewEntryImages.length != 0 && (
+                                                <div className="grid grid-cols-3 gap-3 mt-1">
+                                                    {previewEntryImages.map((image, index) => (
+                                                        <div key={index} className="image-container">
+                                                            <Image className="image rounded-md" src={image} fill alt="Upload image" />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="flex flex-col gap-1">
                                             <label htmlFor="hours">Horas</label>
