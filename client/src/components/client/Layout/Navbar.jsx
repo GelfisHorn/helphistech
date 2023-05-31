@@ -15,14 +15,14 @@ export default function Navbar() {
     }
 
     return (
-        <div className={`w-full h-14 px-10 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-100'}`}>
+        <div className={`w-full h-14 px-2 lg:px-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-100'}`}>
             <div className="flex items-center justify-between h-full">
                 <Link href={"/admin"}>
                     <div className="text-light-main uppercase font-semibold text-lg">
                         <Image src={darkMode ? '/logo/dark/full-logo.webp' : '/logo/light/full-logo.webp'} width={150} height={36.8} alt="HelphisTech Logo" />
                     </div>
                 </Link>
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-3 sm:gap-5">
                     <div onClick={handleDarkMode} className={`text-2xl cursor-pointer transition-colors`}>
                         { darkMode ? (
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -34,7 +34,7 @@ export default function Navbar() {
                             </svg>
                         )}
                     </div>
-                    <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-2 px-4 rounded-sm transition-colors" onClick={handleLogout}>Cerrar sesión</button>
+                    <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-[0.35rem] sm:py-2 px-2 sm:px-4 rounded-sm transition-colors" onClick={handleLogout}>Cerrar sesión</button>
                 </div>
                 {/* <div className="block sm:hidden text-2xl"><i className="fa-regular fa-bars"></i></div> */}
             </div>

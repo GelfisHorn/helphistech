@@ -100,7 +100,7 @@ export default function ClientSidebar() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                         </svg>
                         }
-                        href={`${!clientProject?.project?.client?._id ? '/client' : `/client/process/${clientProject?.project?.client?._id}`}`}
+                        href={`${!clientProject?.project?._id ? '/client' : `/client/process/${clientProject?.project?._id}`}`}
                     >{lang[language].project.process}</SidebarItem>
                 </SidebarSection>
             </div>

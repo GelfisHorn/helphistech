@@ -6,8 +6,11 @@ import EntryComment from "../../../models/Client/Project/EntryComment.js";
 
 const ObjectId = mongoose.Types.ObjectId;
 async function getEntries(req, res) {
+
+    const { project } = req.params || {};
+
     try {
-        const entries = await Entry.find().select('-__v -updatedAt');
+        const entries = await Entry.find({ project }).select('-__v -updatedAt');
         return res.status(200).json(entries);
     } catch (err) {
         const error = new Error(err);

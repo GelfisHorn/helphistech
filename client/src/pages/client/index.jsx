@@ -33,11 +33,17 @@ export default function ClientIndex() {
             return;
         }
 
-        if (!fetchingAuth && (Object.keys(clientProject).length === 0 && Object.keys(clientProcess).length === 0)) {
-            Promise.all([getProject(), getProcess()]).then(() => setLoading(false));
-            return;
+        if (!fetchingAuth && Object.keys(clientProject).length === 0) {
+            (async () => {
+                await getProject()
+                setLoading(false);
+            })();
         }
-    }, [fetchingAuth, auth, clientProject, clientProcess])
+
+        if(clientProject.length !== 0 && (processEntries.length === 0 && clientProcess.length === 0)) {
+            getProcess();
+        }
+    }, [fetchingAuth, auth, clientProject])
 
     async function getProject() {
         // Get authentication token from localStorage
@@ -79,7 +85,7 @@ export default function ClientIndex() {
         }
 
         try {
-            const { data } = await axios.post('/api/client/project/entry/getEntries', { config });
+            const { data } = await axios.post('/api/client/project/entry/getEntries', { project: clientProject.project._id,config });
             const sortedByDate = data.sort(function (a, b) {
                 // Turn your strings into dates, and then subtract them
                 // to get a value that is either negative, positive, or zero.
@@ -88,7 +94,7 @@ export default function ClientIndex() {
             setProcessEntries(sortedByDate.slice(0, 4));
             setClientProcess(sortedByDate);
         } catch (err) {
-            const error = new Error(err.response.data.msg);
+            const error = new Error(err?.response?.data?.msg || "");
             console.error(error.message);
         }
     }
@@ -107,12 +113,12 @@ export default function ClientIndex() {
                 {!loading && (Object.keys(auth).length !== 0 && Object.keys(clientProject).length !== 0) && (
                     <div className="flex flex-col gap-10 w-full h-full">
                         <div className="text-3xl font-medium text-left">{lang[language].welcome}, {auth.name}.</div>
-                        <div className="grid grid-cols-2 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5">
                             <div className="flex flex-col gap-2">
                                 <h4 className="uppercase font-medium text-lg">{lang[language]["my-project"].title}</h4>
                                 <Link className={`w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} p-5 rounded-md`} href={`/client/project/${project._id}`}>
                                     <div className="flex flex-col gap-2">
-                                        <div className="flex items-end gap-2">
+                                        <div className="flex flex-col">
                                             <div className="uppercase font-medium">{lang[language]["my-project"]["company-name"]}</div>
                                             <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{project?.contact_information?.company_name}</div>
                                         </div>
@@ -149,8 +155,8 @@ export default function ClientIndex() {
                                             <div className="flex flex-col gap-1">
                                                 <div className="uppercase font-medium">{lang[language].process["last-tickets"]}</div>
                                                 <div className="flex flex-col gap-1">
-                                                    {processEntries.length > 0 ? processEntries.map(entry => (
-                                                        <Link href={`/client/process/entry/${entry._id}`}>
+                                                    {processEntries.length > 0 ? processEntries.map((entry, index) => (
+                                                        <Link key={index} href={`/client/process/entry/${entry._id}`}>
                                                             <div className={`flex items-center justify-between ${darkMode ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-neutral-300 hover:bg-neutral-400'} transition-colors px-3 py-2 rounded-lg`}>
                                                                 <div className="flex flex-col">
                                                                     <div>{entry.title}</div>
@@ -162,7 +168,7 @@ export default function ClientIndex() {
                                                             </div>
                                                         </Link>
                                                     )) : (
-                                                        <div>No hay entradas aún</div>
+                                                        <div>{lang[language].process["no-entries"]}</div>
                                                     )}
                                                 </div>
                                             </div>
