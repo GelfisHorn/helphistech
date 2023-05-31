@@ -84,6 +84,8 @@
             "button": "Kommentar",
             "no-comments": "Es gibt keine Kommentare",
             "seen": "gelessen",
+            "files-uploaded": "Dateien",
+            "files-restriction": "Nur Bilder und PDF-Dateien erlaubt",
             "edit": {
                 "save": "Halten",
                 "cancel": "Stornieren"
@@ -93,6 +95,16 @@
                 "description": "Sind Sie sicher, dass Sie diesen Kommentar löschen möchten?",
                 "confirm": "Bestätigen",
                 "cancel": "Stornieren"
+            }
+        },
+        "notifications": {
+            "comment": {
+                "invalid-file": "Nicht unterstütztes Dateiformat",
+                "empty-field": "Sie müssen einen Kommentar schreiben",
+                "create": "Kommentar erfolgreich gesendet",
+                "edit": "Kommentar erfolgreich bearbeitet",
+                "delete": "Kommentar erfolgreich gelöscht",
+                "error": "Bei der Anfrage ist ein Fehler aufgetreten"
             }
         }
     },
@@ -181,6 +193,8 @@
             "button": "Comment",
             "no-comments": "There are no comments",
             "seen": "Read",
+            "files-uploaded": "files",
+            "files-restriction": "Only images and pdf files allowed",
             "edit": {
                 "save": "Save",
                 "cancel": "Cancel"
@@ -190,6 +204,16 @@
                 "description": "Are you sure you want to delete this comment?",
                 "confirm": "Confirm",
                 "cancel": "Cancel"
+            }
+        },
+        "notifications": {
+            "comment": {
+                "invalid-file": "Unsupported file type",
+                "empty-field": "You must write a comment",
+                "create": "Comment sent successfully",
+                "edit": "Comment edited successfully",
+                "delete": "Comment successfully deleted",
+                "error": "There was an error making the request"
             }
         }
     },
@@ -278,6 +302,8 @@
             "button": "Comentar",
             "no-comments": "Aún no hay comentarios",
             "seen": "Leído",
+            "files-uploaded": "archivos",
+            "files-restriction": "Solo imágenes y archivos pdf permitidos",
             "edit": {
                 "save": "Guardar",
                 "cancel": "Cancelar"
@@ -287,6 +313,16 @@
                 "description": "¿Estás seguro que deseas eliminar este comentario?",
                 "confirm": "Confirmar",
                 "cancel": "Cancelar"
+            }
+        },
+        "notifications": {
+            "comment": {
+                "invalid-file": "Tipo de archivo no soportado",
+                "empty-field": "Debes escribir un comentario",
+                "create": "Comentario enviado correctamente",
+                "edit": "Comentario editado correctamente",
+                "delete": "Comentario eliminado correctamente",
+                "error": "Hubo un error al hacer la petición"
             }
         }
     }

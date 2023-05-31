@@ -9,59 +9,24 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Hooks
-import currencyFormatter from "@/hooks/currencyFormatter";
+import uploadImages from "@/hooks/uploadImages";
 // Date and Hour Formatter
 import moment from "moment";
 // Languages
 import lang from '../../../lang/client/project.json'
+// Push notification
+import showToast from "@/hooks/showToast";
+// Notifications
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import deleteImages from "@/hooks/deleteImages";
 
-// Parse company and project data
-const COMPANY = {
-    "business_type": {
-        "retail": "Einzelhandel",
-        "service": "Service",
-        "manufacturing": "Herstellung"
-    },
-    "company_vision": {
-        "increase-profitability": "Steigern Sie die Rentabilität",
-        "enhance-customer-satisfaction": "Verbesserung der Kundenzufriedenheit",
-        "promote-sustainability": "Nachhaltigkeit fördern"
-    },
-    "target_audience": {
-        "children": "Kinder",
-        "teenagers": "Teenager",
-        "young-adults": "Junge Erwachsene",
-        "adults": "Erwachsene",
-        "seniors": "ältere Erwachsene"
-    },
-    "service_or_product": {
-        "products": "Produkte",
-        "services": "Dienstleistungen"
-    },
-    "expected_deilvertime": {
-        0: "weniger als 1 Monat",
-        1: "Zwischen 1 und 3 Monaten",
-        3: "Zwischen 3 und 6 Monaten",
-        6: "mehr als 6 Monate"
-    }
-}
-
-const PROJECT = {
-    "functionalities": {
-        "contact-form": "Kontakt Formular",
-        "image-gallery": "Bildergalerie",
-        "blog-section": "Blog-Bereich",
-        "social-media-integration": "Social-Media-Integration"
-    },
-    "responsible_for_managing": {
-        "client": "Der Kunde",
-        "developer": "der Entwickler"
-    },
-    "marketing_strategy": {
-        "social-media": "Soziale Netzwerke",
-        "email-marketing": "Email",
-        "SEO": "SEO",
-    }
+// Supported files to upload
+const SUPPORTED_FILES = {
+    pdf: true,
+    png: true,
+    jpg: true,
+    jpeg: true
 }
 
 export default function ClientProject() {
@@ -114,11 +79,25 @@ export default function ClientProject() {
 
     const commentTextarea = useRef('');
 
+    const [ commentFiles, setCommentFiles ] = useState([]);
+    useEffect(() => {
+        if(commentFiles.length != 0) {
+            for(const file of commentFiles) {
+                const type = file.type.split('/')[1];
+                if(!SUPPORTED_FILES[type]) {
+                    setCommentFiles([]);
+                    showToast(lang[language].notifications.comment["invalid-file"], "error");
+                    return;
+                }
+            }
+        }
+    }, [commentFiles])
     async function handleSendComment(e) {
         e.preventDefault();
 
         const message = commentTextarea.current.value;
         if(message == '') {
+            showToast(lang[language].notifications.comment["empty-field"], "error");
             return;
         }
 
@@ -137,12 +116,18 @@ export default function ClientProject() {
         }
 
         try {
+            let images = [];
+            if(commentFiles) {
+                images = await uploadImages(commentFiles, "client/comments");
+            }
             commentTextarea.current.value = '';
-            const { data } = await axios.post('/api/client/comment/create', { projectId: clientProject.project._id, message, config });
+            const { data } = await axios.post('/api/client/comment/create', { projectId: clientProject.project._id, message, files: images, config });
             setProjectComments(current => current.concat([data]));
+            showToast(lang[language].notifications.comment.create, "success");
+            setCommentFiles([]);
         } catch (error) {
             const err = new Error(error.response.data.msg);
-            console.error(err.message);
+            showToast(lang[language].notifications.comment.error, "error");
         }
     }
     
@@ -154,7 +139,8 @@ export default function ClientProject() {
                 </div>
             )}
             {!loading && Object.keys(clientProject).length != 0 && (
-                <div className={`${darkMode ? 'text-dark-text' : 'text-black'} flex flex-col gap-3 px-5 rounded-lg`}>
+                <div className={`${darkMode ? 'text-dark-text' : 'text-black'} break-words flex flex-col gap-3 lg:px-5 rounded-lg`}>
+                    <ToastContainer />
                     <div className={`flex flex-col pt-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
                             <div className="flex flex-col sm:flex-row sm:gap-2 text-xl">
@@ -325,8 +311,25 @@ export default function ClientProject() {
                                         placeholder={lang[language].comments.placeholder} 
                                         rows="3">
                                     </textarea>
-                                    <div className="flex justify-end">
-                                        <button type="submit" className="py-2 px-6 bg-primary hover:bg-primary-2 transition-colors text-white uppercase rounded-sm font-medium">{lang[language].comments.button}</button>
+                                    <div className="flex flex-col sm:flex-row items-start justify-between gap-5">
+                                        <div className="flex items-center gap-2">
+                                            <div className="flex justify-start">
+                                                <label htmlFor="files" className="cursor-pointer">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                                                    </svg>
+                                                </label>
+                                                <input multiple={true} type="file" className="hidden" id="files" onChange={e => setCommentFiles(e.target.files)} />
+                                            </div>
+                                            {commentFiles.length != 0 ? (
+                                                <div className={darkMode ? 'description-dark' : 'description-light'}>{commentFiles.length} {lang[language].comments["files-uploaded"]}</div>
+                                            ) : (
+                                                <div className={`${darkMode ? 'description-dark' : 'description-light'} text-sm`}>{`(${lang[language].comments["files-restriction"]})`}</div>
+                                            )}
+                                        </div>
+                                        <div className="flex justify-end">
+                                            <button type="submit" className="py-2 px-3 xs:px-6 bg-primary hover:bg-primary-2 transition-colors text-white uppercase rounded-sm font-medium">{lang[language].comments.button}</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -368,7 +371,7 @@ function ProjectComment({ comment, comments, setComments }) {
 
     const projectId = clientProject.project._id;
     
-    const { _id, user, message, createdAt, seen } = comment;
+    const { _id, user, message, createdAt, seen, files } = comment;
 
     // Edit comment state
     const [ editingComment, setEditingComment ] = useState(false);
@@ -405,8 +408,9 @@ function ProjectComment({ comment, comments, setComments }) {
                 return comment;
             })
             setComments(newComments);
+            showToast(lang[language].notifications.comment.edit, "success");
         } catch (error) {
-            console.log(error.response.data.msg)
+            showToast(lang[language].notifications.comment.error, "error");
         }
     }
 
@@ -434,11 +438,13 @@ function ProjectComment({ comment, comments, setComments }) {
         }
 
         try {
+            await deleteImages(files, "client/comments");
             await axios.post('/api/client/comment/delete', { commentId: _id, config });
             const newComments = comments.filter(comment => comment._id != _id);
             setComments(newComments);
+            showToast(lang[language].notifications.comment.delete, "success");
         } catch (error) {
-            console.log(error.response.data.msg)
+            showToast(lang[language].notifications.comment.error, "error");
         }
     }
 
@@ -519,9 +525,21 @@ function ProjectComment({ comment, comments, setComments }) {
                     </div>
                 </div>
             ) : (
-                <div className={`break-words ${darkMode ? 'description-dark' : 'description-light'}`}>{message}</div>
+                <div className={`break-words ${darkMode ? 'description-dark' : 'description-light'} break-words py-1`}>{message}</div>
             )}
             <div className={`text-right text-sm font-semibold ${darkMode ? 'text-neutral-400' : 'text-neutral-600'}`}>{moment(createdAt).format('LLL')}</div>
+            {files.length != 0 && (
+                <div className="flex items-center gap-x-2 flex-wrap mt-2">
+                    <div>Archivos:</div>
+                    {files.map((file, index) => {
+                        const urlPieces = file.split('/');
+                        const fileName = urlPieces[urlPieces.length - 1].slice(-9);
+                        return (
+                            <Link className={`${darkMode ? 'description-dark hover:text-zinc-200' : 'description-light hover:text-black'} transition-colors text-sm`} key={index} href={file} target="_blank">{fileName}</Link>
+                        )
+                    })}
+                </div>
+            )}
             <Modal showModal={showModal}>
                 <div className="flex flex-col gap-1">
                     <div className={`text-red-500 text-xl font-semibold uppercase`}>{lang[language].comments.delete.title}</div>

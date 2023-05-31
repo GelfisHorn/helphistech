@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-	const { projectId, message, config } = req.body;
+	const { projectId, message, files, config } = req.body;
 	try {
         const { data } = await axios.request({
             url: `${process.env.SERVER_URI}/v1/client/project/comment/${projectId}`,
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
             headers: {
                 'Authorization': config.headers.Authorization
             },
-            data: { message }
+            data: { message, files }
         })
 		return res.status(200).json(data);
 	} catch (error) {

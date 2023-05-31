@@ -15,7 +15,12 @@ const clientCommentSchema = mongoose.Schema({
     seen: {
         type: Boolean,
         default: false
-    }
+    },
+    files: [
+        {
+            type: String
+        }
+    ]
 }, {
     timestamps: true
 })
