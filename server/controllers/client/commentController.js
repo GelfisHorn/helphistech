@@ -6,7 +6,7 @@ import permissions from "../../config/permissions.js";
 const ObjectId = mongoose.Types.ObjectId;
 async function create(req, res) {
     const projectId = req.params.id;
-    const { message = null } = req.body;
+    const { message = null, files = [] } = req.body;
 
     if([message].includes(null)) {
         const error = new Error('"message" is required');
@@ -25,9 +25,9 @@ async function create(req, res) {
     }
 
     try {
-        const newComment = new ClientComment({ user: req.user._id, project: projectId, message });
+        const newComment = new ClientComment({ user: req.user._id, project: projectId, message, files: files || [] });
         newComment.save();
-        return res.status(200).json({ user: { _id: req.user._id, name: req.user.name, surname: req.user.surname }, message: newComment.message});
+        return res.status(200).json({ _id: newComment._id, user: { _id: req.user._id, name: req.user.name, surname: req.user.surname }, message: newComment.message, files: newComment.files });
     } catch (err) {
         const error = new Error(err)
         return res.status(400).json({ msg: error.message })

@@ -7,7 +7,7 @@ const router = express.Router();
 // Entry comments routes (developer comments)
 router.use('/comment', commentRoutes)
 
-router.get('/:project', getEntries);
+router.get('/all/:project', getEntries);
 
 router.route('/:id')
     .get(get)
