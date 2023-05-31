@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // Nextjs
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
@@ -14,10 +15,18 @@ import deleteImages from "@/hooks/deleteImages";
 import moment from "moment";
 // Languages
 import lang from '../../../lang/client/process.json'
+// Push notification
+import showToast from "@/hooks/showToast";
+// Notifications
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ClientProjectProcess() {
     
-    const { auth, clientProject, setClientProcess, language } = useContextProvider();
+    const router = useRouter();
+    const { project } = router.query;
+
+    const { auth, clientProject, clientProcess, setClientProcess, language } = useContextProvider();
 
     const [ loading, setLoading ] = useState(true);
     // Entries/Process state
@@ -29,7 +38,7 @@ export default function ClientProjectProcess() {
             setEntries(clientProcess);
             setLoading(false);
         } */
-        if(Object.keys(auth).length != 0 && clientProject.length != 0) {
+        if(Object.keys(auth).length != 0) {
             getProcess();
         }
     }, [auth]);
@@ -53,7 +62,7 @@ export default function ClientProjectProcess() {
         }
 
         try {
-            const { data } = await axios.post('/api/client/project/entry/getEntries', { project: clientProject.project._id,config });
+            const { data } = await axios.post('/api/client/project/entry/getEntries', { project, config });
             const sortedByDate = data.sort(function(a,b){
                 // Turn your strings into dates, and then subtract them
                 // to get a value that is either negative, positive, or zero.
@@ -62,7 +71,7 @@ export default function ClientProjectProcess() {
             setClientProcess(sortedByDate)
             setEntries(sortedByDate);
         } catch (err) {
-            const error = new Error(err.response.data.msg);
+            const error = new Error(err?.response?.data?.msg || "");
             console.error(error.message);
         } finally {
             setLoading(false);
@@ -86,14 +95,18 @@ export default function ClientProjectProcess() {
                     <LoadingSpinner />
                 </div>
             )}
-            {!loading && entries.length != 0 ? (
-                <div className="flex flex-col divide-y px-3">
-                    <div className="pb-3 text-lg">{lang[language]["total-hours"]}: {hoursCount}</div>
-                    {entries.map((entry, index) => (
-                        <EntryRow key={index} entry={entry} entries={entries} setEntries={setEntries} />
-                    ))}
-                </div>
-            ) : (
+            {!loading && entries.length != 0 && (
+                <>
+                    <div className="flex flex-col divide-y lg:px-3">
+                        <div className="pb-3 text-lg">{lang[language]["total-hours"]}: {hoursCount}</div>
+                        {entries.map((entry, index) => (
+                            <EntryRow key={index} entry={entry} entries={entries} setEntries={setEntries} />
+                        ))}
+                    </div>
+                    <ToastContainer />
+                </>
+            )}
+            {!loading && entries.length == 0 && (
                 <div className="grid place-content-center h-full text-lg">{lang[language]["no-entries"]}</div>
             )}
         </Layout>
@@ -230,9 +243,11 @@ function EntryRow({ entry, entries, setEntries }) {
                 return new Date(b.createdAt) - new Date(a.createdAt);
             });
             setEntries(sortedByDate);
+            showToast("Eliminaste esta entrada correctamente", "success");
         } catch (err) {
             const error = new Error(err);
             console.error(error.message);
+            showToast("Hubo un error al eliminar la entrada", "error");
         }
     }
 
