@@ -130,7 +130,7 @@ export default function ClientProjectEntry() {
                         { showImage && (
                             <div onClick={handleShowImage}>
                                 <div className="fixed bg-black opacity-75 top-0 left-0 w-screen h-screen"></div>
-                                <div className={`fixed left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 p-10 overflow-y-scroll h-screen hide-scroll`} style={{width: 'calc(100vw - 5rem)'}}>
+                                <div className={`fixed left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pt-10 md:p-10 overflow-y-scroll h-screen hide-scroll`} style={{width: 'calc(100vw - 5rem)'}}>
                                     <Image className={`rounded-md border-2 ${darkMode ? 'border-neutral-700' : 'border-neutral-400'}`} src={imageToShow} width={1920} height={1080} alt={"Entry image"} loading='eager' />
                                 </div>
                             </div>
