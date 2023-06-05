@@ -11,7 +11,7 @@ import routes from '../../lang/routes.json';
 // Redirects routes
 const REDIRECTS = {
     "hero": "/es",
-    "our-services": "/es/servicios",
+    "our-services": "/services",
     "our-process": "/es/desarrollo-web-personalizado",
     "our-technologies": "/es/tecnologias",
     "my-project": "/es/contacto",
@@ -41,13 +41,14 @@ export default function Navbar() {
 
     const router = useRouter();
     function handleChangeLanguage(e) {
-        
+
         const newLanguage = e.target.value;
 
-        const path = router.pathname.split(`/${language}`)[1] || router.pathname.split(`/${language}`)[0];
-        const route = routes.urls[language][path || '/'];
+        const path = router.asPath.split(`/${language}`)[1] || router.asPath.split(`/${language}`)[0];
+        const pathForRoute = `/${path.split('/').filter(e => e != "")[0] || ""}`
+        const route = routes.urls[language][pathForRoute];
         const redirectTo = routes.redirects[newLanguage][route];
-        
+
         setLanguage(newLanguage);
         localStorage.setItem('language', newLanguage);
 
@@ -169,16 +170,23 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
 
     const router = useRouter();
     function handleChangeLanguage(e) {
-    
-        const language = e.target.value;
-        setLanguage(language);
-        localStorage.setItem('language', language);
-    
-        if(language != 'de') {
+
+        const newLanguage = e.target.value;
+
+        const path = router.pathname;
+        const route = routes.urls[language][path];
+        const redirectTo = routes.redirects[newLanguage][route];
+
+        setLanguage(newLanguage);
+        localStorage.setItem('language', newLanguage);
+
+        router.push(`/${redirectTo}`);
+
+        /* if(language != 'de') {
             router.push(`/${language}`)
         } else {
             router.push(`/web-seiten`)
-        }
+        } */
     }
 
     function handleNavButton(hash) {
