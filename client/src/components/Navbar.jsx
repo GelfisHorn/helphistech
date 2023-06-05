@@ -1,15 +1,17 @@
+import { useEffect, useState } from "react";
 // Next
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 // Hooks
 import useContextProvider from "../hooks/useAppContextProvider";
-import { useEffect, useState } from "react";
+// Routes
+import routes from '../lang/routes.json';
 
 // Redirects routes
 const REDIRECTS = {
     "hero": "/web-seiten",
-    "our-services": "/dienstleistungen",
+    "our-services": "/services",
     "our-process": "/custom-web-entwicklung",
     "our-technologies": "/technologien",
     "my-project": "/contact",
@@ -40,16 +42,23 @@ export default function Navbar() {
 
     const router = useRouter();
     function handleChangeLanguage(e) {
-    
-        const language = e.target.value;
-        setLanguage(language);
-        localStorage.setItem('language', language);
-    
-        if(language != 'de') {
+
+        const newLanguage = e.target.value;
+
+        const path = router.asPath;
+        const route = routes.urls[language][`/${path.split('/')[0] || path.split('/')[1]}`];
+        const redirectTo = routes.redirects[newLanguage][route];
+
+        setLanguage(newLanguage);
+        localStorage.setItem('language', newLanguage);
+
+        router.push(`/${redirectTo}`)
+
+        /* if(language != 'de') {
             router.push(`/${language}`)
         } else {
             router.push(`/web-seiten`)
-        }
+        } */
     }
 
     function handleNavButton(hash) {
@@ -127,7 +136,7 @@ export default function Navbar() {
                         </svg>
                     </div>
                 </div>
-                <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg ${darkMode ? 'font-light' : 'font-normal'}`}>
+                <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg ${darkMode ? 'font-light' : 'font-normal'} pb-5`}>
                     <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                         <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                     </div>
@@ -161,16 +170,23 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
 
     const router = useRouter();
     function handleChangeLanguage(e) {
-    
-        const language = e.target.value;
-        setLanguage(language);
-        localStorage.setItem('language', language);
-    
-        if(language != 'de') {
+
+        const newLanguage = e.target.value;
+
+        const path = router.pathname;
+        const route = routes.urls[language][path];
+        const redirectTo = routes.redirects[newLanguage][route];
+
+        setLanguage(newLanguage);
+        localStorage.setItem('language', newLanguage);
+
+        router.push(`/${redirectTo}`);
+
+        /* if(language != 'de') {
             router.push(`/${language}`)
         } else {
             router.push(`/web-seiten`)
-        }
+        } */
     }
 
     function handleNavButton(hash) {

@@ -20,6 +20,10 @@ export default function Home() {
 	const { darkMode, language } = useContextProvider();
 
 	useEffect(() => {
+		if(!language) {
+			return;
+		}
+		
 		if(language != 'de') {
 			router.push(`/${language}`)
 		}

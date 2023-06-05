@@ -11,7 +11,7 @@ import FooterES from "./es/Footer";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 
-export default function Layout({ title, metaDesc, lang, children, bgColor }) {
+export default function Layout({ title, metaDesc, lang, children, styles }) {
 
     // Get functions and variables from context
     const { darkMode } = useContextProvider();
@@ -22,13 +22,13 @@ export default function Layout({ title, metaDesc, lang, children, bgColor }) {
                 <title>{title} | Helphis Tech</title>
                 <meta name="description" content={metaDesc || "Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."} />
             </Head>
-            <div className={`${darkMode ? 'bg-darkmode text-zinc-300' : 'bg-white text-[#202020]'} transition-colors`} style={bgColor && {backgroundColor: bgColor}}>
+            <div className={`${darkMode ? 'bg-darkmode text-zinc-300' : 'bg-white text-[#202020]'} transition-colors`} style={styles}>
                 {/* Navbar */}
                 { lang == 'de' && <NavbarDE /> }
                 { lang == 'en' && <NavbarEN /> }
                 { lang == 'es' && <NavbarES /> }
                 {/* Page content */}
-                <div style={{minHeight: 'calc(100vh - 5rem)'}}>{children}</div>
+                {children}
                 {/* Footer */}
                 { lang == 'de' && <FooterDE /> }
                 { lang == 'en' && <FooterEN /> }

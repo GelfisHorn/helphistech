@@ -1,0 +1,14 @@
+{
+    "es": {
+        "go-back": "Más servicios",
+        "article-by": "Por",
+        "articles": {
+            "title": "Últimos articulos",
+            "no-articles": {
+                "title": "Aún no hay articulos",
+                "description": "Puedes ir a la página principal y encontrar más articulos de tu interes",
+                "go-to-services": "Ir a servicios"
+            }
+        }
+    }
+}
