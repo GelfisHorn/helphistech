@@ -111,76 +111,80 @@ export default function MyAccount() {
 
     return (
         <Layout title={"Mi cuenta"}>
-            <div className="flex flex-col gap-5">
-                <button className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.back()}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                    </svg>
-                    <span>{myaccount[language].content.goback}</span>
-                </button>
-                <AccountSection title={myaccount[language].content["personal-info"].title}>
-                    <AccountField title={myaccount[language].content["personal-info"].name} value={auth?.name} />
-                    {auth?.surname && (
-                        <AccountField title={myaccount[language].content["personal-info"].surname} value={auth?.surname} />
-                    )}
-                    <AccountField title={myaccount[language].content["personal-info"].email} value={auth?.email} />
-                    <EditButton handler={handleShowUserModal} />
-                </AccountSection>
-                <AccountSectionRow title={myaccount[language].content.password.title} value={"********"}>
-                    <EditButton handler={handleShowPasswordModal} />
-                </AccountSectionRow>
-                <AccountSectionRow title={myaccount[language].content.permissions} value={myaccount[language].permissions[auth?.permissions]} />
-            </div>
-            {/* User modal */}
-            <Modal setState={setShowUserModal} showModal={showUserModal}>
-                <form className="flex flex-col gap-10 py-4" onSubmit={handleSaveUser}>
-                    <div className="flex flex-col gap-7">
-                        <div className="text-2xl uppercase text-center font-medium">{myaccount[language].content["personal-info"].title}</div>
-                        <div className="flex flex-col gap-3">
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="name">{myaccount[language].content["personal-info"].name}</label>
-                                <input id="name" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="text" placeholder={myaccount[language].content["personal-info"].placeholders.name} ref={name} defaultValue={auth.name} />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="surname">{myaccount[language].content["personal-info"].surname}</label>
-                                <input id="surname" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="text" placeholder={myaccount[language].content["personal-info"].placeholders.surname} ref={surname} defaultValue={auth.surname} />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="email">{myaccount[language].content["personal-info"].email}</label>
-                                <input id="email" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="email" placeholder={myaccount[language].content["personal-info"].placeholders.email} ref={email} defaultValue={auth.email} />
-                            </div>
-                        </div>
+            { language && (
+                <>
+                    <div className="flex flex-col gap-5">
+                        <button className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors" onClick={() => router.back()}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                            </svg>
+                            <span>{myaccount[language]?.content?.goback}</span>
+                        </button>
+                        <AccountSection title={myaccount[language].content["personal-info"].title}>
+                            <AccountField title={myaccount[language].content["personal-info"].name} value={auth?.name} />
+                            {auth?.surname && (
+                                <AccountField title={myaccount[language].content["personal-info"].surname} value={auth?.surname} />
+                            )}
+                            <AccountField title={myaccount[language].content["personal-info"].email} value={auth?.email} />
+                            <EditButton handler={handleShowUserModal} />
+                        </AccountSection>
+                        <AccountSectionRow title={myaccount[language].content.password.title} value={"********"}>
+                            <EditButton handler={handleShowPasswordModal} />
+                        </AccountSectionRow>
+                        <AccountSectionRow title={myaccount[language].content.permissions} value={myaccount[language].permissions[auth?.permissions]} />
                     </div>
-                    <div className="flex items-center justify-between gap-2">
-                        <button type="button" className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-sm" onClick={handleShowUserModal}>{myaccount[language].content.buttons.cancel}</button>
-                        <button type="submit" className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm">{myaccount[language].content.buttons.save}</button>
-                    </div>
-                </form>
-            </Modal>
-            {/* Password modal */}
-            <Modal setState={setshowPasswordModal} showModal={showPasswordModal}>
-                <form className="flex flex-col gap-10 py-4" onSubmit={handleSavePassword}>
-                    <div className="flex flex-col gap-7">
-                        <div className="text-2xl uppercase text-center font-medium">{myaccount[language].content.password.title}</div>
-                        <div className="flex flex-col gap-3">
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="password">{myaccount[language].content.password.title}</label>
-                                <input id="password" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="password" placeholder={myaccount[language].content.password.placeholders.password} ref={password} defaultValue={""} />
+                    {/* User modal */}
+                    <Modal setState={setShowUserModal} showModal={showUserModal}>
+                        <form className="flex flex-col gap-10 py-4" onSubmit={handleSaveUser}>
+                            <div className="flex flex-col gap-7">
+                                <div className="text-2xl uppercase text-center font-medium">{myaccount[language].content["personal-info"].title}</div>
+                                <div className="flex flex-col gap-3">
+                                    <div className="flex flex-col gap-1">
+                                        <label htmlFor="name">{myaccount[language].content["personal-info"].name}</label>
+                                        <input id="name" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="text" placeholder={myaccount[language].content["personal-info"].placeholders.name} ref={name} defaultValue={auth.name} />
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <label htmlFor="surname">{myaccount[language].content["personal-info"].surname}</label>
+                                        <input id="surname" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="text" placeholder={myaccount[language].content["personal-info"].placeholders.surname} ref={surname} defaultValue={auth.surname} />
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <label htmlFor="email">{myaccount[language].content["personal-info"].email}</label>
+                                        <input id="email" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="email" placeholder={myaccount[language].content["personal-info"].placeholders.email} ref={email} defaultValue={auth.email} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="repeatPassword">{myaccount[language].content.password.placeholders.repeatPassword}</label>
-                                <input id="repeatPassword" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="password" placeholder={myaccount[language].content.password.placeholders.repeatPassword} ref={repeatPassword} defaultValue={""} />
+                            <div className="flex items-center justify-between gap-2">
+                                <button type="button" className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-sm" onClick={handleShowUserModal}>{myaccount[language].content.buttons.cancel}</button>
+                                <button type="submit" className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm">{myaccount[language].content.buttons.save}</button>
                             </div>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-between gap-2">
-                        <button type="button" className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-sm" onClick={handleShowPasswordModal}>{myaccount[language].content.buttons.cancel}</button>
-                        <button type="submit" className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm">{myaccount[language].content.buttons.save}</button>
-                    </div>
-                </form>
-            </Modal>
-            {/* Notifications container */}
-            <ToastContainer />
+                        </form>
+                    </Modal>
+                    {/* Password modal */}
+                    <Modal setState={setshowPasswordModal} showModal={showPasswordModal}>
+                        <form className="flex flex-col gap-10 py-4" onSubmit={handleSavePassword}>
+                            <div className="flex flex-col gap-7">
+                                <div className="text-2xl uppercase text-center font-medium">{myaccount[language].content.password.title}</div>
+                                <div className="flex flex-col gap-3">
+                                    <div className="flex flex-col gap-1">
+                                        <label htmlFor="password">{myaccount[language].content.password.title}</label>
+                                        <input id="password" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="password" placeholder={myaccount[language].content.password.placeholders.password} ref={password} defaultValue={""} />
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <label htmlFor="repeatPassword">{myaccount[language].content.password.placeholders.repeatPassword}</label>
+                                        <input id="repeatPassword" className={`bg-transparent outline-none border ${darkMode ? 'border-neutral-700' : 'border-neutral-400'} rounded-md py-2 px-2`} type="password" placeholder={myaccount[language].content.password.placeholders.repeatPassword} ref={repeatPassword} defaultValue={""} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-between gap-2">
+                                <button type="button" className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-sm" onClick={handleShowPasswordModal}>{myaccount[language].content.buttons.cancel}</button>
+                                <button type="submit" className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm">{myaccount[language].content.buttons.save}</button>
+                            </div>
+                        </form>
+                    </Modal>
+                    {/* Notifications container */}
+                    <ToastContainer />
+                </>
+            )}
         </Layout>
     )
 }
