@@ -1,0 +1,13 @@
+{
+    "es": {
+        "title": "Qué Servicios Ofrecemos",
+        "description": "En HelphisTech, ofrecemos una amplia gama de servicios de desarrollo web para ayudar a las empresas a crear una sólida presencia en línea y lograr sus objetivos digitales. Nuestro equipo de desarrolladores experimentados está capacitado para crear sitios web personalizados, aplicaciones web y plataformas de comercio electrónico que se adaptan para satisfacer las necesidades únicas de cada cliente.",
+        "categories": {
+            "title": "Categorías",
+            "default": "Descubrir"
+        },
+        "articles": {
+            "title": "Últimos articulos"
+        }
+    }
+}
