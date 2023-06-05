@@ -16,13 +16,14 @@ const AppContextProvider = ({children}) => {
     // On component load load:
     useEffect(() => {
         // Use saved localStorage language or 'de'(german)
-        const urlLanguage = router.pathname.split('/')[1];
+        /* const urlLanguage = router.pathname.split('/')[1];
         const localStorageLanguage = localStorage.getItem('language') || 'de';
         if(urlLanguage == 'de' || urlLanguage == 'en' || urlLanguage == 'es') {
             setLanguage((urlLanguage != localStorageLanguage) && urlLanguage != '' ? urlLanguage : localStorageLanguage);
         } else {
             setLanguage(localStorageLanguage);
-        }
+        } */
+        setLanguage(localStorage.getItem('language') || 'de');
         setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == false ? false : true);
     }, []);
 
@@ -39,6 +40,10 @@ const AppContextProvider = ({children}) => {
             return;
         }
 
+        if(!language && !Object.keys(auth)) {
+            return;
+        }
+
         const config = {
             headers: {
                 "Content-Type": "application-json",
@@ -47,7 +52,7 @@ const AppContextProvider = ({children}) => {
         }
 
         getProfile(config);
-    }, [])
+    }, [language])
 
     async function getProfile(config) {
         try {
