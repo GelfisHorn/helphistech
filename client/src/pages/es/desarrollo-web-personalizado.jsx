@@ -59,7 +59,7 @@ export default function CustomWebDevelopment() {
                             />
                             <ProcessItem 
                                 title={"Desarrollo del backend"}
-                                description={`In this phase, we work on the development of the backend of the website, which handles the server operations. This may include creating and storing content and managing databases. We work with Node.js in the back-end.`} 
+                                description={`En esta fase, trabajamos en el desarrollo del backend del sitio web, que maneja las operaciones del servidor. Esto puede incluir la creación y el almacenamiento de contenido y la gestión de bases de datos. Trabajamos con Node.js en el back-end.`} 
                                 hash={"backend"}
                                 image={"/process/backend.webp"}
                                 alt={"Backend"}
@@ -133,7 +133,7 @@ function ProcessItem({ title, description, number, hash, last, image, alt }) {
                         <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{title}</div>
                     </motion.div>
                     <motion.div  initial={{ x:40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
-                        <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{description}</div>
                     </motion.div>
                 </div>
             </div>
