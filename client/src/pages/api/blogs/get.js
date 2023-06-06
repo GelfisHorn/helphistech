@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function handler(req, res) {
 
-	const { language } = req.body;
+	const { language, limit } = req.body;
 
     const config = {
         headers: {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 	try {
         const { data } = await axios.request({
             method: 'GET',
-            url: `${process.env.STRAPI_URI}/api/blogs?locale=${language}&populate=preview`,
+            url: `${process.env.STRAPI_URI}/api/blogs?locale=${language}&populate=preview${limit ? `&pagination[pageSize]=${limit}` : ''}`,
             headers: {
                 'Authorization': config.headers.Authorization
             }
