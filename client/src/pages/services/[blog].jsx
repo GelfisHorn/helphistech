@@ -13,6 +13,8 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import moment from "moment";
 // Markdown to format Starpi data
 import ReactMarkdown from 'react-markdown'
+// Languages
+import lang from '../../lang/services/blog.json'
 
 export default function Blog({ blog }) {
 
@@ -32,12 +34,20 @@ export default function Blog({ blog }) {
         }
         // Fetch popular blogs
         setLoading(true);
-        if(language != "") {
-            getLatestBlogs();
-        }
+        getLatestBlogs();
     }, [blogUrl, language])
 
     async function getLatestBlogs() {
+        if (!language) {
+            setLoading(false);
+            return;
+        }
+
+        if (language != localStorage.getItem('language')) {
+            setLoading(false);
+            return;
+        }
+
         try {
             const { data } = await axios.post('/api/blogs/blog/get', { actualBlog: blogUrl, language });
             if(data.data.length == 0) {
@@ -56,26 +66,38 @@ export default function Blog({ blog }) {
         blog.title && (
             <Layout title={`${blog.title} | Blogs`} lang={language} metaDesc={blog.metaDescription} styles={{backgroundColor: darkMode ? "#080808" : "#F6F6F6"}}>
                 <div className={`${darkMode ? 'bg-gradient-to-br from-[#080808] to-[#070707] blog-bg-dark' : 'bg-gradient-to-br from-[#F6F6F6] to-[#FFF] blog-bg-light'}`}>
-                    <div className="relative image-container min-h-[30rem] md:min-h-[35rem] 2xl:min-h-[40rem] h-[50vh] md:h-[70vh] overflow-hidden">
-                        <Image className="object-cover opacity-40" fill src={blog.preview.data.attributes.url} />
-                        <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full text-center xs:text-left">
-                            <div className="flex flex-col gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
-                                <h1 className="lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]">{blog.title}</h1>
-                                <div className="text-xl 2xl:text-2xl text-white font-light">
-                                    <h4>HelphisTech</h4>
-                                    <span className="text-base 2xl:text-lg">ihr Weg zur Digitalisierung</span>
-                                </div>
-                            </div>
+                    <BlogHeroSection blog={blog} />
+                    <div className={"flex flex-col gap-20 py-14 xs:py-20 px-6 xs:px-10 md:px-20 2xl:px-28"}>
+                        <div className="flex flex-col">
+                            {blog.section.map((section, index) => (
+                                <BlogElement key={index} element={section} type={section.__component.split('.')[1]} />
+                            ))}
                         </div>
-                    </div>
-                    <div className="flex flex-col py-14 xs:py-20 px-6 xs:px-10 md:px-20 2xl:px-28">
-                        {blog.section.map((section, index) => (
-                            <BlogElement key={index} element={section} type={section.__component.split('.')[1]} />
-                        ))}
+                        <LatestBlogsSection blogs={latestBlogs} loading={loading} fetchError={fetchError} />
                     </div>
                 </div>
             </Layout>
         )
+    )
+}
+
+function BlogHeroSection({ blog }) {
+
+    const { language } = useContextProvider();
+
+    return (
+        <div className="relative image-container min-h-[30rem] md:min-h-[35rem] 2xl:min-h-[40rem] h-[50vh] md:h-[70vh] overflow-hidden">
+            <Image className="object-cover opacity-40" fill src={blog.preview.data.attributes.url} />
+            <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full text-center xs:text-left">
+                <div className="flex flex-col gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
+                    <h1 className="lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]">{blog.title}</h1>
+                    <div className="text-xl 2xl:text-2xl text-white font-light">
+                        <h4>HelphisTech</h4>
+                        <span className="text-base 2xl:text-lg">{lang[language].slogan.description}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
@@ -95,7 +117,7 @@ function BlogElement({ element, type }) {
             <div className={`${darkMode ? 'description-dark' : 'description-light'} text-lg uppercase font-medium`}>{element.subtitle}</div>
         ),
         content: (
-            <div className="flex flex-col gap-5 pt-10">
+            <div className="flex flex-col gap-5 pt-10 2xl:text-lg">
                 {element?.content?.split("\n\n").map((line, index) => (
                     <ReactMarkdown className={"strapi-markdown"} key={index}>{line}</ReactMarkdown>
                 ))}
@@ -113,6 +135,44 @@ function BlogElement({ element, type }) {
 
     return (
         <div className="">{ELEMENTS[type]}</div>
+    )
+}
+
+function LatestBlogsSection({ blogs, loading, fetchError }) {
+
+    const { language, darkMode } = useContextProvider();
+
+    return (
+        <div className={"flex flex-col gap-5"}>
+            <div className={"text-2xl sm:text-3xl"}>{lang[language].articles.title}</div>
+            <div>
+                <div className={"grid grid-cols-1 lg:grid-cols-2 gap-5"}>
+                    {!loading && !fetchError && blogs.length != 0 && blogs.map((blog, index) => (
+                        <BlogPopularBlog key={index} blog={blog} />
+                    ))}
+                    {loading && (
+                        <>
+                            <BlogSkeleton />
+                            <BlogSkeleton />
+                        </>
+                    )}
+                </div>
+                {!loading && blogs.length == 0 && fetchError && (
+                    <div className={"flex flex-col gap-2"}>
+                        <div className={`flex flex-col ${darkMode ? "description-dark" : "description-light"}`}>
+                            <div>{lang[language].articles["no-articles"].title}</div>
+                            <div>{lang[language].articles["no-articles"].description}</div>
+                        </div>
+                        <Link href={"/services"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                            </svg>
+                            <span>{lang[language].articles["no-articles"].back}</span>
+                        </Link>
+                    </div>
+                )}
+            </div>
+        </div>
     )
 }
 

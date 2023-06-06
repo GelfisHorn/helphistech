@@ -1,4 +1,34 @@
 {
+    "de": {
+        "title": "Welche Dienstleistungen wir anbieten",
+        "description": "Bei HelphisTech bieten wir eine breite Palette von Webentwicklungsdiensten an, um Unternehmen beim Aufbau einer starken Online-Präsenz und beim Erreichen ihrer digitalen Ziele zu unterstützen. Unser Team aus erfahrenen Entwicklern ist darin geschult, maßgeschneiderte Websites, Webanwendungen und E-Commerce-Plattformen zu erstellen, die auf die individuellen Bedürfnisse jedes Kunden zugeschnitten sind.",
+        "categories": {
+            "title": "Kategorien",
+            "default": "Entdecken"
+        },
+        "articles": {
+            "title": "Unsere Dienstleistungen"
+        },
+        "notFound": {
+            "p1": "Wir haben keine Ergebnisse für Ihre Suche gefunden.",
+            "p2": "Versuchen Sie es mit anderen Kategorien."
+        }
+    },
+    "en": {
+        "title": "What Services We Offer",
+        "description": "At HelphisTech, we offer a wide range of web development services to help businesses create a strong online presence and achieve their digital goals. Our team of experienced developers are trained to create custom websites, web applications, and e-commerce platforms that are tailored to meet each client's unique needs.",
+        "categories": {
+            "title": "Categories",
+            "default": "Discover"
+        },
+        "articles": {
+            "title": "Our services"
+        },
+        "notFound": {
+            "p1": "We have not found results for your search.",
+            "p2": "Try using other categories."
+        }
+    },
     "es": {
         "title": "Qué Servicios Ofrecemos",
         "description": "En HelphisTech, ofrecemos una amplia gama de servicios de desarrollo web para ayudar a las empresas a crear una sólida presencia en línea y lograr sus objetivos digitales. Nuestro equipo de desarrolladores experimentados está capacitado para crear sitios web personalizados, aplicaciones web y plataformas de comercio electrónico que se adaptan para satisfacer las necesidades únicas de cada cliente.",
@@ -7,7 +37,11 @@
             "default": "Descubrir"
         },
         "articles": {
-            "title": "Últimos articulos"
+            "title": "Nuestros servicios"
+        },
+        "notFound": {
+            "p1": "No hemos encontrado resultados para tu búsqueda.",
+            "p2": "Prueba usando otras categorías."
         }
     }
 }
