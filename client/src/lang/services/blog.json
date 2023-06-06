@@ -1,13 +1,40 @@
 {
-    "es": {
-        "go-back": "Más servicios",
-        "article-by": "Por",
+    "de": {
+        "slogan": {
+            "description": "Ihr Weg zur Digitalisierung"
+        },
         "articles": {
-            "title": "Últimos articulos",
+            "title": "Andere Dienstleistungen",
+            "no-articles": {
+                "title": "Noch keine Artikel",
+                "description": "Sie können zur Hauptseite gehen und weitere Artikel finden, die Sie interessieren",
+                "back": "Gehen Sie zu Dienstleistungen"
+            }
+        }
+    },
+    "en": {
+        "slogan": {
+            "description": "Your path to digitization"
+        },
+        "articles": {
+            "title": "Other services",
+            "no-articles": {
+                "title": "No articles yet",
+                "description": "You can go to the main page and find more articles of your interest",
+                "back": "Go to services"
+            }
+        }
+    },
+    "es": {
+        "slogan": {
+            "description": "Tu camino hacia la digitalización"
+        },
+        "articles": {
+            "title": "Otros servicios",
             "no-articles": {
                 "title": "Aún no hay articulos",
                 "description": "Puedes ir a la página principal y encontrar más articulos de tu interes",
-                "go-to-services": "Ir a servicios"
+                "back": "Ir a servicios"
             }
         }
     }

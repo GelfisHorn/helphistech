@@ -1,20 +1,23 @@
 import axios from "axios";
 // React
 import { useEffect, useState } from "react";
+// Nextjs
+import Image from "next/image";
+import Link from "next/link";
 // Components
 import Layout from "@/components/Layout";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+// Languages
+import lang from '../../lang/services/index.json'
 
 export default function ServicesPage({ categories }) {
 
 	const { darkMode, language } = useContextProvider();
 
-	const [selectedCategory, setSelectedCategory] = useState({ name: "Descubrir", code: "all" });
+	const [selectedCategory, setSelectedCategory] = useState({ name: lang[language].categories.default, code: "all" });
 	const [blogs, setBlogs] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [fetchError, setFetchError] = useState(false);
@@ -85,10 +88,10 @@ export default function ServicesPage({ categories }) {
 					<div className="flex items-center sm:items-start gap-5 relative">
 						<div className="flex flex-col justify-center sm:items-start gap-6 sm:gap-10">
 							<motion.div initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
-								<h1 className="w-full">Qué Servicios Ofrecemos</h1>
+								<h1 className="w-full break-all">{lang[language].title}</h1>
 							</motion.div>
 							<motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-								<p className="">En HelphisTech, ofrecemos una amplia gama de servicios de desarrollo web para ayudar a las empresas a crear una sólida presencia en línea y lograr sus objetivos digitales. Nuestro equipo de desarrolladores experimentados está capacitado para crear sitios web personalizados, aplicaciones web y plataformas de comercio electrónico que se adaptan para satisfacer las necesidades únicas de cada cliente.</p>
+								<p className="break-all">{lang[language].description}</p>
 							</motion.div>
 						</div>
 					</div>
@@ -96,9 +99,9 @@ export default function ServicesPage({ categories }) {
 						<div className="flex flex-col items-start gap-2">
 							{/* <div>Categories</div> */}
 							<div className="flex flex-col items-start gap-3">
-								<div className="text-lg">Categorías</div>
+								<div className="text-lg">{lang[language].categories.title}</div>
 								<div className="flex items-center gap-2 flex-wrap">
-									<Category key={"all"} category={{ name: "Descubrir", code: "all" }} fn={{ state: selectedCategory, set: setSelectedCategory }} />
+									<Category key={"all"} category={{ name: lang[language].categories.default, code: "all" }} fn={{ state: selectedCategory, set: setSelectedCategory }} />
 									{categories.map((category, index) => (
 										<Category key={index} category={category.attributes} fn={{ state: selectedCategory, set: setSelectedCategory }} />
 									))}
@@ -106,7 +109,7 @@ export default function ServicesPage({ categories }) {
 							</div>
 						</div>
 						<div className="flex flex-col gap-5">
-							<div className="text-3xl">Últimos articulos</div>
+							<div className="text-3xl break-all">{lang[language].articles.title}</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
 								{blogs.length != 0 && !loading && blogs.map((blog, index) => (
 									<Blog key={index} blog={blog} />
@@ -122,8 +125,8 @@ export default function ServicesPage({ categories }) {
 							</div>
 							{blogs.length == 0 && !loading && fetchError && (
 								<div className={`text-center ${darkMode ? 'description-dark' : 'description-light'}`}>
-									<p>No hemos encontrado resultados para tu búsqueda.</p>
-									<p>Prueba usando otras categorías.</p>
+									<p>{lang[language].notFound.p1}</p>
+									<p>{lang[language].notFound.p2}</p>
 								</div>
 							)}
 						</div>
