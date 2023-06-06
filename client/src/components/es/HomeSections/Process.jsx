@@ -35,7 +35,7 @@ export default function ProcessSection() {
                     </div>
                 </motion.div>
                 <div className="pb-10 overflow-x-scroll w-full scrollbar-thin">
-                    <div className="flex items-start gap-20 w-[186.66rem] 2xl:w-[210rem]">
+                    <div className="flex items-start gap-20 w-max sm:w-[186.66rem] 2xl:w-[210rem]">
                         <div className="flex flex-col gap-5">
                             <div className="grid grid-cols-3 gap-20">
                                 <div className="flex items-center gap-10">
@@ -131,7 +131,7 @@ function ProcessItem({ title, description, hash }) {
     return (
         <div className="flex flex-col gap-3">
             <div className="text-xl">{title}</div>
-            <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
+            <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4 max-w-[85vw]`}>{description}</div>
             <Link className="w-fit" href={`/es/desarrollo-web-personalizado#${hash}`}>
                 <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                     <div>Ver más</div>

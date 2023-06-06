@@ -133,7 +133,7 @@ function ProcessItem({ title, description, number, hash, last, image, alt }) {
                         <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{title}</div>
                     </motion.div>
                     <motion.div  initial={{ x:40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>
-                        <div className={`${darkMode ? 'description-dark' : 'description-light'} text-ellipsis-4`}>{description}</div>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{description}</div>
                     </motion.div>
                 </div>
             </div>
