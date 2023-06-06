@@ -45,7 +45,7 @@ export default function Navbar() {
         const newLanguage = e.target.value;
 
         const path = router.asPath.split(`/${language}`)[1] || router.asPath.split(`/${language}`)[0];
-        const pathForRoute = `/${path.split('/').filter(e => e != "")[0] || ""}`
+        const pathForRoute = `/${path.split('/').filter(e => e != "")[0].split('#')[0] || ""}`
         const route = routes.urls[language][pathForRoute];
         const redirectTo = routes.redirects[newLanguage][route];
 
