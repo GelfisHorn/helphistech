@@ -1,14 +1,50 @@
-import { useState } from "react";
+import axios from "axios";
+// React
+import { useState, useEffect } from "react";
 // Nextjs
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function OurServicesSection() {
     
     // Get functions and variables from context
-	const { darkMode } = useContextProvider();
+	const { darkMode, language } = useContextProvider();
+
+    /* const [ services, setServices ] = useState([]);
+    const [ fetchServicesError, setFetchServicesError ] = useState(false);
+    const [ loadingServices, setLoadingServices ] = useState(true);
+
+    useEffect(() => {
+        setLoadingServices(true);
+        getServices();
+    }, [language]);
+
+    async function getServices() {
+        if (!language) {
+            setLoadingServices(false);
+            return;
+        }
+
+        if (language != localStorage.getItem('language')) {
+            setLoadingServices(false);
+            return;
+        }
+
+        try {
+            const { data } = await axios.post('/api/blogs/get', { language, limit: 4 });
+            setServices(data.data);
+            setFetchServicesError(false);
+        } catch (error) {
+            setFetchServicesError(true)
+            console.log("error getting services");
+        } finally {
+            setLoadingServices(false)
+        }
+    } */
+
     return (
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
@@ -16,9 +52,10 @@ export default function OurServicesSection() {
                     <div className="blur-shadow -left-28 -top-28"></div>
                     <div className="flex flex-col gap-20">
                         <motion.div 
-                        initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
-                        viewport={{ once: true }}
-                        className="flex flex-col items-center sm:items-start gap-5 relative">
+                            initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
+                            viewport={{ once: true }}
+                            className="flex flex-col items-center sm:items-start gap-5 relative"
+                        >
                             <div className="">
                                 <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Nuestros Servicios</span>
                             </div>
@@ -34,6 +71,25 @@ export default function OurServicesSection() {
                                 </div>
                             </div>
                         </motion.div>
+                        {/* <div className="flex flex-col">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
+                                {services.length != 0 && !loadingServices && services.map((service, index) => (
+                                    <Service key={index} service={service} />
+                                ))}
+                                {loadingServices && (
+                                    <>
+                                        <ServiceSkeleton />
+                                        <ServiceSkeleton />
+                                    </>
+                                )}
+                            </div>
+                            {services.length == 0 && !loadingServices && fetchServicesError && (
+                                <div className={`text-center ${darkMode ? 'description-dark' : 'description-light'}`}>
+                                    <p>No hemos encontrado resultados para tu búsqueda.</p>
+                                    <p>Prueba usando otras categorías.</p>
+                                </div>
+                            )}
+                        </div> */}
                         <div className={`flex flex-col divide-y`}>
                             <ServicesOption
                                 title={"Desarrollo personalizado de sitios web"}
@@ -66,6 +122,43 @@ export default function OurServicesSection() {
         </section>
     )
 }
+
+/* function Service({ service }) {
+
+    const { darkMode } = useContextProvider();
+
+    const { url, title, subtitle, preview } = service.attributes || {};
+
+    return (
+        <Link href={`/services/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+            <div className="image-container aspect-video">
+                <Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+            </div>
+            <Link className="flex items-center justify-between gap-2 hover:text-primary transition-colors" href={`/services/${url}`}>
+                <div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
+                <div className="w-5 h-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                </div>
+            </Link>
+            <div className={`${darkMode ? 'description-dark' : 'description-light'} overflow-hidden text-ellipsis line-clamp-3`}>{subtitle}</div>
+        </Link>
+    )
+}
+
+function ServiceSkeleton() {
+
+    const { darkMode } = useContextProvider();
+
+    return (
+        <div className="flex flex-col gap-3">
+            <div className={`aspect-[3/2] w-full animate-pulse ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} rounded-md`}></div>
+            <div className={`h-4 w-2/3 ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} rounded-md`}></div>
+            <div className={`h-3 w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} rounded-md`}></div>
+        </div>
+    )
+} */
 
 function ServicesOption({ title, description, href }) {
 
