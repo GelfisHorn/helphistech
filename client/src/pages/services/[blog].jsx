@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
+import ShortContact from "@/components/ShortContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Date formatter
@@ -65,7 +66,7 @@ export default function Blog({ blog }) {
     return (
         blog.title && (
             <Layout title={`${blog.title} | Blogs`} lang={language} metaDesc={blog.metaDescription} styles={{backgroundColor: darkMode ? "#080808" : "#F6F6F6"}}>
-                <div className={`${darkMode ? 'bg-gradient-to-br from-[#080808] to-[#070707] blog-bg-dark' : 'bg-gradient-to-br from-[#F6F6F6] to-[#FFF] blog-bg-light'}`}>
+                <div className={`${darkMode ? 'blog-bg-dark' : 'blog-bg-light'}`}>
                     <BlogHeroSection blog={blog} />
                     <div className={"flex flex-col gap-20 py-14 xs:py-20 px-6 xs:px-10 md:px-20 2xl:px-28"}>
                         <div className="flex flex-col">
@@ -73,7 +74,10 @@ export default function Blog({ blog }) {
                                 <BlogElement key={index} element={section} type={section.__component.split('.')[1]} />
                             ))}
                         </div>
-                        <LatestBlogsSection blogs={latestBlogs} loading={loading} fetchError={fetchError} />
+                        <div className={"flex flex-col gap-20"}>
+                            <LatestBlogsSection blogs={latestBlogs} loading={loading} fetchError={fetchError} />
+                            <ShortContact />
+                        </div>
                     </div>
                 </div>
             </Layout>
@@ -86,12 +90,14 @@ function BlogHeroSection({ blog }) {
     const { language } = useContextProvider();
 
     return (
-        <div className="relative image-container min-h-[30rem] md:min-h-[35rem] 2xl:min-h-[40rem] h-[50vh] md:h-[70vh] overflow-hidden">
-            <Image className="object-cover opacity-40" fill src={blog.preview.data.attributes.url} />
+        <div className="image-container min-h-[30rem] md:min-h-[35rem] 2xl:min-h-[40rem] h-[50vh] md:h-[70vh] overflow-hidden">
+            <div className={"absolute top-0 left-0 bg-black w-full h-full"}>
+                <Image className="object-cover opacity-40" fill src={blog.preview.data.attributes.url} />
+            </div>
             <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full text-center xs:text-left">
                 <div className="flex flex-col gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
-                    <h1 className="lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]">{blog.title}</h1>
-                    <div className="text-xl 2xl:text-2xl text-white font-light">
+                    <h1 className={`lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]`}>{blog.title}</h1>
+                    <div className={`text-xl 2xl:text-2xl text-white font-light`}>
                         <h4>HelphisTech</h4>
                         <span className="text-base 2xl:text-lg">{lang[language].slogan.description}</span>
                     </div>
