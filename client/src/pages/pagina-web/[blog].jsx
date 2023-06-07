@@ -40,25 +40,22 @@ export default function Blog({ blog }) {
     }, [blogUrl, language])
 
     async function getLatestBlogs() {
-        if (!language) {
-            setLoading(false);
-            return;
-        }
+        const category = blog.category.data.attributes.code;
+        getBlogsByCategory(blog.url, category, 'es');
+    }
 
-        if (language != localStorage.getItem('language')) {
-            setLoading(false);
-            return;
-        }
-
+    async function getBlogsByCategory(actual, category, language) {
         try {
-            const { data } = await axios.post('/api/blogs/blog/get', { actualBlog: blogUrl, language });
-            if(data.data.length == 0) {
-                setFetchError(true);
+            const { data } = await axios.post('/api/blogs/getByCategory', { actual, category, language });
+            if (data.data.length != 0) {
+                setLatestBlogs(data.data);
                 return;
             }
-            setLatestBlogs(data.data);
+
+            setLatestBlogs([]);
+            setFetchError(true);
         } catch (error) {
-            setFetchError(true)
+            setFetchError(true);
         } finally {
             setLoading(false);
         }
@@ -195,7 +192,7 @@ function BlogPopularBlog({ blog }) {
                 <Image className="image rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
             </div>
             {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
-            <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/services/${url}`}>
+            <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/pagina-web/${url}`}>
                 <div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
@@ -230,7 +227,7 @@ export const getStaticProps = async (context) => {
     }
 
     try {
-        const { data } = await axios.get(`${process.env.STRAPI_URI}/api/blogs?filters[url][$eq]=${blogUrl}&populate=section.image&populate=preview.image&locale=all`, config)
+        const { data } = await axios.get(`${process.env.STRAPI_URI}/api/blogs?filters[url][$eq]=${blogUrl}&populate=section.image&populate=preview.image&populate=category&locale=all`, config)
         // axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=all&populate=preview&pagination[page]=1&pagination[pageSize]=4&filters[url][$not]=${blogUrl}`, config)
 
         return {
