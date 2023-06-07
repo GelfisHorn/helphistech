@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
-import ShortContact from "@/components/ShortContact";
+// import ShortContact from "@/components/ShortContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Date formatter
@@ -76,7 +76,7 @@ export default function Blog({ blog }) {
                         </div>
                         <div className={"flex flex-col gap-20"}>
                             <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
-                            <ShortContact />
+                            {/* <ShortContact /> */}
                         </div>
                     </div>
                 </div>
