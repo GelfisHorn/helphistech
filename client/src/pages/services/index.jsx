@@ -144,7 +144,7 @@ function Blog({ blog }) {
 	const { url, title, subtitle, preview } = blog.attributes || {};
 
 	return (
-		<div className="flex flex-col gap-3">
+		<Link href={`/services/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
 			<div className="image-container aspect-video">
 				<Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
 			</div>
@@ -158,7 +158,7 @@ function Blog({ blog }) {
 				</div>
 			</Link>
 			<div className={`${darkMode ? 'description-dark' : 'description-light'} overflow-hidden text-ellipsis line-clamp-3`}>{subtitle}</div>
-		</div>
+		</Link>
 	)
 }
 
