@@ -82,7 +82,7 @@ export default function ServicesPage({ categories }) {
 	}
 
 	return (
-		<Layout title={"Services"} lang={language}>
+		<Layout title={"Unsere Dienstleistungen"} lang={language}>
 			<div className={`${darkMode ? 'blog-bg-dark bg-gradient-to-br from-[#080808] to-[#070707]' : 'blog-bg-light bg-gradient-to-br from-[#F6F6F6] to-[#FFF]'}`}>
 				<div className={`flex flex-col gap-10 mx-auto py-20 sm:pb-28 2xl:px-40 px-6 sm:px-20`}>
 					<div className="flex items-center sm:items-start gap-5 relative">
