@@ -15,14 +15,15 @@ import lang from '../../lang/services/index.json'
 
 export default function ServicesPage({ categories }) {
 
-	const { darkMode, language } = useContextProvider();
+	const { darkMode, language, setLanguage } = useContextProvider();
 
-	const [selectedCategory, setSelectedCategory] = useState({ name: lang[language].categories.default, code: "all" });
+	const [selectedCategory, setSelectedCategory] = useState({ name: lang['en'].categories.default, code: "all" });
 	const [blogs, setBlogs] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [fetchError, setFetchError] = useState(false);
-
+	
 	useEffect(() => {
+		setLanguage('en');
 		setLoading(true);
 		getBlogs();
 	}, [language])
@@ -49,7 +50,7 @@ export default function ServicesPage({ categories }) {
 		}
 
 		try {
-			const { data } = await axios.post('/api/blogs/get', { language });
+			const { data } = await axios.post('/api/blogs/get', { language: 'en' });
 			if (data.data.length != 0) {
 				setBlogs(data.data);
 				return;
@@ -82,16 +83,16 @@ export default function ServicesPage({ categories }) {
 	}
 
 	return (
-		<Layout title={"Unsere Dienstleistungen"} lang={language}>
+		<Layout title={"Our services"} lang={'en'}>
 			<div className={`${darkMode ? 'blog-bg-dark bg-gradient-to-br from-[#080808] to-[#070707]' : 'blog-bg-light bg-gradient-to-br from-[#F6F6F6] to-[#FFF]'}`}>
 				<div className={`flex flex-col gap-10 mx-auto py-20 sm:pb-28 2xl:px-40 px-6 sm:px-20`}>
 					<div className="flex items-center sm:items-start gap-5 relative">
 						<div className="flex flex-col justify-center sm:items-start gap-6 sm:gap-10">
 							<motion.div initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
-								<h1 className="w-full break-all">{lang[language].title}</h1>
+								<h1 className="w-full break-all">{lang['en'].title}</h1>
 							</motion.div>
 							<motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-								<p className="break-all">{lang[language].description}</p>
+								<p className="break-all">{lang['en'].description}</p>
 							</motion.div>
 						</div>
 					</div>
@@ -99,9 +100,9 @@ export default function ServicesPage({ categories }) {
 						<div className="flex flex-col items-start gap-2">
 							{/* <div>Categories</div> */}
 							<div className="flex flex-col items-start gap-3">
-								<div className="text-lg">{lang[language].categories.title}</div>
+								<div className="text-lg">{lang['en'].categories.title}</div>
 								<div className="flex items-center gap-2 flex-wrap">
-									<Category key={"all"} category={{ name: lang[language].categories.default, code: "all" }} fn={{ state: selectedCategory, set: setSelectedCategory }} />
+									<Category key={"all"} category={{ name: lang['en'].categories.default, code: "all" }} fn={{ state: selectedCategory, set: setSelectedCategory }} />
 									{categories.map((category, index) => (
 										<Category key={index} category={category.attributes} fn={{ state: selectedCategory, set: setSelectedCategory }} />
 									))}
@@ -109,7 +110,7 @@ export default function ServicesPage({ categories }) {
 							</div>
 						</div>
 						<div className="flex flex-col gap-5">
-							<div className="text-3xl break-all">{lang[language].articles.title}</div>
+							<div className="text-3xl break-all">{lang['en'].articles.title}</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
 								{blogs.length != 0 && !loading && blogs.map((blog, index) => (
 									<Blog key={index} blog={blog} />
@@ -125,8 +126,8 @@ export default function ServicesPage({ categories }) {
 							</div>
 							{blogs.length == 0 && !loading && fetchError && (
 								<div className={`text-center ${darkMode ? 'description-dark' : 'description-light'}`}>
-									<p>{lang[language].notFound.p1}</p>
-									<p>{lang[language].notFound.p2}</p>
+									<p>{lang['en'].notFound.p1}</p>
+									<p>{lang['en'].notFound.p2}</p>
 								</div>
 							)}
 						</div>
