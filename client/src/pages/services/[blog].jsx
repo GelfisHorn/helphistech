@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
-import ShortContact from "@/components/ShortContact";
+// import ShortContact from "@/components/ShortContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Date formatter
