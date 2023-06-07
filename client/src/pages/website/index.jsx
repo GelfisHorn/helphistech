@@ -145,19 +145,19 @@ function Blog({ blog }) {
 	const { url, title, subtitle, preview } = blog.attributes || {};
 
 	return (
-		<Link href={`/services/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+		<Link href={`/website/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
 			<div className="image-container aspect-video">
 				<Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
 			</div>
 			{/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
-			<Link className="flex items-center justify-between gap-2 hover:text-primary transition-colors" href={`/services/${url}`}>
+			<div className="flex items-center justify-between gap-2">
 				<div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
 				<div className="w-5 h-5">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
 						<path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
 					</svg>
 				</div>
-			</Link>
+			</div>
 			<div className={`${darkMode ? 'description-dark' : 'description-light'} overflow-hidden text-ellipsis line-clamp-3`}>{subtitle}</div>
 		</Link>
 	)
