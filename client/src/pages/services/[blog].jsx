@@ -76,7 +76,7 @@ export default function Blog({ blog }) {
                         </div>
                         <div className={"flex flex-col gap-20"}>
                             <LatestBlogsSection blogs={latestBlogs} loading={loading} fetchError={fetchError} />
-                            <ShortContact />
+                            {/* <ShortContact /> */}
                         </div>
                     </div>
                 </div>
