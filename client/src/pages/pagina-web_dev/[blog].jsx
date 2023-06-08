@@ -7,15 +7,16 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
-// import ShortContact from "@/components/ShortContact";
+// import SecondaryContactModal from "@/components/SecondaryContact/Index";
+// import BottomContact from "@/components/BottomContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
-// Date formatter
-import moment from "moment";
 // Markdown to format Starpi data
 import ReactMarkdown from 'react-markdown'
 // Languages
 import lang from '../../lang/services/blog.json'
+// Animations
+import { AnimatePresence } from "framer-motion";
 
 export default function Blog({ blog }) {
 
@@ -61,6 +62,37 @@ export default function Blog({ blog }) {
         }
     }
 
+    /**
+     * @show Show/hide popup
+     * @permament if true never show popup
+     */
+    const [showContactPopup, setShowContactPopup] = useState(false);
+    const [hideContactPopup, setHideContactPopup] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (hideContactPopup) {
+                window.removeEventListener('scroll', handleScroll);
+                return;
+            }
+
+            const scrollPosition = window.scrollY;
+            const triggerPosition = 700;
+
+            if (scrollPosition > triggerPosition) {
+                setShowContactPopup(true);
+            } else {
+                setShowContactPopup(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         blog.title && (
             <Layout title={`${blog.title} | Blogs`} lang={'es'} metaDesc={blog.metaDescription} styles={{backgroundColor: darkMode ? "#080808" : "#F6F6F6"}}>
@@ -74,10 +106,13 @@ export default function Blog({ blog }) {
                         </div>
                         <div className={"flex flex-col gap-20"}>
                             <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
-                            {/* <ShortContact /> */}
+                            {/* <BottomContact blogUrl={blog.url} /> */}
                         </div>
                     </div>
                 </div>
+                {blog.popupTitle && (
+                    <ContactPopup show={{ get: showContactPopup, set: setShowContactPopup }} hide={{ get: hideContactPopup, set: setHideContactPopup }} title={blog.popupTitle} description={blog.popupDescription} />
+                )}
             </Layout>
         )
     )
@@ -213,6 +248,71 @@ function BlogSkeleton() {
             <div className={`h-4 w-2/3 ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} rounded-md animate-pulse`}></div>
             <div className={`h-3 w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} rounded-md animate-pulse`}></div>
         </div>
+    )
+}
+
+function ContactPopup({ show, hide, title, description }) {
+
+    const { darkMode } = useContextProvider();
+
+    const [ showModal, setShowModal ] = useState(false);
+
+    const [ showContactModal, setShowContactModal ] = useState(false);
+
+    const handleShowModal = () => setShowContactModal(true);
+    const handleCloseModal = () => setShowContactModal(false);
+    const handleClosePopup = () => {
+        show.set(false);
+        setTimeout(() => {
+            hide.set(true)
+            setShowModal(show);
+        }, 170)
+    }
+
+    useEffect(() => {
+        if(hide.get) {
+            return;
+        }
+        if(show.get) {
+            setShowModal(show.get);
+            return;
+        }
+        setTimeout(() => {
+            setShowModal(show.get);
+        }, 170)
+    }, [show.get])
+
+    return (
+        showModal && (
+            <div className={`${show.get ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 bottom-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`}>
+                <button className={"absolute top-2 right-2"} onClick={handleClosePopup}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div className={"flex flex-col gap-5 text-center"}>
+                    <div className={"flex flex-col"}>
+                        <div className={"uppercase text-lg 2xl:text-xl font-medium"}>{title}</div>
+                        <div className={"2xl:text-lg"}>{description}</div>
+                    </div>
+                    <button onClick={handleShowModal} className={"flex items-center justify-center gap-1 bg-primary hover:bg-primary-2 py-1 2xl:py-2 px-3 rounded-full text-white transition-colors"}>
+                        <span>Contactar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                    </button>
+                </div>
+                <AnimatePresence
+                    initial={false}
+                    mode={"wait"}
+                    onExitComplete={() => null}
+                >
+                    {/* {showContactModal && (
+                        <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} />
+                    )} */}
+                </AnimatePresence>
+            </div>
+        )
     )
 }
 
