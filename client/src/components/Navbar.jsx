@@ -10,7 +10,7 @@ import routes from '../lang/routes.json';
 
 // Redirects routes
 const REDIRECTS = {
-    "hero": "/web-seiten",
+    "hero": "/",
     "our-services": "/internetrseite",
     "our-process": "/custom-web-entwicklung",
     "our-technologies": "/technologien",
@@ -62,7 +62,7 @@ export default function Navbar() {
     }
 
     function handleNavButton(hash) {
-        if(router.pathname === '/web-seiten') {
+        if(router.pathname === '/') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
@@ -77,7 +77,7 @@ export default function Navbar() {
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
                 <div className={`flex items-center justify-between h-20 px-10 text-${darkMode ? 'dark' : 'light'}`}>
                     <div>
-                        <Link href={"/web-seiten"}>
+                        <Link href={"/"}>
                             <Image className="w-auto h-12" src={`${darkMode ? '/logo/dark/full-logo.webp' : '/logo/light/full-logo.webp'}`} width={460} height={113} alt="HelphisTech logo" priority />
                         </Link>
                     </div>
@@ -95,7 +95,7 @@ export default function Navbar() {
                             <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                         </div>
                         <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                            <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/web-seiten' ? 'Mein Projekt' : 'Kontakt'}</span>
+                            <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/' ? 'Mein Projekt' : 'Kontakt'}</span>
                         </div>
                     </nav>
                     <div className="hidden sm:flex items-center gap-3">
@@ -150,7 +150,7 @@ export default function Navbar() {
                         <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                     </div>
                     <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                        <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/web-seiten' ? 'Mein Projekt' : 'Kontakt'}</span>
+                        <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/' ? 'Mein Projekt' : 'Kontakt'}</span>
                     </div>
                 </nav>
             </header>
@@ -229,7 +229,7 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                     <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                                 </div>
                                 <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                                    <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/web-seiten' ? 'Mein Projekt' : 'Kontakt'}</span>
+                                    <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/' ? 'Mein Projekt' : 'Kontakt'}</span>
                                 </div>
                             </div>
                         </div>
