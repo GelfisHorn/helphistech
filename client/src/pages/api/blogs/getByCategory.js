@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function handler(req, res) {
 
-	const { category, language } = req.body;
+	const { actual, category, language } = req.body;
 
     const config = {
         headers: {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 	try {
         const { data } = await axios.request({
             method: 'GET',
-            url: `${process.env.STRAPI_URI}/api/blogs?locale=${language}&filters[category][code][$eq]=${category}&populate=preview`,
+            url: `${process.env.STRAPI_URI}/api/blogs?locale=${language}&filters[category][code][$eq]=${category}&populate=preview${actual ? `&filters[url][$not]=${actual}` : ""}`,
             headers: {
                 'Authorization': config.headers.Authorization
             }

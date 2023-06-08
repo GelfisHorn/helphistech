@@ -22,13 +22,14 @@ export default function Blog({ blog }) {
     const router = useRouter();
     const { blog: blogUrl } = router.query;
 
-    const { darkMode, language } = useContextProvider();
+    const { darkMode, language, setLanguage } = useContextProvider();
 
     const [ latestBlogs, setLatestBlogs ] = useState([]);
     const [ loading, setLoading ] = useState(true);
     const [ fetchError, setFetchError ] = useState(false);
 
     useEffect(() => {
+        setLanguage('es')
         if(!blog.title) {
             router.push('/404');
             return;
@@ -39,25 +40,22 @@ export default function Blog({ blog }) {
     }, [blogUrl, language])
 
     async function getLatestBlogs() {
-        if (!language) {
-            setLoading(false);
-            return;
-        }
+        const category = blog.category.data.attributes.code;
+        getBlogsByCategory(blog.url, category, 'es');
+    }
 
-        if (language != localStorage.getItem('language')) {
-            setLoading(false);
-            return;
-        }
-
+    async function getBlogsByCategory(actual, category, language) {
         try {
-            const { data } = await axios.post('/api/blogs/blog/get', { actualBlog: blogUrl, language });
-            if(data.data.length == 0) {
-                setFetchError(true);
+            const { data } = await axios.post('/api/blogs/getByCategory', { actual, category, language });
+            if (data.data.length != 0) {
+                setLatestBlogs(data.data);
                 return;
             }
-            setLatestBlogs(data.data);
+
+            setLatestBlogs([]);
+            setFetchError(true);
         } catch (error) {
-            setFetchError(true)
+            setFetchError(true);
         } finally {
             setLoading(false);
         }
@@ -65,7 +63,7 @@ export default function Blog({ blog }) {
 
     return (
         blog.title && (
-            <Layout title={`${blog.title} | Blogs`} lang={language} metaDesc={blog.metaDescription} styles={{backgroundColor: darkMode ? "#080808" : "#F6F6F6"}}>
+            <Layout title={`${blog.title} | Blogs`} lang={'es'} metaDesc={blog.metaDescription} styles={{backgroundColor: darkMode ? "#080808" : "#F6F6F6"}}>
                 <div className={`${darkMode ? 'blog-bg-dark' : 'blog-bg-light'}`}>
                     <BlogHeroSection blog={blog} />
                     <div className={"flex flex-col gap-20 py-14 xs:py-20 px-6 xs:px-10 md:px-20 2xl:px-28"}>
@@ -99,7 +97,7 @@ function BlogHeroSection({ blog }) {
                     <h1 className={`lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]`}>{blog.title}</h1>
                     <div className={`text-xl 2xl:text-2xl text-white font-light`}>
                         <h4>HelphisTech</h4>
-                        <span className="text-base 2xl:text-lg">{lang[language].slogan.description}</span>
+                        <span className="text-base 2xl:text-lg">{lang['es'].slogan.description}</span>
                     </div>
                 </div>
             </div>
@@ -150,7 +148,7 @@ function LatestBlogsSection({ blogs, loading, fetchError }) {
 
     return (
         <div className={"flex flex-col gap-5"}>
-            <div className={"text-2xl sm:text-3xl"}>{lang[language].articles.title}</div>
+            <div className={"text-2xl sm:text-3xl"}>{lang['es'].articles.title}</div>
             <div>
                 <div className={"grid grid-cols-1 lg:grid-cols-2 gap-5"}>
                     {!loading && !fetchError && blogs.length != 0 && blogs.map((blog, index) => (
@@ -166,14 +164,14 @@ function LatestBlogsSection({ blogs, loading, fetchError }) {
                 {!loading && blogs.length == 0 && fetchError && (
                     <div className={"flex flex-col gap-2"}>
                         <div className={`flex flex-col ${darkMode ? "description-dark" : "description-light"}`}>
-                            <div>{lang[language].articles["no-articles"].title}</div>
-                            <div>{lang[language].articles["no-articles"].description}</div>
+                            <div>{lang['es'].articles["no-articles"].title}</div>
+                            <div>{lang['es'].articles["no-articles"].description}</div>
                         </div>
                         <Link href={"/services"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
-                            <span>{lang[language].articles["no-articles"].back}</span>
+                            <span>{lang['es'].articles["no-articles"].back}</span>
                         </Link>
                     </div>
                 )}
@@ -194,7 +192,7 @@ function BlogPopularBlog({ blog }) {
                 <Image className="image rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
             </div>
             {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
-            <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/services/${url}`}>
+            <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/pagina-web/${url}`}>
                 <div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
@@ -229,7 +227,7 @@ export const getStaticProps = async (context) => {
     }
 
     try {
-        const { data } = await axios.get(`${process.env.STRAPI_URI}/api/blogs?filters[url][$eq]=${blogUrl}&populate=section.image&populate=preview.image&locale=all`, config)
+        const { data } = await axios.get(`${process.env.STRAPI_URI}/api/blogs?filters[url][$eq]=${blogUrl}&populate=section.image&populate=preview.image&populate=category&locale=all`, config)
         // axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=all&populate=preview&pagination[page]=1&pagination[pageSize]=4&filters[url][$not]=${blogUrl}`, config)
 
         return {
