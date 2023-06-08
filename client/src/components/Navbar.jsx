@@ -11,7 +11,7 @@ import routes from '../lang/routes.json';
 // Redirects routes
 const REDIRECTS = {
     "hero": "/web-seiten",
-    "our-services": "/services",
+    "our-services": "/internetrseite",
     "our-process": "/custom-web-entwicklung",
     "our-technologies": "/technologien",
     "my-project": "/contact",
