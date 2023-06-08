@@ -53,7 +53,7 @@ export default function ServicesSection() {
                                 description={"Wir bieten laufende Wartung und Support für alle unsere Websites und Webanwendungen. Unser Team steht Ihnen zur Verfügung, um eventuell auftretende Probleme zu beheben und sicherzustellen, dass Ihre Website immer auf dem neuesten Stand ist und reibungslos funktioniert."}
                             />
                         </div>
-                        <Link className="flex justify-center" href={"/internetrseite"}>
+                        <Link className="flex justify-center" href={"/internetseite"}>
                             <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                                 <div>Mehr Erfahren</div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

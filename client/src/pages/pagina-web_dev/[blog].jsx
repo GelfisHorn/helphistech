@@ -7,8 +7,8 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
-// import SecondaryContactModal from "@/components/SecondaryContact/Index";
-// import BottomContact from "@/components/BottomContact";
+import SecondaryContactModal from "@/components/SecondaryContact/Index";
+import BottomContact from "@/components/BottomContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Markdown to format Starpi data
@@ -106,7 +106,7 @@ export default function Blog({ blog }) {
                         </div>
                         <div className={"flex flex-col gap-20"}>
                             <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
-                            {/* <BottomContact blogUrl={blog.url} /> */}
+                            <BottomContact blog={{ title: blog.title, url: blog.url }} />
                         </div>
                     </div>
                 </div>
@@ -307,9 +307,9 @@ function ContactPopup({ show, hide, title, description }) {
                     mode={"wait"}
                     onExitComplete={() => null}
                 >
-                    {/* {showContactModal && (
+                    {showContactModal && (
                         <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} />
-                    )} */}
+                    )}
                 </AnimatePresence>
             </div>
         )
