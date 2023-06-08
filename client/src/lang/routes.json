@@ -3,7 +3,7 @@
         "de": {
             "/contact": "contact",
             "/custom-web-entwicklung": "process",
-            "/web-seiten": "home",
+            "/": "home",
             "/login": "login",
             "/internetrseite": "services",
             "/technologien": "technologies",
@@ -41,7 +41,7 @@
         "de": {
             "contact": "contact",
             "process": "custom-web-entwicklung",
-            "home": "web-seiten",
+            "home": "/",
             "login": "login",
             "services": "internetrseite",
             "technologies": "technologien",
