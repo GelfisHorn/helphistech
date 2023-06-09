@@ -102,7 +102,7 @@ export default function Blog({ blog }) {
                         </div>
                         <div className={"flex flex-col gap-20"}>
                             <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
-                            <BottomContact blog={{ title: blog.title, url: blog.url }} />
+                            <BottomContact blog={{ title: blog.title, url: blog.url }} language={"es"} />
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@ function ContactPopup({ show, hide, title, description }) {
                     onExitComplete={() => null}
                 >
                     {showContactModal && (
-                        <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} />
+                        <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} language={"es"} />
                     )}
                 </AnimatePresence>
             </div>
