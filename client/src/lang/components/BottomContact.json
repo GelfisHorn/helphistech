@@ -1,0 +1,107 @@
+{
+    "de": {
+        "title": "Du magst was du siehst?",
+        "subtitle": "Kontaktieren Sie uns und erstellen Sie Ihre Website mit Profis. Es ist Zeit, mit dem Online-Verkauf zu beginnen",
+        "fullName": {
+            "placeholder": "Vollständiger Name",
+            "validation": {
+                "min": "Der Name ist zu kurz",
+                "max": "Der Name ist zu lang",
+                "required": "Der vollständige Name ist erforderlich"
+            }
+        },
+        "phone": {
+            "placeholder": "Telefonnummer (freiwillig)",
+            "validation": {
+                "positive": "Die Telefonnummer darf nicht negativ sein",
+                "integer": "Die Telefonnummer darf nicht dezimal sein",
+                "min": "Die Telefonnummer ist zu kurz"
+            }
+        },
+        "email": {
+            "placeholder": "E-Mail",
+            "validation": {
+                "email": "Das Format ist falsch",
+                "required": "E-Mail ist erforderlich"
+            }
+        },
+        "message": {
+            "placeholder": "Nachricht (optional)"
+        },
+        "submit": "Schicken",
+        "notifications": {
+            "success": "Sie haben die Nachricht korrekt gesendet",
+            "error": "Es gab einen Fehler beim Abschicken des Formulars"
+        }
+    },
+    "en": {
+        "title": "You like what you see?",
+        "subtitle": "Contact us and create your website with professionals, it's time to start selling online",
+        "fullName": {
+            "placeholder": "Full name",
+            "validation": {
+                "min": "The name is too short",
+                "max": "The name is too long",
+                "required": "Full name is required"
+            }
+        },
+        "phone": {
+            "placeholder": "Phone number (optional)",
+            "validation": {
+                "positive": "The phone number cannot be negative",
+                "integer": "The phone number cannot be decimal",
+                "min": "The phone number is too short"
+            }
+        },
+        "email": {
+            "placeholder": "Email",
+            "validation": {
+                "email": "The format is wrong",
+                "required": "Email is required"
+            }
+        },
+        "message": {
+            "placeholder": "Message (optional)"
+        },
+        "submit": "Send",
+        "notifications": {
+            "success": "You sent the message correctly",
+            "error": "There was an error submitting the form"
+        }
+    },
+    "es": {
+        "title": "¿Te gusta lo que ves?",
+        "subtitle": "Contactanos y crea tu sitio web con profesionales, es el momento de empezar a vender en línea",
+        "fullName": {
+            "placeholder": "Nombre completo",
+            "validation": {
+                "min": "El nombre es muy corto",
+                "max": "El nombre es muy largo",
+                "required": "El nombre es obligatorio"
+            }
+        },
+        "phone": {
+            "placeholder": "Número de teléfono (opcional)",
+            "validation": {
+                "positive": "El número de teléfono no puede ser negativo",
+                "integer": "El número de teléfono no puede ser decimal",
+                "min": "El número de teléfono es muy corto"
+            }
+        },
+        "email": {
+            "placeholder": "Correo electrónico",
+            "validation": {
+                "email": "El formato es incorrecto",
+                "required": "El correo electrónico es obligatorio"
+            }
+        },
+        "message": {
+            "placeholder": "Mensaje (opcional)"
+        },
+        "submit": "Enviar",
+        "notifications": {
+            "success": "Enviaste el mensaje correctamente",
+            "error": "Hubo un error al enviar el formulario"
+        }
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "de": {
+        "step1": {
+            "title": "Was sollen wir für Sie tun?",
+            "services": [
+                {
+                    "id": "new_website",
+                    "text": "Website von Grund auf"
+                },
+                {
+                    "id": "web_review",
+                    "text": "Webseiten Review"
+                },
+                {
+                    "id": "online_shop_review",
+                    "text": "Review of an online store"
+                },
+                {
+                    "id": "new_online_shop",
+                    "text": "Online store from scratch"
+                },
+                {
+                    "id": "marketing",
+                    "text": "Marketing"
+                }
+            ]
+        },
+        "submit": "Schicken",
+        "next": "Nächste",
+        "prev": "Zurück"
+    },
+    "en": {
+        "step1": {
+            "title": "What do you want us to do for you?",
+            "services": [
+                {
+                    "id": "web_review",
+                    "text": "Website from scratch"
+                },
+                {
+                    "id": "web_review",
+                    "text": "Website review"
+                },
+                {
+                    "id": "online_shop_review",
+                    "text": "Review of an online store"
+                },
+                {
+                    "id": "new_online_shop",
+                    "text": "Online store from scratch"
+                },
+                {
+                    "id": "marketing",
+                    "text": "Marketing"
+                }
+            ]
+        },
+        "submit": "Send",
+        "next": "Next",
+        "prev": "Back"
+    },
+    "es": {
+        "step1": {
+            "title": "¿Qué quieres que hagamos por tí?",
+            "services": [
+                {
+                    "id": "web_review",
+                    "text": "Sitio web desde cero"
+                },
+                {
+                    "id": "web_review",
+                    "text": "Revisión del sitio web"
+                },
+                {
+                    "id": "online_shop_review",
+                    "text": "Revisión de una tienda en línea"
+                },
+                {
+                    "id": "new_online_shop",
+                    "text": "Tienda en línea desde cero"
+                },
+                {
+                    "id": "marketing",
+                    "text": "Marketing"
+                }
+            ]
+        },
+        "submit": "Enviar",
+        "next": "Siguiente",
+        "prev": "Atrás"
+    }
+}
