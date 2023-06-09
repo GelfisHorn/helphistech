@@ -24,6 +24,12 @@ div {
 	transition: color 50ms;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 .image-container {
 	width: 100%;
 	position: relative !important;
