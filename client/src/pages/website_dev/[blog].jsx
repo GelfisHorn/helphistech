@@ -14,6 +14,8 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import ReactMarkdown from 'react-markdown'
 // Languages
 import lang from '../../lang/services/blog.json'
+// Animations
+import { AnimatePresence } from "framer-motion";
 
 export default function Blog({ blog }) {
 
@@ -38,7 +40,7 @@ export default function Blog({ blog }) {
     }, [blogUrl, language])
 
     async function getLatestBlogs() {
-        const category = blog.category.data.attributes.code;
+        const category = blog?.category?.data?.attributes?.code;
         getBlogsByCategory(blog.url, category, 'en');
     }
 
@@ -60,8 +62,15 @@ export default function Blog({ blog }) {
     }
 
     const [showContactPopup, setShowContactPopup] = useState(false);
+    const [hideContactPopup, setHideContactPopup] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => {
+            if (hideContactPopup) {
+                window.removeEventListener('scroll', handleScroll);
+                return;
+            }
+
             const scrollPosition = window.scrollY;
             const triggerPosition = 700;
 
@@ -97,7 +106,7 @@ export default function Blog({ blog }) {
                     </div>
                 </div>
                 {blog.popupTitle && (
-                    <ContactPopup show={showContactPopup} title={blog.popupTitle} description={blog.popupDescription} />
+                    <ContactPopup show={{ get: showContactPopup, set: setShowContactPopup }} hide={{ get: hideContactPopup, set: setHideContactPopup }} title={blog.popupTitle} description={blog.popupDescription} />
                 )}
             </Layout>
         )
@@ -113,10 +122,10 @@ function BlogHeroSection({ blog }) {
             <div className={"absolute top-0 left-0 bg-black w-full h-full"}>
                 <Image className="object-cover opacity-40" fill src={blog.preview.data.attributes.url} />
             </div>
-            <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full text-center xs:text-left">
-                <div className="flex flex-col gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
+            <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full">
+                <div className="flex flex-col gap-20 xs:gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
                     <h1 className={`lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]`}>{blog.title}</h1>
-                    <div className={`text-xl 2xl:text-2xl text-white font-light`}>
+                    <div className={`text-right xs:text-left text-xl 2xl:text-2xl text-white font-light`}>
                         <h4>HelphisTech</h4>
                         <span className="text-base 2xl:text-lg">{lang['en'].slogan.description}</span>
                     </div>
@@ -134,7 +143,7 @@ function BlogElement({ element, type }) {
 
     const ELEMENTS = {
         title: (
-            <div className={"pt-3"}>
+            <div className={"pt-3 pb-5"}>
                 <h2 className={`text-3xl xl:text-5xl font-semibold uppercase`}>{element.title}</h2>
             </div>
         ),
@@ -142,7 +151,7 @@ function BlogElement({ element, type }) {
             <div className={`${darkMode ? 'description-dark' : 'description-light'} text-lg uppercase font-medium`}>{element.subtitle}</div>
         ),
         content: (
-            <div className="flex flex-col gap-5 pt-10 2xl:text-lg">
+            <div className="flex flex-col gap-5 pt-5 pb-10 2xl:text-lg">
                 {element?.content?.split("\n\n").map((line, index) => (
                     <ReactMarkdown className={"strapi-markdown"} key={index}>{line}</ReactMarkdown>
                 ))}
@@ -188,7 +197,7 @@ function LatestBlogsSection({ blogs, loading, fetchError }) {
                             <div>{lang['en'].articles["no-articles"].title}</div>
                             <div>{lang['en'].articles["no-articles"].description}</div>
                         </div>
-                        <Link href={"/services"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
+                        <Link href={"/website"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
@@ -237,37 +246,66 @@ function BlogSkeleton() {
     )
 }
 
-function ContactPopup({ show, title, description }) {
+function ContactPopup({ show, hide, title, description }) {
 
     const { darkMode } = useContextProvider();
 
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        if (show) {
+    const [showContactModal, setShowContactModal] = useState(false);
+
+    const handleShowModal = () => setShowContactModal(true);
+    const handleCloseModal = () => setShowContactModal(false);
+    const handleClosePopup = () => {
+        show.set(false);
+        setTimeout(() => {
+            hide.set(true)
             setShowModal(show);
+        }, 170)
+    }
+
+    useEffect(() => {
+        if (hide.get) {
+            return;
+        }
+        if (show.get) {
+            setShowModal(show.get);
             return;
         }
         setTimeout(() => {
-            setShowModal(show);
+            setShowModal(show.get);
         }, 170)
-    }, [show])
+    }, [show.get])
 
     return (
         showModal && (
-            <div className={`${show ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 bottom-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`}>
+            <div className={`${show.get ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 bottom-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`}>
+                <button className={"absolute top-2 right-2"} onClick={handleClosePopup}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
                 <div className={"flex flex-col gap-5 text-center"}>
                     <div className={"flex flex-col"}>
                         <div className={"uppercase text-lg 2xl:text-xl font-medium"}>{title}</div>
                         <div className={"2xl:text-lg"}>{description}</div>
                     </div>
-                    <Link className={"flex items-center justify-center gap-1 bg-primary hover:bg-primary-2 py-1 2xl:py-2 px-3 rounded-full text-white transition-colors"} href={"#"}>
-                        <span>Contactar</span>
+                    <button onClick={handleShowModal} className={"flex items-center justify-center gap-1 bg-primary hover:bg-primary-2 py-1 2xl:py-2 px-3 rounded-full text-white transition-colors"}>
+                        <span>Contact</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                         </svg>
-                    </Link>
+                    </button>
                 </div>
+                <AnimatePresence
+                    initial={false}
+                    mode={"wait"}
+                    onExitComplete={() => null}
+                >
+                    {/* {showContactModal && (
+                        <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} />
+                    )} */}
+                </AnimatePresence>
             </div>
         )
     )
