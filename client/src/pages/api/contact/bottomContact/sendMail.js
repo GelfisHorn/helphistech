@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
         await transporter.sendMail({
             from: `"${fullName}" <${email}>`,
-            to: "bar@example.com, baz@example.com",
+            to: "helphis.tech@gmail.com",
             subject: `Nuevo contacto de Servicios`,
             text: `A ${fullName} le interesó un blog: https://helphistech.com/website/${blogUrl}\n\n
                 ${message ? `Dejó un mensaje: ${message}` : `${fullName} no dejó ningún mensaje.`}\n\n
