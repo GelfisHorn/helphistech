@@ -40,6 +40,12 @@ function ContactForm({ blog }) {
         message: Yup.string()
     });
 
+    function onKeyDown(keyEvent) {
+        if ((keyEvent.charCode || keyEvent.keyCode) === 13) {
+            keyEvent.preventDefault();
+        }
+    }
+
     return (
         <Formik
             initialValues={{
@@ -65,7 +71,7 @@ function ContactForm({ blog }) {
             }}
         >
             {({ errors, touched }) => (
-                <Form className="flex flex-col gap-4">
+                <Form className="flex flex-col gap-4" onKeyDown={onKeyDown}>
                     <div className={"flex items-start gap-4"}>
                         <div className={"flex flex-col gap-1 w-full"}>
                             <Field
