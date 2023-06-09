@@ -631,21 +631,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"¿Tiene el cliente algún contenido (texto, imágenes, videos) para incluir en la web?"} 
-                    step={'10'}
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
-                        <div onClick={() => setContentToInclude(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${content_to_include && 'bg-black text-white'}`}`}>
-                            <span>Sí</span>
-                        </div>
-                        <div onClick={() => setContentToInclude(false)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${!content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${!content_to_include && 'bg-black text-white'}`}`}>
-                            <span>No</span>
-                        </div>
-                    </div>
-                </Section>
-                <Section 
                     title={"¿Qué lenguaje de programación y tecnologías se prefieren para el desarrollo?"} 
-                    step={'11'}
+                    step={'10'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(preferred_technologies, setPreferredTechnologies, "React")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${preferred_technologies.indexOf("React") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${preferred_technologies.indexOf("React") > -1 && 'bg-black text-white'}`}`}>
@@ -682,7 +669,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Quién será el responsable de la gestión de la web una vez finalizado el proyecto?"} 
-                    step={'12'}
+                    step={'11'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setResponsibleForManaging("client")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${responsible_for_managing == 'client' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${responsible_for_managing == 'client' && 'bg-black text-white'}`}`}>
@@ -698,7 +685,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Cuál es la estrategia de marketing y posicionamiento del cliente?"} 
-                    step={'13'}
+                    step={'12'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(marketing_strategy, setMarketingStrategy, "social-media")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${marketing_strategy.indexOf("social-media") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${marketing_strategy.indexOf("social-media") > -1 && 'bg-black text-white'}`}`}>
@@ -717,7 +704,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Existen sitios web de la competencia que deban tenerse en cuenta como referencias?"} 
-                    step={'14'}
+                    step={'13'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setCompetitorWebsites(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${competitor_websites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${competitor_websites && 'bg-black text-white'}`}`}>
@@ -734,7 +721,7 @@ function FormComponent() {
                 <Section 
                     title={"Cuéntanos más acerca del proyecto"} 
                     classes={``}
-                    step={'15'}
+                    step={'14'}
                 >
                     <textarea rows="7" placeholder="Descripción" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
                 </Section>
