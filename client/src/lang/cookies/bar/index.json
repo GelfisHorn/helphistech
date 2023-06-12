@@ -1,0 +1,20 @@
+{
+    "de": {
+        "title": "Wir verwenden Cookies",
+        "description": "Wir verwenden Cookies und andere Tracking-Technologien, um Ihr Surferlebnis auf unserer Website zu verbessern und Ihnen personalisierte Inhalte anzuzeigen. Durch das Surfen auf unserer Website stimmen Sie der Verwendung von Cookies und anderen Tracking-Technologien zu.",
+        "allow": "Akzeptieren",
+        "decline": "Nicht unbedingt erforderliche Cookies ablehnen"
+    },
+    "en": {
+        "title": "We use cookies",
+        "description": "We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content. By browsing our website, you agree to our use of cookies and other tracking technologies.",
+        "allow": "Accept",
+        "decline": "Reject non-essential cookies"
+    },
+    "es": {
+        "title": "Usamos cookies",
+        "description": "Utilizamos cookies y otras tecnologías de seguimiento para mejorar su experiencia de navegación en nuestro sitio web, para mostrarle contenido personalizado. Al navegar por nuestro sitio web, acepta nuestro uso de cookies y otras tecnologías de seguimiento.",
+        "allow": "Aceptar",
+        "decline": "Rechazar cookies no esenciales"
+    }
+}

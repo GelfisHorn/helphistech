@@ -10,6 +10,17 @@ const AppContextProvider = ({children}) => {
     
     const router = useRouter();
 
+    // Allow user cookies state
+    const [cookiesAllowed, setCookiesAllowed] = useState(null);
+    const [showCookiesWindow, setShowCookiesWindow] = useState(true);
+    const handleAllowCookies = () => {
+        setCookiesAllowed(true);
+        localStorage.setItem('allow-cookies', true);
+    }
+    const handleShowCookiesWindow = () => {
+        setShowCookiesWindow(!showCookiesWindow);
+    }
+
     // Language and dark mode settings
     const [ language, setLanguage ] = useState('de');
     const [ darkMode, setDarkMode ] = useState(true);
@@ -23,6 +34,8 @@ const AppContextProvider = ({children}) => {
         } else {
             setLanguage(localStorageLanguage);
         } */
+
+        setCookiesAllowed(localStorage.getItem('allow-cookies'));
         setLanguage(localStorage.getItem('language') || 'de');
         setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == false ? false : true);
     }, []);
@@ -88,7 +101,11 @@ const AppContextProvider = ({children}) => {
             clientProject,
             setClientProject,
             clientProcess,
-            setClientProcess
+            setClientProcess,
+            cookiesAllowed,
+            handleAllowCookies,
+            showCookiesWindow,
+            handleShowCookiesWindow
         }}>
             {children}
         </AppContext.Provider>
