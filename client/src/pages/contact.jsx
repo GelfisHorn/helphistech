@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 import DayPicker from "@/components/contact/DayPicker";
+import Link from "next/link";
 
 export default function ProjectQuote() {
 
@@ -293,6 +294,8 @@ function FormComponent() {
     // Are there competitor websites that should be taken into account as references?
     const [ competitor_websites, setCompetitorWebsites ] = useState(false);
     const [ competitor_websites_examples, setCompetitorWebsitesExamples ] = useState("");
+    // Legal
+    const legalTerms = useRef(null);
     // 
     function setMultiOptionState(state, setter, value) {
         if(state.indexOf(value) > -1) {
@@ -354,6 +357,11 @@ function FormComponent() {
 
         if(functionalities.length == 0 && functionalities_other == '') {
             showMessage(true, 'Sie müssen alle Felder ausfüllen.', 5000)
+            return;
+        }
+
+        if (!legalTerms.current.checked) {
+            showMessage(true, 'Sie müssen die rechtlichen Bedingungen akzeptieren, bevor Sie das Formular absenden', 5000)
             return;
         }
         
@@ -741,6 +749,15 @@ function FormComponent() {
                 >
                     <textarea rows="7" placeholder="Beschreibung" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
                 </Section>
+                <div className={"flex gap-2 select-none"}>
+                    <div className="w-10 hidden xl:block"></div>
+                    <div className={"flex items-start gap-2"}>
+                        <div className="form-control">
+                            <input ref={legalTerms} id={"legal"} type="checkbox" className="checkbox w-5 h-5 checkbox-primary" />
+                        </div>
+                        <label htmlFor={"legal"}>Mit dem Absenden dieses Formulars stimme ich den <Link className={"link"} href={"/datenschutz"}>Datenschutzbestimmungen</Link> und den <Link className={"link"} href={"/impressum"}>rechtlichen Bestimmungen zu</Link>.</label>
+                    </div>
+                </div>
             </section>
             <div className="flex gap-2">
                 <div className="w-10 hidden xl:block"></div>
