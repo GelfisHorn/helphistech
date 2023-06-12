@@ -4,7 +4,7 @@ export default function ModalBackdrop({ children, onClick }) {
 
     return (
         <motion.div
-            className={"backdrop"}
+            className={"backdrop z-50"}
             onClick={onClick}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
