@@ -745,7 +745,7 @@ function FormComponent() {
                     <div className="w-10 hidden xl:block"></div>
                     <div className={"flex items-start gap-2"}>
                         <div className="form-control">
-                            <input ref={legalTerms} id={"legal"} type="checkbox" className="checkbox w-5 h-5 checkbox-primary" />
+                            <input ref={legalTerms} id={"legal"} type="checkbox" className="accent-primary w-5 h-5" />
                         </div>
                         <label htmlFor={"legal"}>Mit dem Absenden dieses Formulars stimme ich den <Link className={"link"} href={"/datenschutz"}>Datenschutzbestimmungen</Link> und den <Link className={"link"} href={"/impressum"}>rechtlichen Bestimmungen zu</Link>.</label>
                     </div>
