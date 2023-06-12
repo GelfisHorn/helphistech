@@ -45,7 +45,7 @@ export default function CookiesBar() {
                         </div>
                         <div className={"flex flex-col gap-2 w-full md:w-fit"}>
                             <button className={"md:whitespace-nowrap py-1 px-3 text-zinc-200 bg-primary hover:bg-primary-2 transition-colors rounded-sm"} onClick={handleAllow}>{lang[language].allow}</button>
-                            <button className={`md:whitespace-nowrap py-1 px-3 text-neutral-900 ${darkMode ? "bg-neutral-800 hover:bg-neutral-900" : "bg-neutral-400 hover:bg-neutral-500"} transition-colors rounded-sm`} onClick={handleDecline}>{lang[language].decline}</button>
+                            <button className={`md:whitespace-nowrap py-1 px-3 ${darkMode ? "bg-neutral-800 hover:bg-neutral-900" : "bg-neutral-400 hover:bg-neutral-500 text-neutral-900"} transition-colors rounded-sm`} onClick={handleDecline}>{lang[language].decline}</button>
                         </div>
                     </div>
                     <button className={"absolute top-2 right-2 hover:text-primary transition-colors"} onClick={handleShowCookiesWindow}>
