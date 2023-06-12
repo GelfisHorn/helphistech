@@ -240,7 +240,7 @@ export default function MyAccount() {
                                             </div>
                                         </div>
                                         <div className={"flex flex-col gap-3"}>
-                                            <input className="range range-primary" type="range" step={0.04} min={1} max={3} value={zoom} onChange={(e) => setZoom(e.target.value)} />
+                                            <input className="range accent-primary" type="range" step={0.04} min={1} max={3} value={zoom} onChange={(e) => setZoom(e.target.value)} />
                                             <div className={"flex justify-between z-30"}>
                                                 <button className={"py-1 px-4 bg-neutral-800 hover:bg-neutral-700 transition-colors rounded-sm"} onClick={handleHideCropper}>Cancelar</button>
                                                 <button className={"py-1 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-sm"} onClick={handleCropImage}>Guardar</button>
