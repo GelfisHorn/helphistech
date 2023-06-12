@@ -35,7 +35,7 @@ export default function ProjectQuote() {
                         </div>
                         <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
                             <h2 className="text-2xl font-medium w-full">Agenda una videollamada</h2>
-                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Agenda una videollamada y ten una conversación directamente con nosotros!</div>
+                            <div className={`flex flex-col ${darkMode ? 'description-dark' : 'description-light'}`}>Agenda una videollamada y ten una conversación directamente con nosotros y sin costo!</div>
                             <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
                                 <span>Agendar Videollamada</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -105,11 +105,16 @@ function VideocallModal({ closeVideoCallForm }) {
 
     return (
         <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                transition={{ duration: .3 }}
-                className="fixed top-0 h-full w-full z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center"
+            <motion.div exit={{ opacity: 0 }}
+                className="fixed top-0 h-full w-full z-50 flex items-center justify-center"
             >
-                <motion.div className={`max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
+                <motion.div
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                    transition={{ duration: .3 }}
+                    onClick={closeVideoCallForm}
+                    className="fixed top-0 h-full z-10 w-full bg-black/60 backdrop-blur-sm flex items-center justify-center"
+                ></motion.div>
+                <motion.div className={`z-20 max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
                     initial={{ x: -30 }}
                     animate={{ x: 0 }}
                     exit={{ x: -30 }}
@@ -639,21 +644,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"¿Tiene el cliente algún contenido (texto, imágenes, videos) para incluir en la web?"} 
-                    step={'10'}
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
-                        <div onClick={() => setContentToInclude(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${content_to_include && 'bg-black text-white'}`}`}>
-                            <span>Sí</span>
-                        </div>
-                        <div onClick={() => setContentToInclude(false)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${!content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${!content_to_include && 'bg-black text-white'}`}`}>
-                            <span>No</span>
-                        </div>
-                    </div>
-                </Section>
-                <Section 
                     title={"¿Qué lenguaje de programación y tecnologías se prefieren para el desarrollo?"} 
-                    step={'11'}
+                    step={'10'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(preferred_technologies, setPreferredTechnologies, "React")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${preferred_technologies.indexOf("React") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${preferred_technologies.indexOf("React") > -1 && 'bg-black text-white'}`}`}>
@@ -690,7 +682,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Quién será el responsable de la gestión de la web una vez finalizado el proyecto?"} 
-                    step={'12'}
+                    step={'11'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setResponsibleForManaging("client")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${responsible_for_managing == 'client' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${responsible_for_managing == 'client' && 'bg-black text-white'}`}`}>
@@ -706,7 +698,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Cuál es la estrategia de marketing y posicionamiento del cliente?"} 
-                    step={'13'}
+                    step={'12'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(marketing_strategy, setMarketingStrategy, "social-media")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${marketing_strategy.indexOf("social-media") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${marketing_strategy.indexOf("social-media") > -1 && 'bg-black text-white'}`}`}>
@@ -725,7 +717,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Existen sitios web de la competencia que deban tenerse en cuenta como referencias?"} 
-                    step={'14'}
+                    step={'13'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setCompetitorWebsites(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${competitor_websites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${competitor_websites && 'bg-black text-white'}`}`}>
@@ -742,7 +734,7 @@ function FormComponent() {
                 <Section 
                     title={"Cuéntanos más acerca del proyecto"} 
                     classes={``}
-                    step={'15'}
+                    step={'14'}
                 >
                     <textarea rows="7" placeholder="Descripción" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
                 </Section>
