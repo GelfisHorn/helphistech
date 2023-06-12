@@ -53,10 +53,6 @@ const AppContextProvider = ({children}) => {
             return;
         }
 
-        if(!language && !Object.keys(auth)) {
-            return;
-        }
-
         const config = {
             headers: {
                 "Content-Type": "application-json",
@@ -65,7 +61,7 @@ const AppContextProvider = ({children}) => {
         }
 
         getProfile(config);
-    }, [language])
+    }, [])
 
     async function getProfile(config) {
         try {

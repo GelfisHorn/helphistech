@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import Image from "next/image";
 
 export default function Sidebar() {
     
@@ -13,11 +14,17 @@ export default function Sidebar() {
             <div className="flex flex-col gap-3 lg:px-5 py-5 overflow-y-scroll hide-scroll" style={{height: 'calc(100vh - 6rem)'}}>
                 <div className={`flex justify-center lg:justify-start items-center gap-3 border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-300'} pb-4`}>
                     <div>
-                        <div className={`grid place-content-center h-9 w-9 lg:h-10 lg:w-10 rounded-full ${darkMode ? 'bg-neutral-700' : 'bg-neutral-300'}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={`${darkMode ? '#BFBFBF' : '#fff'}`} className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                            </svg>
-                        </div>
+                        {auth.profile_img ? (
+                            <div className={"image-container"} style={{ width: '2.25rem' }}>
+                                <Image className={"image rounded-full"} src={auth.profile_img} fill />
+                            </div>
+                        ) : (
+                            <div className={`grid place-content-center h-9 w-9 lg:h-10 lg:w-10 rounded-full ${darkMode ? 'bg-neutral-700' : 'bg-neutral-300'}`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={`${darkMode ? '#BFBFBF' : '#fff'}`} className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
+                            </div>
+                        )}
                     </div>
                     <div className="hidden lg:flex flex-col">
                         <span className={`text-xs uppercase font-semibold ${darkMode ? 'text-neutral-400' : 'text-neutral-600'}`}>{auth.position}</span>

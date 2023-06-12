@@ -15,6 +15,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Languages
 import myaccount from '../lang/myaccount.json'
+// Image crop
+import Cropper from 'react-easy-crop';
+import getCroppedImg from '../pages/api/user/cropImage.js';
+// Modal
+import Modal from "@/components/Modal/Index";
+// Upload image
+import uploadImages from "@/hooks/uploadImages";
+import Image from "next/image";
+import deleteImages from "@/hooks/deleteImages";
 
 export default function MyAccount() {
 
@@ -109,6 +118,80 @@ export default function MyAccount() {
         }
     }
 
+    // Profile photo
+    const inputImage = useRef(null);
+    const [ imageUrl, setImageUrl ] = useState("");
+    const [ showCropper, setShowCropper ] = useState(false);
+    const handleShowCropper = (files) => {
+        setShowCropper(true)
+        setImageUrl(URL.createObjectURL(files[0]))
+    };
+    const handleHideCropper = () => {
+        setShowCropper(false);
+        inputImage.current.value = '';
+    }
+    // react-easy-crop state
+    const [ crop, setCrop ] = useState({ x: 0, y: 0 });
+    const [ zoom, setZoom ] = useState(1);
+    const [ aspect, setAspect ] = useState(1);
+    const [ croppedAreaPixels, setCroppedAreaPixels ] = useState(null);
+    // Final image file
+    const [ croppedImage, setCroppedImage ] = useState(null);
+
+    const onCropComplete = (croppedArea, croppedAreaPixels) => {
+        setCroppedAreaPixels(croppedAreaPixels);
+    }
+
+    // Convert url to file
+    const urlToFile = async (image) => {
+        const response = await fetch(image);
+        // here image is url/location of image
+        const blob = await response.blob();
+        const file = new File([blob], `${Math.random().toString(4).substring(2) }.jpg`, { type: blob.type });
+        return file;
+    }
+
+    const updateProfileImage = async (imageUrl) => {
+        const config = axiosHeaders();
+        if (!config) return;
+
+        try {
+            const { data } = await axios.post('/api/user/edit', {
+                user: {
+                    userId: auth._id,
+                    profile_img: imageUrl
+                },
+                lang: language,
+                config
+            });
+            showToast(data.msg, "success");
+            handleHideCropper();
+            setAuth({...auth, profile_img: imageUrl})
+        } catch (error) {
+            showToast(error.response.data.msg, "error")
+        }
+    }
+
+    const handleCropImage = async () => {
+        try {
+            const croppedImage = await getCroppedImg(
+                imageUrl,
+                croppedAreaPixels
+            )
+            setCroppedImage(croppedImage)
+
+            const file = await urlToFile(croppedImage);
+            if(auth.profile_img) {
+                deleteImages([auth.profile_img], 'users/profiles');
+            }
+            const image = await uploadImages([file], `users/profiles`);
+
+            await updateProfileImage(image[0]);
+        } catch (error) {
+            showToast(error?.response?.data?.msg || error, "error")
+        }
+    }
+
     return (
         <Layout title={"Mi cuenta"}>
             { language && (
@@ -120,6 +203,53 @@ export default function MyAccount() {
                             </svg>
                             <span>{myaccount[language]?.content?.goback}</span>
                         </button>
+                        <div className={`flex flex-col gap-2 ${darkMode ? "bg-neutral-900" : "shadow-md bg-zinc-50"} rounded-md py-4 px-5 relative`}>
+                            {auth.profile_img ? (
+                                <div className={"image-container"} style={{width: '8rem'}}>
+                                    <Image className={"image rounded-full"} src={auth.profile_img} fill />
+                                </div>
+                            ) : (
+                                <div className={`grid place-content-center h-32 w-32 rounded-full ${darkMode ? 'bg-neutral-700' : 'bg-neutral-300'}`}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={.7} stroke={`${darkMode ? '#949494' : '#fff'}`} className="w-20 h-20">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                    </svg>
+                                </div>
+                            )}
+                            <input className={"hidden"} type="file" id="profilePhoto" ref={inputImage} onChange={(e) => handleShowCropper(e.target.files) } />
+                            <label htmlFor={"profilePhoto"} className={`cursor-pointer p-2 rounded-full ${darkMode ? "bg-neutral-800 hover:bg-neutral-700" : "bg-neutral-300 hover:bg-neutral-400"} transition-colors absolute top-2 right-2`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                </svg>
+                            </label>
+                            { showCropper && (
+                                <Modal handleClose={handleHideCropper}>
+                                    <div className={"flex flex-col gap-5"}>
+                                        <div className={"relative w-[400px]"}>
+                                            <div className={"w-full h-[400px]"}>
+                                                <Cropper
+                                                    image={imageUrl}
+                                                    crop={crop}
+                                                    zoom={zoom}
+                                                    aspect={aspect}
+                                                    cropShape="round"
+                                                    showGrid={false}
+                                                    onCropChange={setCrop}
+                                                    onCropComplete={onCropComplete}
+                                                    onZoomChange={setZoom}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={"flex flex-col gap-3"}>
+                                            <input className="range range-primary" type="range" step={0.04} min={1} max={3} value={zoom} onChange={(e) => setZoom(e.target.value)} />
+                                            <div className={"flex justify-between z-30"}>
+                                                <button className={"py-1 px-4 bg-neutral-800 hover:bg-neutral-700 transition-colors rounded-sm"} onClick={handleHideCropper}>Cancelar</button>
+                                                <button className={"py-1 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-sm"} onClick={handleCropImage}>Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Modal>
+                            )}
+                        </div>
                         <AccountSection title={myaccount[language].content["personal-info"].title}>
                             <AccountField title={myaccount[language].content["personal-info"].name} value={auth?.name} />
                             {auth?.surname && (
@@ -134,7 +264,7 @@ export default function MyAccount() {
                         <AccountSectionRow title={myaccount[language].content.permissions} value={myaccount[language].permissions[auth?.permissions]} />
                     </div>
                     {/* User modal */}
-                    <Modal setState={setShowUserModal} showModal={showUserModal}>
+                    <AccountModal setState={setShowUserModal} showModal={showUserModal}>
                         <form className="flex flex-col gap-10 py-4" onSubmit={handleSaveUser}>
                             <div className="flex flex-col gap-7">
                                 <div className="text-2xl uppercase text-center font-medium">{myaccount[language].content["personal-info"].title}</div>
@@ -158,9 +288,9 @@ export default function MyAccount() {
                                 <button type="submit" className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm">{myaccount[language].content.buttons.save}</button>
                             </div>
                         </form>
-                    </Modal>
+                    </AccountModal>
                     {/* Password modal */}
-                    <Modal setState={setshowPasswordModal} showModal={showPasswordModal}>
+                    <AccountModal setState={setshowPasswordModal} showModal={showPasswordModal}>
                         <form className="flex flex-col gap-10 py-4" onSubmit={handleSavePassword}>
                             <div className="flex flex-col gap-7">
                                 <div className="text-2xl uppercase text-center font-medium">{myaccount[language].content.password.title}</div>
@@ -180,7 +310,7 @@ export default function MyAccount() {
                                 <button type="submit" className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm">{myaccount[language].content.buttons.save}</button>
                             </div>
                         </form>
-                    </Modal>
+                    </AccountModal>
                     {/* Notifications container */}
                     <ToastContainer />
                 </>
@@ -238,7 +368,7 @@ function EditButton({ handler }) {
     )
 }
 
-function Modal({ setState, showModal, children }) {
+function AccountModal({ setState, showModal, children }) {
 
     const { darkMode } = useContextProvider();
 
