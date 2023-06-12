@@ -1,20 +1,20 @@
 {
     "de": {
         "title": "Wir verwenden Cookies",
-        "description": "Wir verwenden Cookies und andere Tracking-Technologien, um Ihr Surferlebnis auf unserer Website zu verbessern und Ihnen personalisierte Inhalte anzuzeigen. Durch das Surfen auf unserer Website stimmen Sie der Verwendung von Cookies und anderen Tracking-Technologien zu.",
-        "allow": "Akzeptieren",
-        "decline": "Nicht unbedingt erforderliche Cookies ablehnen"
+        "description": "Wir verwenden Cookies und andere Technologien, um deine Kundenerfahrung zu verbessern und unser Angebot zu optimieren. Du kannst alle Cookies außer essenzielle Cookies ablehnen.",
+        "allow": "Alles akzeptieren",
+        "decline": "Ablehnen"
     },
     "en": {
         "title": "We use cookies",
-        "description": "We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content. By browsing our website, you agree to our use of cookies and other tracking technologies.",
-        "allow": "Accept",
-        "decline": "Reject non-essential cookies"
+        "description": "We use cookies and other technologies to improve your customer experience and optimize our offer. You can reject all cookies except essential cookies.",
+        "allow": "I agree",
+        "decline": "Decline"
     },
     "es": {
         "title": "Usamos cookies",
-        "description": "Utilizamos cookies y otras tecnologías de seguimiento para mejorar su experiencia de navegación en nuestro sitio web, para mostrarle contenido personalizado. Al navegar por nuestro sitio web, acepta nuestro uso de cookies y otras tecnologías de seguimiento.",
-        "allow": "Aceptar",
-        "decline": "Rechazar cookies no esenciales"
+        "description": "Utilizamos cookies y otras tecnologías para mejorar su experiencia como cliente y optimizar nuestra oferta. Puede rechazar todas las cookies excepto las cookies esenciales.",
+        "allow": "Acepto todo",
+        "decline": "Rechazar"
     }
 }

@@ -249,7 +249,7 @@ function BlogSkeleton() {
 
 function ContactPopup({ show, hide, title, description }) {
 
-    const { darkMode } = useContextProvider();
+    const { darkMode, cookiesAllowed } = useContextProvider();
 
     const [ showModal, setShowModal ] = useState(false);
 
@@ -280,7 +280,7 @@ function ContactPopup({ show, hide, title, description }) {
 
     return (
         showModal && (
-            <div className={`${show.get ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 bottom-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`}>
+            <div className={`${show.get ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`} style={{ bottom: cookiesAllowed ? "1.25rem" : "40%" }}>
                 <button className={"absolute top-2 right-2"} onClick={handleClosePopup}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

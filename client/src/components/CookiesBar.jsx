@@ -38,12 +38,12 @@ export default function CookiesBar() {
                     exit={{ y: 50, opacity: 0 }}
                     className={`fixed bottom-0 left-0 w-full h-fit px-6 md:px-12 py-6 ${darkMode ? "bg-[#090909] text-zinc-200" : "bg-neutral-300 text-neutral-900"} z-20`}
                 >
-                    <div className={"flex flex-col md:flex-row items-center gap-5"}>
+                    <div className={"flex flex-col md:flex-row items-center justify-between gap-5"}>
                         <div className={"flex flex-col gap-2"}>
                             <div className={"text-lg"}>{lang[language].title}</div>
                             <p className={`text-sm ${darkMode ? "description-dark" : "description-light"}`}>{lang[language].description}</p>
                         </div>
-                        <div className={"flex flex-col gap-2 w-full md:w-fit"}>
+                        <div className={"flex flex-row gap-2 w-full md:w-fit"}>
                             <button className={"md:whitespace-nowrap py-1 px-3 text-zinc-200 bg-primary hover:bg-primary-2 transition-colors rounded-sm"} onClick={handleAllow}>{lang[language].allow}</button>
                             <button className={`md:whitespace-nowrap py-1 px-3 ${darkMode ? "bg-neutral-800 hover:bg-neutral-900" : "bg-neutral-400 hover:bg-neutral-500 text-neutral-900"} transition-colors rounded-sm`} onClick={handleDecline}>{lang[language].decline}</button>
                         </div>
