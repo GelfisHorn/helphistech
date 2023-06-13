@@ -1,11 +1,12 @@
 import { useState } from "react";
 // Nextjs
 import Link from "next/link";
+import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 import { motion } from "framer-motion";
 
-export default function ServicesSection() {
+export default function ServicesSection({ services }) {
     
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
@@ -17,9 +18,10 @@ export default function ServicesSection() {
                     <div className="blur-shadow -left-28 -top-28"></div>
                     <div className="flex flex-col gap-20">
                         <motion.div 
-                        initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
-                        viewport={{ once: true }}
-                        className="flex flex-col items-center sm:items-start gap-5 relative">
+                            initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
+                            viewport={{ once: true }}
+                            className="flex flex-col items-center sm:items-start gap-5 relative"
+                        >
                             <div className="">
                                 <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Our services</span>
                             </div>
@@ -36,7 +38,30 @@ export default function ServicesSection() {
                                 </div>
                             </div>
                         </motion.div>
-                        <div className={`flex flex-col divide-y`}>
+                        <div className="flex flex-col">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-10">
+                                {services && services.length != 0 && services.map((service, index) => (
+                                    <Service key={index} service={service} />
+                                ))}
+                            </div>
+                            {services.length == 0 && (
+                                <div className={`flex ${darkMode ? 'description-dark' : 'description-light'}`}>
+                                    <div className={"flex flex-col gap-2"}>
+                                        <p>Hubo un problema al obtener los servicios.</p>
+                                        <div>
+                                            <p>¿Quieres ver qué tenemos para ofrecerte?</p>
+                                            <Link href={"/website"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
+                                                <span>Ir a servicios</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                                </svg>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        {/* <div className={`flex flex-col divide-y`}>
                             <ServicesOption
                                 title={"Custom Website Development"}
                                 description={"We specialize in creating custom websites that are designed to meet the specific needs of our clients. Our websites are responsive, user-friendly, and optimized for search engines to ensure maximum visibility."}
@@ -53,7 +78,7 @@ export default function ServicesSection() {
                                 title={"Website Maintenance and Support"}
                                 description={"We provide ongoing maintenance and support for all of our websites and web applications. Our team is available to troubleshoot any issues that may arise and to ensure that your website is always up-to-date and running smoothly."}
                             />
-                        </div>
+                        </div> */}
                         <Link className="flex justify-center" href={"/website"}>
                             <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                                 <div>See more</div>
@@ -69,7 +94,32 @@ export default function ServicesSection() {
     )
 }
 
-function ServicesOption({ title, description, href }) {
+function Service({ service }) {
+
+    const { darkMode } = useContextProvider();
+
+    const { url, title, subtitle, preview } = service.attributes || {};
+
+    return (
+        <Link href={`/website/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+            <div className="image-container aspect-video">
+                <Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+            </div>
+            {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
+            <div className="flex items-center justify-between gap-2">
+                <div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
+                <div className="w-5 h-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                </div>
+            </div>
+            <div className={`${darkMode ? 'description-dark' : 'description-light'} overflow-hidden text-ellipsis line-clamp-3`}>{subtitle}</div>
+        </Link>
+    )
+}
+
+/* function ServicesOption({ title, description, href }) {
 
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
@@ -112,4 +162,4 @@ function ServicesOption({ title, description, href }) {
 			)}
 		</div>
 	)
-}
+} */
