@@ -29,10 +29,10 @@ export default function Home({ services, faqs }) {
 				<ServicesSection services={services} />
 				<ProcessSection />
 				<TechnologiesSection />
+				<MyProjectSection />
 				{faqs && Object.keys(faqs).length != 0 && (
 					<FAQSection faqs={faqs} />
 				)}
-				<MyProjectSection />
 				{/* Footer */}
 				<Footer />
 			</main>
