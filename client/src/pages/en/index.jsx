@@ -1,3 +1,4 @@
+import axios from "axios";
 // Nextjs
 import Head from "next/head";
 // Context
@@ -9,8 +10,9 @@ import ProcessSection from "@/components/en/HomeSections/Process";
 import TechnologiesSection from "@/components/en/HomeSections/Technologies";
 import MyProjectSection from "@/components/en/HomeSections/MyProject";
 import Footer from "@/components/en/Footer";
+import FAQSection from "@/components/HomeSections/FAQ";
 
-export default function Home() {
+export default function Home({ faqs }) {
 
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
@@ -27,10 +29,38 @@ export default function Home() {
 				<ServicesSection />
 				<ProcessSection />
 				<TechnologiesSection />
+				{Object.keys(faqs).length != 0 && (
+					<FAQSection faqs={faqs} />
+				)}
 				<MyProjectSection />
 				{/* Footer */}
 				<Footer />
 			</main>
 		</>
 	)
+}
+
+export const getStaticProps = async (context) => {
+
+	const config = {
+		headers: {
+			Authorization: `bearer ${process.env.STRAPI_TOKEN}`
+		}
+	}
+
+	try {
+		const { data } = await axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=en`, config)
+
+		return {
+			props: {
+				faqs: data?.data?.attributes || {}
+			}
+		}
+	} catch (error) {
+		return {
+			props: {
+				faqs: {}
+			}
+		}
+	}
 }

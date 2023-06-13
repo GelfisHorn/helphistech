@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect } from "react";
 // Nextjs
 import Head from "next/head";
@@ -11,8 +12,9 @@ import ProcessSection from "@/components/HomeSections/Process";
 import TechnologiesSection from "@/components/HomeSections/Technologies";
 import MyProjectSection from "@/components/HomeSections/MyProject";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/HomeSections/FAQ";
 
-export default function Home() {
+export default function Home({ faqs }) {
 
 	const router = useRouter();
 
@@ -41,10 +43,38 @@ export default function Home() {
 				<ServicesSection />
 				<ProcessSection />
 				<TechnologiesSection />
+				{Object.keys(faqs).length != 0 && (
+					<FAQSection faqs={faqs} />
+				)}
 				<MyProjectSection />
 				{/* Footer */}
 				<Footer />
 			</main>
 		</>
 	)
+}
+
+export const getStaticProps = async (context) => {
+
+	const config = {
+		headers: {
+			Authorization: `bearer ${process.env.STRAPI_TOKEN}`
+		}
+	}
+
+	try {
+		const { data } = await axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=de`, config)
+
+		return {
+			props: {
+				faqs: data?.data?.attributes || {}
+			}
+		}
+	} catch (error) {
+		return {
+			props: {
+				faqs: {}
+			}
+		}
+	}
 }
