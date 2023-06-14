@@ -107,7 +107,7 @@ export default function Blog({ blog }) {
                     </div>
                 </div>
                 {blog.popupTitle && (
-                    <ContactPopup show={{ get: showContactPopup, set: setShowContactPopup }} hide={{ get: hideContactPopup, set: setHideContactPopup }} title={blog.popupTitle} description={blog.popupDescription} />
+                    <ContactPopup blog={{ title: blog.title, url: blog.url }} show={{ get: showContactPopup, set: setShowContactPopup }} hide={{ get: hideContactPopup, set: setHideContactPopup }} title={blog.popupTitle} description={blog.popupDescription} />
                 )}
             </Layout>
         )
@@ -247,7 +247,7 @@ function BlogSkeleton() {
     )
 }
 
-function ContactPopup({ show, hide, title, description }) {
+function ContactPopup({ blog, show, hide, title, description }) {
 
     const { darkMode, cookiesAllowed } = useContextProvider();
 
@@ -304,7 +304,7 @@ function ContactPopup({ show, hide, title, description }) {
                     onExitComplete={() => null}
                 >
                     {showContactModal && (
-                        <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} language={"es"} />
+                        <SecondaryContactModal blog={blog} modalOpen={showContactModal} handleClose={handleCloseModal} language={"es"} />
                     )}
                 </AnimatePresence>
             </div>
