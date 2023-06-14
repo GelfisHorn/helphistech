@@ -48,14 +48,23 @@ export const getStaticProps = async (context) => {
 		}
 	}
 
-	const response = await Promise.all([
-		axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=es`, config),
-		axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=es&populate=preview&pagination[pageSize]=3`, config)
-	])
-	return {
-		props: {
-			faqs: response[0]?.data?.data?.attributes || {},
-			services: response[1]?.data.data || {}
+	try {
+		const response = await Promise.all([
+			axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=es`, config),
+			axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=es&populate=preview&pagination[pageSize]=3`, config)
+		])
+		return {
+			props: {
+				faqs: response[0]?.data?.data?.attributes || {},
+				services: response[1]?.data.data || []
+			}
+		}
+	} catch (error) {
+		return {
+			props: {
+				faqs: {},
+				services: []
+			}
 		}
 	}
 }
