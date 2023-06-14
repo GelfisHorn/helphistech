@@ -13,6 +13,7 @@ import TechnologiesSection from "@/components/HomeSections/Technologies";
 import MyProjectSection from "@/components/HomeSections/MyProject";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/HomeSections/FAQ";
+import ContactSection from "@/components/HomeSections/Contact/Index";
 
 export default function Home({ services, faqs }) {
 
@@ -43,7 +44,8 @@ export default function Home({ services, faqs }) {
 				<ServicesSection services={services} />
 				<ProcessSection />
 				<TechnologiesSection />
-				<MyProjectSection />
+				<ContactSection language={language} />
+				{/* <MyProjectSection /> */}
 				{faqs && Object.keys(faqs).length != 0 && (
 					<FAQSection faqs={faqs} />
 				)}
