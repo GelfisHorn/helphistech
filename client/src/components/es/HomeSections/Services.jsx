@@ -45,7 +45,7 @@ export default function OurServicesSection({ services }) {
                                     <Service key={index} service={service} />
                                 ))}
                             </div>
-                            {services.length == 0 && (
+                            {(!services || services.length == 0) && (
                                 <div className={`flex ${darkMode ? 'description-dark' : 'description-light'}`}>
                                     <div className={"flex flex-col gap-2"}>
                                         <p>Hubo un problema al obtener los servicios.</p>
