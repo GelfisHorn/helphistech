@@ -36,10 +36,10 @@ export default function ProjectQuote() {
                             </motion.div>
                         </div>
                         <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
-                            <h2 className="text-2xl font-medium w-full">Planen Sie einen Videoanruf</h2>
-                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Vereinbaren Sie einen Videoanruf und ein Gespräch direkt mit uns und das kostenlos!</div>
+                            <h2 className="text-2xl font-medium w-full">KOSTENLOSE BERATUNG BUCHEN</h2>
+                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Holen Sie sich jetzt Ihre kostenlose Beratung und sichern Sie sich einen exklusiven 10% Rabatt auf die Entwicklung Ihrer Website. Gemeinsam finden wir die besten Lösungen, die Ihren Vorstellungen entsprechen.</div>
                             <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
-                                <span>Videoanruf planen</span>
+                                <span>Buchberatung</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                                 </svg>
