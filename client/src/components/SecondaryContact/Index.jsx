@@ -170,7 +170,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                     <div className={"flex flex-col gap-10"}>
                         <div className={"text-2xl uppercase font-semibold"}>{lang[language].step2[formOption].title}</div>
                         <div className={"flex flex-col gap-3"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-[60vw] lg:max-w-[60vw]"}>
+                            <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw]"}>
                                 {lang[language].step2[formOption].options.map((service, index) => (
                                     service.id != "other" ? (
                                         <div onClick={() => handleSetStep2(service)} key={index} className={`${styles.serviceCard} ${step2.key == service.id ? styles.cardSelected : ""}`}>
@@ -194,7 +194,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                     <div className={"flex flex-col gap-10"}>
                         <div className={"text-2xl uppercase font-semibold"}>{lang[language].step3[formOption].title}</div>
                         <div className={"flex flex-col gap-3"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-[60vw] lg:max-w-[60vw]"}>
+                            <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw]"}>
                                 {lang[language].step3[formOption].options.map((service, index) => (
                                     service.id != "other" ? (
                                         <div onClick={() => handleSetStep3(service)} key={index} className={`${styles.serviceCard} ${step3.find(step => step.key == service.id) ? styles.cardSelected : ""}`}>
