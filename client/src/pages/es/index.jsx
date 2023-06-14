@@ -11,11 +11,12 @@ import ProcessSection from "@/components/es/HomeSections/Process";
 import TechnologiesSection from "@/components/es/HomeSections/Technologies";
 import MyProjectSection from "@/components/es/HomeSections/MyProject";
 import FAQSection from "@/components/HomeSections/FAQ";
+import ContactSection from "@/components/HomeSections/Contact/Index";
 
 export default function Home({ services, faqs }) {
 
     // Get functions and variables from context
-	const { darkMode } = useContextProvider();
+	const { darkMode, language } = useContextProvider();
 
 	return (
 		<>
@@ -29,7 +30,8 @@ export default function Home({ services, faqs }) {
 				<ServicesSection services={services} />
 				<ProcessSection />
 				<TechnologiesSection />
-				<MyProjectSection />
+				<ContactSection language={language} />
+				{/* <MyProjectSection /> */}
 				{faqs && Object.keys(faqs).length != 0 && (
 					<FAQSection faqs={faqs} />
 				)}
