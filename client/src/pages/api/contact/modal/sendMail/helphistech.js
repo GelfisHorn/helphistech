@@ -66,7 +66,7 @@ export default async function handler(req, res) {
 
         await transporter.sendMail({
             from: `"HelphisTech" <helphis.tech@gmail.com>`,
-            to: "mathiasbdev@gmail.com",
+            to: "helphis.tech@gmail.com",
             subject: `${lang[language].title}`,
             text: `
                 ${lang[language].description1}${blog.url} ${lang[language].description2}\n\n
