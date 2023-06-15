@@ -7,9 +7,9 @@ import useContextProvider from "@/hooks/useAppContextProvider"
 import { motion, AnimatePresence } from "framer-motion"
 
 const lang = {
-    "de": "Kontakt",
-    "en": "Contact",
-    "es": "Contactar"
+    "de": "KOSTENLOSE BERATUNG BUCHEN",
+    "en": "BOOK A FREE CONSULTATION",
+    "es": "RESERVA UNA CONSULTA GRATUITA"
 }
 
 export default function FAQSection({ faqs }) {
