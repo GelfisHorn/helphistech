@@ -91,6 +91,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
 
     const handleSetStep2 = (service) => {
         setStep2({ key: service.id, value: service.text });
+        setStep(current => current + 1);
     }
 
     const handleSetStep3 = (service) => {
@@ -145,7 +146,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                     <div className={"flex flex-col gap-10"}>
                         <div className={"text-2xl uppercase font-semibold"}>{lang[language].step1.title}</div>
                         <div className={"flex flex-col gap-3"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw]"}>
+                            <div className={"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw] md:text-lg md:uppercase md:font-medium"}>
                                 {lang[language].step1.options.map((service, index) => (
                                     <div key={index} onClick={() => {
                                         setFormOption(index) 
@@ -166,7 +167,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                     <div className={"flex flex-col gap-10"}>
                         <div className={"text-2xl uppercase font-semibold"}>{lang[language].step2[formOption].title}</div>
                         <div className={"flex flex-col gap-3"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw]"}>
+                            <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw] md:text-lg md:uppercase md:font-medium"}>
                                 {lang[language].step2[formOption].options.map((service, index) => (
                                     service.id != "other" ? (
                                         <div onClick={() => handleSetStep2(service)} key={index} className={`${styles.serviceCard} ${step2.key == service.id ? styles.cardSelected : ""}`}>
@@ -176,7 +177,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                                             <div>{service.text}</div>
                                         </div>
                                     ) : (
-                                        <div className={"flex flex-col items-start gap-1"} key={index}>
+                                            <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 md:col-end-3 md:col-start-2"} key={index}>
                                             <label htmlFor={`step2-other`}>{service.text}</label>
                                             <input value={step2.value} onChange={e => setStep2({ key: 'website_url', value: e.target.value })} id={`step2-other`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full `} type="text" placeholder={service.text} />
                                         </div>
@@ -190,7 +191,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                     <div className={"flex flex-col gap-10"}>
                         <div className={"text-2xl uppercase font-semibold"}>{lang[language].step3[formOption].title}</div>
                         <div className={"flex flex-col gap-3"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center justify-center gap-3 lg:min-w-fit lg:max-w-[60vw]"}>
+                            <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-1 md:gap-3 lg:min-w-fit lg:max-w-[60vw] md:text-lg md:uppercase md:font-medium"}>
                                 {lang[language].step3[formOption].options.map((service, index) => (
                                     service.id != "other" ? (
                                         <div onClick={() => handleSetStep3(service)} key={index} className={`${styles.serviceCard} ${step3.find(step => step.key == service.id) ? styles.cardSelected : ""}`}>
@@ -200,7 +201,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
                                             <div>{service.text}</div>
                                         </div>
                                     ) : (
-                                        <div className={"flex flex-col items-start gap-1"} key={index}>
+                                        <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 md:col-end-3 md:col-start-2"} key={index}>
                                             <label htmlFor={`step3-other`}>{service.text}</label>
                                             <input value={other.value} onChange={e => setOther({ key: 'other', value: e.target.value })} id={`step3-other`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={service.text} />
                                         </div>

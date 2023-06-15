@@ -588,3 +588,10 @@ ul ol {
 .modal::-webkit-scrollbar {
 	display: none;
 }
+
+@media (max-width: 768px) {
+	.modal {
+		margin: 1rem;
+		padding: 1rem;
+	}
+}
