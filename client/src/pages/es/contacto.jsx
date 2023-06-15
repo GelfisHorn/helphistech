@@ -33,7 +33,7 @@ export default function ProjectQuote() {
                                 <FormComponent/>
                             </motion.div>
                         </div>
-                        <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
+                        <motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center justify-center text-center gap-3 xl:w-2/5 py-5 bg-[#19191f71] p-5 rounded-full aspect-square">
                             <h2 className="text-2xl font-medium w-full">RESERVA UNA CONSULTA GRATUITA</h2>
                             <div className={`flex flex-col ${darkMode ? 'description-dark' : 'description-light'}`}>Obtenga su consulta gratuita ahora y obtenga un descuento exclusivo del 10% en el desarrollo de su sitio web. Juntos encontraremos las mejores soluciones que satisfagan sus expectativas.</div>
                             <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
