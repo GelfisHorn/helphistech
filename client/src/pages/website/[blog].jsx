@@ -64,7 +64,7 @@ export default function Blog({ blog }) {
 
     async function getBlogs() {
         try {
-            const { data } = await axios.post('/api/blogs/get', { language: 'en', limit: 4, blog: blog.url });
+            const { data } = await axios.post('/api/blogs/get', { language: 'en', limit: 3, blog: blog.url });
             if (data.data.length != 0) {
                 setLatestBlogs(data.data);
                 setFetchError(false);
@@ -119,8 +119,8 @@ export default function Blog({ blog }) {
                             ))}
                         </div>
                         <div className={"flex flex-col gap-20"}>
-                            <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
                             <BottomContact blog={{ title: blog.title, url: blog.url }} language={"en"} />
+                            <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
                         </div>
                     </div>
                 </div>
@@ -199,12 +199,13 @@ function LatestBlogsSection({ blogs, loading, fetchError }) {
         <div className={"flex flex-col gap-5"}>
             <div className={"text-2xl sm:text-3xl"}>{lang['en'].articles.title}</div>
             <div>
-                <div className={"grid grid-cols-1 lg:grid-cols-2 gap-5"}>
+                <div className={"grid grid-cols-1 lg:grid-cols-3 gap-5"}>
                     {!loading && !fetchError && blogs.length != 0 && blogs.map((blog, index) => (
                         <BlogPopularBlog key={index} blog={blog} />
                     ))}
                     {loading && (
                         <>
+                            <BlogSkeleton />
                             <BlogSkeleton />
                             <BlogSkeleton />
                         </>
