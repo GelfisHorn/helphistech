@@ -136,10 +136,6 @@ export default function ContactSection({ language }) {
         })
     }
 
-    useEffect(() => {
-        console.log({ step1, step2, step3 })
-    }, [step1, step2, step3])
-
     return (
         <section className="px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 text-center bg-cover bg-fixed bg-center" id="my-project" style={{ backgroundImage: darkMode ? "url(home/waves-variant.svg)" : "url(home/waves-light.svg)" }}>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
