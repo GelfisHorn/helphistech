@@ -35,7 +35,7 @@ export default function FAQSection({ faqs }) {
     };
 
     return (
-        <section className={`flex flex-col gap-20 overflow-hidden ${darkMode ? 'section-bg-dark border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 px-6 sm:px-10 lg:px-20 2xl:px-0 border-t`}>
+        <section className={`flex flex-col gap-20 overflow-hidden ${darkMode ? 'section-bg-dark border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 px-6 sm:px-10 lg:px-20 2xl:px-0 border-t`} id={"faq"}>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className={"flex flex-col gap-10"}>
                     <div className={`text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}>{title[language]}</div>
@@ -81,7 +81,7 @@ function Element({ element }) {
                     ease: "circOut",
                 },
             }}
-            className={`${darkMode ? "bg-[#0e0e11]" : "bg-zinc-200"} select-none rounded-md`}
+            className={`${darkMode ? "bg-[#0e0e11] hover:bg-[#15151a]" : "bg-zinc-200 hover:bg-zinc-300"} transition-colors select-none rounded-md`}
         >
             <div className={"flex items-center justify-between cursor-pointer p-5"} onClick={handleShow}>
                 <div>{element.question}</div>

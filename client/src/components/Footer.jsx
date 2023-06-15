@@ -41,8 +41,11 @@ export default function Footer() {
                                 <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                             </div>
                             <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                                <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/web-seiten' ? 'Mein Projekt' : 'Kontakt'}</span>
+                                <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
                             </div>
+                            <Link href={"/#faq"} className="cursor-pointer">
+                                <span className="hover:underline hover:text-primary transition-colors">Häufig gestellte Fragen</span>
+                            </Link>
                         </div>
                     </FooterColumn>
                     {/* <FooterColumn title={"Sozialen Medien"}>
