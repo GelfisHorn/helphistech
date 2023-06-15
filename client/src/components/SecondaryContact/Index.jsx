@@ -135,10 +135,6 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
         })
     }
 
-    useEffect(() => {
-        console.log({ step1, step2, step3 })
-    }, [step1, step2, step3])
-
     return (
         <Modal handleClose={handleClose}>
             <div className={"flex flex-col gap-10 w-full text-center"}>
