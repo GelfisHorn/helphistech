@@ -146,8 +146,8 @@ function Blog({ blog }) {
 
 	return (
 		<Link href={`/website/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
-			<div className="image-container aspect-video">
-				<Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+			<div className="image-container aspect-video overflow-hidden rounded-md">
+				<Image loading="eager" className="relative object-cover rounded-md aspect-video" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
 			</div>
 			{/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
 			<div className="flex items-center justify-between gap-2">

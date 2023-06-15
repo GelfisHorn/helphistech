@@ -50,6 +50,24 @@ export default function Blog({ blog }) {
             const { data } = await axios.post('/api/blogs/getByCategory', { actual, category, language });
             if (data.data.length != 0) {
                 setLatestBlogs(data.data);
+                setLoading(false);
+                return;
+            }
+
+            getBlogs();
+            setLatestBlogs([]);
+            setFetchError(true);
+        } catch (error) {
+            setFetchError(true);
+        }
+    }
+
+    async function getBlogs() {
+        try {
+            const { data } = await axios.post('/api/blogs/get', { language: 'en', limit: 4, blog: blog.url });
+            if (data.data.length != 0) {
+                setLatestBlogs(data.data);
+                setFetchError(false);
                 return;
             }
 
@@ -219,8 +237,8 @@ function BlogPopularBlog({ blog }) {
 
     return (
         <div className="flex flex-col gap-3">
-            <div className="image-container">
-                <Image className="image rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+            <div className="image-container aspect-video overflow-hidden rounded-md">
+                <Image className="rounded-md relative object-cover aspect-video" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
             </div>
             {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
             <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/website/${url}`}>
