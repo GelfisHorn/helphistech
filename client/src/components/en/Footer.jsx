@@ -5,6 +5,15 @@ import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 
+// Redirects routes
+const REDIRECTS = {
+    "hero": "/en",
+    "our-services": "/website",
+    "our-process": "/en/custom-web-development",
+    "our-technologies": "/en/technologies",
+    "my-project": "/en/contact",
+}
+
 export default function Footer() {
 
     const router = useRouter();
