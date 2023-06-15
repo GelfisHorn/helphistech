@@ -67,7 +67,7 @@ export const getStaticProps = async (context) => {
 	try {
 		const response = await Promise.all([
 			axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=de`, config),
-			axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=de&populate=preview&pagination[pageSize]=3`, config)
+			axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=de&populate=preview&pagination[pageSize]=6`, config)
 		])
 		return {
 			props: {
