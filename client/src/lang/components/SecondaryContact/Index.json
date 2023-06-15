@@ -57,6 +57,10 @@
                     {
                         "id": "portal_webapp",
                         "text": "Webportal-App"
+                    },
+                    {
+                        "id": "cms_webapp",
+                        "text": "Webanwendung mit Content-Management-System"
                     }
                 ]
             },
@@ -257,6 +261,10 @@
                     {
                         "id": "portal_webapp",
                         "text": "Web portal app"
+                    },
+                    {
+                        "id": "cms_webapp",
+                        "text": "Web application with content management system"
                     }
                 ]
             },
@@ -457,6 +465,10 @@
                     {
                         "id": "portal_webapp",
                         "text": "Aplicación de portal web"
+                    },
+                    {
+                        "id": "cms_webapp",
+                        "text": "Aplicación web con sistema de gestión de contenidos"
                     }
                 ]
             },
