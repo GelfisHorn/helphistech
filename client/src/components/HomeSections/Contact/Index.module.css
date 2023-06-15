@@ -13,19 +13,22 @@
     align-items: center;
     justify-content: center;
     padding: 1.3rem;
-    height: 10rem;
-    border: .15rem solid transparent;
-    border-radius: .5rem;
+    height: 100%;
+    min-height: 10rem;
+    border-color: #866bfe75;
+    /* border: .15rem solid transparent; */
+    /* border-radius: .5rem; */
     transition: all .2s;
+    word-break: break-all;
 }
 
 .serviceCard:hover {
-    border-color: #866bfe;
+    /* border-color: #866bfe; */
     background: rgba(134, 107, 254, .1);
 }
 
 .cardSelected {
-    border-color: #866bfe;
+    /* border-color: #866bfe; */
     background: rgba(134, 107, 254, .1);
 }
 
