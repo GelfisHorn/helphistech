@@ -94,9 +94,9 @@ export default function Navbar() {
                         <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                             <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                            <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/' ? 'Mein Projekt' : 'Kontakt'}</span>
-                        </div>
+                        <Link href={"/contact"}>
+                            <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
+                        </Link>
                     </nav>
                     <div className="hidden sm:flex items-center gap-3">
                         <div onClick={handleDarkMode} className={`text-2xl cursor-pointer transition-colors`}>
@@ -124,11 +124,11 @@ export default function Navbar() {
                         <Link className="hover:underline hover:text-primary" href="/login">
                             <span>Anmeldung</span>
                         </Link>
-                        <Link href={"/contact"}>
+                        <div onClick={() => handleNavButton("my-project")}>
                             <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
-                                <span>Kontakt</span>
+                                <span>starte mein Projekt</span>
                             </button>
-                        </Link>
+                        </div>
                     </div>
                     <div onClick={handleShowMenu} className="block sm:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9">
@@ -149,9 +149,9 @@ export default function Navbar() {
                     <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                         <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                        <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/' ? 'Mein Projekt' : 'Kontakt'}</span>
-                    </div>
+                    <Link href={"/contact"}>
+                        <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
+                    </Link>
                 </nav>
             </header>
             { showMenu && (
@@ -173,14 +173,14 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
 
         const newLanguage = e.target.value;
 
-        const path = router.pathname;
-        const route = routes.urls[language][path];
+        const path = router.asPath;
+        const route = routes.urls[language][`/${(path.split('/')[0] || path.split('/')[1])?.split('#')[0]}`];
         const redirectTo = routes.redirects[newLanguage][route];
 
         setLanguage(newLanguage);
         localStorage.setItem('language', newLanguage);
 
-        router.push(`/${redirectTo}`);
+        router.push(`/${redirectTo}`)
 
         /* if(language != 'de') {
             router.push(`/${language}`)
@@ -228,9 +228,9 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                 <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                                    <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/' ? 'Mein Projekt' : 'Kontakt'}</span>
-                                </div>
+                                <Link href={"/contact"}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
+                                </Link>
                             </div>
                         </div>
                         <div className="flex flex-col gap-5 items-center">
@@ -259,9 +259,9 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                             <Link className="hover:underline hover:text-primary" href="/login">
                                 <span>Anmeldung</span>
                             </Link>
-                            <Link href={'/contact'}>
-                                <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>Kontakt</button>
-                            </Link>
+                            <div onClick={() => handleNavButton("my-project")}>
+                                <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>starte mein Projekt</button>
+                            </div>
                         </div>
                     </div>
                 </div>

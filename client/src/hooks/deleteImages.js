@@ -3,7 +3,7 @@ import sha1 from 'sha1';
 
 /**
  * Delete images in Cloudinary
- * @images formlist of images
+ * @images array of string images
  */
 export default async function deleteImages(images, folder) {
     for(const image of images) {

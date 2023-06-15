@@ -32,6 +32,7 @@ const authenticate = async (req, res) => {
             surname: user.surname,
             position: user.position,
             email: user.email,
+            profile_img: user.profile_img,
             permissions: user.permissions,
             token: createJWT(user._id)
         })
@@ -117,7 +118,7 @@ const profile = async (req, res) => {
 }
 
 const editProfile = async (req, res) => {
-    const { name = null, surname = null, email = null, password = null, userId = null } = req.body
+    const { name = null, surname = null, email = null, profile_img = null, password = null, userId = null } = req.body
 
     if(!ObjectId.isValid(userId)) {
         const error = new Error("The userId is invalid");
@@ -144,6 +145,7 @@ const editProfile = async (req, res) => {
         if(name) user.name = name;
         if(surname) user.surname = surname
         if(email) user.email = email
+        if(profile_img) user.profile_img = profile_img
         if(password) user.password = password
         await user.save()
         return res.status(200).json({ msg: "You edited the profile correctly" })

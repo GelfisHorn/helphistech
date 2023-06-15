@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 import DayPicker from "@/components/contact/DayPicker";
+import Link from "next/link";
 
 export default function ProjectQuote() {
 
@@ -32,11 +33,11 @@ export default function ProjectQuote() {
                                 <FormComponent/>
                             </motion.div>
                         </div>
-                        <motion.div  initial={{ x:40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center xl:items-end text-center xl:text-right gap-3 xl:w-2/5 py-5">
-                            <h2 className="text-2xl font-medium w-full">Agenda una videollamada</h2>
-                            <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Agenda una videollamada y ten una conversación directamente con nosotros!</div>
+                        <motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className="flex flex-col items-center justify-center text-center gap-3 xl:w-2/5 py-5 bg-[#19191f71] p-5 rounded-full aspect-square">
+                            <h2 className="text-2xl font-medium w-full">RESERVA UNA CONSULTA GRATUITA</h2>
+                            <div className={`flex flex-col ${darkMode ? 'description-dark' : 'description-light'}`}>Obtenga su consulta gratuita ahora y obtenga un descuento exclusivo del 10% en el desarrollo de su sitio web. Juntos encontraremos las mejores soluciones que satisfagan sus expectativas.</div>
                             <button onClick={() => setShowVideoCallForm(true)} className="btn-primary flex items-center gap-2 px-4 py-2 rounded-full text-white uppercase bg-primary hover:bg-primary-2 transition-colors w-fit select-none">
-                                <span>Agendar Videollamada</span>
+                                <span>Reservar consulta</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                                 </svg>
@@ -104,11 +105,16 @@ function VideocallModal({ closeVideoCallForm }) {
 
     return (
         <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                transition={{ duration: .3 }}
-                className="fixed top-0 h-full w-full z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center"
+            <motion.div exit={{ opacity: 0 }}
+                className="fixed top-0 h-full w-full z-50 flex items-center justify-center"
             >
-                <motion.div className={`max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
+                <motion.div
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                    transition={{ duration: .3 }}
+                    onClick={closeVideoCallForm}
+                    className="fixed top-0 h-full z-10 w-full bg-black/60 backdrop-blur-sm flex items-center justify-center"
+                ></motion.div>
+                <motion.div className={`z-20 max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900": "bg-zinc-200" }`}
                     initial={{ x: -30 }}
                     animate={{ x: 0 }}
                     exit={{ x: -30 }}
@@ -291,6 +297,8 @@ function FormComponent() {
     // Are there competitor websites that should be taken into account as references?
     const [ competitor_websites, setCompetitorWebsites ] = useState(false);
     const [ competitor_websites_examples, setCompetitorWebsitesExamples ] = useState("");
+    // Legal
+    const legalTerms = useRef(null);
     // 
     function setMultiOptionState(state, setter, value) {
         if(state.indexOf(value) > -1) {
@@ -351,6 +359,11 @@ function FormComponent() {
 
         if(functionalities.length == 0 && functionalities_other == '') {
             showMessage(true, 'Debes completar todos los campos.', 5000)
+            return;
+        }
+
+        if (!legalTerms.current.checked) {
+            showMessage(true, 'Debes aceptar los términos legales antes de enviar el formulario', 5000)
             return;
         }
         
@@ -631,21 +644,8 @@ function FormComponent() {
                     </div>
                 </Section>
                 <Section 
-                    title={"¿Tiene el cliente algún contenido (texto, imágenes, videos) para incluir en la web?"} 
-                    step={'10'}
-                >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
-                        <div onClick={() => setContentToInclude(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${content_to_include && 'bg-black text-white'}`}`}>
-                            <span>Sí</span>
-                        </div>
-                        <div onClick={() => setContentToInclude(false)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${!content_to_include && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${!content_to_include && 'bg-black text-white'}`}`}>
-                            <span>No</span>
-                        </div>
-                    </div>
-                </Section>
-                <Section 
                     title={"¿Qué lenguaje de programación y tecnologías se prefieren para el desarrollo?"} 
-                    step={'11'}
+                    step={'10'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(preferred_technologies, setPreferredTechnologies, "React")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${preferred_technologies.indexOf("React") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${preferred_technologies.indexOf("React") > -1 && 'bg-black text-white'}`}`}>
@@ -682,7 +682,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Quién será el responsable de la gestión de la web una vez finalizado el proyecto?"} 
-                    step={'12'}
+                    step={'11'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setResponsibleForManaging("client")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${responsible_for_managing == 'client' && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${responsible_for_managing == 'client' && 'bg-black text-white'}`}`}>
@@ -698,7 +698,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Cuál es la estrategia de marketing y posicionamiento del cliente?"} 
-                    step={'13'}
+                    step={'12'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setMultiOptionState(marketing_strategy, setMarketingStrategy, "social-media")} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${marketing_strategy.indexOf("social-media") > -1 && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${marketing_strategy.indexOf("social-media") > -1 && 'bg-black text-white'}`}`}>
@@ -717,7 +717,7 @@ function FormComponent() {
                 </Section>
                 <Section 
                     title={"¿Existen sitios web de la competencia que deban tenerse en cuenta como referencias?"} 
-                    step={'14'}
+                    step={'13'}
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 items-center gap-2 pb-3">
                         <div onClick={() => setCompetitorWebsites(true)} className={`grid place-content-center border ${darkMode ? "border-white" : "border-neutral-800"} rounded-full py-1 px-5 transition-colors cursor-pointer whitespace-nowrap ${darkMode ? `hover:bg-white hover:text-black ${competitor_websites && 'bg-white text-black'}` : `hover:bg-black hover:text-white ${competitor_websites && 'bg-black text-white'}`}`}>
@@ -734,10 +734,19 @@ function FormComponent() {
                 <Section 
                     title={"Cuéntanos más acerca del proyecto"} 
                     classes={``}
-                    step={'15'}
+                    step={'14'}
                 >
                     <textarea rows="7" placeholder="Descripción" ref={description} className={`rounded-md outline-none resize-none w-full p-2 bg-transparent border ${darkMode ? 'placeholder:text-neutral-500' : 'placeholder:text-neutral-400'} ${darkMode ? 'border-neutral-800' : 'border-neutral-800'}`}></textarea>
                 </Section>
+                <div className={"flex gap-2 select-none"}>
+                    <div className="w-10 hidden xl:block"></div>
+                    <div className={"flex items-start gap-2"}>
+                        <div className="form-control">
+                            <input ref={legalTerms} id={"legal"} type="checkbox" className="accent-primary w-5 h-5" />
+                        </div>
+                        <label htmlFor={"legal"}>Al enviar este formulario estoy de acuerdo con las <Link className={"link"} href={"/datenschutz"}>políticas de privacidad</Link> y <Link className={"link"} href={"/impressum"}>términos legales</Link>.</label>
+                    </div>
+                </div>
             </section>
             <div className="flex gap-2">
                 <div className="w-10 hidden xl:block"></div>

@@ -7,8 +7,8 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
-    // import SecondaryContactModal from "@/components/SecondaryContact/Index";
-// import BottomContact from "@/components/BottomContact";
+import SecondaryContactModal from "@/components/SecondaryContact/Index";
+import BottomContact from "@/components/BottomContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Markdown to format Starpi data
@@ -41,7 +41,7 @@ export default function Blog({ blog }) {
     }, [blogUrl, language])
 
     async function getLatestBlogs() {
-        const category = blog.category.data.attributes.code;
+        const category = blog?.category?.data?.attributes?.code;
         getBlogsByCategory(blog.url, category, 'es');
     }
 
@@ -50,6 +50,24 @@ export default function Blog({ blog }) {
             const { data } = await axios.post('/api/blogs/getByCategory', { actual, category, language });
             if (data.data.length != 0) {
                 setLatestBlogs(data.data);
+                setLoading(false);
+                return;
+            }
+
+            getBlogs();
+            setLatestBlogs([]);
+            setFetchError(true);
+        } catch (error) {
+            setFetchError(true);
+        }
+    }
+
+    async function getBlogs() {
+        try {
+            const { data } = await axios.post('/api/blogs/get', { language: 'es', limit: 3, blog: blog.url });
+            if (data.data.length != 0) {
+                setLatestBlogs(data.data);
+                setFetchError(false);
                 return;
             }
 
@@ -62,10 +80,6 @@ export default function Blog({ blog }) {
         }
     }
 
-    /**
-     * @show Show/hide popup
-     * @permament if true never show popup
-     */
     const [showContactPopup, setShowContactPopup] = useState(false);
     const [hideContactPopup, setHideContactPopup] = useState(false);
 
@@ -105,13 +119,13 @@ export default function Blog({ blog }) {
                             ))}
                         </div>
                         <div className={"flex flex-col gap-20"}>
+                            <BottomContact blog={{ title: blog.title, url: blog.url }} language={"es"} />
                             <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
-                            {/* <BottomContact blog={{ title: blog.title, url: blog.url }} /> */}
                         </div>
                     </div>
                 </div>
                 {blog.popupTitle && (
-                    <ContactPopup show={{ get: showContactPopup, set: setShowContactPopup }} hide={{ get: hideContactPopup, set: setHideContactPopup }} title={blog.popupTitle} description={blog.popupDescription} />
+                    <ContactPopup blog={{ title: blog.title, url: blog.url }} show={{ get: showContactPopup, set: setShowContactPopup }} hide={{ get: hideContactPopup, set: setHideContactPopup }} title={blog.popupTitle} description={blog.popupDescription} />
                 )}
             </Layout>
         )
@@ -127,10 +141,10 @@ function BlogHeroSection({ blog }) {
             <div className={"absolute top-0 left-0 bg-black w-full h-full"}>
                 <Image className="object-cover opacity-40" fill src={blog.preview.data.attributes.url} />
             </div>
-            <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full text-center xs:text-left">
-                <div className="flex flex-col gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
+            <div className="grid grid-cols-1 relative px-10 md:px-20 2xl:px-28 mx-auto 2xl:mx-0 h-full">
+                <div className="flex flex-col gap-20 xs:gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
                     <h1 className={`lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]`}>{blog.title}</h1>
-                    <div className={`text-xl 2xl:text-2xl text-white font-light`}>
+                    <div className={`text-right xs:text-left text-xl 2xl:text-2xl text-white font-light`}>
                         <h4>HelphisTech</h4>
                         <span className="text-base 2xl:text-lg">{lang['es'].slogan.description}</span>
                     </div>
@@ -148,7 +162,7 @@ function BlogElement({ element, type }) {
 
     const ELEMENTS = {
         title: (
-            <div className={"pt-3"}>
+            <div className={"pt-3 pb-5"}>
                 <h2 className={`text-3xl xl:text-5xl font-semibold uppercase`}>{element.title}</h2>
             </div>
         ),
@@ -156,7 +170,7 @@ function BlogElement({ element, type }) {
             <div className={`${darkMode ? 'description-dark' : 'description-light'} text-lg uppercase font-medium`}>{element.subtitle}</div>
         ),
         content: (
-            <div className="flex flex-col gap-5 pt-10 2xl:text-lg">
+            <div className="flex flex-col gap-5 pt-5 pb-10 2xl:text-lg">
                 {element?.content?.split("\n\n").map((line, index) => (
                     <ReactMarkdown className={"strapi-markdown"} key={index}>{line}</ReactMarkdown>
                 ))}
@@ -185,12 +199,13 @@ function LatestBlogsSection({ blogs, loading, fetchError }) {
         <div className={"flex flex-col gap-5"}>
             <div className={"text-2xl sm:text-3xl"}>{lang['es'].articles.title}</div>
             <div>
-                <div className={"grid grid-cols-1 lg:grid-cols-2 gap-5"}>
+                <div className={"grid grid-cols-1 lg:grid-cols-3 gap-5"}>
                     {!loading && !fetchError && blogs.length != 0 && blogs.map((blog, index) => (
                         <BlogPopularBlog key={index} blog={blog} />
                     ))}
                     {loading && (
                         <>
+                            <BlogSkeleton />
                             <BlogSkeleton />
                             <BlogSkeleton />
                         </>
@@ -202,7 +217,7 @@ function LatestBlogsSection({ blogs, loading, fetchError }) {
                             <div>{lang['es'].articles["no-articles"].title}</div>
                             <div>{lang['es'].articles["no-articles"].description}</div>
                         </div>
-                        <Link href={"/services"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
+                        <Link href={"/pagina-web"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
@@ -223,8 +238,8 @@ function BlogPopularBlog({ blog }) {
 
     return (
         <div className="flex flex-col gap-3">
-            <div className="image-container">
-                <Image className="image rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+            <div className="image-container aspect-video overflow-hidden rounded-md">
+                <Image className="rounded-md relative object-cover aspect-video" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
             </div>
             {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
             <Link className="flex items-center gap-5 hover:text-primary transition-colors" href={`/pagina-web/${url}`}>
@@ -251,9 +266,9 @@ function BlogSkeleton() {
     )
 }
 
-function ContactPopup({ show, hide, title, description }) {
+function ContactPopup({ blog, show, hide, title, description }) {
 
-    const { darkMode } = useContextProvider();
+    const { darkMode, cookiesAllowed } = useContextProvider();
 
     const [ showModal, setShowModal ] = useState(false);
 
@@ -284,7 +299,7 @@ function ContactPopup({ show, hide, title, description }) {
 
     return (
         showModal && (
-            <div className={`${show.get ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 bottom-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`}>
+            <div className={`${show.get ? "contact-popup-show" : "contact-popup-hide"} fixed right-5 ${darkMode ? "bg-gradient-to-br from-[#070707] to-neutral-900 text-zinc-300" : "bg-gradient-to-br from-neutral-100 to-neutral-200 shadow-lg"} rounded-2xl px-7 py-7 min-w-[24rem]`} style={{ bottom: cookiesAllowed ? "1.25rem" : "40%" }}>
                 <button className={"absolute top-2 right-2"} onClick={handleClosePopup}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -307,9 +322,9 @@ function ContactPopup({ show, hide, title, description }) {
                     mode={"wait"}
                     onExitComplete={() => null}
                 >
-                    {/* {showContactModal && (
-                        <SecondaryContactModal modalOpen={showContactModal} handleClose={handleCloseModal} />
-                    )} */}
+                    {showContactModal && (
+                        <SecondaryContactModal blog={blog} modalOpen={showContactModal} handleClose={handleCloseModal} language={"es"} />
+                    )}
                 </AnimatePresence>
             </div>
         )

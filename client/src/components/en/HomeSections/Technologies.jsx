@@ -29,7 +29,7 @@ export default function TechnologiesSection() {
                             <p className="text-center sm:text-left">The appropriate technology enriches the project. Here are some of the ones we use the most:</p>
                         </div>
                     </motion.div>
-                    <div className="overflow-x-scroll hide-scroll">
+                    <div className="overflow-x-scroll scrollbar-thin pb-5">
                         <div className="grid grid-cols-5 gap-y-10 gap-x-14 xl:gap-x-28 select-none min-w-[60rem]">
                             <TechnologyImage src={"/technologies/react.webp"} alt={"React technology image"} />
                             <TechnologyImage src={"/technologies/nextjs.webp"} alt={"Next js technology image"} darkmode={"/technologies/darkmode/nextjs.webp"} />

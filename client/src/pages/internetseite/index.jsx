@@ -17,13 +17,13 @@ export default function ServicesPage({ categories }) {
 
 	const { darkMode, language, setLanguage } = useContextProvider();
 
-	const [selectedCategory, setSelectedCategory] = useState({ name: lang['es'].categories.default, code: "all" });
+	const [selectedCategory, setSelectedCategory] = useState({ name: lang['de'].categories.default, code: "all" });
 	const [blogs, setBlogs] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [fetchError, setFetchError] = useState(false);
 	
 	useEffect(() => {
-		setLanguage('es');
+		setLanguage('de');
 		setLoading(true);
 		getBlogs();
 	}, [language])
@@ -50,7 +50,7 @@ export default function ServicesPage({ categories }) {
 		}
 
 		try {
-			const { data } = await axios.post('/api/blogs/get', { language: 'es' });
+			const { data } = await axios.post('/api/blogs/get', { language: 'de' });
 			if (data.data.length != 0) {
 				setBlogs(data.data);
 				return;
@@ -83,16 +83,16 @@ export default function ServicesPage({ categories }) {
 	}
 
 	return (
-		<Layout title={"Nuestros servicios"} lang={'es'}>
+		<Layout title={"Unsere Dienstleistungen"} lang={'de'}>
 			<div className={`${darkMode ? 'blog-bg-dark bg-gradient-to-br from-[#080808] to-[#070707]' : 'blog-bg-light bg-gradient-to-br from-[#F6F6F6] to-[#FFF]'}`}>
 				<div className={`flex flex-col gap-10 mx-auto py-20 sm:pb-28 2xl:px-40 px-6 sm:px-20`}>
 					<div className="flex items-center sm:items-start gap-5 relative">
 						<div className="flex flex-col justify-center sm:items-start gap-6 sm:gap-10">
 							<motion.div initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
-								<h1 className="w-full break-all">{lang['es'].title}</h1>
+								<h1 className="w-full break-all">{lang['de'].title}</h1>
 							</motion.div>
 							<motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-								<p className="break-all">{lang['es'].description}</p>
+								<p className="break-all">{lang['de'].description}</p>
 							</motion.div>
 						</div>
 					</div>
@@ -100,9 +100,9 @@ export default function ServicesPage({ categories }) {
 						<div className="flex flex-col items-start gap-2">
 							{/* <div>Categories</div> */}
 							<div className="flex flex-col items-start gap-3">
-								<div className="text-lg">{lang['es'].categories.title}</div>
+								<div className="text-lg">{lang['de'].categories.title}</div>
 								<div className="flex items-center gap-2 flex-wrap">
-									<Category key={"all"} category={{ name: lang['es'].categories.default, code: "all" }} fn={{ state: selectedCategory, set: setSelectedCategory }} />
+									<Category key={"all"} category={{ name: lang['de'].categories.default, code: "all" }} fn={{ state: selectedCategory, set: setSelectedCategory }} />
 									{categories.map((category, index) => (
 										<Category key={index} category={category.attributes} fn={{ state: selectedCategory, set: setSelectedCategory }} />
 									))}
@@ -110,7 +110,7 @@ export default function ServicesPage({ categories }) {
 							</div>
 						</div>
 						<div className="flex flex-col gap-5">
-							<div className="text-3xl break-all">{lang['es'].articles.title}</div>
+							<div className="text-3xl break-all">{lang['de'].articles.title}</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
 								{blogs.length != 0 && !loading && blogs.map((blog, index) => (
 									<Blog key={index} blog={blog} />
@@ -126,8 +126,8 @@ export default function ServicesPage({ categories }) {
 							</div>
 							{blogs.length == 0 && !loading && fetchError && (
 								<div className={`text-center ${darkMode ? 'description-dark' : 'description-light'}`}>
-									<p>{lang['es'].notFound.p1}</p>
-									<p>{lang['es'].notFound.p2}</p>
+									<p>{lang['de'].notFound.p1}</p>
+									<p>{lang['de'].notFound.p2}</p>
 								</div>
 							)}
 						</div>
@@ -145,9 +145,9 @@ function Blog({ blog }) {
 	const { url, title, subtitle, preview } = blog.attributes || {};
 
 	return (
-		<Link href={`/pagina-web/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
-			<div className="image-container aspect-video">
-				<Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
+		<Link href={`/internetseite/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+			<div className="image-container aspect-video overflow-hidden rounded-md">
+				<Image loading="eager" className="relative object-cover rounded-md aspect-video" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
 			</div>
 			{/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
 			<div className="flex items-center justify-between gap-2">

@@ -5,6 +5,15 @@ import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 
+// Redirects routes
+const REDIRECTS = {
+    "hero": "/",
+    "our-services": "/internetseite",
+    "our-process": "/custom-web-entwicklung",
+    "our-technologies": "/technologien",
+    "my-project": "/contact",
+}
+
 export default function Footer() {
 
     const router = useRouter();
@@ -12,7 +21,7 @@ export default function Footer() {
     const { darkMode } = useContextProvider();
 
     function handleNavButton(hash) {
-        if(router.pathname === '/web-seiten') {
+        if(router.pathname === '/') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
@@ -41,8 +50,11 @@ export default function Footer() {
                                 <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
                             </div>
                             <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                                <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/web-seiten' ? 'Mein Projekt' : 'Kontakt'}</span>
+                                <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
                             </div>
+                            <Link href={"/#faq"} className="cursor-pointer">
+                                <span className="hover:underline hover:text-primary transition-colors">Häufig gestellte Fragen</span>
+                            </Link>
                         </div>
                     </FooterColumn>
                     {/* <FooterColumn title={"Sozialen Medien"}>

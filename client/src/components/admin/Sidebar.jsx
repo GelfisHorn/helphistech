@@ -3,29 +3,28 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
+import Image from "next/image";
 
 export default function Sidebar() {
     
     const { auth, darkMode } = useContextProvider();
 
-    const router = useRouter();
-    const language = router.pathname.split('/')[1];
-
-    // On click account button -> show/hide account menu
-    const handleAccountMenu = () => {
-        // ...
-    }
-
     return (
-        <div className={`flex flex-col justify-between gap-10 w-[3.5rem] lg:w-[17rem] border-r ${darkMode ? 'border-neutral-900' : 'border-neutral-100'} h-sidebar xs:h-sidebar-xs`}>
-            <div className="flex flex-col gap-3 lg:px-5 pt-5">
+        <div className={`flex flex-col justify-between w-[3.5rem] lg:w-[17rem] border-r ${darkMode ? 'border-neutral-900' : 'border-neutral-100'} h-sidebar xs:h-sidebar-xs`}>
+            <div className="flex flex-col gap-3 lg:px-5 py-5 overflow-y-scroll hide-scroll" style={{height: 'calc(100vh - 6rem)'}}>
                 <div className={`flex justify-center lg:justify-start items-center gap-3 border-b ${darkMode ? 'border-neutral-800' : 'border-neutral-300'} pb-4`}>
                     <div>
-                        <div className={`grid place-content-center h-9 w-9 lg:h-10 lg:w-10 rounded-full ${darkMode ? 'bg-neutral-700' : 'bg-neutral-300'}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={`${darkMode ? '#BFBFBF' : '#fff'}`} className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                            </svg>
-                        </div>
+                        {auth.profile_img ? (
+                            <div className={"image-container"} style={{ width: '2.25rem' }}>
+                                <Image className={"image rounded-full"} src={auth.profile_img} fill />
+                            </div>
+                        ) : (
+                            <div className={`grid place-content-center h-9 w-9 lg:h-10 lg:w-10 rounded-full ${darkMode ? 'bg-neutral-700' : 'bg-neutral-300'}`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={`${darkMode ? '#BFBFBF' : '#fff'}`} className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
+                            </div>
+                        )}
                     </div>
                     <div className="hidden lg:flex flex-col">
                         <span className={`text-xs uppercase font-semibold ${darkMode ? 'text-neutral-400' : 'text-neutral-600'}`}>{auth.position}</span>
@@ -41,6 +40,14 @@ export default function Sidebar() {
                         }
                         href={`/admin`}
                     >Inicio</SidebarItem>
+                    <SidebarItem
+                        permissions={["superadmin", "admin"]}
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+                        </svg>}
+                        href={`http://13.48.143.111:1337/admin`}
+                        hrefTargetBlank={true}
+                    >CMS</SidebarItem>
                 </SidebarSection>
                 <SidebarSection title={"Proyectos"} permissions={["superadmin", "admin", "developer"]}>
                     <SidebarItem 
@@ -106,7 +113,7 @@ export default function Sidebar() {
                 </SidebarSection>
             </div>
 
-            <div className={`border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} lg:px-5 pb-5 pt-5`}>
+            <div className={`border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} lg:px-5 py-5`}>
                 <div className="flex flex-col gap-1">
                     <SidebarItem
                         permissions={["superadmin", "admin", "developer"]}
@@ -135,12 +142,12 @@ function SidebarSection({ children, title, permissions }) {
     )
 }
 
-function SidebarItem({ children, icon, href, permissions }) {
+function SidebarItem({ children, icon, href, hrefTargetBlank, permissions }) {
     
     const { darkMode, auth } = useContextProvider();
 
     return (
-        <Link href={href} className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex justify-center`}>
+        <Link href={href} target={hrefTargetBlank ? "_blank" : ""} className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex justify-center`}>
             <button className={`${darkMode ? 'text-dark-text' : 'text-black'} hover:bg-primary flex items-center justify-center lg:justify-start gap-2 lg:rounded-md py-2 lg:px-4 w-full hover:text-white uppercase font-semibold text-left transition-colors select-none`}>
                 <div className="text-neutral-400">{icon}</div>
                 <div className="hidden lg:block">{children}</div>

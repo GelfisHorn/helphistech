@@ -8,7 +8,7 @@ import Layout from "@/components/Layout";
 import useContextProvider from "@/hooks/useAppContextProvider";
 import { motion } from "framer-motion";
 
-export default function ServicesPage() {
+export default function OldServicesPage() {
 
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();

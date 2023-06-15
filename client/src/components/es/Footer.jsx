@@ -5,6 +5,15 @@ import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 
+// Redirects routes
+const REDIRECTS = {
+    "hero": "/es",
+    "our-services": "/pagina-web",
+    "our-process": "/es/desarrollo-web-personalizado",
+    "our-technologies": "/es/tecnologias",
+    "my-project": "/es/contacto",
+}
+
 export default function Footer() {
 
     const router = useRouter();
@@ -41,8 +50,11 @@ export default function Footer() {
                                 <span className="hover:underline hover:text-primary transition-colors">Tecnologías</span>
                             </div>
                             <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
-                                <span className="hover:underline hover:text-primary transition-colors">{router.pathname === '/es' ? 'Empezar mi proyecto' : 'Contacto'}</span>
+                                <span className="hover:underline hover:text-primary transition-colors">Contacto</span>
                             </div>
+                            <Link href={"/es#faq"} className="cursor-pointer">
+                                <span className="hover:underline hover:text-primary transition-colors">Preguntas frequentes</span>
+                            </Link>
                         </div>
                     </FooterColumn>
                     {/* <FooterColumn title={"Redes sociales"}>

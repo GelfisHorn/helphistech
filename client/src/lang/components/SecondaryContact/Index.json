@@ -1,0 +1,725 @@
+{
+    "de": {
+        "step1": {
+            "title": "WAS MÖCHTEN SIE ENTWICKELN LASSEN?",
+            "subtitle": "Erhalten Sie ein kostenloses Angebot.",
+            "options": [
+                {
+                    "id": "website_development",
+                    "text": "Website"
+                },
+                {
+                    "id": "webapp_development",
+                    "text": "Webanwendungen"
+                },
+                {
+                    "id": "modify_website",
+                    "text": "Verbesserung einer Webseite oder Anwendung"
+                }
+            ]
+        },
+        "step2": [
+            {
+                "title": "Welche Art von Webseite möchten Sie von uns entwickeln lassen?",
+                "options": [
+                    {
+                        "id": "business_website",
+                        "text": "Firmen-oder Geschäftswebseite",
+                        "mobile": [
+                            "Firmen-oder",
+                            "Geschäfts",
+                            "webseite"
+                        ]
+                    },
+                    {
+                        "id": "portfolio_website",
+                        "text": "Persönliche Webseite oder Portfolio",
+                        "mobile": [
+                            "Persönliche",
+                            "Webseite",
+                            "oder",
+                            "Portfolio"
+                        ]
+                    },
+                    {
+                        "id": "online_shop",
+                        "text": "Online Shop"
+                    },
+                    {
+                        "id": "news_website",
+                        "text": "Magazin-Webseite",
+                        "mobile": [
+                            "Magazin",
+                            "Webseite"
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Welche Art von Webanwendung möchten Sie von uns entwickeln lassen?",
+                "options": [
+                    {
+                        "id": "static_webapp",
+                        "text": "Statische Webanwendung",
+                        "mobile": [
+                            "Statische",
+                            "Webanwendung"
+                        ]
+                    },
+                    {
+                        "id": "dynamic_webapp",
+                        "text": "Dynamische Webanwendung",
+                        "mobile": [
+                            "Dynamische",
+                            "Webanwendung"
+                        ]
+                    },
+                    {
+                        "id": "shop_webapp",
+                        "text": "Online Shop"
+                    },
+                    {
+                        "id": "portal_webapp",
+                        "text": "Webportal-App"
+                    },
+                    {
+                        "id": "cms_webapp",
+                        "text": "Webanwendung mit CMS",
+                        "mobile": [
+                            "Webanwendung",
+                            "mit CMS"
+                        ]
+                    },
+                    {
+                        "id": "ecommerce",
+                        "text": "E-Commerce"
+                    }
+                ]
+            },
+            {
+                "title": "Bitte geben Sie die URL Ihrer Webseite ein.",
+                "options": [
+                    {
+                        "id": "other",
+                        "text": "Sonstige"
+                    }
+                ]
+            }
+        ],
+        "step3": [
+            {
+                "title": "Welche Funktionen sollte Ihre Webseite haben?",
+                "options": [
+                    {
+                        "id": "premium_website",
+                        "text": "Premium Webdesign",
+                        "mobile": [
+                            "Premium",
+                            "Webdesign"
+                        ]
+                    },
+                    {
+                        "id": "seo",
+                        "text": "SEO-Optimierung",
+                        "mobile": [
+                            "SEO",
+                            "Optimierung"
+                        ]
+                    },
+                    {
+                        "id": "responsive",
+                        "text": "Responsives Design",
+                        "mobile": [
+                            "Responsives",
+                            "Design"
+                        ]
+                    },
+                    {
+                        "id": "contact_from",
+                        "text": "Kontaktformulare",
+                        "mobile": [
+                            "Kontakt",
+                            "formulare"
+                        ]
+                    },
+                    {
+                        "id": "cms",
+                        "text": "Inhaltsaktualisierung (CMS)",
+                        "mobile": [
+                            "Inhalts",
+                            "aktualisierung"
+                        ]
+                    },
+                    {
+                        "id": "socialmedia_integration",
+                        "text": "Integration von sozialen Medien",
+                        "mobile": [
+                            "Integration von",
+                            "sozialen Medien"
+                        ]
+                    },
+                    {
+                        "id": "other",
+                        "text": "Sonstige"
+                    }
+                ]
+            },
+            {
+                "title": "Welche Funktionen sollte Ihre Webanwendung haben?",
+                "options": [
+                    {
+                        "id": "reponsive",
+                        "text": "Responsives Design",
+                        "mobile": [
+                            "Responsives",
+                            "Design"
+                        ]
+                    },
+                    {
+                        "id": "authentication",
+                        "text": "Benutzerregistrierung",
+                        "mobile": [
+                            "Benutzer",
+                            "registrierung"
+                        ]
+                    },
+                    {
+                        "id": "socialmedia_integration",
+                        "text": "Integration von sozialen Medien",
+                        "mobile": [
+                            "Integration von",
+                            "sozialen Medien"
+                        ]
+                    },
+                    {
+                        "id": "comments",
+                        "text": "Kommentare und Meinungen",
+                        "mobile": [
+                            "Kommentare und",
+                            "Meinungen"
+                        ]
+                    },
+                    {
+                        "id": "seo",
+                        "text": "SEO-Optimierung",
+                        "mobile": [
+                            "SEO",
+                            "Optimierung"
+                        ]
+                    },
+                    {
+                        "id": "multilanguage",
+                        "text": "Lokalisierung und Mehrsprachigkeit",
+                        "mobile": [
+                            "Lokalisierung",
+                            "und",
+                            "Mehrsprachigkeit"
+                        ]
+                    },
+                    {
+                        "id": "other",
+                        "text": "Sonstige"
+                    }
+                ]
+            },
+            {
+                "title": "Was möchten Sie an Ihrer aktuellen Webseite verbessern?",
+                "options": [
+                    {
+                        "id": "seo",
+                        "text": "SEO-Optimierung",
+                        "mobile": [
+                            "SEO",
+                            "Optimierung"
+                        ]
+                    },
+                    {
+                        "id": "marketing",
+                        "text": "Online-Marketing",
+                        "mobile": [
+                            "Online",
+                            "Marketing"
+                        ]
+                    },
+                    {
+                        "id": "premium_website",
+                        "text": "Premium Webdesign",
+                        "mobile": [
+                            "Premium",
+                            "Webdesign"
+                        ]
+                    },
+                    {
+                        "id": "user_experience",
+                        "text": "Benutzererfahrung",
+                        "mobile": [
+                            "Benutzer",
+                            "erfahrung"
+                        ]
+                    },
+                    {
+                        "id": "website_speed",
+                        "text": "Website-Geschwindigkeit",
+                        "mobile": [
+                            "Website",
+                            "Geschwindigkeit"
+                        ]
+                    },
+                    {
+                        "id": "cms",
+                        "text": "Inhaltsaktualisierung (CMS)",
+                        "mobile": [
+                            "Inhalts",
+                            "aktualisierung (CMS)"
+                        ]
+                    },
+                    {
+                        "id": "other",
+                        "text": "Sonstige"
+                    }
+                ]
+            }
+        ],
+        "step4": {
+            "title": "Vielen Dank für Ihre Antworten!",
+            "subtitle": "Jetzt benötigen wir nur noch Ihre Kontaktdaten, um Ihnen ein personalisiertes Angebot zu senden:",
+            "options": [
+                {
+                    "id": "full_name",
+                    "text": "Name"
+                },
+                {
+                    "id": "email",
+                    "text": "E-Mail"
+                },
+                {
+                    "id": "phone",
+                    "text": "Telefon"
+                },
+                {
+                    "id": "message",
+                    "text": "Möchten Sie uns noch etwas mitteilen?"
+                }
+            ]
+        },
+        "submit": "Schicken",
+        "next": "Nächste",
+        "prev": "Zurück",
+        "notifications": {
+            "step": "Sie müssen eine Option auswählen",
+            "step4": "Vor dem Absenden müssen Sie die Felder ausfüllen",
+            "email": "Sie müssen eine gültige E-Mail-Adresse verwenden",
+            "success": "Die Daten wurden erfolgreich gesendet"
+        }
+    },
+    "en": {
+        "step1": {
+            "title": "What do you want us to do for you?",
+            "subtitle": "Get a free quote.",
+            "options": [
+                {
+                    "id": "website_development",
+                    "text": "Website development"
+                },
+                {
+                    "id": "webapp_development",
+                    "text": "Web application development"
+                },
+                {
+                    "id": "modify_website",
+                    "text": "Improving an existing website or application"
+                }
+            ]
+        },
+        "step2": [
+            {
+                "title": "What kind of website would you like us to develop?",
+                "options": [
+                    {
+                        "id": "business_website",
+                        "text": "Corporate or business website"
+                    },
+                    {
+                        "id": "portfolio_website",
+                        "text": "Personal website or portfolio"
+                    },
+                    {
+                        "id": "ecommerce_website",
+                        "text": "Ecommerce"
+                    },
+                    {
+                        "id": "news_website",
+                        "text": "News or magazine website"
+                    }
+                ]
+            },
+            {
+                "title": "What kind of web application would you like us to develop?",
+                "options": [
+                    {
+                        "id": "static_webapp",
+                        "text": "Static web application"
+                    },
+                    {
+                        "id": "dynamic_webapp",
+                        "text": "Dynamic web application"
+                    },
+                    {
+                        "id": "shop_webapp",
+                        "text": "Online Shop"
+                    },
+                    {
+                        "id": "portal_webapp",
+                        "text": "Web portal app"
+                    },
+                    {
+                        "id": "cms_webapp",
+                        "text": "Web application with content management system"
+                    }
+                ]
+            },
+            {
+                "title": "Please enter the URL of your website.",
+                "options": [
+                    {
+                        "id": "other",
+                        "text": "Your website"
+                    }
+                ]
+            }
+        ],
+        "step3": [
+            {
+                "title": "What features should your website have?",
+                "options": [
+                    {
+                        "id": "premium_website",
+                        "text": "Premium web design"
+                    },
+                    {
+                        "id": "seo",
+                        "text": "SEO Optimization"
+                    },
+                    {
+                        "id": "responsive",
+                        "text": "Responsive design"
+                    },
+                    {
+                        "id": "contact_from",
+                        "text": "Contact forms"
+                    },
+                    {
+                        "id": "cms",
+                        "text": "Content update (CMS)"
+                    },
+                    {
+                        "id": "socialmedia_integration",
+                        "text": "Social media integration"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Other"
+                    }
+                ]
+            },
+            {
+                "title": "What features should your web application have?",
+                "options": [
+                    {
+                        "id": "reponsive",
+                        "text": "Responsive design"
+                    },
+                    {
+                        "id": "authentication",
+                        "text": "User authentication"
+                    },
+                    {
+                        "id": "socialmedia_integration",
+                        "text": "Social media integration"
+                    },
+                    {
+                        "id": "comments",
+                        "text": "Comments and opinions"
+                    },
+                    {
+                        "id": "seo",
+                        "text": "SEO Optimization"
+                    },
+                    {
+                        "id": "multilanguage",
+                        "text": "Localization and Multilingualism"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Other"
+                    }
+                ]
+            },
+            {
+                "title": "What would you like to improve on your current website?",
+                "options": [
+                    {
+                        "id": "seo",
+                        "text": "SEO Optimization"
+                    },
+                    {
+                        "id": "marketing",
+                        "text": "Online marketing"
+                    },
+                    {
+                        "id": "premium_website",
+                        "text": "Premium web design"
+                    },
+                    {
+                        "id": "user_experience",
+                        "text": "User experience"
+                    },
+                    {
+                        "id": "website_speed",
+                        "text": "Website speed"
+                    },
+                    {
+                        "id": "cms",
+                        "text": "Content update (CMS)"
+                    }
+                ]
+            }
+        ],
+        "step4": {
+            "title": "Thank you for your answers!",
+            "subtitle": "Now we only need your contact details to send you a personalized offer:",
+            "options": [
+                {
+                    "id": "full_name",
+                    "text": "Name"
+                },
+                {
+                    "id": "email",
+                    "text": "E-Mail"
+                },
+                {
+                    "id": "phone",
+                    "text": "Phone number"
+                },
+                {
+                    "id": "message",
+                    "text": "Would you like to tell us anything else?"
+                }
+            ]
+        },
+        "submit": "Send",
+        "next": "Next",
+        "prev": "Back",
+        "notifications": {
+            "step": "You must select an option",
+            "step4": "You must fill out the fields before submitting",
+            "email": "You must use a valid email",
+            "success": "The data was sent successfully"
+        }
+    },
+    "es": {
+        "step1": {
+            "title": "¿Qué quieres que hagamos por tí?",
+            "subtitle": "Obtenga una cotización gratis.",
+            "options": [
+                {
+                    "id": "website_development",
+                    "text": "Desarrollo de sitios web"
+                },
+                {
+                    "id": "webapp_development",
+                    "text": "Desarrollo de aplicaciones web"
+                },
+                {
+                    "id": "modify_website",
+                    "text": "Mejorar un sitio web o una aplicación existente"
+                }
+            ]
+        },
+        "step2": [
+            {
+                "title": "¿Qué tipo de sitio web te gustaría que desarrollemos?",
+                "options": [
+                    {
+                        "id": "business_website",
+                        "text": "Web corporativa o empresarial"
+                    },
+                    {
+                        "id": "portfolio_website",
+                        "text": "Sitio web personal o portafolio"
+                    },
+                    {
+                        "id": "ecommerce_website",
+                        "text": "E-Commerce"
+                    },
+                    {
+                        "id": "news_website",
+                        "text": "Sitio web de noticias o revistas"
+                    }
+                ]
+            },
+            {
+                "title": "¿Qué tipo de aplicación web te gustaría que desarrollemos?",
+                "options": [
+                    {
+                        "id": "static_webapp",
+                        "text": "Aplicación web estática"
+                    },
+                    {
+                        "id": "dynamic_webapp",
+                        "text": "Aplicación web dinámica"
+                    },
+                    {
+                        "id": "shop_webapp",
+                        "text": "Tienda online"
+                    },
+                    {
+                        "id": "portal_webapp",
+                        "text": "Aplicación de portal web"
+                    },
+                    {
+                        "id": "cms_webapp",
+                        "text": "Aplicación web con sistema de gestión de contenidos"
+                    }
+                ]
+            },
+            {
+                "title": "Por favor, introduzca la URL de su sitio web.",
+                "options": [
+                    {
+                        "id": "other",
+                        "text": "Su página web"
+                    }
+                ]
+            }
+        ],
+        "step3": [
+            {
+                "title": "¿Qué características debe tener tu sitio web?",
+                "options": [
+                    {
+                        "id": "premium_website",
+                        "text": "Diseño web de alta calidad"
+                    },
+                    {
+                        "id": "seo",
+                        "text": "Optimización SEO"
+                    },
+                    {
+                        "id": "responsive",
+                        "text": "Responsive design"
+                    },
+                    {
+                        "id": "contact_from",
+                        "text": "Formularios de contacto"
+                    },
+                    {
+                        "id": "cms",
+                        "text": "Actualización de contenido (CMS)"
+                    },
+                    {
+                        "id": "socialmedia_integration",
+                        "text": "Integración de redes sociales"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Otro"
+                    }
+                ]
+            },
+            {
+                "title": "¿Qué características debe tener tu aplicación web?",
+                "options": [
+                    {
+                        "id": "reponsive",
+                        "text": "Responsive design"
+                    },
+                    {
+                        "id": "authentication",
+                        "text": "Autenticacion de usuario"
+                    },
+                    {
+                        "id": "socialmedia_integration",
+                        "text": "Integración de redes sociales"
+                    },
+                    {
+                        "id": "comments",
+                        "text": "Comentarios y opiniones"
+                    },
+                    {
+                        "id": "seo",
+                        "text": "Optimización SEO"
+                    },
+                    {
+                        "id": "multilanguage",
+                        "text": "Localización y Multilingüismo"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Otro"
+                    }
+                ]
+            },
+            {
+                "title": "¿Qué le gustaría mejorar en su sitio web actual?",
+                "options": [
+                    {
+                        "id": "seo",
+                        "text": "Optimización SEO"
+                    },
+                    {
+                        "id": "marketing",
+                        "text": "Marketing"
+                    },
+                    {
+                        "id": "premium_website",
+                        "text": "Diseño web de alta calidad"
+                    },
+                    {
+                        "id": "user_experience",
+                        "text": "Experiencia de usuario"
+                    },
+                    {
+                        "id": "website_speed",
+                        "text": "Velocidad del sitio web"
+                    },
+                    {
+                        "id": "cms",
+                        "text": "Actualización de contenido (CMS)"
+                    }
+                ]
+            }
+        ],
+        "step4": {
+            "title": "¡Gracias por sus respuestas!",
+            "subtitle": "Ahora solo necesitamos tus datos de contacto para enviarte una oferta personalizada:",
+            "options": [
+                {
+                    "id": "full_name",
+                    "text": "Nombre"
+                },
+                {
+                    "id": "email",
+                    "text": "Correo electrónico"
+                },
+                {
+                    "id": "phone",
+                    "text": "Número de teléfono"
+                },
+                {
+                    "id": "message",
+                    "text": "¿Quieres contarnos algo más?"
+                }
+            ]
+        },
+        "submit": "Enviar",
+        "next": "Siguiente",
+        "prev": "Atrás",
+        "notifications": {
+            "step": "Debe seleccionar una opción",
+            "step4": "Debes llenar los campos antes de enviar",
+            "email": "Debes usar un correo electrónico válido",
+            "success": "Los datos fueron enviados exitosamente"
+        }
+    }
+}
