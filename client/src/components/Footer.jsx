@@ -5,6 +5,15 @@ import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 
+// Redirects routes
+const REDIRECTS = {
+    "hero": "/",
+    "our-services": "/internetseite",
+    "our-process": "/custom-web-entwicklung",
+    "our-technologies": "/technologien",
+    "my-project": "/contact",
+}
+
 export default function Footer() {
 
     const router = useRouter();
@@ -12,7 +21,7 @@ export default function Footer() {
     const { darkMode } = useContextProvider();
 
     function handleNavButton(hash) {
-        if(router.pathname === '/web-seiten') {
+        if(router.pathname === '/') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
