@@ -1,6 +1,4 @@
-import axios from "axios";
-// React
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 // Nextjs
 import Link from "next/link";
 import Image from "next/image";
@@ -12,6 +10,40 @@ export default function OurServicesSection({ services }) {
     
     // Get functions and variables from context
 	const { darkMode, language } = useContextProvider();
+
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
+    function getWindowSize() {
+        if (typeof window !== 'undefined') {
+            const { innerWidth } = window;
+            return innerWidth;
+        }
+        return 1000
+    }
+
+    const slashMotion = {
+        rest: { opacity: 1, x: 0, ease: "easeOut", duration: 0.1, type: "tween" },
+        hover: {
+            x: 5,
+            transition: {
+                duration: 0.1,
+                type: "tween",
+                ease: "easeIn"
+            }
+        }
+    };
 
     return (
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
@@ -39,30 +71,37 @@ export default function OurServicesSection({ services }) {
                                 </div>
                             </div>
                         </motion.div>
-                        <div className="flex flex-col">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-10">
-                                {services && services.length != 0 && services.map((service, index) => (
-                                    <Service key={index} service={service} />
-                                ))}
-                            </div>
-                            {(!services || services.length == 0) && (
-                                <div className={`flex ${darkMode ? 'description-dark' : 'description-light'}`}>
-                                    <div className={"flex flex-col gap-2"}>
-                                        <p>Hubo un problema al obtener los servicios.</p>
-                                        <div>
-                                            <p>¿Quieres ver qué tenemos para ofrecerte?</p>
-                                            <Link href={"/pagina-web"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
-                                                <span>Ir a servicios</span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                                </svg>
-                                            </Link>
+                        <div className={"flex flex-col gap-8"}>
+                            <div className="flex flex-col">
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-10">
+                                    {services && services.length != 0 && services.map((service, index) => (
+                                        windowSize > 768 ? (
+                                            <Service key={index} service={service} />
+                                        ) : (
+                                            index < 3 && (
+                                                <Service key={index} service={service} />
+                                            )
+                                        )
+                                    ))}
+                                </div>
+                                {(!services || services.length == 0) && (
+                                    <div className={`flex ${darkMode ? 'description-dark' : 'description-light'}`}>
+                                        <div className={"flex flex-col gap-2"}>
+                                            <p>Hubo un problema al obtener los servicios.</p>
+                                            <div>
+                                                <p>¿Quieres ver qué tenemos para ofrecerte?</p>
+                                                <Link href={"/pagina-web"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
+                                                    <span>Ir a servicios</span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                                    </svg>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )}
-                        </div>
-                        {/* <div className={`flex flex-col divide-y`}>
+                                )}
+                            </div>
+                            {/* <div className={`flex flex-col divide-y`}>
                             <ServicesOption
                                 title={"Desarrollo personalizado de sitios web"}
                                 description={"Nos especializamos en la creación de sitios web personalizados que están diseñados para satisfacer las necesidades específicas de nuestros clientes. Nuestros sitios web son receptivos, fáciles de usar y están optimizados para motores de búsqueda para garantizar la máxima visibilidad."}
@@ -80,16 +119,27 @@ export default function OurServicesSection({ services }) {
                                 description={"Brindamos mantenimiento y soporte continuos para todos nuestros sitios web y aplicaciones web. Nuestro equipo está disponible para solucionar cualquier problema que pueda surgir y para garantizar que su sitio web esté siempre actualizado y funcionando sin problemas."}
                             />
                         </div> */}
-                        {services.length != 0 && (
-                            <Link className="flex justify-center" href={"/pagina-web"}>
-                                <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
-                                    <div>Ver más</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            {services.length != 0 && (
+                                <Link className="flex justify-center" href={"/pagina-web"}>
+                                    <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
+                                        <div>Ver más</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                        </svg>
+                                    </div>
+                                </Link>
+                            )}
+                        </div>
+                        <div className={'flex justify-center'}>
+                            <Link href={"/es/contacto"}>
+                                <motion.div initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-6 rounded-full uppercase font-medium text-lg"}>
+                                    <span>Contactar</span>
+                                    <motion.svg variants={slashMotion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                    </svg>
-                                </div>
+                                    </motion.svg>
+                                </motion.div>
                             </Link>
-                        )}
+                        </div>
                     </div>
                 </div>
             </div>
