@@ -11,6 +11,8 @@ import showToast from '@/hooks/showToast';
 // Notifications
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// Animations
+import { motion, AnimatePresence, easeOut, easeIn } from 'framer-motion';
 
 /**
  * Secondary contact modal
@@ -29,7 +31,7 @@ export default function ContactSection({ language }) {
     }
 
     // Form state
-    const [formOption, setFormOption] = useState(0); // step1 object key
+    const [formOption, setFormOption] = useState(); // step1 object key
     const [step1, setStep1] = useState({ key: "", value: "", changed: "" });
     const [step2, setStep2] = useState({ key: "", value: "" });
     const [step3, setStep3] = useState([]);
@@ -93,7 +95,7 @@ export default function ContactSection({ language }) {
 
     const handleSetStep2 = (service) => {
         setStep2({ key: service.id, value: service.text });
-        setStep(current => current + 1);
+        setStep(current => current + 1)
     }
 
     const handleSetStep3 = (service) => {
@@ -137,28 +139,57 @@ export default function ContactSection({ language }) {
         })
     }
 
+    // Get windows size
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
+    function getWindowSize() {
+        if (typeof window !== 'undefined') {
+            const { innerWidth } = window;
+            return innerWidth;
+        }
+        return 1000
+    }
+
     return (
         <section className="px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 text-center bg-cover bg-fixed bg-center" id="my-project" style={{ backgroundImage: darkMode ? "url(home/waves-variant.svg)" : "url(home/waves-light.svg)" }}>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                 <div className={"flex flex-col gap-10 w-full text-center"}>
-                    <div className={`w-full h-1 ${darkMode ? "bg-[#19191F]" : "section-bg-light"} rounded-full`}>
+                    <div className={`w-full h-1 ${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} rounded-full`}>
                         <div className={`${styles.stepBar} ${stepBar[step]} h-1 bg-primary transition-transform rounded-full`}></div>
                     </div>
                     {step == 1 && (
                         <div className={"flex flex-col gap-10"}>
-                            <div className={"text-2xl uppercase font-semibold"}>{lang[language].step1.title}</div>
-                            <div className={"flex flex-col gap-3 border-[.15rem] border-[#866bfe] rounded-md"}>
-                                <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center divide-x divide-y md:text-lg md:uppercase md:font-medium"}>
+                            <div className={"flex flex-col gap-2"}>
+                                <div className={"text-2xl uppercase font-semibold"}>{lang[language].step1.title}</div>
+                                <div className={"text-lg"}>{lang[language].step1.subtitle}</div>
+                            </div>
+                            <div className={"flex flex-col gap-3"}>
+                                <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                     {lang[language].step1.options.map((service, index) => (
                                         <div key={index} onClick={() => {
                                             setFormOption(index)
                                             setStep1({ ...step1, key: service.id, value: service.text, changed: service.id != step1.key ? true : false })
                                             setStep(current => current + 1)
-                                        }} className={`${styles.serviceCard} ${formOption == index ? styles.cardSelected : ""} ${index == 2 ? "col-start-1 col-end-3 md:col-start-auto md:col-end-auto" : ""}`}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-10 h-10">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                                            </svg>
-                                            <div>{service.text}</div>
+                                        }} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "border-[#19191F]" : "border-[#EEEEF3]"} ${formOption == index ? styles.cardSelected : ""} ${index > 1 ? "col-start-1 col-end-3 md:col-start-auto md:col-end-auto" : ""}`}>
+                                            <div className={`border rounded-lg ${darkMode ? "border-[#ffffff13]" : "border-[#0000000c]"} p-2`}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                                </svg>
+                                            </div>
+                                            <div className={"md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
+                                            <Tick enabled={formOption == index ? true : false} />
                                         </div>
                                     ))}
                                 </div>
@@ -168,20 +199,31 @@ export default function ContactSection({ language }) {
                     {step == 2 && (
                         <div className={"flex flex-col gap-10"}>
                             <div className={"text-2xl uppercase font-semibold"}>{lang[language].step2[formOption].title}</div>
-                            <div className={"flex flex-col gap-3 border-[.15rem] border-[#866bfe] rounded-md"}>
-                                <div className={"grid grid-cols-2 items-center justify-center divide-x divide-y md:text-lg md:uppercase md:font-medium"}>
+                            <div className={"flex flex-col gap-3"}>
+                                <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                     {lang[language].step2[formOption].options.map((service, index) => (
                                         service.id != "other" ? (
-                                            <div onClick={() => handleSetStep2(service)} key={index} className={`${styles.serviceCard} ${step2.key == service.id ? styles.cardSelected : ""}`}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-10 h-10">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                                                </svg>
-                                                <div>{service.text}</div>
+                                            <div onClick={() => handleSetStep2(service)} key={index} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "border-[#19191F]" : "border-[#EEEEF3]"} ${step2.key == service.id ? styles.cardSelected : ""}`}>
+                                                <div className={`border rounded-lg ${darkMode ? "border-[#ffffff13]" : "border-[#0000000c]"} p-2`}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                                    </svg>
+                                                </div>
+                                                <div className={'flex flex-col'}>
+                                                    {windowSize < 768 && service.mobile ? (
+                                                        service.mobile.map(text => (
+                                                            <div className={"md:uppercase md:font-medium md:text-lg"}>{text}</div>
+                                                        ))
+                                                    ) : (
+                                                        <div className={"md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
+                                                    )}
+                                                </div>
+                                                <Tick enabled={step2.key == service.id ? true : false} />
                                             </div>
                                         ) : (
-                                            <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 py-10 px-5 md:px-10"} key={index}>
+                                            <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 md:col-start-2 md:cols-end-3"} key={index}>
                                                 <label htmlFor={`step2-other`}>{service.text}</label>
-                                                    <input value={step2.value} onChange={e => setStep2({ key: 'website_url', value: e.target.value })} id={`step2-other`} className={`${darkMode ? "bg-[#19191F]" : "section-bg-light"} py-2 px-3 outline-none rounded-md w-full `} type="text" placeholder={service.text} />
+                                                <input value={step2.value} onChange={e => setStep2({ key: 'website_url', value: e.target.value })} id={`step2-other`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} py-2 px-3 outline-none rounded-md w-full `} type="text" placeholder={service.text} />
                                             </div>
                                         )
                                     ))}
@@ -192,27 +234,35 @@ export default function ContactSection({ language }) {
                     {step == 3 && (
                         <div className={"flex flex-col gap-10"}>
                             <div className={"text-2xl uppercase font-semibold"}>{lang[language].step3[formOption].title}</div>
-                            <div className={"flex flex-col border-[.15rem] border-[#866bfe] rounded-md"}>
-                                <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center divide-x divide-y md:text-lg md:uppercase md:font-medium border-b border-[#866bfe75]"}>
+                            <div className={"flex flex-col gap-3"}>
+                                <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                     {lang[language].step3[formOption].options.map((service, index) => (
-                                        service.id != "other" && (
-                                            <div onClick={() => handleSetStep3(service)} key={index} className={`${styles.serviceCard} ${step3.find(step => step.key == service.id) ? styles.cardSelected : ""}`}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-10 h-10">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                                                </svg>
-                                                <div>{service.text}</div>
+                                        service.id != "other" ? (
+                                            <div onClick={() => handleSetStep3(service)} key={index} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "border-[#19191F]" : "border-[#0000000c]"} ${step3.find(step => step.key == service.id) ? styles.cardSelected : ""}`}>
+                                                <div className={`border rounded-lg ${darkMode ? "border-[#ffffff13]" : "border-[#0000000c]"} p-2`}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                                                    </svg>
+                                                </div>
+                                                <div className={'flex flex-col'}>
+                                                    {windowSize < 768 && service.mobile ? (
+                                                        service.mobile.map(text => (
+                                                            <div className={"md:uppercase md:font-medium md:text-lg"}>{text}</div>
+                                                        ))
+                                                    ) : (
+                                                        <div className={"md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
+                                                    )}
+                                                </div>
+                                                <Tick enabled={step3.find(step => step.key == service.id) ? true : false} />
+                                            </div>
+                                        ) : (
+                                            <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 md:col-start-2 md:cols-end-3"} key={index}>
+                                                <label htmlFor={`step3-other`}>{service.text}</label>
+                                                <input value={other.value} onChange={e => setOther({ key: 'other', value: e.target.value })} id={`step3-other`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#00000027] placeholder:text-neutral-600"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={service.text} />
                                             </div>
                                         )
                                     ))}
                                 </div>
-                                {lang[language].step3[formOption].options.map((service, index) => (
-                                    service.id == "other" && (
-                                        <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 md:col-end-3 md:col-start-2 border-[#866bfe75] p-3"} key={index}>
-                                            <label htmlFor={`step3-other`}>{service.text}</label>
-                                            <input value={other.value} onChange={e => setOther({ key: 'other', value: e.target.value })} id={`step3-other`} className={`${darkMode ? "bg-[#19191F]" : "section-bg-light"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={service.text} />
-                                        </div>
-                                    )
-                                ))}
                             </div>
                         </div>
                     )}
@@ -226,19 +276,19 @@ export default function ContactSection({ language }) {
                                 <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-5"}>
                                     <div className={"flex flex-col items-start gap-1"}>
                                         <label htmlFor={`step4-name`}>{lang[language].step4.options[0].text}</label>
-                                        <input value={name} onChange={e => setName(e.target.value)} id={`step4-name`} className={`${darkMode ? "bg-[#19191F]" : "section-bg-light"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={lang[language].step4.options[0].text} />
+                                        <input value={name} onChange={e => setName(e.target.value)} id={`step4-name`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={lang[language].step4.options[0].text} />
                                     </div>
                                     <div className={"flex flex-col items-start gap-1"}>
                                         <label htmlFor={`step4-email`}>{lang[language].step4.options[1].text}</label>
-                                        <input value={email} onChange={e => setEmail(e.target.value)} id={`step4-email`} className={`${darkMode ? "bg-[#19191F]" : "section-bg-light"} py-2 px-3 outline-none rounded-md w-full`} type="email" placeholder={lang[language].step4.options[1].text} />
+                                        <input value={email} onChange={e => setEmail(e.target.value)} id={`step4-email`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} py-2 px-3 outline-none rounded-md w-full`} type="email" placeholder={lang[language].step4.options[1].text} />
                                     </div>
                                     <div className={"flex flex-col items-start gap-1"}>
                                         <label htmlFor={`step4-phone`}>{lang[language].step4.options[2].text}</label>
-                                        <input value={phone} onChange={e => setPhone(e.target.value)} id={`step4-phone`} className={`${darkMode ? "bg-[#19191F]" : "section-bg-light"} py-2 px-3 outline-none rounded-md w-full`} type="number" placeholder={lang[language].step4.options[2].text} />
+                                        <input value={phone} onChange={e => setPhone(e.target.value)} id={`step4-phone`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} py-2 px-3 outline-none rounded-md w-full`} type="number" placeholder={lang[language].step4.options[2].text} />
                                     </div>
                                     <div className={"flex flex-col items-start gap-1"}>
                                         <label htmlFor={`step4-message`}>{lang[language].step4.options[3].text}</label>
-                                        <textarea value={message} onChange={e => setMessage(e.target.value)} id={`step4-message`} className={`${darkMode ? "bg-[#19191F]" : "section-bg-light"} py-2 px-3 outline-none rounded-md w-full resize-none`} rows={5} type="text" placeholder={lang[language].step4.options[3].text} />
+                                        <textarea value={message} onChange={e => setMessage(e.target.value)} id={`step4-message`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} py-2 px-3 outline-none rounded-md w-full resize-none`} rows={5} type="text" placeholder={lang[language].step4.options[3].text} />
                                     </div>
                                 </div>
                             </div>
@@ -266,5 +316,24 @@ export default function ContactSection({ language }) {
             </div>
             <ToastContainer />
         </section>
+    )
+}
+
+function Tick({ enabled }) {
+
+    const { darkMode } = useContextProvider();
+
+    return (
+        <div className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 ${darkMode ? `${enabled ? "border-primary bg-primary" : "border-[#19191F]"}` : `${enabled ? "border-primary bg-primary" : "border-[#0000000c]"}`}`}>
+            <AnimatePresence>
+                {enabled && (
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={ easeIn } exit={{ transition: easeOut }} className={"absolute top-0 left-0 grid place-content-center w-5 h-5 bg-primary text-white rounded-full"}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     )
 }
