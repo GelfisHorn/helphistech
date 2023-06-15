@@ -1,19 +1,20 @@
 {
     "de": {
         "step1": {
-            "title": "Was sollen wir für Sie tun?",
+            "title": "WAS MÖCHTEN SIE ENTWICKELN LASSEN?",
+            "subtitle": "Erhalten Sie ein kostenloses Angebot.",
             "options": [
                 {
                     "id": "website_development",
-                    "text": "Webseitenentwicklung"
+                    "text": "Website"
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Entwicklung von Webanwendungen"
+                    "text": "Webanwendungen"
                 },
                 {
                     "id": "modify_website",
-                    "text": "Verbesserung einer bereits bestehenden Webseite oder Anwendung"
+                    "text": "Verbesserung einer Webseite oder Anwendung"
                 }
             ]
         },
@@ -23,19 +24,34 @@
                 "options": [
                     {
                         "id": "business_website",
-                        "text": "Firmen-oder Geschäftswebseite"
+                        "text": "Firmen-oder Geschäftswebseite",
+                        "mobile": [
+                            "Firmen-oder",
+                            "Geschäfts",
+                            "webseite"
+                        ]
                     },
                     {
                         "id": "portfolio_website",
-                        "text": "Persönliche Webseite oder Portfolio"
+                        "text": "Persönliche Webseite oder Portfolio",
+                        "mobile": [
+                            "Persönliche",
+                            "Webseite",
+                            "oder",
+                            "Portfolio"
+                        ]
                     },
                     {
-                        "id": "ecommerce_website",
-                        "text": "E-Commerce"
+                        "id": "online_shop",
+                        "text": "Online Shop"
                     },
                     {
                         "id": "news_website",
-                        "text": "Nachrichten-oder Magazin-Webseite"
+                        "text": "Magazin-Webseite",
+                        "mobile": [
+                            "Magazin",
+                            "Webseite"
+                        ]
                     }
                 ]
             },
@@ -44,11 +60,19 @@
                 "options": [
                     {
                         "id": "static_webapp",
-                        "text": "Statische Webanwendung"
+                        "text": "Statische Webanwendung",
+                        "mobile": [
+                            "Statische",
+                            "Webanwendung"
+                        ]
                     },
                     {
                         "id": "dynamic_webapp",
-                        "text": "Dynamische Webanwendung"
+                        "text": "Dynamische Webanwendung",
+                        "mobile": [
+                            "Dynamische",
+                            "Webanwendung"
+                        ]
                     },
                     {
                         "id": "shop_webapp",
@@ -60,7 +84,15 @@
                     },
                     {
                         "id": "cms_webapp",
-                        "text": "Webanwendung mit Content-Management-System"
+                        "text": "Webanwendung mit CMS",
+                        "mobile": [
+                            "Webanwendung",
+                            "mit CMS"
+                        ]
+                    },
+                    {
+                        "id": "ecommerce",
+                        "text": "E-Commerce"
                     }
                 ]
             },
@@ -69,7 +101,7 @@
                 "options": [
                     {
                         "id": "other",
-                        "text": "Eingabe"
+                        "text": "Sonstige"
                     }
                 ]
             }
@@ -80,31 +112,55 @@
                 "options": [
                     {
                         "id": "premium_website",
-                        "text": "Premium Webdesign"
+                        "text": "Premium Webdesign",
+                        "mobile": [
+                            "Premium",
+                            "Webdesign"
+                        ]
                     },
                     {
                         "id": "seo",
-                        "text": "SEO-Optimierung"
+                        "text": "SEO-Optimierung",
+                        "mobile": [
+                            "SEO",
+                            "Optimierung"
+                        ]
                     },
                     {
                         "id": "responsive",
-                        "text": "Responsives Design"
+                        "text": "Responsives Design",
+                        "mobile": [
+                            "Responsives",
+                            "Design"
+                        ]
                     },
                     {
                         "id": "contact_from",
-                        "text": "Kontaktformulare"
+                        "text": "Kontaktformulare",
+                        "mobile": [
+                            "Kontakt",
+                            "formulare"
+                        ]
                     },
                     {
                         "id": "cms",
-                        "text": "Inhaltsaktualisierung (CMS)"
+                        "text": "Inhaltsaktualisierung (CMS)",
+                        "mobile": [
+                            "Inhalts",
+                            "aktualisierung"
+                        ]
                     },
                     {
                         "id": "socialmedia_integration",
-                        "text": "Integration von sozialen Medien"
+                        "text": "Integration von sozialen Medien",
+                        "mobile": [
+                            "Integration von",
+                            "sozialen Medien"
+                        ]
                     },
                     {
                         "id": "other",
-                        "text": "Eingabe"
+                        "text": "Sonstige"
                     }
                 ]
             },
@@ -113,31 +169,56 @@
                 "options": [
                     {
                         "id": "reponsive",
-                        "text": "Responsives Design"
+                        "text": "Responsives Design",
+                        "mobile": [
+                            "Responsives",
+                            "Design"
+                        ]
                     },
                     {
                         "id": "authentication",
-                        "text": "Benutzerregistrierung"
+                        "text": "Benutzerregistrierung",
+                        "mobile": [
+                            "Benutzer",
+                            "registrierung"
+                        ]
                     },
                     {
                         "id": "socialmedia_integration",
-                        "text": "Integration von sozialen Medien"
+                        "text": "Integration von sozialen Medien",
+                        "mobile": [
+                            "Integration von",
+                            "sozialen Medien"
+                        ]
                     },
                     {
                         "id": "comments",
-                        "text": "Kommentare und Meinungen"
+                        "text": "Kommentare und Meinungen",
+                        "mobile": [
+                            "Kommentare und",
+                            "Meinungen"
+                        ]
                     },
                     {
                         "id": "seo",
-                        "text": "SEO-Optimierung"
+                        "text": "SEO-Optimierung",
+                        "mobile": [
+                            "SEO",
+                            "Optimierung"
+                        ]
                     },
                     {
                         "id": "multilanguage",
-                        "text": "Lokalisierung und Mehrsprachigkeit"
+                        "text": "Lokalisierung und Mehrsprachigkeit",
+                        "mobile": [
+                            "Lokalisierung",
+                            "und",
+                            "Mehrsprachigkeit"
+                        ]
                     },
                     {
                         "id": "other",
-                        "text": "Eingabe"
+                        "text": "Sonstige"
                     }
                 ]
             },
@@ -146,27 +227,55 @@
                 "options": [
                     {
                         "id": "seo",
-                        "text": "SEO-Optimierung"
+                        "text": "SEO-Optimierung",
+                        "mobile": [
+                            "SEO",
+                            "Optimierung"
+                        ]
                     },
                     {
                         "id": "marketing",
-                        "text": "Online-Marketing"
+                        "text": "Online-Marketing",
+                        "mobile": [
+                            "Online",
+                            "Marketing"
+                        ]
                     },
                     {
                         "id": "premium_website",
-                        "text": "Premium Webdesign"
+                        "text": "Premium Webdesign",
+                        "mobile": [
+                            "Premium",
+                            "Webdesign"
+                        ]
                     },
                     {
                         "id": "user_experience",
-                        "text": "Benutzererfahrung"
+                        "text": "Benutzererfahrung",
+                        "mobile": [
+                            "Benutzer",
+                            "erfahrung"
+                        ]
                     },
                     {
                         "id": "website_speed",
-                        "text": "Website-Geschwindigkeit"
+                        "text": "Website-Geschwindigkeit",
+                        "mobile": [
+                            "Website",
+                            "Geschwindigkeit"
+                        ]
                     },
                     {
                         "id": "cms",
-                        "text": "Inhaltsaktualisierung (CMS)"
+                        "text": "Inhaltsaktualisierung (CMS)",
+                        "mobile": [
+                            "Inhalts",
+                            "aktualisierung (CMS)"
+                        ]
+                    },
+                    {
+                        "id": "other",
+                        "text": "Sonstige"
                     }
                 ]
             }
@@ -206,6 +315,7 @@
     "en": {
         "step1": {
             "title": "What do you want us to do for you?",
+            "subtitle": "Get a free quote.",
             "options": [
                 {
                     "id": "website_development",
@@ -410,6 +520,7 @@
     "es": {
         "step1": {
             "title": "¿Qué quieres que hagamos por tí?",
+            "subtitle": "Obtenga una cotización gratis.",
             "options": [
                 {
                     "id": "website_development",
