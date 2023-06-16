@@ -74,7 +74,7 @@ export default function ConfirmationPage() {
                             />
                         </div>
                         <div className={"w-[80%] sm:w-1/2 lg:w-1/3"}>
-                            <Image className={"w-full"} src={"/confirmation.webp"} width={1684} height={1876} />
+                            <Image loading={'eager'} className={"w-full"} src={"/confirmation.webp"} width={1684} height={1876} />
                         </div>
                     </div>
                     <LatestBlogsSection blogs={latestBlogs || []} loading={loading} fetchError={fetchError} />
