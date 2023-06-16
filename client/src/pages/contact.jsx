@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 // Layout
 import Layout from "@/components/Layout";
@@ -57,6 +58,9 @@ export default function ProjectQuote() {
 
 
 function VideocallModal({ closeVideoCallForm }) {
+    
+    const router = useRouter();
+
     const { darkMode } = useContextProvider();
     
     // toggles overflow while rendered
@@ -100,6 +104,7 @@ function VideocallModal({ closeVideoCallForm }) {
             await axios.post('/api/sendVideoCall', { full_name, email, date, hour, description });
             showMessage(false, 'Se agendó tu videollamada correctamente', 5000);
             setTimeout(closeVideoCallForm, 1500)
+            router.push('/confirmation');
         } catch (error) {
             showMessage(true, 'Hubo un error al agendar tu videollamada', 5000);
         }
@@ -255,6 +260,8 @@ function VideocallModal({ closeVideoCallForm }) {
 
 function FormComponent() {
 
+    const router = useRouter();
+
     // Get functions and variables from context
     const { darkMode } = useContextProvider();
 
@@ -403,6 +410,7 @@ function FormComponent() {
             await axios.post('/api/sendProject', { project })    
             showMessage(false, 'Daten erfolgreich gesendet!', 5000)
             resetForm();   
+            router.push('/confirmation');
         } catch (error) {
             showMessage(true, 'Beim Senden der Informationen ist ein Fehler aufgetreten', 5000)
         }

@@ -11,7 +11,8 @@
             "/arbeite-mit-uns": "workWithUs",
             "/datenschutz": "datenschutz",
             "/impressum": "impressum",
-            "/404": "notFound"
+            "/404": "notFound",
+            "/confirmation": "confirmation"
         },
         "en": {
             "/contact": "contact",
@@ -24,7 +25,8 @@
             "/work-with-us": "workWithUs",
             "/datenschutz": "datenschutz",
             "/impressum": "impressum",
-            "/404": "notFound"
+            "/404": "notFound",
+            "/confirmation": "confirmation"
         },
         "es": {
             "/contacto": "contact",
@@ -37,7 +39,8 @@
             "/trabaja-con-nosotros": "workWithUs",
             "/datenschutz": "datenschutz",
             "/impressum": "impressum",
-            "/404": "notFound"
+            "/404": "notFound",
+            "/confirmation": "confirmation"
         }
     },
     "redirects": {
@@ -52,7 +55,8 @@
             "workWithUs": "arbeite-mit-uns",
             "datenschutz": "datenschutz",
             "impressum": "impressum",
-            "notFound": "404"
+            "notFound": "404",
+            "confirmation": "confirmation"
         },
         "en": {
             "contact": "en/contact",
@@ -65,7 +69,8 @@
             "workWithUs": "en/work-with-us",
             "datenschutz": "datenschutz",
             "impressum": "impressum",
-            "notFound": "404"
+            "notFound": "404",
+            "confirmation": "confirmation"
         },
         "es": {
             "contact": "es/contacto",
@@ -78,7 +83,8 @@
             "workWithUs": "es/trabaja-con-nosotros",
             "datenschutz": "datenschutz",
             "impressum": "impressum",
-            "notFound": "404"
+            "notFound": "404",
+            "confirmation": "confirmation"
         }
     }
 }

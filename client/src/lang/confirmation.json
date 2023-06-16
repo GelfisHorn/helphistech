@@ -1,0 +1,41 @@
+{
+    "de": {
+        "title": "Vielen Dank für Ihr Vertrauen in HelphisTech!",
+        "subtitle": "Wir haben Ihre Anfrage erhalten und werden uns bald mit Ihnen in Verbindung setzen.",
+        "button": "Zurück zur Startseite",
+        "articles": {
+            "title": "Andere Dienstleistungen",
+            "no-articles": {
+                "title": "Noch keine Artikel",
+                "description": "Sie können zur Hauptseite gehen und weitere Artikel finden, die Sie interessieren",
+                "back": "Gehen Sie zu Dienstleistungen"
+            }
+        }
+    },
+    "en": {
+        "title": "Thank you for trusting HelphisTech!",
+        "subtitle": "We have received your request and will be in touch with you soon.",
+        "button": "Back to home page",
+        "articles": {
+            "title": "Other services",
+            "no-articles": {
+                "title": "No articles yet",
+                "description": "You can go to the main page and find more articles of your interest",
+                "back": "Go to services"
+            }
+        }
+    },
+    "es": {
+        "title": "¡Gracias por confiar en HelphisTech!",
+        "subtitle": "Hemos recibido su solicitud y pronto nos pondremos en contacto con usted.",
+        "button": "Volver a la página de inicio",
+        "articles": {
+            "title": "Otros servicios",
+            "no-articles": {
+                "title": "Aún no hay articulos",
+                "description": "Puedes ir a la página principal y encontrar más articulos de tu interes",
+                "back": "Ir a servicios"
+            }
+        }
+    }
+}
