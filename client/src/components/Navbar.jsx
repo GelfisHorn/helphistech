@@ -74,7 +74,7 @@ export default function Navbar() {
 
     return(
         <>
-            <header className="relative flex flex-col" style={{zIndex: '1'}}>
+            <header className="relative flex flex-col bg-darkmode" style={{zIndex: '1'}}>
                 <div className={`flex items-center justify-between h-20 px-10 text-${darkMode ? 'dark' : 'light'}`}>
                     <div>
                         <Link href={"/"}>

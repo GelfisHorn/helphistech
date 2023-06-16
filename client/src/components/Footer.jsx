@@ -32,7 +32,7 @@ export default function Footer() {
     }
 
     return (
-        <footer className={`${darkMode ? 'text-dark border-neutral-900' : 'text-light border-neutral-200'} border-t`}>
+        <footer className={`${darkMode ? 'text-dark border-neutral-900 bg-darkmode' : 'text-light border-neutral-200'} border-t`}>
             <div className="flex flex-col items-start gap-16 py-16 px-6 lg:px-10 xl:px-0 max-w-6xl w-full mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 justify-center md:justify-start text-center md:text-left md:gap-y-0 w-full">
                     <FooterColumn title={"Navigation"}>

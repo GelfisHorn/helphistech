@@ -451,11 +451,19 @@ button.btn-primary:hover {
 }
 
 .blog-bg-dark {
-	background-image: url('/blog-bg-dark.svg');
+	background-image: url('/bg-dark.jpg');
+	background-position-y: top;
+	background-position-x: left;
+	background-size: cover;
+	transition: all .15s ease-in-out;
 }
 
 .blog-bg-light {
-	background-image: url('/blog-bg-light.svg');
+	background-image: url('/bg-light.jpg');
+	background-position-y: top;
+	background-position-x: left;
+	background-size: cover;
+	transition: all .15s ease-in-out;
 }
 
 .strapi-markdown a {
