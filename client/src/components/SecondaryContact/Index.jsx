@@ -18,7 +18,7 @@ import { motion, AnimatePresence, easeIn, easeOut } from 'framer-motion';
 export default function SecondaryContactModal({ blog, handleClose, language }) {
 
     const router = useRouter();
-
+  
     const { darkMode } = useContextProvider();
 
     const [ step, setStep ] = useState(1)
