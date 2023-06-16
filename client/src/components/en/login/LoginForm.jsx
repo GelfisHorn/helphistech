@@ -66,6 +66,7 @@ export default function LoginForm() {
                 <div className="flex flex-col gap-2">
                     <div className="text-3xl text-light-main">Welcome back!</div>
                     <div className="text-light-subtitle">Sign in to stay connected!</div>
+                    <div className="text-light-subtitle">You do not have an account? <Link className={"text-primary hover:text-primary-2 transition-colors"} href={"/en#my-project"}>Start a project with us</Link></div>
                 </div>
                 { message.text && <Message text={message.text} error={message.error} /> }
                 <div className="flex flex-col gap-1 lazy-load-2">

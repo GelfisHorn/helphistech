@@ -85,7 +85,7 @@ export default function ServicesPage({ categories }) {
 	return (
 		<Layout title={"Our services"} lang={'en'}>
 			<div className={`${darkMode ? 'blog-bg-dark bg-gradient-to-br from-[#080808] to-[#070707]' : 'blog-bg-light bg-gradient-to-br from-[#F6F6F6] to-[#FFF]'}`}>
-				<div className={`flex flex-col gap-10 mx-auto py-20 sm:pb-28 2xl:px-40 px-6 sm:px-20`}>
+				<div className={`flex flex-col gap-28 mx-auto py-20 sm:pb-28 2xl:px-40 px-6 sm:px-20`}>
 					<div className="flex items-center sm:items-start gap-5 relative">
 						<div className="flex flex-col justify-center sm:items-start gap-6 sm:gap-10">
 							<motion.div initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
@@ -97,8 +97,7 @@ export default function ServicesPage({ categories }) {
 						</div>
 					</div>
 					<div className="flex flex-col gap-20">
-						<div className="flex flex-col items-start gap-2">
-							{/* <div>Categories</div> */}
+						{/* <div className="flex flex-col items-start gap-2">
 							<div className="flex flex-col items-start gap-3">
 								<div className="text-lg">{lang['en'].categories.title}</div>
 								<div className="flex items-center gap-2 flex-wrap">
@@ -108,7 +107,7 @@ export default function ServicesPage({ categories }) {
 									))}
 								</div>
 							</div>
-						</div>
+						</div> */}
 						<div className="flex flex-col gap-5">
 							<div className="text-3xl break-all">{lang['en'].articles.title}</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
