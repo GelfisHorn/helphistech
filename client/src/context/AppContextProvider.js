@@ -34,9 +34,12 @@ const AppContextProvider = ({children}) => {
         } else {
             setLanguage(localStorageLanguage);
         } */
+        if(!localStorage.getItem('language')) {
+            localStorage.setItem('language', 'de');
+        }
 
         setCookiesAllowed(localStorage.getItem('allow-cookies'));
-        setLanguage(localStorage.getItem('language') || 'de');
+        setLanguage(localStorage.getItem('language'));
         setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == false ? false : true);
     }, []);
 
