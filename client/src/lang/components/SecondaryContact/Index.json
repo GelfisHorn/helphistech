@@ -309,7 +309,8 @@
             "step": "Sie müssen eine Option auswählen",
             "step4": "Vor dem Absenden müssen Sie die Felder ausfüllen",
             "email": "Sie müssen eine gültige E-Mail-Adresse verwenden",
-            "success": "Die Daten wurden erfolgreich gesendet"
+            "success": "Die Daten wurden erfolgreich gesendet",
+            "legal": "Sie müssen die rechtlichen Bedingungen akzeptieren, bevor Sie das Formular absenden"
         }
     },
     "en": {
@@ -514,7 +515,8 @@
             "step": "You must select an option",
             "step4": "You must fill out the fields before submitting",
             "email": "You must use a valid email",
-            "success": "The data was sent successfully"
+            "success": "The data was sent successfully",
+            "legal": "You must accept the legal terms before submitting the form"
         }
     },
     "es": {
@@ -719,7 +721,8 @@
             "step": "Debe seleccionar una opción",
             "step4": "Debes llenar los campos antes de enviar",
             "email": "Debes usar un correo electrónico válido",
-            "success": "Los datos fueron enviados exitosamente"
+            "success": "Los datos fueron enviados exitosamente",
+            "legal": "Debe aceptar los términos legales antes de enviar el formulario"
         }
     }
 }
