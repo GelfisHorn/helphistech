@@ -38,6 +38,12 @@ export default function Login() {
                     <div className="h-full">
                         {/* <div className="absolute top-5 left-5 text-2xl text-light-main font-semibold uppercase">Helphis Tech</div> */}
                         <div className="flex justify-center items-center gap-20 min-h-[30rem] h-full md:max-w-5xl mx-auto px-5 sm:px-10">    
+                            <button className={`absolute flex items-center gap-1 left-5 top-5 text-white bg-primary hover:bg-primary-2 transition-colors py-1 px-4 rounded-full`} onClick={() => router.back()}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                </svg>
+                                <span>Zurück</span>
+                            </button>
                             <div className="w-1/2 hidden md:block lazy-load-1">
                                 <div className="flex justify-center items-center">
                                     <Image className="h-auto w-auto" src={'/login/form_image.png'} width={547} height={461} alt="From image" />
