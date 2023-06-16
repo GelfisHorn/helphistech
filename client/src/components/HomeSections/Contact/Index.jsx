@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+// Nextjs
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 // Components
 import Modal from "../../Modal/Index";
 // Styles
@@ -43,6 +45,7 @@ export default function ContactSection({ language }) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [message, setMessage] = useState("");
+    const legalTerms = useRef(false);
 
     const resetForm = () => {
         setStep(1)
@@ -118,6 +121,10 @@ export default function ContactSection({ language }) {
         }
         if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
             showToast(lang[language].notifications.email, "error")
+            return;
+        }
+        if (!legalTerms.current.checked) {
+            showToast(lang[language].notifications.legal, "error")
             return;
         }
 
@@ -276,7 +283,7 @@ export default function ContactSection({ language }) {
                                 <div className={"text-2xl uppercase font-semibold"}>{lang[language].step4.title}</div>
                                 <div>{lang[language].step4.subtitle}</div>
                             </div>
-                            <div className={"flex flex-col gap-3"}>
+                            <div className={"flex flex-col gap-8"}>
                                 <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-5"}>
                                     <div className={"flex flex-col items-start gap-1"}>
                                         <label htmlFor={`step4-name`}>{lang[language].step4.options[0].text}</label>
@@ -293,6 +300,14 @@ export default function ContactSection({ language }) {
                                     <div className={"flex flex-col items-start gap-1"}>
                                         <label htmlFor={`step4-message`}>{lang[language].step4.options[3].text}</label>
                                         <textarea value={message} onChange={e => setMessage(e.target.value)} id={`step4-message`} className={`${darkMode ? "bg-[#19191F]" : "bg-[#EEEEF3]"} py-2 px-3 outline-none rounded-md w-full resize-none`} rows={5} type="text" placeholder={lang[language].step4.options[3].text} />
+                                    </div>
+                                </div>
+                                <div className={"flex gap-2 select-none"}>
+                                    <div className={"flex items-start gap-2"}>
+                                        <div className="form-control">
+                                            <input ref={legalTerms} id={"legal"} type="checkbox" className="accent-primary w-5 h-5" />
+                                        </div>
+                                        <label htmlFor={"legal"}>Mit dem Absenden dieses Formulars stimme ich den <Link target={"_blank"} className={"link"} href={"/datenschutz"}>Datenschutzbestimmungen</Link> und den <Link target={"_blank"} className={"link"} href={"/impressum"}>rechtlichen Bestimmungen zu</Link>.</label>
                                     </div>
                                 </div>
                             </div>
