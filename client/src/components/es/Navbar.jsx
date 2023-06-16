@@ -112,7 +112,7 @@ export default function Navbar() {
 
                             )}
                         </div>
-                        <div className="flex items-center gap-2">
+                        {/* <div className="flex items-center gap-2">
                             <div className="text-lg">
                                 <select className="cursor-pointer bg-transparent outline-none" name="" id="" value={'es'} onChange={handleChangeLanguage}>
                                     <option value="de">DE</option>
@@ -120,7 +120,7 @@ export default function Navbar() {
                                     <option value="es">ES</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> */}
                         <Link className="hover:underline hover:text-primary" href="/es/login">
                             <span>Iniciar sesión</span>
                         </Link>
@@ -247,13 +247,13 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
 
                                     )}
                                 </div>
-                                <div className="text-xl">
+                                {/* <div className="text-xl">
                                     <select className={`cursor-pointer bg-transparent ${darkMode ? 'text-white' : 'text-black'}`} onChange={handleChangeLanguage} name="" id="" value={language}>
                                         <option value="de">DE</option>
                                         <option value="en">EN</option>
                                         <option value="es">ES</option>
                                     </select>
-                                </div>
+                                </div> */}
                             </div>
                             <Link className="hover:underline hover:text-primary" href="/es/login">
                                 <span>Iniciar sesión</span>
