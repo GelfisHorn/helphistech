@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 // Components
 import Modal from "../Modal/Index";
 // Styles
@@ -16,6 +17,8 @@ import { motion, AnimatePresence, easeIn, easeOut } from 'framer-motion';
  */
 export default function SecondaryContactModal({ blog, handleClose, language }) {
 
+    const router = useRouter();
+  
     const { darkMode } = useContextProvider();
 
     const [ step, setStep ] = useState(1)
@@ -133,6 +136,7 @@ export default function SecondaryContactModal({ blog, handleClose, language }) {
         ]).then(res => {
             showToast(lang[language].notifications.success, "success");
             resetForm();
+            router.push('/confirmation')
         }).catch(err => {
             showToast(err, "error");
         })

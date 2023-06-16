@@ -10,6 +10,7 @@ import lang from '../lang/components/BottomContact.json'
 // Notifications
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 
 export default function BottomContact({ blog, language }) {
     
@@ -28,6 +29,8 @@ export default function BottomContact({ blog, language }) {
 }
 
 function ContactForm({ blog, language }) {
+    
+    const router = useRouter();
 
     const { darkMode } = useContextProvider();
 
@@ -79,6 +82,7 @@ function ContactForm({ blog, language }) {
                     await axios.post('/api/contact/bottomContact/sendMail', { blogTitle: blog.title, blogUrl: blog.url, fullName, phone, email, message })
                     showToast(lang[language].notifications.success, "success");
                     resetForm();
+                    router.push('/confirmation');
                 } catch (error) {
                     showToast(lang[language].notifications.error, "error");
                 }
