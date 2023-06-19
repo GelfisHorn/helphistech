@@ -8,15 +8,21 @@ import { motion } from "framer-motion";
 
 export default function ServicesSection({ services }) {
     
+    const [ servicesMobile, setServicesMobile ] = useState([]);
+
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
 
-    const [windowSize, setWindowSize] = useState(getWindowSize());
+    const [windowSize, setWindowSize] = useState(1000);
 
     useEffect(() => {
         function handleWindowResize() {
             setWindowSize(getWindowSize());
         }
+
+        setServicesMobile(services.slice(0, 3));
+
+        setWindowSize(getWindowSize());
 
         window.addEventListener('resize', handleWindowResize);
 
@@ -74,14 +80,11 @@ export default function ServicesSection({ services }) {
                         <div className={"flex flex-col gap-8"}>
                             <div className="flex flex-col">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-10">
-                                    {services && services.length != 0 && services.map((service, index) => (
-                                        windowSize > 768 ? (
-                                            <Service key={index} service={service} />
-                                        ) : (
-                                            index < 3 && (
-                                                <Service key={index} service={service} />
-                                            )
-                                        )
+                                    {services && services.length != 0 && windowSize > 768 && services.map((service, index) => (
+                                        <Service key={index} service={service} />
+                                    ))}
+                                    {services && services.length != 0 && windowSize < 768 && servicesMobile.map((service, index) => (
+                                        <Service key={index} service={service} />
                                     ))}
                                 </div>
                                 {(!services || services.length == 0) && (
@@ -132,7 +135,7 @@ export default function ServicesSection({ services }) {
                         </div>
                         <div className={'flex justify-center'}>
                             <Link href={"/contact"}>
-                                <motion.div initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-6 rounded-full uppercase font-medium text-lg"}> 
+                                <motion.div initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-3 sm:px-6 rounded-full uppercase sm:font-medium text-sm xs:text-base md:text-lg"}> 
                                     <span>KOSTENLOSE BERATUNG BUCHEN</span>
                                     <motion.svg variants={slashMotion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />

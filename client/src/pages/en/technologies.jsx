@@ -35,7 +35,7 @@ export default function TechnologiesPage() {
                                 </div>
                             </div>
                             <div className={"flex justify-center"}>
-                                <Button text={"BOOK A FREE CONSULTATION"} toRight={true} link={"/contact"} classes={"px-4 py-2 rounded-full"} />
+                                <Button text={"BOOK A FREE CONSULTATION"} toRight={true} link={"/contact"} classes={"text-sm xs:text-base px-3 xs:px-4 py-1 xs:py-2 rounded-full"} />
                             </div>
                             <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 gap-y-20`}>
                                 <TechnologyItem 
