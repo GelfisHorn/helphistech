@@ -93,7 +93,7 @@ export default function LoginForm() {
                     />
                 </div>
                 <div className="flex justify-end lazy-load-3">
-                    <Link className={`w-fit ${darkMode ? 'text-dark-text hover:text-white' : 'hover:text-light-main'} transition-colors`} href={`recovery-password`}>Passwort wiederherstellen</Link>
+                    <Link className={`w-fit ${darkMode ? 'text-dark-text hover:text-white' : 'hover:text-light-main'} transition-colors`} href={`/recover-password`}>Passwort wiederherstellen</Link>
                 </div>
             </div>
             <div className='lazy-load-4'>
