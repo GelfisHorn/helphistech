@@ -6,6 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 // Components
 import Layout from "@/components/Layout";
+import Button from "@/components/ArrowButton";
+import BottomContact from "@/components/BottomContact";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
@@ -108,6 +110,9 @@ export default function ServicesPage({ categories }) {
 								</div>
 							</div>
 						</div> */}
+						<div className={"flex justify-center"}>
+							<Button text={"KOSTENLOSE BERATUNG BUCHEN"} toRight={true} link={"/contact"} classes={"px-4 py-2 rounded-full"} />
+						</div>
 						<div className="flex flex-col gap-5">
 							<div className="text-3xl break-all">{lang['de'].articles.title}</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
@@ -131,6 +136,7 @@ export default function ServicesPage({ categories }) {
 							)}
 						</div>
 					</div>
+					<BottomContact blog={{ title: 'Services', url: '' }} language={"de"} />
 				</div>
 			</div>
 		</Layout>
