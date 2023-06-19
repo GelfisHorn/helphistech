@@ -73,8 +73,7 @@ const resetPassword = async (req, res) => {
     try {
         user.token = createToken()
         user.save()
-        /* TODO: Importar nodemailer al proyecto y enviar email cuando el usuario resetee su password */
-        res.json({ msg: 'Instructions have been sent to your email' })
+        return res.json({ msg: 'Instructions have been sent to your email', token: user.token });
     } catch (error) {
         console.log(error)
     }
@@ -98,6 +97,11 @@ const newPassword = async (req, res) => {
     const user = await User.findOne({ token })
     if(!user) {
         const error = new Error('Invalid token')
+        return res.status(404).json({ msg: error.message })
+    }
+
+    if (String(password).length < 12) {
+        const error = new Error('The password is too short')
         return res.status(404).json({ msg: error.message })
     }
 
