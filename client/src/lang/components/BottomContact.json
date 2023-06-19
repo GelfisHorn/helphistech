@@ -1,7 +1,7 @@
 {
     "de": {
-        "title": "Du magst was du siehst?",
-        "subtitle": "Kontaktieren Sie uns und erstellen Sie Ihre Website mit Profis. Es ist Zeit, mit dem Online-Verkauf zu beginnen",
+        "title": "ERHALTEN SIE JETZT IHR ANGEBOT!",
+        "subtitle": "Lassen Sie sich kostenfrei und unverbindlich von unserem Team beraten, indem Sie uns Ihre Kontaktdaten hinterlassen.",
         "fullName": {
             "placeholder": "Vollständiger Name",
             "validation": {
@@ -35,8 +35,8 @@
         }
     },
     "en": {
-        "title": "You like what you see?",
-        "subtitle": "Contact us and create your website with professionals, it's time to start selling online",
+        "title": "GET YOUR OFFER NOW!",
+        "subtitle": "Let our team advise you free of charge and without obligation by leaving us your contact details.",
         "fullName": {
             "placeholder": "Full name",
             "validation": {
@@ -70,8 +70,8 @@
         }
     },
     "es": {
-        "title": "¿Te gusta lo que ves?",
-        "subtitle": "Contactanos y crea tu sitio web con profesionales, es el momento de empezar a vender en línea",
+        "title": "¡CONSIGUE TU OFERTA AHORA!",
+        "subtitle": "Deja que nuestro equipo te asesore de forma gratuita y sin compromiso dejándonos tus datos de contacto.",
         "fullName": {
             "placeholder": "Nombre completo",
             "validation": {
