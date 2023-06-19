@@ -28,6 +28,14 @@ export default function ConfirmationPage() {
     const [fetchError, setFetchError] = useState(false);
 
     useEffect(() => {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        
+        gtag('event', 'conversion', { 'send_to': 'AW-11148352893/ixFeCOuN_q0YEP26-cMp' });
+    }, [])
+
+    useEffect(() => {
         if(!language) {
             return;
         }
