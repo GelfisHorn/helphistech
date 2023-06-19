@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 // Nextjs
 import Image from "next/image";
+import Link from "next/link";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Layout from "@/components/Layout";
+import Button from "@/components/ArrowButton";
+import BottomContact from "@/components/BottomContact";
+// Animations
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 export default function CustomWebDevelopment() {
     
@@ -30,7 +33,7 @@ export default function CustomWebDevelopment() {
         <Layout title={"Our work process"} lang={'en'}>
             <main>
                 <div className="flex flex-col">
-                    <div className={`flex flex-col gap-10 w-full text-center xs:text-left px-6 sm:px-10 lg:px-20 2xl:px-40 py-28 2xl:py-36`}>
+                    <div className={`flex flex-col gap-10 w-full text-center xs:text-left px-6 sm:px-10 lg:px-20 2xl:px-40 pt-28 pb-20 2xl:pt-36 2xl:pb-24`}>
                         <motion.div  initial={{ x:-40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
                             <h1 className="w-full">Our work process</h1>
                         </motion.div>
@@ -39,7 +42,10 @@ export default function CustomWebDevelopment() {
                             <p>Here's a breakdown of the web development process so you know what to expect when working with us.</p>
                         </motion.div>
                     </div>
-                    <div className={`grid grid-cols-1 ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40 py-28`}>
+                    <div className={`grid grid-cols-1 gap-20 ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40 pt-10 pb-28`}>
+                        <div className={"flex justify-center"}>
+                            <Button text={"BOOK A FREE CONSULTATION"} toRight={true} link={"/en/contact"} classes={"px-4 py-2 rounded-full"} />
+                        </div>
                         <div className="grid grid-rows-7 gap-5">
                             <ProcessItem 
                                 title={"Kick-off Meeting and Planning"}
@@ -109,6 +115,7 @@ export default function CustomWebDevelopment() {
                                 </Link>
                             </div>
                         </motion.div>
+                        <BottomContact blog={{ title: 'Process', url: '' }} language={"en"} />
                     </div>
                 </div>
             </main>

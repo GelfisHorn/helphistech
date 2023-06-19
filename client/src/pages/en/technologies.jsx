@@ -1,10 +1,15 @@
+// Nextjs
+import Image from "next/image";
+import Link from "next/link";
 // Layout
 import Layout from "@/components/Layout";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
-import Image from "next/image";
-import Link from "next/link";
+// Components
+import Button from "@/components/ArrowButton";
+// Animations
 import { motion } from "framer-motion";
+import BottomContact from "@/components/BottomContact";
 
 export default function TechnologiesPage() {
 
@@ -17,7 +22,7 @@ export default function TechnologiesPage() {
         <Layout title={"The technologies we use"} lang={'en'}>
             <main className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-20 overflow-hidden`}>
                 <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
-                    <div className="flex items-center justify-between w-full">
+                    <div className="flex flex-col gap-28">
                         <div className="flex flex-col gap-28">
                             <div className="flex items-center sm:items-start gap-5 relative">
                                 <div className="flex flex-col justify-center sm:items-start gap-10">
@@ -28,6 +33,9 @@ export default function TechnologiesPage() {
                                         <p className="text-center sm:text-left">At HelphisTech we are committed to providing high-quality software using innovative technologies and cutting-edge tools. Our team of developers uses the right tools for each specific project. Some of the technologies we use include React, Nextjs, Angular, Nodejs, Express, MongoDB, and MySQL. At HelphisTech we believe that technology is a powerful tool to drive innovation and efficiency, and we strive to use the best solutions for each project we tackle.</p>
                                     </motion.div>
                                 </div>
+                            </div>
+                            <div className={"flex justify-center"}>
+                                <Button text={"BOOK A FREE CONSULTATION"} toRight={true} link={"/contact"} classes={"px-4 py-2 rounded-full"} />
                             </div>
                             <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 gap-y-20`}>
                                 <TechnologyItem 
@@ -109,6 +117,7 @@ export default function TechnologiesPage() {
                                 />
                             </div>
                         </div>
+                        <BottomContact blog={{ title: 'Technologies', url: '' }} language={"en"} />
                     </div>
                 </div>
             </main>
