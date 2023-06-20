@@ -84,6 +84,30 @@ export default function ServicesPage({ categories }) {
 		}
 	}
 
+	const [windowSize, setWindowSize] = useState(1000);
+
+	useEffect(() => {
+		function handleWindowResize() {
+			setWindowSize(getWindowSize());
+		}
+
+		setWindowSize(getWindowSize());
+
+		window.addEventListener('resize', handleWindowResize);
+
+		return () => {
+			window.removeEventListener('resize', handleWindowResize);
+		};
+	}, []);
+
+	function getWindowSize() {
+		if (typeof window !== 'undefined') {
+			const { innerWidth } = window;
+			return innerWidth;
+		}
+		return 1000
+	}
+
 	return (
 		<Layout title={"Unsere Dienstleistungen"} lang={'de'}>
 			<div className={`${darkMode ? 'blog-bg-dark bg-gradient-to-br from-[#080808] to-[#070707]' : 'blog-bg-light bg-gradient-to-br from-[#F6F6F6] to-[#FFF]'}`}>
@@ -91,7 +115,10 @@ export default function ServicesPage({ categories }) {
 					<div className="flex items-center sm:items-start gap-5 relative">
 						<div className="flex flex-col justify-center sm:items-start gap-6 sm:gap-10">
 							<motion.div initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`text-4xl md:text-5xl lg:text-6xl font-medium h-fit lg:leading-[4rem]`}>
-								<h1 className="w-full break-all">{lang['de'].title}</h1>
+								<h1>
+									{windowSize > 768 && lang['de'].title}
+									{windowSize < 768 && lang['de'].titleMobile.map(title => title)}
+								</h1>
 							</motion.div>
 							<motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
 								<p className="break-all">{lang['de'].description}</p>
