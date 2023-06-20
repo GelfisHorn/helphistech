@@ -44,7 +44,7 @@ export default function Home({ services, faqs }) {
 				<ServicesSection services={services} />
 				<ProcessSection />
 				<TechnologiesSection />
-				<ContactSection language={language} />
+				<ContactSection language={'de'} />
 				{/* <MyProjectSection /> */}
 				{faqs && Object.keys(faqs).length != 0 && (
 					<FAQSection faqs={faqs} />

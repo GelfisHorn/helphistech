@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 // Components
 import Layout from "@/components/Layout";
-import SecondaryContactModal from "@/components/SecondaryContact/Index";
+import SecondaryContactModal from "@/components/Modals/Contact/Index";
 import BottomContact from "@/components/BottomContact";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";

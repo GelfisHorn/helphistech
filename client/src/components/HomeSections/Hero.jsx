@@ -6,13 +6,21 @@ import Link from "next/link";
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Navbar from "@/components/Navbar";
-import { motion } from "framer-motion";
+import ContactModal from "../Modals/Contact/Index";
+// Animations
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroSection() {
     
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
     
+	const [ showModal, setShowModal ] = useState(false);
+
+	const handleShowModal = () => {
+		setShowModal(!showModal);
+	}
+
     return (
         <div className="relative overflow-hidden" id="hero">
             <Image className="absolute top-0 w-full h-full object-cover" src={`${darkMode ? '/home/hero/wave/dark/wave.webp' : '/home/hero/wave/light/wave.webp'}`} fill={true} alt="" priority />
@@ -25,9 +33,9 @@ export default function HeroSection() {
                             <p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>Wir bieten maßgeschneiderte Lösungen, mit denen sich Ihr Unternehmen online von der Masse abhebt. Von Website-Design und -Entwicklung bis hin zur App-Programmierung und Suchmaschinenoptimierung kann unser Expertenteam Ihnen helfen, Ihre Online-Ziele zu erreichen.</p>
                         </motion.div>
                         <div className="flex justify-center xl:justify-start">
-                            <Link href={"/contact"}>
-								<button className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">Starten Sie ein Projekt mit uns</button>
-                            </Link>
+							<button onClick={handleShowModal} className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">kostenloses Angebot erhalten</button>
+                            {/* <Link href={"/contact"}>
+                            </Link> */}
                         </div>
                     </div>
                     <motion.div initial={{ y: -60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }} viewport={{ once: true }} >
@@ -37,6 +45,11 @@ export default function HeroSection() {
                     </motion.div>
                 </div>
             </section>
+			<AnimatePresence>
+				{showModal && (
+					<ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
+				)}
+			</AnimatePresence>
         </div>
     )
 }
