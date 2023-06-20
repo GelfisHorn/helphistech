@@ -239,8 +239,7 @@ export default function ContactModal({ blog, handleClose, language }) {
                                         </div>
                                     ) : (
                                         <div className={"flex flex-col items-start gap-1 col-start-1 col-end-4"} key={index}>
-                                            <label htmlFor={`step2-other`}>{service.text}</label>
-                                                <input value={step2.value} onChange={e => setStep2({ key: 'website_url', value: e.target.value })} id={`step2-other`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={service.text} />
+                                            <input value={step2.value} onChange={e => setStep2({ key: 'website_url', value: e.target.value })} id={`step2-other`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={service.text} />
                                         </div>
                                     )
                                 ))}
@@ -274,7 +273,6 @@ export default function ContactModal({ blog, handleClose, language }) {
                                         </div>
                                     ) : (
                                         <div className={"flex flex-col items-start gap-1 col-start-1 col-end-3 md:col-start-2 md:cols-end-3"} key={index}>
-                                            <label htmlFor={`step3-other`}>{service.text}</label>
                                             <input value={other.value} onChange={e => setOther({ key: 'other', value: e.target.value })} id={`step3-other`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={service.text} />
                                         </div>
                                     )
