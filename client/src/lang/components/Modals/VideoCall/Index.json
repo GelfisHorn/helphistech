@@ -1,0 +1,65 @@
+{
+    "de": {
+        "title": "Wähle ein Datum und eine Uhrzeit für das Treffen aus",
+        "timezone": "Zeitzone: GMT+2",
+        "stepBack": "Wähle ein neues Datum",
+        "selected": "Ausgewählt:",
+        "fullName": { 
+            "label": "Vollständiger Name",
+            "placeholder": "Gib deinen vollständigen Namen ein"
+        },
+        "email": {
+            "label": "Kontakt-E-Mail",
+            "placeholder": "Gib deine E-Mail-Adresse ein"
+        },
+        "meeting": {
+            "label": "Beschreibung des Meetings",
+            "placeholder": "Gib eine kurze Beschreibung oder Betreffzeile ein"
+        },
+        "back": "Schließen",
+        "next": "Folgend",
+        "submit": "Senden"
+    },
+    "en": {
+        "title": "Choose a date and time for the meeting",
+        "timezone": "Time zone: GMT+2",
+        "stepBack": "Choose the date again",
+        "selected": "Selected:",
+        "fullName": {
+            "label": "Full name",
+            "placeholder": "Enter your full name"
+        },
+        "email": {
+            "label": "Contact e-mail",
+            "placeholder": "Enter your e-mail"
+        },
+        "meeting": {
+            "label": "Meet description",
+            "placeholder": "Enter a brief description or subject"
+        },
+        "back": "Close",
+        "next": "Next step",
+        "submit": "Submit"
+    },
+    "es": {
+        "title": "Elige una fecha y hora de encuentro",
+        "timezone": "Zona horaria: GMT+2",
+        "stepBack": "Volver a elegir fecha",
+        "selected": "Seleccionado:",
+        "fullName": {
+            "label": "Nombre completo",
+            "placeholder": "Ingresa tu nombre completo"
+        },
+        "email": {
+            "label": "E-mail de contacto",
+            "placeholder": "Ingresa tu e-mail"
+        },
+        "meeting": {
+            "label": "Descripción de la reunión",
+            "placeholder": "Ingresa una breve descripción o asunto"
+        },
+        "back": "Cerrar",
+        "next": "Siguiente",
+        "submit": "Enviar"
+    }
+}
