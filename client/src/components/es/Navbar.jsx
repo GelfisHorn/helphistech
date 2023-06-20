@@ -125,7 +125,7 @@ export default function Navbar() {
                             <span>Iniciar sesión</span>
                         </Link>
                         <div onClick={() => handleNavButton("my-project")}>
-                            <button className={`btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm`}>Empezar mi proyecto</button>
+                            <button className={`btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm`}>Iniciar proyecto</button>
                         </div>
                     </div>
                     <div onClick={handleShowMenu} className="block sm:hidden">
@@ -259,7 +259,7 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                 <span>Iniciar sesión</span>
                             </Link>
                             <div onClick={() => handleNavButton("my-project")}>
-                                <button className={`btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm`}>Empezar mi proyecto</button>
+                                <button className={`btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm`}>Iniciar proyecto</button>
                             </div>
                         </div>
                     </div>

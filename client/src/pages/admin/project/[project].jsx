@@ -74,6 +74,13 @@ const PROJECT = {
     }
 }
 
+// Supported files to upload
+const SUPPORTED_FILES = {
+    png: true,
+    jpg: true,
+    jpeg: true
+}
+
 export default function ProjectDynamic() {
 
     const { auth, darkMode } = useContextProvider();
@@ -268,6 +275,13 @@ export default function ProjectDynamic() {
         if(entryImages.length == 0) return;
 
         for(const image of entryImages) {
+            const type = image.type.split('/')[1];
+            if (!SUPPORTED_FILES[type]) {
+                setEntryImages([]);
+                setPreviewEntryImages([]);
+                showToast("Tipo de archivo no soportado", "error");
+                return;
+            }
             const reader = new FileReader();
             reader.readAsDataURL(image);
             reader.addEventListener('load', () => {
