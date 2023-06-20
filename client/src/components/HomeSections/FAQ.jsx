@@ -48,7 +48,7 @@ export default function FAQSection({ faqs }) {
             </div>
             <div className={'flex justify-center'}>
                 <Link href={"/es/contacto"}>
-                    <motion.div initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-6 rounded-full uppercase font-medium text-lg"}>
+                    <motion.div initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-3 sm:px-6 rounded-full uppercase sm:font-medium text-sm xs:text-base md:text-lg"}>
                         <span>{lang[language]}</span>
                         <motion.svg variants={slashMotion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
