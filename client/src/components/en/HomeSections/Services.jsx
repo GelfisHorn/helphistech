@@ -5,6 +5,8 @@ import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import VideoCallModal from "@/components/Modals/VideoCall/Index";
 
 export default function ServicesSection({ services }) {
     
@@ -51,8 +53,16 @@ export default function ServicesSection({ services }) {
         }
     };
 
+    const [showModal, setShowModal] = useState(false);
+    const handleShowModal = () => {
+        setShowModal(!showModal);
+    }
+
     return (
         <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
+            <AnimatePresence>
+                {showModal && <VideoCallModal closeVideoCallForm={handleShowModal} language={'en'} />}
+            </AnimatePresence>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                 <div className="flex items-center gap-20 justify-between w-full">
                     <div className="blur-shadow -left-28 -top-28"></div>
@@ -135,14 +145,12 @@ export default function ServicesSection({ services }) {
                             </div>
                         </div>
                         <div className={'flex justify-center'}>
-                            <Link href={"/en/contact"}>
-                                <motion.div initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-3 sm:px-6 rounded-full uppercase sm:font-medium text-sm xs:text-base md:text-lg"}>
-                                    <span>BOOK A FREE CONSULTATION</span>
-                                    <motion.svg variants={slashMotion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                    </motion.svg>
-                                </motion.div>
-                            </Link>
+                            <motion.button onClick={handleShowModal} initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-3 sm:px-6 rounded-full uppercase sm:font-medium text-sm xs:text-base md:text-lg"}>
+                                <span>BOOK A FREE CONSULTATION</span>
+                                <motion.svg variants={slashMotion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                </motion.svg>
+                            </motion.button>
                         </div>
                     </div>
                 </div>

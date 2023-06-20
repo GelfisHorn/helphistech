@@ -10,11 +10,19 @@
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Webanwendungen"
+                    "text": "Webanwendungen",
+                    "mobile": [
+                        "Web",
+                        "anwendungen"
+                    ]
                 },
                 {
                     "id": "modify_website",
-                    "text": "Verbesserung einer Webseite oder Anwendung"
+                    "text": "Verbesserung einer Webseite oder Anwendung",
+                    "mobile": [
+                        "Verbesserung einer Webseite oder",
+                        "Anwendung"
+                    ]
                 }
             ]
         },
@@ -63,7 +71,8 @@
                         "text": "Statische Webanwendung",
                         "mobile": [
                             "Statische",
-                            "Webanwendung"
+                            "Web",
+                            "anwendung"
                         ]
                     },
                     {
@@ -71,7 +80,8 @@
                         "text": "Dynamische Webanwendung",
                         "mobile": [
                             "Dynamische",
-                            "Webanwendung"
+                            "Web",
+                            "anwendung"
                         ]
                     },
                     {
@@ -80,14 +90,20 @@
                     },
                     {
                         "id": "portal_webapp",
-                        "text": "Webportal-App"
+                        "text": "Webportal-App",
+                        "mobile": [
+                            "Webportal-",
+                            "App"
+                        ]
                     },
                     {
                         "id": "cms_webapp",
                         "text": "Webanwendung mit CMS",
                         "mobile": [
-                            "Webanwendung",
-                            "mit CMS"
+                            "Web",
+                            "anwendung",
+                            "mit",
+                            "CMS"
                         ]
                     },
                     {
@@ -154,8 +170,10 @@
                         "id": "socialmedia_integration",
                         "text": "Integration von sozialen Medien",
                         "mobile": [
-                            "Integration von",
-                            "sozialen Medien"
+                            "Integration",
+                            "von",
+                            "sozialen",
+                            "Medien"
                         ]
                     },
                     {
@@ -187,15 +205,18 @@
                         "id": "socialmedia_integration",
                         "text": "Integration von sozialen Medien",
                         "mobile": [
-                            "Integration von",
-                            "sozialen Medien"
+                            "Integration",
+                            "von",
+                            "sozialen",
+                            "Medien"
                         ]
                     },
                     {
                         "id": "comments",
                         "text": "Kommentare und Meinungen",
                         "mobile": [
-                            "Kommentare und",
+                            "Kommentare",
+                            "und",
                             "Meinungen"
                         ]
                     },
@@ -213,7 +234,8 @@
                         "mobile": [
                             "Lokalisierung",
                             "und",
-                            "Mehrsprachigkeit"
+                            "Mehr-",
+                            "sprachigkeit"
                         ]
                     },
                     {
@@ -262,7 +284,8 @@
                         "text": "Website-Geschwindigkeit",
                         "mobile": [
                             "Website",
-                            "Geschwindigkeit"
+                            "Geschwi-",
+                            "ndigkeit"
                         ]
                     },
                     {
@@ -270,7 +293,8 @@
                         "text": "Inhaltsaktualisierung (CMS)",
                         "mobile": [
                             "Inhalts",
-                            "aktualisierung (CMS)"
+                            "aktualisierung",
+                            "(CMS)"
                         ]
                     },
                     {
@@ -300,7 +324,19 @@
                     "id": "message",
                     "text": "Möchten Sie uns noch etwas mitteilen?"
                 }
-            ]
+            ],
+            "legal": {
+                "text1": "Mit dem Absenden dieses Formulars stimme ich den",
+                "link1": {
+                    "text": "Datenschutzbestimmungen",
+                    "href": "/datenschutz"
+                },
+                "text2": "und den",
+                "link2": {
+                    "text": "rechtlichen Bestimmungen zu",
+                    "href": "/impressum"
+                }
+            }
         },
         "submit": "Schicken",
         "next": "Nächste",
@@ -506,7 +542,19 @@
                     "id": "message",
                     "text": "Would you like to tell us anything else?"
                 }
-            ]
+            ],
+            "legal": {
+                "text1": "By submitting this form I agree to the",
+                "link1": {
+                    "text": "Privacy Policy",
+                    "href": "/datenschutz"
+                },
+                "text2": "and the",
+                "link2": {
+                    "text": "legal notice",
+                    "href": "/impressum"
+                }
+            }
         },
         "submit": "Send",
         "next": "Next",
@@ -712,7 +760,19 @@
                     "id": "message",
                     "text": "¿Quieres contarnos algo más?"
                 }
-            ]
+            ],
+            "legal": {
+                "text1": "Al enviar este formulario acepto las",
+                "link1": {
+                    "text": "políticas de privacidad",
+                    "href": "/datenschutz"
+                },
+                "text2": "y el",
+                "link2": {
+                    "text": "aviso legal",
+                    "href": "/impressum"
+                }
+            }
         },
         "submit": "Enviar",
         "next": "Siguiente",
