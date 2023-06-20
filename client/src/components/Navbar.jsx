@@ -126,7 +126,7 @@ export default function Navbar() {
                         </Link>
                         <div onClick={() => handleNavButton("my-project")}>
                             <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
-                                <span>starte mein Projekt</span>
+                                <span>Projekt starten</span>
                             </button>
                         </div>
                     </div>
@@ -260,7 +260,7 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                 <span>Anmeldung</span>
                             </Link>
                             <div onClick={() => handleNavButton("my-project")}>
-                                <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>starte mein Projekt</button>
+                                <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>Projekt starten</button>
                             </div>
                         </div>
                     </div>

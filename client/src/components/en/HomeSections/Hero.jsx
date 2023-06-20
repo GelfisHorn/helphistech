@@ -26,7 +26,7 @@ export default function HeroSection() {
 												</motion.div>
                         <div className="flex justify-center xl:justify-start">
                             <Link href={"/en/contact"}>
-                                <button className="btn-primary text-white uppercase w-fit py-4 px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">Start a project with us</button>
+                                <button className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">Start a project with us</button>
                             </Link>
                         </div>
                     </div>

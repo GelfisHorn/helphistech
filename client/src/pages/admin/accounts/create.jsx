@@ -7,7 +7,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Form validation
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 // Account config
@@ -48,6 +48,9 @@ export default function CreateAccount() {
     // Form fields state
     const [ position, setPosition ] = useState('');
     const [ permissions, setPermissions ] = useState('');
+
+    // Show password state
+    const [ showPassword, setShowPassword ] = useState(false);
 
     return (
         <SuperAdminPermissions>
@@ -180,20 +183,34 @@ export default function CreateAccount() {
                                             <div className="text-left text-sm text-red-500">{errors.email}</div>
                                         ) : null}
                                     </div>
-                                    <div>
-                                        <label htmlFor="password" className="block text-left">Contraseña</label>
-                                        <div className={`flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
-                                            <Field 
-                                                className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
-                                                name="password" 
-                                                type="password"
-                                                id="password"
-                                                placeholder="Contraseña"
-                                            />
+                                    <div className={"flex flex-col gap-2"}>
+                                        <div>
+                                            <label htmlFor="password" className="block text-left">Contraseña</label>
+                                            <div className={`relative flex items-center border ${darkMode ? 'border-neutral-800' : 'border-zinc-300'} rounded-md px-3`}>
+                                                <Field
+                                                    className={`bg-transparent outline-none py-2 w-full placeholder:text-neutral-400 placeholder:font-light`}
+                                                    name="password"
+                                                    type={showPassword ? "text" : "password"}
+                                                    id="password"
+                                                    placeholder="Contraseña"
+                                                />
+                                                {!showPassword && (
+                                                    <svg onClick={() => setShowPassword(true)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`cursor-pointer text-neutral-500 ${darkMode ? " hover:text-neutral-300" : "hover:text-neutral-700"} transition-colors w-5 h-5 absolute right-2`}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    </svg>
+                                                )}
+                                                {showPassword && (
+                                                    <svg onClick={() => setShowPassword(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`cursor-pointer text-neutral-500 ${darkMode ? " hover:text-neutral-300" : "hover:text-neutral-700"} transition-colors w-5 h-5 absolute right-2`}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                                    </svg>
+                                                )}
+                                            </div>
+                                            {errors.password && touched.password ? (
+                                                <div className="text-left text-sm text-red-500">{errors.password}</div>
+                                            ) : null}
                                         </div>
-                                        {errors.password && touched.password ? (
-                                            <div className="text-left text-sm text-red-500">{errors.password}</div>
-                                        ) : null}
+                                        <GeneratePassword />
                                     </div>
                                 </div>
                                 <button type="submit" className={`flex items-center justify-center gap-2 rounded-md py-2 w-full text-lg font-medium text-white bg-primary hover:bg-primary-2 transition-colors`}>
@@ -208,5 +225,25 @@ export default function CreateAccount() {
                 </div>
             </AdminLayout>
         </SuperAdminPermissions>
+    )
+}
+
+function GeneratePassword() {
+
+    const formikProps = useFormikContext();
+
+    function getRandomPassword() {
+        const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const passwordLength = 12;
+        let password = "";
+        for (var i = 0; i <= passwordLength; i++) {
+            var randomNumber = Math.floor(Math.random() * chars.length);
+            password += chars.substring(randomNumber, randomNumber + 1);
+        }
+        formikProps.setFieldValue("password", password)
+    }
+
+    return (
+        <button onClick={getRandomPassword} type={"button"} className={"flex justify-start w-fit text-primary hover:text-primary-2 transition-colors"}>Generar contraseña</button>
     )
 }
