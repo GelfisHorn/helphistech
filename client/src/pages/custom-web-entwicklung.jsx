@@ -44,7 +44,7 @@ export default function CustomWebDevelopment() {
                     </div>
                     <div className={`grid grid-cols-1 gap-20 ${darkMode ? 'bg-[#080808]' : 'bg-neutral-100'} px-6 sm:px-10 lg:px-20 2xl:px-40 pt-10 pb-28`}>
                         <div className={"flex justify-center"}>
-                            <Button text={"KOSTENLOSE BERATUNG BUCHEN"} toRight={true} link={"/contact"} classes={"text-sm xs:text-base px-3 xs:px-4 py-1 xs:py-2 rounded-full"} />
+                            <Button text={"KOSTENLOSE BERATUNG BUCHEN"} toRight={true} link={"/contact"} classes={"px-4 py-2 rounded-full"} />
                         </div>
                         <div className="grid grid-rows-7 gap-5">
                             <ProcessItem 

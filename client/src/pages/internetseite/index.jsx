@@ -111,7 +111,7 @@ export default function ServicesPage({ categories }) {
 							</div>
 						</div> */}
 						<div className={"flex justify-center"}>
-							<Button text={"KOSTENLOSE BERATUNG BUCHEN"} toRight={true} link={"/contact"} classes={"text-sm xs:text-base px-3 xs:px-4 py-1 xs:py-2 rounded-full"} />
+							<Button text={"KOSTENLOSE BERATUNG BUCHEN"} toRight={true} link={"/contact"} classes={"px-4 py-2 rounded-full"} />
 						</div>
 						<div className="flex flex-col gap-5">
 							<div className="text-3xl break-all">{lang['de'].articles.title}</div>
