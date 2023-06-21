@@ -72,6 +72,13 @@ export default function Navbar() {
         router.push(REDIRECTS[hash]);
     }
 
+    function redirectToSection(hash) {
+        const element = document.getElementById(`${hash}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     return(
         <>
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
@@ -124,7 +131,7 @@ export default function Navbar() {
                         <Link className="hover:underline hover:text-primary" href="/login">
                             <span>Anmeldung</span>
                         </Link>
-                        <div onClick={() => handleNavButton("my-project")}>
+                        <div onClick={() => redirectToSection("my-project")}>
                             <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
                                 <span>Projekt starten</span>
                             </button>
@@ -200,6 +207,14 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
         router.push(REDIRECTS[hash]);
     }
 
+    function redirectToSection(hash) {
+        const element = document.getElementById(`${hash}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+        closeMenu();
+    }
+
     return (
         <>
             <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-60 z-20" onClick={closeMenu}></div>
@@ -259,7 +274,7 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                             <Link className="hover:underline hover:text-primary" href="/login">
                                 <span>Anmeldung</span>
                             </Link>
-                            <div onClick={() => handleNavButton("my-project")}>
+                            <div onClick={() => redirectToSection("my-project")}>
                                 <button className={`btn-primary py-2 px-6 bg-primary hover:bg-primary-2 text-white transition-colors`}>Projekt starten</button>
                             </div>
                         </div>
