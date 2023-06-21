@@ -141,7 +141,7 @@ export default function ServicesPage({ categories }) {
 							<Button text={"KOSTENLOSE BERATUNG BUCHEN"} toRight={true} link={"/contact"} classes={"text-sm xs:text-base px-3 xs:px-4 py-1 xs:py-2 rounded-full"} />
 						</div>
 						<div className="flex flex-col gap-5">
-							<div className="text-3xl break-all">{lang['de'].articles.title}</div>
+							<div className="text-3xl">{lang['de'].articles.title}</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 gap-y-10">
 								{blogs.length != 0 && !loading && blogs.map((blog, index) => (
 									<Blog key={index} blog={blog} />

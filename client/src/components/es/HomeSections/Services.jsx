@@ -133,7 +133,7 @@ export default function OurServicesSection({ services }) {
                             />
                         </div> */}
                             {services.length != 0 && (
-                                <Link className="flex justify-center" href={"/pagina-web"}>
+                                <Link className="flex justify-center sm:justify-end" href={"/pagina-web"}>
                                     <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                                         <div>Otros servicios</div>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
