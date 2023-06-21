@@ -6,15 +6,15 @@
         "selected": "Ausgewählt:",
         "fullName": { 
             "label": "Vollständiger Name",
-            "placeholder": "Gib deinen vollständigen Namen ein"
+            "placeholder": "Ihr vollständiger Name"
         },
         "email": {
             "label": "Kontakt-E-Mail",
-            "placeholder": "Gib deine E-Mail-Adresse ein"
+            "placeholder": "Deine E-Mail"
         },
         "meeting": {
             "label": "Beschreibung des Meetings",
-            "placeholder": "Gib eine kurze Beschreibung oder Betreffzeile ein"
+            "placeholder": "Beschreibung oder Betreff"
         },
         "back": "Schließen",
         "next": "Folgend",
@@ -35,7 +35,7 @@
         },
         "meeting": {
             "label": "Meet description",
-            "placeholder": "Enter a brief description or subject"
+            "placeholder": "Brief description or subject"
         },
         "back": "Close",
         "next": "Next step",
