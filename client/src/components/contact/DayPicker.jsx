@@ -100,8 +100,8 @@ export default function DayPicker ({ setDate, setHour, date, hour }) {
     setHour("")
   }
 
-  return <div className="flex max-md:flex-col gap-x-6 gap-y-4">
-    <div className="h-[320px] w-full max-w-[400px] max-sm:mx-auto text-sm mx-auto">
+  return <div className="flex max-md:flex-col gap-x-6 gap-y-5">
+    <div className="w-full max-w-[400px] max-sm:mx-auto text-sm mx-auto">
       <div className={`${darkMode ? "bg-zinc-800": "bg-zinc-300"} rounded-md`}>
         <div className="px-3 py-1 flex items-center justify-between">
           <p>
@@ -150,7 +150,16 @@ export default function DayPicker ({ setDate, setHour, date, hour }) {
         ))}
       </div>
     </div>
-    <div className="flex flex-col gap-3 max-md:px-2 w-full md:max-w-[200px] mx-auto">
+    <div className="grid grid-cols-2 grid-rows-3 gap-3 w-full mx-auto">
+      <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md ${darkMode ? "hover:bg-zinc-800" : "hover:bg-zinc-300"} transition-colors duration-75 ease-out ${(isHourAvailable("08:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "08:00" && `${darkMode ? "bg-zinc-800" : "bg-zinc-400"}`}`}
+        onClick={() => setHour("08:00")}
+      >08:00</button>
+      <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md ${darkMode ? "hover:bg-zinc-800" : "hover:bg-zinc-300"} transition-colors duration-75 ease-out ${(isHourAvailable("10:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "10:00" && `${darkMode ? "bg-zinc-800" : "bg-zinc-400"}`}`}
+        onClick={() => setHour("10:00")}
+      >10:00</button>
+      <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md ${darkMode ? "hover:bg-zinc-800" : "hover:bg-zinc-300"} transition-colors duration-75 ease-out ${(isHourAvailable("12:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "12:00" && `${darkMode ? "bg-zinc-800" : "bg-zinc-400"}`}`}
+        onClick={() => setHour("12:00")}
+      >12:00</button>
       <button type="button" className={`border border-zinc-700 w-full py-3 rounded-md ${darkMode ? "hover:bg-zinc-800" : "hover:bg-zinc-300" } transition-colors duration-75 ease-out ${(isHourAvailable("14:00") && date) ? "" : "opacity-40 pointer-events-none"} ${hour === "14:00" && `${darkMode? "bg-zinc-800" : "bg-zinc-400"}`}`}
         onClick={() => setHour("14:00")}
       >14:00</button>

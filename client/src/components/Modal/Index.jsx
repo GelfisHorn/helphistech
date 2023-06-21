@@ -6,7 +6,7 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
 import { motion } from "framer-motion";
 
-export default function Modal({ handleClose, children }) {
+export default function Modal({ handleClose, children, classes }) {
 
     const { darkMode } = useContextProvider();
 
@@ -24,6 +24,7 @@ export default function Modal({ handleClose, children }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                style={classes}
             >
                 {children}
             </motion.div>

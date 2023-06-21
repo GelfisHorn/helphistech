@@ -7,6 +7,7 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import DayPicker from "@/components/contact/DayPicker";
 // Language
 import lang from '../../../lang/components/Modals/VideoCall/Index.json'
+import Modal from "@/components/Modal/Index";
 
 export default function VideoCallModal({ closeVideoCallForm, language }) {
 
@@ -62,17 +63,19 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
     }
 
     return (
-        <>
-            <motion.div exit={{ opacity: 0 }}
-                className="fixed top-0 h-full w-full z-50 flex items-center justify-center"
-            >
+        <Modal handleClose={closeVideoCallForm} classes={{ maxWidth: '40rem', width: '100%', maxHeight: '98vh' }}>
+            <motion.div exit={{ opacity: 0 }} className={"relative w-full"}>
+                <button onClick={closeVideoCallForm} className={"absolute z-10 -top-2 md:-top-4 -right-2 md:-right-6 hover:text-primary"}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
                 <motion.div
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: .3 }}
                     onClick={closeVideoCallForm}
-                    className="fixed top-0 h-full z-10 w-full bg-black/60 backdrop-blur-sm flex items-center justify-center"
                 ></motion.div>
-                <motion.div className={`z-20 max-sm:w-full max-sm:h-screen h-[560px] overflow-y-auto max-sm:py-5 max-sm:px-2 px-5 pt-6 w-modal rounded-lg ${darkMode ? "bg-zinc-900" : "bg-zinc-200"}`}
+                <motion.div
                     initial={{ x: -30 }}
                     animate={{ x: 0 }}
                     exit={{ x: -30 }}
@@ -93,46 +96,39 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                         </AnimatePresence>
                         {
                             formStep === FORM_STEPS.DATE_PICKER && (
-                                <>
-                                    <div className="flex flex-col gap-5 ">
+                                <div className={"flex flex-col gap-10"}>
+                                    <div className="flex flex-col gap-5 text-center sm:text-left">
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10">
+                                            <div className="mt-1 w-10 hidden sm:block">
                                                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>01</div>
                                             </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
                                                 <div className="flex flex-col">
-                                                    <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].title}</div>
+                                                    <div className={`text-xl px-7 ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].title}</div>
                                                     <div className="text-neutral-400">{lang[language].timezone}</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <DayPicker setDate={setDate} setHour={setHour} date={date} hour={hour} />
                                     </div>
-                                    <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center self-end py-6">
-                                        <button type="button" onClick={closeVideoCallForm} className={`btn-primary flex max-w-[240px] items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                                            </svg>
-                                            <span>{lang[language].back}</span>
-                                        </button>
-
+                                    <div className="flex items-center gap-4 text-white w-full justify-center">
                                         <button
                                             type="button"
                                             onClick={() => setFormStep(FORM_STEPS.CONTACT_INFO)}
                                             disabled={!date || !hour}
-                                            className={`btn-primary flex max-w-[240px] items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full disabled:pointer-events-none`}>
+                                            className={`w-full btn-primary flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-md uppercase text-center cursor-pointer disabled:pointer-events-none`}>
                                             <span>{lang[language].next}</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                                             </svg>
                                         </button>
                                     </div>
-                                </>
+                                </div>
                             )
                         }
                         {
                             formStep === FORM_STEPS.CONTACT_INFO && (
-                                <>
+                                <div className={"flex flex-col gap-10"}>
                                     <div className="flex flex-col gap-5">
                                         <button type="button" onClick={() => setFormStep(FORM_STEPS.DATE_PICKER)} className="py-1 px-3 pr-5 rounded-full border border-zinc-300 flex items-center w-fit">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -143,7 +139,7 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                         </button>
                                         <span className="text-sm text-zinc-500">{lang[language].selected} {date.toLocaleDateString()} - {hour}</span>
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10">
+                                            <div className="mt-1 w-10 hidden sm:block">
                                                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>02</div>
                                             </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
@@ -156,7 +152,7 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10">
+                                            <div className="mt-1 w-10 hidden sm:block">
                                                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>03</div>
                                             </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
@@ -169,7 +165,7 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10">
+                                            <div className="mt-1 w-10 hidden sm:block">
                                                 <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>04</div>
                                             </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
@@ -182,29 +178,21 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex gap-x-8 gap-y-4 text-white w-full flex-wrap justify-center py-6">
-                                        <button type={'button'} onClick={closeVideoCallForm} className={`btn-primary max-w-[240px] flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                                            </svg>
-                                            <span>{lang[language].back}</span>
-                                        </button>
-
-                                        <button type={'submit'} className={`btn-primary max-w-[240px] flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-full uppercase text-center cursor-pointer w-full`}>
+                                    <div className="flex items-center gap-4 text-white w-full justify-center">
+                                        <button type={'submit'} className={`btn-primary flex items-center justify-center gap-1 py-2 px-4 bg-primary hover:bg-primary-2 transition-colors rounded-md uppercase text-center cursor-pointer w-full`}>
                                             <span>{lang[language].submit}</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                                             </svg>
                                         </button>
-
                                     </div>
-                                </>
+                                </div>
                             )
                         }
 
                     </form>
                 </motion.div>
             </motion.div>
-        </>
+        </Modal>
     )
 }
