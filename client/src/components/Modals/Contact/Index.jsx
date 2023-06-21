@@ -150,12 +150,14 @@ export default function ContactModal({ blog, handleClose, language }) {
     }
 
     // Get windows size
-    const [windowSize, setWindowSize] = useState(getWindowSize());
+    const [windowSize, setWindowSize] = useState(1000);
 
     useEffect(() => {
         function handleWindowResize() {
             setWindowSize(getWindowSize());
         }
+
+        setWindowSize(getWindowSize());
 
         window.addEventListener('resize', handleWindowResize);
 

@@ -151,12 +151,14 @@ export default function ContactSection({ language }) {
     }
 
     // Get windows size
-    const [windowSize, setWindowSize] = useState(getWindowSize());
+    const [windowSize, setWindowSize] = useState(1000);
 
     useEffect(() => {
         function handleWindowResize() {
             setWindowSize(getWindowSize());
         }
+
+        setWindowSize(getWindowSize());
 
         window.addEventListener('resize', handleWindowResize);
 
@@ -201,11 +203,11 @@ export default function ContactSection({ language }) {
                                             </div>
                                             <div className={'flex flex-col'}>
                                                 {windowSize < 768 && service.mobile ? (
-                                                    service.mobile.map(text => (
-                                                        <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
+                                                    service.mobile.map((text, index) => (
+                                                        <div key={index} className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
                                                     ))
                                                 ) : (
-                                                    <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
+                                                    <div key={index} className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
                                                 )}
                                             </div>
                                             <Tick enabled={formOption == index ? true : false} />

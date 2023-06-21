@@ -8,6 +8,7 @@ import Layout from "@/components/Layout";
 import useContextProvider from "@/hooks/useAppContextProvider";
 import DayPicker from "@/components/contact/DayPicker";
 import Link from "next/link";
+import VideoCallModal from "@/components/Modals/VideoCall/Index";
 
 export default function ProjectQuote() {
 
@@ -46,7 +47,7 @@ export default function ProjectQuote() {
                         </motion.div>
                     </div>
                     <AnimatePresence>
-                        {showVideoCallForm && <VideocallModal closeVideoCallForm={() => setShowVideoCallForm(false)} />}
+                        {showVideoCallForm && <VideoCallModal closeVideoCallForm={() => setShowVideoCallForm(false)} language={'es'} />}
                     </AnimatePresence>
                 </div>
             </div>
@@ -55,7 +56,7 @@ export default function ProjectQuote() {
 }
 
 
-function VideocallModal({ closeVideoCallForm }) {
+/* function VideocallModal({ closeVideoCallForm }) {
     
     const router = useRouter();
 
@@ -254,7 +255,7 @@ function VideocallModal({ closeVideoCallForm }) {
             </motion.div>   
         </>
     )
-}
+} */
 
 function FormComponent() {
 
