@@ -133,7 +133,7 @@ export default function ServicesSection({ services }) {
                                 description={"Wir bieten laufende Wartung und Support für alle unsere Websites und Webanwendungen. Unser Team steht Ihnen zur Verfügung, um eventuell auftretende Probleme zu beheben und sicherzustellen, dass Ihre Website immer auf dem neuesten Stand ist und reibungslos funktioniert."}
                             />
                         </div> */}
-                            <div className={"flex justify-end"}>
+                            <div className={"flex justify-center sm:justify-end"}>
                                 <Link className="flex justify-center" href={"/internetseite"}>
                                     <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
                                         <div>Weitere Dienstleistungen</div>
