@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import ContactModal from "../Modals/Contact/Index";
 // Animations
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "../ArrowButton";
 
 export default function HeroSection() {
     
