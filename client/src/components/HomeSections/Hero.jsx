@@ -29,9 +29,8 @@ export default function HeroSection() {
 	}
 
     return (
-        <>
+        <div className={"hero-background"}>
 			<div className="relative overflow-hidden hidden sm:block" id="hero">
-				<Image className="absolute top-0 w-full h-full object-cover" src={`${darkMode ? '/home/hero/wave/dark/wave.webp' : '/home/hero/wave/light/wave.webp'}`} fill={true} alt="" priority />
 				<Navbar />
 				<section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{ height: 'calc(100vh - 5rem)', zIndex: '1' }}>
 					<div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
@@ -54,12 +53,12 @@ export default function HeroSection() {
 					</div>
 				</section>
 			</div>
-			<div className={"block sm:hidden"}>
+			<div className={"sm:hidden"}>
 				<Navbar />
-				<div className={"hero-background min-h-[36rem]"}>
+				<div className={"min-h-[36rem]"} style={{ height: 'calc(100vh - 5rem)' }}>
 					<div className={"flex flex-col items-center h-full"}>
 						<div className={"flex items-center h-full image-container"} style={{ width: '200px' }}>
-							<Image className={"image"} src={"/logo/dark/full-logo.webp"} fill />
+							<Image className={"image"} src={"/logo/dark/full-logo.webp"} fill alt={"HelphisTech Logo"} />
 						</div>
 						<div className={"flex flex-col gap-5 justify-end h-full p-8 relative"}>
 							<h1 className={"text-2xl xs:text-4xl text-center font-semibold text-white"}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
@@ -97,7 +96,7 @@ export default function HeroSection() {
 					<ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
 				)}
 			</AnimatePresence>
-		</>
+		</div>
     )
 }
 
