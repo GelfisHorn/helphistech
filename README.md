@@ -8,5 +8,5 @@ Our platform is easy to use and intuitive. Users can browse our different servic
 
 ## For more information
 
-[Front-end](https://github.com/MathiasB25/gelfishorn/tree/main/client)
-[Back-end](https://github.com/MathiasB25/gelfishorn/tree/main/server)
+[Front-end](https://github.com/GelfisHorn/helphistech/tree/dev/client)
+[Back-end](https://github.com/GelfisHorn/helphistech/tree/dev/server)
