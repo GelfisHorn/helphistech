@@ -20,11 +20,10 @@ export default function Modal({ handleClose, children, classes }) {
         <ModalBackdrop onClick={handleClose}>
             <motion.div
                 onClick={(e) => e.stopPropagation()}
-                className={`modal ${darkMode ? "bg-neutral-900" : "bg-white"} rounded-md`}
+                className={`modal ${darkMode ? "bg-neutral-900" : "bg-white"} rounded-md ${classes}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                style={classes}
             >
                 {children}
             </motion.div>

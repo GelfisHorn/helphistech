@@ -177,9 +177,9 @@ export default function ContactModal({ blog, handleClose, language }) {
     }
 
     return (
-        <Modal handleClose={handleClose} classes={{ maxWidth: '90vw', width: '100%', maxHeight: '98vh', background: darkMode ? "rgb(23 23 23)" : "#f1f4ff" }}>
+        <Modal handleClose={handleClose} classes={"p-5 m-0 md:m:10 h-screen md:h-auto md:max-w-[90vw]"}>
             <div className={"relative flex flex-col gap-5 sm:gap-10 w-full text-center"}>
-                <button onClick={handleClose} className={"absolute z-10 -top-3 md:-top-3 -right-3 md:-right-6 hover:text-primary"}>
+                <button onClick={handleClose} className={"absolute z-10 -top-3 md:-top-4 -right-3 md:-right-4 hover:text-primary"}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
