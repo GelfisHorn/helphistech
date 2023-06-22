@@ -63,7 +63,7 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
     }
 
     return (
-        <Modal handleClose={closeVideoCallForm} classes={"p-5 m-4"}>
+        <Modal handleClose={closeVideoCallForm} classes={"p-5 m-4 w-full max-w-[40rem]"}>
             <motion.div exit={{ opacity: 0 }} className={"relative w-full"}>
                 <button onClick={closeVideoCallForm} className={"absolute z-10 -top-2 md:-top-4 -right-2 md:-right-4 hover:text-primary"}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
