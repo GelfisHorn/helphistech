@@ -22,6 +22,13 @@ export default function HeroSection() {
 		setShowModal(!showModal);
 	}
 
+	const redirectToSection = (hash) => {
+		const element = document.getElementById(`${hash}`);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+
     return (
         <>
 			<div className="relative overflow-hidden hidden sm:block" id="hero">
@@ -47,45 +54,50 @@ export default function HeroSection() {
 						</motion.div>
 					</div>
 				</section>
-				<AnimatePresence>
-					{showModal && (
-						<ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
-					)}
-				</AnimatePresence>
 			</div>
 			<div className={"block sm:hidden"}>
 				<Navbar />
 				<div className={"hero-background min-h-[36rem]"}>
-					<div className={"flex flex-col gap-5 justify-end h-full p-8 z-10 relative"}>
-						<h1 className={"text-2xl xs:text-4xl text-center font-semibold"}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
-						<p className={"text-white text-center font-light"}>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto</p>
-						<div className={"grid grid-cols-2 gap-3 w-full"}>
-							<button className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-									<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-								</svg>
-								<span className={"font-light"}>Proceso</span>
-							</button>
-							<button className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
-								<span className={"font-light"}>Servicios</span>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-									<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-								</svg>
-							</button>
+					<div className={"flex flex-col items-center h-full"}>
+						<div className={"flex items-center h-full image-container"} style={{ width: '200px' }}>
+							<Image className={"image"} src={"/logo/dark/full-logo.webp"} fill />
 						</div>
-						<button className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-3 w-full bg-[#866bfef1]"}>
-							<span className={"font-light"}>Contactanos</span>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-								<path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-							</svg>
-						</button>
-						<div className={"flex items-center gap-2 gap-y-0 flex-wrap justify-center"}>
-							<p>¿Ya tienes un proyecto?</p>
-							<Link href={"/login"} className={"text-white underline"}>Inicia sesión</Link>
-						</div>						
+						<div className={"flex flex-col gap-5 justify-end h-full p-8 relative"}>
+							<h1 className={"text-2xl xs:text-4xl text-center font-semibold text-white"}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
+							<p className={"text-white text-center font-light"}>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto</p>
+							<div className={"grid grid-cols-2 gap-3 w-full"}>
+								<button onClick={() => redirectToSection("our-process")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+									</svg>
+									<span className={"font-light"}>Proceso</span>
+								</button>
+								<button onClick={() => redirectToSection("our-services")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
+									<span className={"font-light"}>Servicios</span>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+									</svg>
+								</button>
+							</div>
+							<button onClick={handleShowModal} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-3 w-full bg-[#866bfef1]"}>
+								<span className={"font-light"}>Contactanos</span>
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+								</svg>
+							</button>
+							<div className={"flex items-center gap-2 gap-y-0 flex-wrap justify-center"}>
+								<p className={"text-white"}>¿Ya tienes un proyecto?</p>
+								<Link href={"/login"} className={"text-white underline"}>Inicia sesión</Link>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+			<AnimatePresence>
+				{showModal && (
+					<ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
+				)}
+			</AnimatePresence>
 		</>
     )
 }
