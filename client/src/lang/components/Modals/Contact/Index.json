@@ -6,11 +6,15 @@
             "options": [
                 {
                     "id": "website_development",
-                    "text": "Website"
+                    "text": "Website",
+                    "icon": "fa-duotone fa-browser violet",
+                    "selected": "violet"
                 },
                 {
                     "id": "webapp_development",
                     "text": "Webanwendungen",
+                    "icon": "fa-duotone fa-window blue",
+                    "selected": "blue",
                     "mobile": [
                         "Web",
                         "anwendungen"
@@ -19,6 +23,8 @@
                 {
                     "id": "modify_website",
                     "text": "Verbesserung einer Webseite oder Anwendung",
+                    "icon": "fa-duotone fa-pen-to-square orange",
+                    "selected": "orange",
                     "mobile": [
                         "Verbesserung einer Webseite oder",
                         "Anwendung"
@@ -33,6 +39,8 @@
                     {
                         "id": "business_website",
                         "text": "Firmen-oder Geschäftswebseite",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Firmen-oder",
                             "Geschäfts",
@@ -42,6 +50,8 @@
                     {
                         "id": "portfolio_website",
                         "text": "Persönliche Webseite oder Portfolio",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Persönliche",
                             "Webseite",
@@ -51,11 +61,15 @@
                     },
                     {
                         "id": "online_shop",
-                        "text": "Online Shop"
+                        "text": "Online Shop",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "news_website",
                         "text": "Magazin-Webseite",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Magazin",
                             "Webseite"
@@ -73,7 +87,9 @@
                             "Statische",
                             "Web",
                             "anwendung"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "dynamic_webapp",
@@ -82,11 +98,15 @@
                             "Dynamische",
                             "Web",
                             "anwendung"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "shop_webapp",
-                        "text": "Online Shop"
+                        "text": "Online Shop",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "portal_webapp",
@@ -94,7 +114,9 @@
                         "mobile": [
                             "Webportal-",
                             "App"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "cms_webapp",
@@ -104,11 +126,15 @@
                             "anwendung",
                             "mit",
                             "CMS"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "ecommerce",
-                        "text": "E-Commerce"
+                        "text": "E-Commerce",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     }
                 ]
             },
@@ -129,6 +155,8 @@
                     {
                         "id": "premium_website",
                         "text": "Premium Webdesign",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Premium",
                             "Webdesign"
@@ -137,6 +165,8 @@
                     {
                         "id": "seo",
                         "text": "SEO-Optimierung",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "SEO",
                             "Optimierung"
@@ -145,6 +175,8 @@
                     {
                         "id": "responsive",
                         "text": "Responsives Design",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Responsives",
                             "Design"
@@ -153,6 +185,8 @@
                     {
                         "id": "contact_from",
                         "text": "Kontaktformulare",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Kontakt",
                             "formulare"
@@ -161,6 +195,8 @@
                     {
                         "id": "cms",
                         "text": "Inhaltsaktualisierung (CMS)",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Inhalts",
                             "aktualisierung"
@@ -169,6 +205,8 @@
                     {
                         "id": "socialmedia_integration",
                         "text": "Integration von sozialen Medien",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet",
                         "mobile": [
                             "Integration",
                             "von",
@@ -191,7 +229,9 @@
                         "mobile": [
                             "Responsives",
                             "Design"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "authentication",
@@ -199,7 +239,9 @@
                         "mobile": [
                             "Benutzer",
                             "registrierung"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "socialmedia_integration",
@@ -209,7 +251,9 @@
                             "von",
                             "sozialen",
                             "Medien"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "comments",
@@ -218,7 +262,9 @@
                             "Kommentare",
                             "und",
                             "Meinungen"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "seo",
@@ -226,7 +272,9 @@
                         "mobile": [
                             "SEO",
                             "Optimierung"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "multilanguage",
@@ -236,7 +284,9 @@
                             "und",
                             "Mehr-",
                             "sprachigkeit"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "other",
@@ -253,7 +303,9 @@
                         "mobile": [
                             "SEO",
                             "Optimierung"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "marketing",
@@ -261,7 +313,9 @@
                         "mobile": [
                             "Online",
                             "Marketing"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "premium_website",
@@ -269,7 +323,9 @@
                         "mobile": [
                             "Premium",
                             "Webdesign"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "user_experience",
@@ -277,7 +333,9 @@
                         "mobile": [
                             "Benutzer",
                             "erfahrung"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "website_speed",
@@ -286,7 +344,9 @@
                             "Website",
                             "Geschwi-",
                             "ndigkeit"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "cms",
@@ -295,7 +355,9 @@
                             "Inhalts",
                             "aktualisierung",
                             "(CMS)"
-                        ]
+                        ],
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "other",
@@ -356,15 +418,19 @@
             "options": [
                 {
                     "id": "website_development",
-                    "text": "Website development"
+                    "text": "Website development",
+                    "icon": "fa-duotone fa-browser violet",
+                    "selected": "violet"           
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Web application development"
+                    "text": "Web application development",
+                    "icon": "fa-duotone fa-window blue"
                 },
                 {
                     "id": "modify_website",
-                    "text": "Improving an existing website or application"
+                    "text": "Improving an existing website or application",
+                    "icon": "fa-duotone fa-pen-to-square orange"
                 }
             ]
         },
@@ -374,19 +440,27 @@
                 "options": [
                     {
                         "id": "business_website",
-                        "text": "Corporate or business website"
+                        "text": "Corporate or business website",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "portfolio_website",
-                        "text": "Personal website or portfolio"
+                        "text": "Personal website or portfolio",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "ecommerce_website",
-                        "text": "Ecommerce"
+                        "text": "Ecommerce",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "news_website",
-                        "text": "News or magazine website"
+                        "text": "News or magazine website",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     }
                 ]
             },
@@ -395,23 +469,33 @@
                 "options": [
                     {
                         "id": "static_webapp",
-                        "text": "Static web application"
+                        "text": "Static web application",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "dynamic_webapp",
-                        "text": "Dynamic web application"
+                        "text": "Dynamic web application",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "shop_webapp",
-                        "text": "Online Shop"
+                        "text": "Online Shop",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "portal_webapp",
-                        "text": "Web portal app"
+                        "text": "Web portal app",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "cms_webapp",
-                        "text": "Web application with content management system"
+                        "text": "Web application with content management system",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     }
                 ]
             },
@@ -431,27 +515,39 @@
                 "options": [
                     {
                         "id": "premium_website",
-                        "text": "Premium web design"
+                        "text": "Premium web design",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "seo",
-                        "text": "SEO Optimization"
+                        "text": "SEO Optimization",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "responsive",
-                        "text": "Responsive design"
+                        "text": "Responsive design",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "contact_from",
-                        "text": "Contact forms"
+                        "text": "Contact forms",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "cms",
-                        "text": "Content update (CMS)"
+                        "text": "Content update (CMS)",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "socialmedia_integration",
-                        "text": "Social media integration"
+                        "text": "Social media integration",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "other",
@@ -464,27 +560,39 @@
                 "options": [
                     {
                         "id": "reponsive",
-                        "text": "Responsive design"
+                        "text": "Responsive design",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "authentication",
-                        "text": "User authentication"
+                        "text": "User authentication",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "socialmedia_integration",
-                        "text": "Social media integration"
+                        "text": "Social media integration",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "comments",
-                        "text": "Comments and opinions"
+                        "text": "Comments and opinions",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "seo",
-                        "text": "SEO Optimization"
+                        "text": "SEO Optimization",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "multilanguage",
-                        "text": "Localization and Multilingualism"
+                        "text": "Localization and Multilingualism",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "other",
@@ -497,27 +605,39 @@
                 "options": [
                     {
                         "id": "seo",
-                        "text": "SEO Optimization"
+                        "text": "SEO Optimization",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "marketing",
-                        "text": "Online marketing"
+                        "text": "Online marketing",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "premium_website",
-                        "text": "Premium web design"
+                        "text": "Premium web design",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "user_experience",
-                        "text": "User experience"
+                        "text": "User experience",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "website_speed",
-                        "text": "Website speed"
+                        "text": "Website speed",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "cms",
-                        "text": "Content update (CMS)"
+                        "text": "Content update (CMS)",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     }
                 ]
             }
@@ -574,15 +694,21 @@
             "options": [
                 {
                     "id": "website_development",
-                    "text": "Desarrollo de sitios web"
+                    "text": "Desarrollo de sitios web",
+                    "icon": "fa-duotone fa-browser violet",
+                    "selected": "violet"
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Desarrollo de aplicaciones web"
+                    "text": "Desarrollo de aplicaciones web",
+                    "icon": "fa-duotone fa-window blue",
+                    "selected": "blue"
                 },
                 {
                     "id": "modify_website",
-                    "text": "Mejorar un sitio web o una aplicación existente"
+                    "text": "Mejorar un sitio web o una aplicación existente",
+                    "icon": "fa-duotone fa-pen-to-square orange",
+                    "selected": "orange"
                 }
             ]
         },
@@ -592,19 +718,27 @@
                 "options": [
                     {
                         "id": "business_website",
-                        "text": "Web corporativa o empresarial"
+                        "text": "Web corporativa o empresarial",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "portfolio_website",
-                        "text": "Sitio web personal o portafolio"
+                        "text": "Sitio web personal o portafolio",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "ecommerce_website",
-                        "text": "E-Commerce"
+                        "text": "E-Commerce",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "news_website",
-                        "text": "Sitio web de noticias o revistas"
+                        "text": "Sitio web de noticias o revistas",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     }
                 ]
             },
@@ -613,23 +747,33 @@
                 "options": [
                     {
                         "id": "static_webapp",
-                        "text": "Aplicación web estática"
+                        "text": "Aplicación web estática",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "dynamic_webapp",
-                        "text": "Aplicación web dinámica"
+                        "text": "Aplicación web dinámica",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "shop_webapp",
-                        "text": "Tienda online"
+                        "text": "Tienda online",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "portal_webapp",
-                        "text": "Aplicación de portal web"
+                        "text": "Aplicación de portal web",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "cms_webapp",
-                        "text": "Aplicación web con sistema de gestión de contenidos"
+                        "text": "Aplicación web con sistema de gestión de contenidos",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     }
                 ]
             },
@@ -649,27 +793,39 @@
                 "options": [
                     {
                         "id": "premium_website",
-                        "text": "Diseño web de alta calidad"
+                        "text": "Diseño web de alta calidad",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "seo",
-                        "text": "Optimización SEO"
+                        "text": "Optimización SEO",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "responsive",
-                        "text": "Responsive design"
+                        "text": "Responsive design",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "contact_from",
-                        "text": "Formularios de contacto"
+                        "text": "Formularios de contacto",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "cms",
-                        "text": "Actualización de contenido (CMS)"
+                        "text": "Actualización de contenido (CMS)",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "socialmedia_integration",
-                        "text": "Integración de redes sociales"
+                        "text": "Integración de redes sociales",
+                        "icon": "fa-duotone fa-browser violet",
+                        "selected": "violet"
                     },
                     {
                         "id": "other",
@@ -682,27 +838,39 @@
                 "options": [
                     {
                         "id": "reponsive",
-                        "text": "Responsive design"
+                        "text": "Responsive design",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "authentication",
-                        "text": "Autenticacion de usuario"
+                        "text": "Autenticacion de usuario",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "socialmedia_integration",
-                        "text": "Integración de redes sociales"
+                        "text": "Integración de redes sociales",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "comments",
-                        "text": "Comentarios y opiniones"
+                        "text": "Comentarios y opiniones",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "seo",
-                        "text": "Optimización SEO"
+                        "text": "Optimización SEO",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "multilanguage",
-                        "text": "Localización y Multilingüismo"
+                        "text": "Localización y Multilingüismo",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
                     },
                     {
                         "id": "other",
@@ -715,27 +883,39 @@
                 "options": [
                     {
                         "id": "seo",
-                        "text": "Optimización SEO"
+                        "text": "Optimización SEO",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "marketing",
-                        "text": "Marketing"
+                        "text": "Marketing",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "premium_website",
-                        "text": "Diseño web de alta calidad"
+                        "text": "Diseño web de alta calidad",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "user_experience",
-                        "text": "Experiencia de usuario"
+                        "text": "Experiencia de usuario",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "website_speed",
-                        "text": "Velocidad del sitio web"
+                        "text": "Velocidad del sitio web",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     },
                     {
                         "id": "cms",
-                        "text": "Actualización de contenido (CMS)"
+                        "text": "Actualización de contenido (CMS)",
+                        "icon": "fa-duotone fa-pen-to-square orange",
+                        "selected": "orange"
                     }
                 ]
             }

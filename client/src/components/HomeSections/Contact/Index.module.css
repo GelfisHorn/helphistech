@@ -17,20 +17,40 @@
     padding: 1.3rem;
     height: 100%;
     min-height: 10rem;
-    /* border: .15rem solid transparent; */
-    border-radius: .5rem;
+    border: .15rem solid transparent;
+    border-radius: 1rem;
     transition: all .2s;
-    word-break: break-all;
 }
 
-.serviceCard:hover {
+@media (max-width: 768px) {
+    .serviceCard {
+        padding: .7rem;
+    }
+}
+
+/* .serviceCard:hover {
     border-color: #866bfe;
     background: rgba(134, 107, 254, .1);
-}
+} */
 
 .cardSelected {
     border-color: #866bfe;
     background: rgba(134, 107, 254, .1);
+}
+
+.violet {
+    border-color: #866bfe;
+    background: #866bfe10;
+}
+
+.blue {
+    border-color: #2176D6;
+    background: #2176D610;
+}
+
+.orange {
+    border-color: #D6A221;
+    background: #D6A22110;
 }
 
 .button {
