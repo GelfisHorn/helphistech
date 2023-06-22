@@ -16,6 +16,7 @@ export default function Document() {
 			<Head>
 				<meta name="google-site-verification" content="N2tEqjmEa6dAKEmjfJlEc705r01Z1pjwGHm89yhYmYk" />
 				<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+				<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css" />
 				<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11148352893"></script>
 			</Head>
 			<body className='overflow-x-hidden'>
