@@ -95,32 +95,29 @@ export default function HeroSection() {
 			<div className={"sm:hidden"}>
 				<Navbar />
 				<div className={"min-h-[36rem]"} style={{ height: 'calc(100vh - 5rem)' }}>
-					<div className={"flex flex-col items-center h-full"}>
-						<div className={"flex items-center h-full image-container"} style={{ width: '200px' }}>
-							<Image className={"image"} src={"/logo/dark/full-logo.webp"} fill alt={"HelphisTech Logo"} />
-						</div>
-						<div className={"flex flex-col gap-5 justify-end h-full p-8 px-4 relative"}>
+					<div className={"flex flex-col justify-between h-full p-8 px-4 relative"}>
+						<div className={"flex flex-col gap-3 text-center text-white"}>
 							<h1 className={"text-2xl xs:text-4xl text-center font-semibold text-white"}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
-							<div className={"flex flex-col gap-3 text-center text-white"}>
-								<div className={"flex flex-col"}>
-									<p className={"font-light"}>Wir bieten Website-Design und -Entwicklung bis hin zur App-Programmierung, mit denen sich Ihr Unternehmen online von der Masse abhebt.</p>
-									<div className={"font-medium text-lg"}>Jetzt 10 % Rabatt sichern</div>
+							<div className={"flex flex-col"}>
+								<p className={"font-light"}>Wir bieten Website-Design und -Entwicklung bis hin zur App-Programmierung, mit denen sich Ihr Unternehmen online von der Masse abhebt.</p>
+								<div className={"font-medium text-lg"}>Jetzt 10 % Rabatt sichern</div>
+							</div>
+							<div className={"flex items-center justify-center gap-1 font-medium text-lg text-white"}>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.days}</div>
 								</div>
-								<div className={"flex items-center justify-center gap-1 font-medium text-lg text-white"}>
-									<div>
-										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.days}</div>
-									</div>
-									<div>
-										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.hours}</div>
-									</div>
-									<div>
-										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.minutes}</div>
-									</div>
-									<div>
-										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.seconds}</div>
-									</div>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.hours}</div>
+								</div>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.minutes}</div>
+								</div>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.seconds}</div>
 								</div>
 							</div>
+						</div>
+						<div className={"flex flex-col gap-5"}>
 							<div className={"flex flex-col gap-3 w-full"}>
 								<button onClick={() => redirectToSection("our-process")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
 									<span className={"font-light"}>Entwicklungsprocess</span>
