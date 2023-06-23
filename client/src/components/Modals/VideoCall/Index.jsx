@@ -63,9 +63,9 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
     }
 
     return (
-        <Modal handleClose={closeVideoCallForm} classes={{ maxWidth: '40rem', width: '100%', maxHeight: '98vh' }}>
+        <Modal handleClose={closeVideoCallForm} classes={"p-5 m-4"}>
             <motion.div exit={{ opacity: 0 }} className={"relative w-full"}>
-                <button onClick={closeVideoCallForm} className={"absolute z-10 -top-2 md:-top-4 -right-2 md:-right-6 hover:text-primary"}>
+                <button onClick={closeVideoCallForm} className={"absolute z-10 -top-2 md:-top-4 -right-2 md:-right-4 hover:text-primary"}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -99,12 +99,9 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                 <div className={"flex flex-col gap-10"}>
                                     <div className="flex flex-col gap-5 text-center sm:text-left">
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10 hidden sm:block">
-                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>01</div>
-                                            </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
                                                 <div className="flex flex-col">
-                                                    <div className={`text-xl px-7 ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].title}</div>
+                                                    <div className={`text-xl pr-7 ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].title}</div>
                                                     <div className="text-neutral-400">{lang[language].timezone}</div>
                                                 </div>
                                             </div>
@@ -139,9 +136,6 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                         </button>
                                         <span className="text-sm text-zinc-500">{lang[language].selected} {date.toLocaleDateString()} - {hour}</span>
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10 hidden sm:block">
-                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>02</div>
-                                            </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
                                                 <div className="flex flex-col">
                                                     <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].fullName.label}</div>
@@ -152,9 +146,6 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10 hidden sm:block">
-                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>03</div>
-                                            </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
                                                 <div className="flex flex-col">
                                                     <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].email.label}</div>
@@ -165,9 +156,6 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-2">
-                                            <div className="mt-1 w-10 hidden sm:block">
-                                                <div className={`px-2 rounded-full border text-sm font-medium ${darkMode ? 'text-neutral-600 border-neutral-600' : 'text-neutral-500 border-neutral-500'} w-9 text-center`}>04</div>
-                                            </div>
                                             <div className={'flex flex-col gap-3 w-full'}>
                                                 <div className="flex flex-col">
                                                     <div className={`text-xl font-light ${darkMode ? 'text-zinc-300' : 'text-black'}`}>{lang[language].meeting.label}</div>

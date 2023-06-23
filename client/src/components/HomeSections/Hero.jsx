@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // Nextjs
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import ContactModal from "../Modals/Contact/Index";
 // Animations
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "../ArrowButton";
 
 export default function HeroSection() {
     
@@ -16,41 +17,138 @@ export default function HeroSection() {
 	const { darkMode } = useContextProvider();
     
 	const [ showModal, setShowModal ] = useState(false);
+	const [ countDown, setCountDown ] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+	useEffect(() => {
+		getCountDown();
+	}, [])
 
 	const handleShowModal = () => {
 		setShowModal(!showModal);
 	}
 
+	const redirectToSection = (hash) => {
+		const element = document.getElementById(`${hash}`);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	}
+
+	const getCountDown = () => {
+		// Set the date we're counting down to
+		var countDownDate = new Date("Jul 3, 2023 11:00:00").getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function () {
+
+			// Get today's date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			if (days.toString().length == 1) days = `0${days}`
+			if (hours.toString().length == 1) hours = `0${hours}`
+			if (minutes.toString().length == 1) minutes = `0${minutes}`
+			if (seconds.toString().length == 1) seconds = `0${seconds}`
+
+			// Set result on countDown state
+			setCountDown({ days, hours, minutes, seconds });
+
+			// If the count down is finished, write some text
+			if (distance < 0) {
+				clearInterval(x);
+			}
+		}, 1000)
+	}
+
     return (
-        <div className="relative overflow-hidden" id="hero">
-            <Image className="absolute top-0 w-full h-full object-cover" src={`${darkMode ? '/home/hero/wave/dark/wave.webp' : '/home/hero/wave/light/wave.webp'}`} fill={true} alt="" priority />
-            <Navbar />
-            <section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{height: 'calc(100vh - 5rem)', zIndex: '1'}}>
-                <div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
-                    <div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[40rem]">
-                        <motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
-                            <h1 className={`${darkMode ? 'title-dark' : 'title-light'} text-3xl leading-[4rem] md:text-4xl md:leading-[4.5rem] lg:text-5xl lg:leading-[5rem] 2xl:text-6xl 2xl:leading-[5.5rem] font-bold break-words`}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
-                            <p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>Wir bieten maßgeschneiderte Lösungen, mit denen sich Ihr Unternehmen online von der Masse abhebt. Von Website-Design und -Entwicklung bis hin zur App-Programmierung und Suchmaschinenoptimierung kann unser Expertenteam Ihnen helfen, Ihre Online-Ziele zu erreichen.</p>
-                        </motion.div>
-                        <div className="flex justify-center xl:justify-start">
-							<button onClick={handleShowModal} className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">kostenloses Angebot erhalten</button>
-                            {/* <Link href={"/contact"}>
+        <div className={"hero-background"}>
+			<div className="relative overflow-hidden hidden sm:block" id="hero">
+				<Navbar />
+				<section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{ height: 'calc(100vh - 5rem)', zIndex: '1' }}>
+					<div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
+						<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[40rem]">
+							<motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
+								<h1 className={`${darkMode ? 'title-dark' : 'title-light'} text-3xl leading-[4rem] md:text-4xl md:leading-[4.5rem] lg:text-5xl lg:leading-[5rem] 2xl:text-6xl 2xl:leading-[5.5rem] font-bold break-words`}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
+								<p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>Wir bieten maßgeschneiderte Lösungen, mit denen sich Ihr Unternehmen online von der Masse abhebt. Von Website-Design und -Entwicklung bis hin zur App-Programmierung und Suchmaschinenoptimierung kann unser Expertenteam Ihnen helfen, Ihre Online-Ziele zu erreichen.</p>
+							</motion.div>
+							<div className="flex justify-center xl:justify-start">
+								<button onClick={handleShowModal} className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">kostenloses Angebot erhalten</button>
+								{/* <Link href={"/contact"}>
                             </Link> */}
-                        </div>
-                    </div>
-                    <motion.div initial={{ y: -60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }} viewport={{ once: true }} >
-                        <VideoPlayer 
-                            url={"https://res.cloudinary.com/drdor2wz7/video/upload/v1681591174/helphistech_eynapv.mp4"} 
-                        />
-                    </motion.div>
-                </div>
-            </section>
+							</div>
+						</div>
+						<motion.div initial={{ y: -60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }} viewport={{ once: true }} >
+							<VideoPlayer
+								url={"https://res.cloudinary.com/drdor2wz7/video/upload/v1681591174/helphistech_eynapv.mp4"}
+							/>
+						</motion.div>
+					</div>
+				</section>
+			</div>
+			<div className={"sm:hidden"}>
+				<Navbar />
+				<div className={"min-h-[36rem]"} style={{ height: 'calc(100vh - 5rem)' }}>
+					<div className={"flex flex-col justify-between h-full p-8 px-4 relative"}>
+						<div className={"flex flex-col gap-3 text-center text-white"}>
+							<h1 className={"text-2xl xs:text-4xl text-center font-semibold text-white"}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
+							<div className={"flex flex-col"}>
+								<p className={"font-light"}>Wir bieten Website-Design und -Entwicklung bis hin zur App-Programmierung, mit denen sich Ihr Unternehmen online von der Masse abhebt.</p>
+								<div className={"font-medium text-lg"}>Jetzt 10 % Rabatt sichern</div>
+							</div>
+							<div className={"flex items-center justify-center gap-1 font-medium text-lg text-white"}>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.days}</div>
+								</div>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.hours}</div>
+								</div>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.minutes}</div>
+								</div>
+								<div>
+									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.seconds}</div>
+								</div>
+							</div>
+						</div>
+						<div className={"flex flex-col gap-5"}>
+							<div className={"flex flex-col gap-3 w-full"}>
+								<button onClick={() => redirectToSection("our-process")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
+									<span className={"font-light"}>Entwicklungsprocess</span>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+									</svg>
+								</button>
+								<button onClick={() => redirectToSection("our-services")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
+									<span className={"font-light"}>Dienstleistungen</span>
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+										<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+									</svg>
+								</button>
+							</div>
+							<button onClick={handleShowModal} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-3 w-full bg-[#866bfef1]"}>
+								<span className={"font-light"}>Kostenloses Angebot erhalten</span>
+							</button>
+							<div className={"flex items-center gap-1 gap-y-0 flex-wrap justify-center"}>
+								<p className={"text-white"}>Haben Sie bereits ein Projekt?</p>
+								<Link href={"/login"} className={"text-white underline"}>Anmelden</Link>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<AnimatePresence>
 				{showModal && (
 					<ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
 				)}
 			</AnimatePresence>
-        </div>
+		</div>
     )
 }
 

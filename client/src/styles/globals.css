@@ -577,13 +577,12 @@ ul ol {
 }
 
 .modal {
-	max-height: 90vh;
+	/* max-height: 90vh; */
 	overflow-y: scroll;
-
 	/* width: clamp(50%, 700px, 90%);
 	height: min(50%, 300px); */
-	margin: 2rem;
-	padding: 1.5rem 2rem;
+	/* margin: 2rem; */
+	/* padding: 1.5rem 2rem; */
 	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
@@ -597,9 +596,56 @@ ul ol {
 	display: none;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
 	.modal {
 		margin: 1rem;
 		padding: 1rem;
 	}
+} */
+
+.violet {
+	color: #866bfe;
+}
+
+.blue {
+	color: #2176D6;
+}
+
+.orange {
+	color: #D6A221
+}
+
+.process-swiper {
+	padding: 0rem 0rem 4rem 0rem !important;
+}
+
+.swiper-pagination-bullet-active {
+	background: #866bfe !important;
+}
+
+.bullet-lightmode .swiper-pagination-bullet{
+	background: #000;
+}
+
+.bullet-darkmode .swiper-pagination-bullet {
+	background: #fff;
+}
+
+.hero-background {
+	position: relative;
+	width: 100%;
+	background-color: rgb(0, 0, 0);
+}
+
+.hero-background::before {
+	content: "";
+	background-image: url('/home/hero/mobile.webp');
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: .35;
 }

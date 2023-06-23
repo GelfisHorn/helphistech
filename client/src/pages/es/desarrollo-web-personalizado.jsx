@@ -64,36 +64,12 @@ export default function CustomWebDevelopment() {
                                 number={2}
                             />
                             <ProcessItem 
-                                title={"Desarrollo del backend"}
-                                description={`En esta fase, trabajamos en el desarrollo del backend del sitio web, que maneja las operaciones del servidor. Esto puede incluir la creación y el almacenamiento de contenido y la gestión de bases de datos. Trabajamos con Node.js en el back-end.`} 
+                                title={"Desarrollo"}
+                                description={`Luego de la aprobación exitosa del diseño, implementamos el desarrollo de su aplicación o sitio web en varios pasos. Primero, llevamos a cabo una planificación y un análisis cuidadosos para comprender completamente sus necesidades únicas. Luego diseñamos la arquitectura técnica y desarrollamos tanto el frontend como el backend de su aplicación. Para garantizar que todo funcione sin problemas, realizamos pruebas exhaustivas en un entorno de producción. Una vez que su aplicación se ejecuta correctamente en el entorno de producción, proporcionamos hosting y dominio gratuitos a su aplicación o sitio web durante 12 meses.`} 
                                 hash={"backend"}
                                 image={"/process/backend.webp"}
                                 alt={"Backend"}
                                 number={3}
-                            />
-                            <ProcessItem 
-                                title={"Desarrollo del frontend"}
-                                description={"Creamos la interfaz de usuario del sitio web utilizando tecnologías frontend modernas como React, Angular, Vue, Astro y Qwik. También nos aseguramos de que el sitio web sea responsivo, lo que significa que se verá bien en cualquier dispositivo, desde un teléfono inteligente hasta un ordenador de escritorio. Aseguramos la calidad del código y la compatibilidad con los principales navegadores."} 
-                                hash={"frontend"}
-                                image={"/process/frontend.webp"}
-                                alt={"Frontend"}
-                                number={4}
-                            />
-                            <ProcessItem 
-                                title={"Optimización del SEO"}
-                                description={"Una vez que el sitio web esté completo, nos enfocamos en optimizarlo para los motores de búsqueda. Realizamos una investigación de palabras clave para identificar las palabras clave más relevantes para tu sitio web y las incorporamos en el contenido y la estructura del sitio web. Además, trabajamos en la optimización técnica del sitio web para mejorar su clasificación en los motores de búsqueda."} 
-                                hash={"seo"}
-                                image={"/process/seo.webp"}
-                                alt={"SEO"}
-                                number={5}
-                            />
-                            <ProcessItem 
-                                title={"Marketing"}
-                                description={'Ofrecemos servicios de marketing de contenidos, que incluyen la creación de un blog, la gestión de redes sociales y el desarrollo de campañas de email marketing. Creamos contenido relevante y de alta calidad que atrae a tu audiencia objetivo y les proporciona valor. Trabajamos en conjunto contigo para definir la estrategia de contenido más efectiva para tu negocio o proyecto.'} 
-                                hash={"marketing"}
-                                image={"/process/marketing.webp"}
-                                alt={"Marketing"}
-                                number={6}
                             />
                             <ProcessItem 
                                 title={"Mantenimiento"}
@@ -102,7 +78,7 @@ export default function CustomWebDevelopment() {
                                 last={true}
                                 image={"/process/maintenance.webp"}
                                 alt={"Maintenance"}
-                                number={7}
+                                number={4}
                             />
                         </div>
                         <motion.div  initial={{ x:40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: .6 }} viewport={{ once: true }}>

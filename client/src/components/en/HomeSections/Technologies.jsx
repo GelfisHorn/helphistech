@@ -36,7 +36,7 @@ export default function TechnologiesSection() {
                             <TechnologyImage src={"/technologies/angular.webp"} alt={"Angular technology image"} />
                             <TechnologyImage src={"/technologies/vuejs.webp"} alt={"Vue technology image"} />
                             <TechnologyImage src={"/technologies/astro.webp"} alt={"Astro technology image"} darkmode={"/technologies/darkmode/astro.webp"} />
-                            <TechnologyImage src={"/technologies/tailwind.webp"} alt={"Tailwind technology image"} />
+                            <TechnologyImage src={"/technologies/tailwind.webp"} alt={"Tailwind technology image"} darkmode={"/technologies/darkmode/tailwind.webp"} />
                             <TechnologyImage src={"/technologies/nodejs.webp"} alt={"Node js technology image"} darkmode={"/technologies/darkmode/nodejs.webp"} />
                             <TechnologyImage src={"/technologies/mongodb.webp"} alt={"MongoDB technology image"} />
                             <TechnologyImage src={"/technologies/mysql.webp"} alt={"MySQL technology image"} />
