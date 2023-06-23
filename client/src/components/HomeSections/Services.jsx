@@ -11,7 +11,9 @@ import VideoCallModal from "../Modals/VideoCall/Index";
 
 export default function ServicesSection({ services }) {
     
-    const [ servicesMobile, setServicesMobile ] = useState([]);
+    const [servicesDesktop, setServicesDesktop] = useState([]);
+    const [servicesMobile, setServicesMobile] = useState([]);
+    const [showedMoreServices, setShowedMoreServices] = useState(false);
 
     // Get functions and variables from context
 	const { darkMode } = useContextProvider();
@@ -23,8 +25,9 @@ export default function ServicesSection({ services }) {
             setWindowSize(getWindowSize());
         }
 
+        setServicesDesktop(services.slice(0, 6));
         setServicesMobile(services.slice(0, 3));
-
+        
         setWindowSize(getWindowSize());
 
         window.addEventListener('resize', handleWindowResize);
@@ -40,6 +43,32 @@ export default function ServicesSection({ services }) {
             return innerWidth;
         }
         return 1000
+    }
+
+    function showMoreServices() {
+        setShowedMoreServices(true);
+        if(servicesMobile.length === 9) {
+            return;
+        }
+        if (servicesMobile.length == 3) {
+            setServicesMobile(services.slice(0, 6));
+            return;
+        }
+
+        if (servicesMobile.length == 6) setServicesMobile(services.slice(0, 9));
+    }
+
+    function showLessServices() {
+        setShowedMoreServices(false);
+        if (servicesMobile.length == 3) {
+            return;
+        }
+        if (servicesMobile.length == 6) {
+            setServicesMobile(services.slice(0, 3));
+            return;
+        }
+
+        if (servicesMobile.length == 9) setServicesMobile(services.slice(0, 6));
     }
 
     const slashMotion = {
@@ -88,24 +117,36 @@ export default function ServicesSection({ services }) {
                                 </div>
                             </div>
                         </motion.div>
-                        <div className={"flex flex-col gap-8"}>
+                        <div className={"flex flex-col gap-5"}>
+                            <div className={"flex justify-end"}>
+                                <Link href={"/internetseite"}>
+                                    <div onClick={showMoreServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
+                                        <div>Alles sehen</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                        </svg>
+                                    </div>
+                                </Link>
+                            </div>
                             <div className="flex flex-col">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 gap-y-10">
-                                    {services && services.length != 0 && windowSize > 768 && services.map((service, index) => (
-                                        <Service key={index} service={service} />
-                                    ))}
-                                    {services && services.length != 0 && windowSize < 768 && servicesMobile.map((service, index) => (
-                                        <Service key={index} service={service} />
-                                    ))}
+                                    <AnimatePresence>
+                                        {servicesDesktop && servicesDesktop.length != 0 && windowSize > 768 && servicesDesktop.map((service, index) => (
+                                            <Service key={index} service={service} />
+                                        ))}
+                                        {servicesMobile && servicesMobile.length != 0 && windowSize < 768 && servicesMobile.map((service, index) => (
+                                            <Service key={index} service={service} />
+                                        ))}
+                                    </AnimatePresence>
                                 </div>
                                 {(!services || services.length == 0) && (
                                     <div className={`flex ${darkMode ? 'description-dark' : 'description-light'}`}>
                                         <div className={"flex flex-col gap-2"}>
-                                            <p>Hubo un problema al obtener los servicios.</p>
+                                            <p>Beim Abrufen der Dienste ist ein Problem aufgetreten.</p>
                                             <div>
-                                                <p>¿Quieres ver qué tenemos para ofrecerte?</p>
+                                                <p>Möchten Sie sehen, was wir Ihnen zu bieten haben?</p>
                                                 <Link href={"/internetseite"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
-                                                    <span>Ir a servicios</span>
+                                                    <span>Gehen Sie zu Dienstleistungen</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                                                     </svg>
@@ -133,15 +174,41 @@ export default function ServicesSection({ services }) {
                                 description={"Wir bieten laufende Wartung und Support für alle unsere Websites und Webanwendungen. Unser Team steht Ihnen zur Verfügung, um eventuell auftretende Probleme zu beheben und sicherzustellen, dass Ihre Website immer auf dem neuesten Stand ist und reibungslos funktioniert."}
                             />
                         </div> */}
-                            <div className={"flex justify-center sm:justify-end"}>
-                                <Link className="flex justify-center" href={"/internetseite"}>
-                                    <div className="flex items-center gap-2 text-primary hover:text-primary-2 hover:underline transition-colors">
-                                        <div>Weitere Dienstleistungen</div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            <div className={"hidden sm:flex justify-end"}>
+                                {servicesDesktop.length < services.length && (
+                                    <button onClick={showMoreServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
+                                        <div>Weitere Dienstleistungen ansehen</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                         </svg>
-                                    </div>
-                                </Link>
+                                    </button>
+                                )}
+                                {(servicesDesktop.length == services.length && showedMoreServices) && (
+                                    <button onClick={showLessServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
+                                        <div>Weniger Dienste anzeigen</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 rotate-180">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                )}
+                            </div>
+                            <div className={"flex sm:hidden justify-center"}>
+                                {servicesMobile.length < services.length && (
+                                    <button onClick={showMoreServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
+                                        <div>Weitere Dienstleistungen ansehen</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                )}
+                                {servicesMobile.length == services.length && (
+                                    <button onClick={showLessServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
+                                        <div>Weniger Dienste anzeigen</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 rotate-180">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                )}
                             </div>
                         </div>
                         <div className={'flex justify-center'}>
@@ -168,21 +235,27 @@ function Service({ service }) {
     const { url, title, subtitle, preview } = service.attributes || {};
 
     return (
-        <Link href={`/internetseite/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
-            <div className="image-container aspect-video">
-                <Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
-            </div>
-            {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
-            <div className="flex items-center justify-between gap-2">
-                <div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
-                <div className="w-5 h-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                    </svg>
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <Link href={`/internetseite/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+                <div className="image-container aspect-video">
+                    <Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
                 </div>
-            </div>
-            <div className={`${darkMode ? 'description-dark' : 'description-light'} overflow-hidden text-ellipsis line-clamp-3`}>{subtitle}</div>
-        </Link>
+                {/* <div className={`aspect-[3/2] ${darkMode ? 'bg-neutral-900' : 'bg-zinc-200'} transition-colors`}></div> */}
+                <div className="flex items-center justify-between gap-2">
+                    <div className="text-xl overflow-hidden text-ellipsis whitespace-nowrap">{title}</div>
+                    <div className="w-5 h-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                    </div>
+                </div>
+                <div className={`${darkMode ? 'description-dark' : 'description-light'} overflow-hidden text-ellipsis line-clamp-3`}>{subtitle}</div>
+            </Link>
+        </motion.div>
     )
 }
 
