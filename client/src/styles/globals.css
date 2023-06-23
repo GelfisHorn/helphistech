@@ -615,6 +615,22 @@ ul ol {
 	color: #D6A221
 }
 
+.process-swiper {
+	padding: 0rem 0rem 4rem 0rem !important;
+}
+
+.swiper-pagination-bullet-active {
+	background: #866bfe !important;
+}
+
+.bullet-lightmode .swiper-pagination-bullet{
+	background: #000;
+}
+
+.bullet-darkmode .swiper-pagination-bullet {
+	background: #fff;
+}
+
 .hero-background {
 	position: relative;
 	width: 100%;

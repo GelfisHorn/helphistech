@@ -64,41 +64,17 @@ export default function CustomWebDevelopment() {
                                 number={2}
                             />
                             <ProcessItem 
-                                title={"Back-end Development"}
-                                description={`In this phase, we work on the development of the backend of the website, which handles the server operations. This may include creating and storing content and managing databases. We work with Node.js in the back-end.`} 
+                                title={"Development"}
+                                description={`After the successful approval of the design, we implement the development of your application or website in several steps. First, we conduct careful planning and analysis to fully understand your unique needs. We then design the technical architecture and develop both the frontend and the backend of your application. To ensure everything works smoothly, we conduct extensive testing in a production environment. Once your application is running successfully in the production environment, we provide your application or website with free hosting and domain for 12 months.`} 
                                 hash={"backend"}
                                 image={"/process/backend.webp"}
                                 alt={"Backend"}
                                 number={3}
                             />
                             <ProcessItem 
-                                title={"Front-end Development"}
-                                description={"We build the website UI using modern frontend technologies like React, Angular, Vue, Astro and Qwik. We also make sure that the website is responsive, which means that it will look good on any device, from a smartphone to a desktop computer. We ensure the quality of the code and the compatibility with the main browsers."} 
-                                hash={"frontend"}
-                                image={"/process/frontend.webp"}
-                                alt={"Frontend"}
-                                number={4}
-                            />
-                            <ProcessItem 
-                                title={"SEO Optimization"}
-                                description={"Once the website is complete, we focus on optimizing it for search engines. We carry out keyword research to identify the most relevant keywords for your website and incorporate them into the content and structure of the website. In addition, we work on the technical optimization of the website to improve its ranking in search engines."} 
-                                hash={"seo"}
-                                image={"/process/seo.webp"}
-                                alt={"SEO"}
-                                number={5}
-                            />
-                            <ProcessItem 
-                                title={"Marketing"}
-                                description={'We offer content marketing services, which include the creation of a blog, the management of social networks and the development of email marketing campaigns. We create high-quality, relevant content that engages your target audience and provides them with value. We work together with you to define the most effective content strategy for your business or project.'} 
-                                hash={"marketing"}
-                                image={"/process/marketing.webp"}
-                                alt={"Marketing"}
-                                number={6}
-                            />
-                            <ProcessItem 
                                 title={"Maintenance"}
                                 description={"Website maintenance is crucial to ensure its security and efficiency. We make regular software and security updates to keep the website up-to-date and protected against online threats. We also offer technical support services to help you with any problems you may have with the website."} 
-                                number={7}
+                                number={4}
                                 hash={"maintenance"}
                                 image={"/process/maintenance.webp"}
                                 alt={"Maintenance"}

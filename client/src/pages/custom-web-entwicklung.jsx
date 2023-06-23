@@ -64,41 +64,17 @@ export default function CustomWebDevelopment() {
                                 number={2}
                             />
                             <ProcessItem 
-                                title={"Backend-Entwicklung"}
-                                description={`In dieser Phase arbeiten wir an der Entwicklung des Backends der Website, das den Serverbetrieb übernimmt. Dies kann das Erstellen und Speichern von Inhalten und das Verwalten von Datenbanken umfassen. Im Backend arbeiten wir mit Node.js.`} 
+                                title={"Entwicklung"}
+                                description={`Nach der erfolgreichen Freigabe des Designs setzen wir die Entwicklung Ihrer Anwendung oder Website in mehreren Schritten um. Zunächst führen wir eine sorgfältige Planung und Analyse durch, um Ihre individuellen Anforderungen vollständig zu verstehen. Anschließend entwerfen wir die technische Architektur und entwickeln sowohl das Frontend als auch das Backend Ihrer Anwendung. Um sicherzustellen, dass alles reibungslos funktioniert, führen wir umfangreiche Tests in einer Produktionsumgebung durch. Sobald Ihre Anwendung in der Produktionsumgebung erfolgreich läuft, stellen wir Ihre Anwendung oder Webseite mit kostenlosem Hosting und Domain für 12 Monate bereit.`} 
                                 hash={"backend"}
                                 image={"/process/backend.webp"}
                                 alt={"Backend"}
                                 number={3}
                             />
                             <ProcessItem 
-                                title={"Frontend-Entwicklung"}
-                                description={"Wir erstellen die Benutzeroberfläche der Website mit modernen Frontend-Technologien wie React, Angular, Vue, Astro und Qwik. Wir stellen auch sicher, dass die Website reaktionsschnell ist, was bedeutet, dass sie auf jedem Gerät gut aussieht, vom Smartphone bis zum Desktop-Computer. Wir stellen die Qualität des Codes und die Kompatibilität mit den wichtigsten Browsern sicher."} 
-                                hash={"frontend"}
-                                image={"/process/frontend.webp"}
-                                alt={"Frontend"}
-                                number={4}
-                            />
-                            <ProcessItem 
-                                title={"SEO-Optimierung"}
-                                description={"Ist die Website fertig, konzentrieren wir uns auf die Optimierung für Suchmaschinen. Wir führen eine Keyword-Recherche durch, um die relevantesten Schlüsselwörter für Ihre Website zu identifizieren und sie in den Inhalt und die Struktur der Website zu integrieren. Darüber hinaus arbeiten wir an der technischen Optimierung der Website, um das Ranking in Suchmaschinen zu verbessern."} 
-                                hash={"seo"}
-                                image={"/process/seo.webp"}
-                                alt={"SEO"}
-                                number={5}
-                            />
-                            <ProcessItem 
-                                title={"Marketing"}
-                                description={'Wir bieten Content-Marketing-Dienstleistungen an, die die Erstellung eines Blogs, die Verwaltung sozialer Netzwerke und die Entwicklung von E-Mail-Marketingkampagnen umfassen. Wir erstellen hochwertige, relevante Inhalte, die Ihre Zielgruppe ansprechen und ihr einen Mehrwert bieten. Wir arbeiten mit Ihnen zusammen, um die effektivste Content-Strategie für Ihr Unternehmen oder Projekt zu definieren.'} 
-                                hash={"marketing"}
-                                image={"/process/marketing.webp"}
-                                alt={"Marketing"}
-                                number={6}
-                            />
-                            <ProcessItem 
                                 title={"Wartung"}
                                 description={"Die Wartung der Website ist entscheidend, um ihre Sicherheit und Effizienz zu gewährleisten. Wir führen regelmäßig Software- und Sicherheitsupdates durch, um die Website auf dem neuesten Stand zu halten und vor Online-Bedrohungen zu schützen. Wir bieten auch technischen Support an, um Ihnen bei Problemen mit der Website zu helfen."} 
-                                number={7}
+                                number={4}
                                 hash={"maintenance"}
                                 image={"/process/maintenance.webp"}
                                 alt={"Maintenance"}
