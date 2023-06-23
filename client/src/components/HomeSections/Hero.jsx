@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // Nextjs
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +17,11 @@ export default function HeroSection() {
 	const { darkMode } = useContextProvider();
     
 	const [ showModal, setShowModal ] = useState(false);
+	const [ countDown, setCountDown ] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+	useEffect(() => {
+		getCountDown();
+	}, [])
 
 	const handleShowModal = () => {
 		setShowModal(!showModal);
@@ -27,6 +32,39 @@ export default function HeroSection() {
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth' });
 		}
+	}
+
+	const getCountDown = () => {
+		// Set the date we're counting down to
+		var countDownDate = new Date("Jul 3, 2023 11:00:00").getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function () {
+
+			// Get today's date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now and the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			if (days.toString().length == 1) days = `0${days}`
+			if (hours.toString().length == 1) hours = `0${hours}`
+			if (minutes.toString().length == 1) minutes = `0${minutes}`
+			if (seconds.toString().length == 1) seconds = `0${seconds}`
+
+			// Set result on countDown state
+			setCountDown({ days, hours, minutes, seconds });
+
+			// If the count down is finished, write some text
+			if (distance < 0) {
+				clearInterval(x);
+			}
+		}, 1000)
 	}
 
     return (
@@ -61,32 +99,48 @@ export default function HeroSection() {
 						<div className={"flex items-center h-full image-container"} style={{ width: '200px' }}>
 							<Image className={"image"} src={"/logo/dark/full-logo.webp"} fill alt={"HelphisTech Logo"} />
 						</div>
-						<div className={"flex flex-col gap-5 justify-end h-full p-8 relative"}>
+						<div className={"flex flex-col gap-5 justify-end h-full p-8 px-4 relative"}>
 							<h1 className={"text-2xl xs:text-4xl text-center font-semibold text-white"}>Maßgeschneiderte Webentwicklung für Ihr Unternehmen</h1>
-							<p className={"text-white text-center font-light"}>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto</p>
-							<div className={"grid grid-cols-2 gap-3 w-full"}>
+							<div className={"flex flex-col gap-3 text-center text-white"}>
+								<div className={"flex flex-col"}>
+									<p className={"font-light"}>Wir bieten Website-Design und -Entwicklung bis hin zur App-Programmierung, mit denen sich Ihr Unternehmen online von der Masse abhebt.</p>
+									<div className={"font-medium text-lg"}>Jetzt 10 % Rabatt sichern</div>
+								</div>
+								<div className={"flex items-center justify-center gap-1 font-medium text-lg text-white"}>
+									<div>
+										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.days}</div>
+									</div>
+									<div>
+										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.hours}</div>
+									</div>
+									<div>
+										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.minutes}</div>
+									</div>
+									<div>
+										<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.seconds}</div>
+									</div>
+								</div>
+							</div>
+							<div className={"flex flex-col gap-3 w-full"}>
 								<button onClick={() => redirectToSection("our-process")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
+									<span className={"font-light"}>Entwicklungsprocess</span>
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
 									</svg>
-									<span className={"font-light"}>Proceso</span>
 								</button>
 								<button onClick={() => redirectToSection("our-services")} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-2 w-full border-2 border-white"}>
-									<span className={"font-light"}>Servicios</span>
+									<span className={"font-light"}>Dienstleistungen</span>
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
 									</svg>
 								</button>
 							</div>
 							<button onClick={handleShowModal} className={"flex items-center gap-1 justify-center text-lg text-white rounded-full py-3 w-full bg-[#866bfef1]"}>
-								<span className={"font-light"}>Contactanos</span>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-									<path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-								</svg>
+								<span className={"font-light"}>Kostenloses Angebot erhalten</span>
 							</button>
-							<div className={"flex items-center gap-2 gap-y-0 flex-wrap justify-center"}>
-								<p className={"text-white"}>¿Ya tienes un proyecto?</p>
-								<Link href={"/login"} className={"text-white underline"}>Inicia sesión</Link>
+							<div className={"flex items-center gap-1 gap-y-0 flex-wrap justify-center"}>
+								<p className={"text-white"}>Haben Sie bereits ein Projekt?</p>
+								<Link href={"/login"} className={"text-white underline"}>Anmelden</Link>
 							</div>
 						</div>
 					</div>
