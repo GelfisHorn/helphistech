@@ -60,14 +60,22 @@ export default function DayPicker ({ setDate, setHour, date, hour }) {
   },[])
 
   const isDaySelectable = (day) => {
+    let isSunday = false;
+
     if(!day) {
-      return false
+      return !day
     }
-    if(currentDate.month !== selectedDate.month){
-      return true
+
+    const totalDays = new Date(selectedDate.year, selectedDate.month - 1, day);
+    if (totalDays.getDay() != 0) { //if Sunday
+      isSunday = totalDays.getDay() != 0;
     }
-    if(currentDate.day + 4 <= day){
-      return true
+
+    if (currentDate.month !== selectedDate.month && isSunday) {
+      return currentDate.month !== selectedDate.month && isSunday
+    }
+    if (currentDate.day < day && isSunday) {
+      return currentDate.day < day && isSunday
     }
     return false
   }
