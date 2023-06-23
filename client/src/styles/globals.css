@@ -629,4 +629,22 @@ ul ol {
 
 .bullet-darkmode .swiper-pagination-bullet {
 	background: #fff;
+
+.hero-background {
+	position: relative;
+	width: 100%;
+	background-color: rgb(0, 0, 0);
+}
+
+.hero-background::before {
+	content: "";
+	background-image: url('/home/hero/mobile.webp');
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: .5;
 }
