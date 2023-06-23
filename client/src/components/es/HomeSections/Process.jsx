@@ -79,10 +79,6 @@ export default function ProcessSection() {
                                     <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>5.</div>
                                     <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
                                 </div>
-                                <div className="flex items-center gap-10">
-                                    <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>6.</div>
-                                    <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
-                                </div>
                             </div>
                             <div className="grid grid-cols-3 gap-20">
                                 <ProcessItem 
@@ -90,28 +86,9 @@ export default function ProcessSection() {
                                     description={"El frontend es la parte del sitio web que los usuarios ven y con la que interactúan. Aquí es donde creamos la interfaz de usuario del sitio web utilizando HTML, CSS y JavaScript. Nos aseguramos de que el sitio web sea responsivo y se vea bien en cualquier dispositivo."} 
                                     hash={"frontend"}
                                 />
-                                <ProcessItem 
-                                    title={"Optimización del SEO"}
-                                    description={"Para ayudar a las personas a encontrar tu sitio web, lo optimizamos para los motores de búsqueda. Hacemos investigación de palabras clave para asegurarnos de que tu sitio web esté optimizado para los términos de búsqueda que más le importan a tu negocio o proyecto."} 
-                                    hash={"seo"}
-                                />
-                                <ProcessItem 
-                                    title={"Marketing"}
-                                    description={'Si deseas que más personas visiten tu sitio web, podemos ayudarte con el marketing en línea. Esto puede incluir publicidad en Google Ads y meta ads, así como marketing en redes sociales.'} 
-                                    hash={"marketing"}
-                                />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-5">
-                            <div className="grid grid-cols-1 gap-20">
-                                <div className="flex items-center gap-10">
-                                    <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>7.</div>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-1 gap-20">
-                                <ProcessItem 
+                                <ProcessItem
                                     title={"Mantenimiento"}
-                                    description={"Una vez que tu sitio web está en línea, seguimos trabajando contigo para mantenerlo actualizado y optimizado. Realizamos actualizaciones regulares de seguridad y software para asegurarnos de que tu sitio web esté protegido contra amenazas en línea y siga siendo fácil de usar."} 
+                                    description={"Una vez que tu sitio web está en línea, seguimos trabajando contigo para mantenerlo actualizado y optimizado. Realizamos actualizaciones regulares de seguridad y software para asegurarnos de que tu sitio web esté protegido contra amenazas en línea y siga siendo fácil de usar."}
                                     hash={"maintenance"}
                                 />
                             </div>

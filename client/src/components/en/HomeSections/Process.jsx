@@ -79,10 +79,6 @@ export default function ProcessSection() {
                                     <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>5.</div>
                                     <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
                                 </div>
-                                <div className="flex items-center gap-10">
-                                    <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>6.</div>
-                                    <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
-                                </div>
                             </div>
                             <div className="grid grid-cols-3 gap-20">
                                 <ProcessItem 
@@ -90,28 +86,9 @@ export default function ProcessSection() {
                                     description={"The frontend is the part of the website that users see and interact with. This is where we create the website's user interface using HTML, CSS, and JavaScript. We make sure that the website is responsive and looks good on any device."} 
                                     hash={"frontend"}
                                 />
-                                <ProcessItem 
-                                    title={"SEO optimization"}
-                                    description={"To help people find your website, we optimize it for search engines. We do keyword research to make sure your website is optimized for the search terms that matter most to your business or project."} 
-                                    hash={"seo"}
-                                />
-                                <ProcessItem 
-                                    title={"Marketing"}
-                                    description={'If you want more people to visit your website, we can help you with online marketing. This may include advertising on Google Ads and meta ads, as well as social media marketing.'} 
-                                    hash={"marketing"}
-                                />
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-5">
-                            <div className="grid grid-cols-1 gap-20">
-                                <div className="flex items-center gap-10">
-                                    <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>7.</div>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-1 gap-20">
-                                <ProcessItem 
+                                <ProcessItem
                                     title={"Maintenance"}
-                                    description={"Once your website is online, we continue to work with you to keep it updated and optimized. We make regular security and software updates to make sure your website is protected from online threats and remains easy to use."} 
+                                    description={"Once your website is online, we continue to work with you to keep it updated and optimized. We make regular security and software updates to make sure your website is protected from online threats and remains easy to use."}
                                     hash={"maintenance"}
                                 />
                             </div>
