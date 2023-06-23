@@ -63,6 +63,12 @@ export default function LoginForm() {
 
     return (
         <form className="flex flex-col gap-8" onSubmit={handleSignIn}>
+            <button className={`sm:hidden flex items-center w-fit text-white bg-primary hover:bg-primary-2 transition-colors py-1 px-4 rounded-full`} onClick={() => router.back()}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                </svg>
+                <span>Zurück</span>
+            </button>
             <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
                     <div className="text-3xl text-light-main">Willkommen zurück!</div>

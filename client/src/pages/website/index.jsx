@@ -94,7 +94,7 @@ export default function ServicesPage({ categories }) {
 								<h1 className="w-full">{lang['en'].title}</h1>
 							</motion.div>
 							<motion.div initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1.2 }} className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-								<p className="break-all">{lang['en'].description}</p>
+								<p>{lang['en'].description}</p>
 							</motion.div>
 						</div>
 					</div>
