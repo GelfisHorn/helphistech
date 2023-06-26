@@ -177,7 +177,7 @@ function BlogElement({ element, type }) {
             </div>
         ),
         image: (
-            <div className="image-container pt-10">
+            <div className="image-container py-10">
                 <Image className="image rounded-md" src={element?.image?.data?.attributes?.url} fill alt={element?.image?.data?.attributes?.hash} />
             </div>
         ),
