@@ -279,6 +279,10 @@
                         ],
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Sonstige"
                     }
                 ]
             },
@@ -587,6 +591,10 @@
                         "text": "Responsive Design",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Other"
                     }
                 ]
             },
@@ -867,6 +875,10 @@
                         "text": "Responsive Design",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
+                    },
+                    {
+                        "id": "other",
+                        "text": "Otro"
                     }
                 ]
             },
