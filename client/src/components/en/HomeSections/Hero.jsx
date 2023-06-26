@@ -11,8 +11,8 @@ import ContactModal from "../../Modals/Contact/Index";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function HeroSection() {
-    
-    // Get functions and variables from context
+
+	// Get functions and variables from context
 	const { darkMode } = useContextProvider();
 
 	const [showModal, setShowModal] = useState(false);
@@ -21,47 +21,47 @@ export default function HeroSection() {
 		setShowModal(!showModal);
 	}
 
-    return (
-        <div className={'relative overflow-hidden'} id="hero">
-            <Image className="absolute top-0 w-full h-full object-cover" src={`${darkMode ? '/home/hero/wave/dark/wave.webp' : '/home/hero/wave/light/wave.webp'}`} fill={true} alt="" priority />
-            <Navbar />
-            <section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{height: 'calc(100vh - 5rem)', zIndex: '1'}}>
-                <div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
-                		<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[39rem]">
-												<motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
-                            <h1 className={`${darkMode ? 'title-dark' : 'title-light'} text-4xl leading-[4rem] md:text-5xl md:leading-[4.5rem] lg:text-6xl lg:leading-[5rem] 2xl:text-7xl 2xl:leading-[5.5rem] font-bold`}>Custom web development for your business</h1>
-                            <p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>We offer customized solutions to help your business stand out online. From website design and development to app programming and search engine optimization, our team of experts can help you achieve your online goals.</p>
-												</motion.div>
-                        <div className="flex justify-center xl:justify-start">
+	return (
+		<div className={'relative overflow-hidden'} id="hero">
+			<Image className="absolute top-0 w-full h-full object-cover" src={`${darkMode ? '/home/hero/wave/dark/wave.webp' : '/home/hero/wave/light/wave.webp'}`} fill={true} alt="" priority />
+			<Navbar />
+			<section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{ height: 'calc(100vh - 5rem)', zIndex: '1' }}>
+				<div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
+					<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[39rem]">
+						<motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
+							<h1 className={`${darkMode ? 'title-dark' : 'title-light'} text-4xl leading-[4rem] md:text-5xl md:leading-[4.5rem] lg:text-6xl lg:leading-[5rem] 2xl:text-7xl 2xl:leading-[5.5rem] font-bold`}>Professional website and app development</h1>
+							<p className={`${darkMode ? 'description-dark font-light' : 'description-light'} 2xl:text-lg`}>Let's redefine your digital presence together. Our website and app development experts will accompany you on your way to an outstanding online presence.</p>
+						</motion.div>
+						<div className="flex justify-center xl:justify-start">
 							<button onClick={handleShowModal} className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">Get a free quote</button>
-                            {/* <Link href={"/en/contact"}>
+							{/* <Link href={"/en/contact"}>
                             </Link> */}
-                        </div>
-                    </div>
-                    <motion.div initial={{ y: -60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }} viewport={{ once: true }} >
-                        <VideoPlayer 
-                            url={"https://res.cloudinary.com/drdor2wz7/video/upload/v1681591174/helphistech_eynapv.mp4"} 
-                        />
-                    </motion.div>
-                </div>
-            </section>
+						</div>
+					</div>
+					<motion.div initial={{ y: -60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: 1, delay: .2 }} viewport={{ once: true }} >
+						<VideoPlayer
+							url={"https://res.cloudinary.com/drdor2wz7/video/upload/v1681591174/helphistech_eynapv.mp4"}
+						/>
+					</motion.div>
+				</div>
+			</section>
 			<AnimatePresence>
 				{showModal && (
 					<ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'en'} />
 				)}
 			</AnimatePresence>
-        </div>
-    )
+		</div>
+	)
 }
 
 function VideoPlayer({ url }) {
 
 	// Hero section video
 	const video = useRef(null);
-	const [ paused, setPaused ] = useState(true);
+	const [paused, setPaused] = useState(true);
 
 	function handlePlayVideo() {
-		if(video.current.paused) {
+		if (video.current.paused) {
 			setPaused(false);
 			video.current.play();
 		} else {
