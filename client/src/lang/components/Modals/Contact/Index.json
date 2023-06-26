@@ -14,11 +14,7 @@
                     "id": "webapp_development",
                     "text": "App",
                     "icon": "fa-duotone fa-window blue",
-                    "selected": "blue",
-                    "mobile": [
-                        "Web",
-                        "anwendungen"
-                    ]
+                    "selected": "blue"
                 },
                 {
                     "id": "modify_website",
