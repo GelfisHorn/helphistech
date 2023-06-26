@@ -82,7 +82,7 @@ export default function Navbar() {
     return(
         <>
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
-                <div className={`flex items-center justify-between h-20 px-10 text-${darkMode ? 'dark' : 'light'}`}>
+                <div className={`flex items-center justify-between h-20 px-10 text-zinc-200`}>
                     <div>
                         <Link href={"/"}>
                             <Image className="w-auto h-[3.8rem]" src={`${router.pathname == '/' ? "/logo/dark/full-256.webp" : darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
