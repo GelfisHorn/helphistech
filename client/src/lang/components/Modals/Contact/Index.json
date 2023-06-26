@@ -12,7 +12,7 @@
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Webanwendungen",
+                    "text": "App",
                     "icon": "fa-duotone fa-window blue",
                     "selected": "blue",
                     "mobile": [
@@ -22,12 +22,12 @@
                 },
                 {
                     "id": "modify_website",
-                    "text": "Verbesserung einer Webseite oder Anwendung",
+                    "text": "Wartungs & Updates",
                     "icon": "fa-duotone fa-pen-to-square orange",
                     "selected": "orange",
                     "mobile": [
-                        "Verbesserung einer Webseite oder",
-                        "Anwendung"
+                        "Wartungs &",
+                        "Updates"
                     ]
                 }
             ]
@@ -78,26 +78,24 @@
                 ]
             },
             {
-                "title": "Welche Art von Webanwendung möchten Sie von uns entwickeln lassen?",
+                "title": "Welche Art von App möchten Sie von uns entwickeln lassen?",
                 "options": [
                     {
-                        "id": "static_webapp",
-                        "text": "Statische Webanwendung",
+                        "id": "mobile_app",
+                        "text": "Mobile App",
                         "mobile": [
-                            "Statische",
-                            "Web",
-                            "anwendung"
+                            "Mobile",
+                            "App"
                         ],
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
                     {
-                        "id": "dynamic_webapp",
-                        "text": "Dynamische Webanwendung",
+                        "id": "webapp",
+                        "text": "Web App",
                         "mobile": [
-                            "Dynamische",
                             "Web",
-                            "anwendung"
+                            "App"
                         ],
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
@@ -109,41 +107,43 @@
                         "selected": "blue"
                     },
                     {
-                        "id": "portal_webapp",
-                        "text": "Webportal-App",
+                        "id": "cms_web",
+                        "text": "Web mit CMS",
                         "mobile": [
-                            "Webportal-",
-                            "App"
-                        ],
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "cms_webapp",
-                        "text": "Webanwendung mit CMS",
-                        "mobile": [
-                            "Web",
-                            "anwendung",
-                            "mit",
+                            "Web mit",
                             "CMS"
                         ],
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
                     {
-                        "id": "ecommerce",
-                        "text": "E-Commerce",
+                        "id": "hybride_app",
+                        "text": "Hybride App",
+                        "mobile": [
+                            "Hybride",
+                            "App"
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "web_portal",
+                        "text": "Webportal-App",
+                        "mobile": [
+                            "Webportal",
+                            "App"
+                        ],
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     }
                 ]
             },
             {
-                "title": "Bitte geben Sie die URL Ihrer Webseite ein.",
+                "title": "Bitte geben Sie die URL Ihrer Webseite Oder App Ein",
                 "options": [
                     {
                         "id": "other",
-                        "text": "Sonstige"
+                        "text": "Ihre Website oder App"
                     }
                 ]
             }
@@ -193,13 +193,13 @@
                         ]
                     },
                     {
-                        "id": "cms",
-                        "text": "Inhaltsaktualisierung (CMS)",
+                        "id": "new_functionality",
+                        "text": "Neue Funktionalitäten",
                         "icon": "fa-duotone fa-browser violet",
                         "selected": "violet",
                         "mobile": [
-                            "Inhalts",
-                            "aktualisierung"
+                            "Neue",
+                            "Funktionalitäten"
                         ]
                     },
                     {
@@ -221,8 +221,59 @@
                 ]
             },
             {
-                "title": "Welche Funktionen sollte Ihre Webanwendung haben?",
+                "title": "Welche Funktionen sollte Ihre App haben?",
                 "options": [
+                    {
+                        "id": "uxui",
+                        "text": "User Experience & Interface",
+                        "mobile": [
+                            "User",
+                            "Experience &",
+                            "Interface"
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "live_chat",
+                        "text": "Live Chat",
+                        "mobile": [
+                            "Live",
+                            "Chat"
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "payment_integration",
+                        "text": "Zahlungsintegration",
+                        "mobile": [
+                            "Zahlungs",
+                            "integration"
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "db_integration",
+                        "text": "Datenbankintegration",
+                        "mobile": [
+                            "Datenbank",
+                            "integration"
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "user_management",
+                        "text": "Benutzerverwaltung",
+                        "mobile": [
+                            "Benutzer",
+                            "verwaltung"
+                        ],
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
                     {
                         "id": "reponsive",
                         "text": "Responsives Design",
@@ -232,70 +283,11 @@
                         ],
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
-                    },
-                    {
-                        "id": "authentication",
-                        "text": "Benutzerregistrierung",
-                        "mobile": [
-                            "Benutzer",
-                            "registrierung"
-                        ],
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "socialmedia_integration",
-                        "text": "Integration von sozialen Medien",
-                        "mobile": [
-                            "Integration",
-                            "von",
-                            "sozialen",
-                            "Medien"
-                        ],
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "comments",
-                        "text": "Kommentare und Meinungen",
-                        "mobile": [
-                            "Kommentare",
-                            "und",
-                            "Meinungen"
-                        ],
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "seo",
-                        "text": "SEO-Optimierung",
-                        "mobile": [
-                            "SEO",
-                            "Optimierung"
-                        ],
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "multilanguage",
-                        "text": "Lokalisierung und Mehrsprachigkeit",
-                        "mobile": [
-                            "Lokalisierung",
-                            "und",
-                            "Mehr-",
-                            "sprachigkeit"
-                        ],
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "other",
-                        "text": "Sonstige"
                     }
                 ]
             },
             {
-                "title": "Was möchten Sie an Ihrer aktuellen Webseite verbessern?",
+                "title": "Wartungs & Updates",
                 "options": [
                     {
                         "id": "seo",
@@ -350,7 +342,7 @@
                     },
                     {
                         "id": "cms",
-                        "text": "Inhaltsaktualisierung (CMS)",
+                        "text": "Neue Funktionalitäten",
                         "mobile": [
                             "Inhalts",
                             "aktualisierung",
@@ -418,18 +410,18 @@
             "options": [
                 {
                     "id": "website_development",
-                    "text": "Website development",
+                    "text": "Website",
                     "icon": "fa-duotone fa-browser violet",
                     "selected": "violet"           
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Web application development",
+                    "text": "Application",
                     "icon": "fa-duotone fa-window blue"
                 },
                 {
                     "id": "modify_website",
-                    "text": "Improving an existing website or application",
+                    "text": "Maintenance & Updates",
                     "icon": "fa-duotone fa-pen-to-square orange"
                 }
             ]
@@ -465,17 +457,17 @@
                 ]
             },
             {
-                "title": "What kind of web application would you like us to develop?",
+                "title": "What kind of app would you like us to develop?",
                 "options": [
                     {
-                        "id": "static_webapp",
-                        "text": "Static web application",
+                        "id": "mobile_app",
+                        "text": "Mobile App",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
                     {
-                        "id": "dynamic_webapp",
-                        "text": "Dynamic web application",
+                        "id": "webapp",
+                        "text": "Web App",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
@@ -486,21 +478,27 @@
                         "selected": "blue"
                     },
                     {
-                        "id": "portal_webapp",
-                        "text": "Web portal app",
+                        "id": "cms_web",
+                        "text": "Web with CMS",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
                     {
-                        "id": "cms_webapp",
-                        "text": "Web application with content management system",
+                        "id": "hybride_app",
+                        "text": "Hybrid app",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "web_portal",
+                        "text": "Web portal app",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     }
                 ]
             },
             {
-                "title": "Please enter the URL of your website.",
+                "title": "Please enter the URL of your website or app",
                 "options": [
                     {
                         "id": "other",
@@ -539,7 +537,7 @@
                     },
                     {
                         "id": "cms",
-                        "text": "Content update (CMS)",
+                        "text": "New functionalities",
                         "icon": "fa-duotone fa-browser violet",
                         "selected": "violet"
                     },
@@ -556,47 +554,43 @@
                 ]
             },
             {
-                "title": "What features should your web application have?",
+                "title": "What features should your app have?",
                 "options": [
                     {
+                        "id": "uxui",
+                        "text": "User Experience & Interface",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "live_chat",
+                        "text": "Live Chat",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "payment_integration",
+                        "text": "Payment Integration",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "db_integration",
+                        "text": "Database Integration",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "user_management",
+                        "text": "User Management",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
                         "id": "reponsive",
-                        "text": "Responsive design",
+                        "text": "Responsive Design",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
-                    },
-                    {
-                        "id": "authentication",
-                        "text": "User authentication",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "socialmedia_integration",
-                        "text": "Social media integration",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "comments",
-                        "text": "Comments and opinions",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "seo",
-                        "text": "SEO Optimization",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "multilanguage",
-                        "text": "Localization and Multilingualism",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "other",
-                        "text": "Other"
                     }
                 ]
             },
@@ -635,7 +629,7 @@
                     },
                     {
                         "id": "cms",
-                        "text": "Content update (CMS)",
+                        "text": "New functionalities",
                         "icon": "fa-duotone fa-pen-to-square orange",
                         "selected": "orange"
                     }
@@ -694,19 +688,19 @@
             "options": [
                 {
                     "id": "website_development",
-                    "text": "Desarrollo de sitios web",
+                    "text": "Sitio web",
                     "icon": "fa-duotone fa-browser violet",
                     "selected": "violet"
                 },
                 {
                     "id": "webapp_development",
-                    "text": "Desarrollo de aplicaciones web",
+                    "text": "Aplicación",
                     "icon": "fa-duotone fa-window blue",
                     "selected": "blue"
                 },
                 {
                     "id": "modify_website",
-                    "text": "Mejorar un sitio web o una aplicación existente",
+                    "text": "Mantenimiento y actualizaciones",
                     "icon": "fa-duotone fa-pen-to-square orange",
                     "selected": "orange"
                 }
@@ -743,17 +737,17 @@
                 ]
             },
             {
-                "title": "¿Qué tipo de aplicación web te gustaría que desarrollemos?",
+                "title": "¿Qué tipo de aplicación te gustaría que desarrollemos?",
                 "options": [
                     {
-                        "id": "static_webapp",
-                        "text": "Aplicación web estática",
+                        "id": "mobile_app",
+                        "text": "Aplicación movil",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
                     {
-                        "id": "dynamic_webapp",
-                        "text": "Aplicación web dinámica",
+                        "id": "webapp",
+                        "text": "Aplicación Web",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
@@ -764,21 +758,27 @@
                         "selected": "blue"
                     },
                     {
-                        "id": "portal_webapp",
-                        "text": "Aplicación de portal web",
+                        "id": "cms_web",
+                        "text": "Web con CMS",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     },
                     {
-                        "id": "cms_webapp",
-                        "text": "Aplicación web con sistema de gestión de contenidos",
+                        "id": "hybride_app",
+                        "text": "Aplicación Híbrida",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "web_portal",
+                        "text": "Aplicación de portal web",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
                     }
                 ]
             },
             {
-                "title": "Por favor, introduzca la URL de su sitio web.",
+                "title": "Ingrese la URL de su sitio web o aplicación",
                 "options": [
                     {
                         "id": "other",
@@ -817,7 +817,7 @@
                     },
                     {
                         "id": "cms",
-                        "text": "Actualización de contenido (CMS)",
+                        "text": "Nuevas funcionalidades",
                         "icon": "fa-duotone fa-browser violet",
                         "selected": "violet"
                     },
@@ -834,47 +834,43 @@
                 ]
             },
             {
-                "title": "¿Qué características debe tener tu aplicación web?",
+                "title": "¿Qué características debe tener tu aplicación?",
                 "options": [
                     {
+                        "id": "uxui",
+                        "text": "Experiencia de usuario e interfaz",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "live_chat",
+                        "text": "Chat en vivo",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "payment_integration",
+                        "text": "Integración de pagos",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "db_integration",
+                        "text": "Integración de base de datos",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
+                        "id": "user_management",
+                        "text": "Gestión de usuarios",
+                        "icon": "fa-duotone fa-window blue",
+                        "selected": "blue"
+                    },
+                    {
                         "id": "reponsive",
-                        "text": "Responsive design",
+                        "text": "Responsive Design",
                         "icon": "fa-duotone fa-window blue",
                         "selected": "blue"
-                    },
-                    {
-                        "id": "authentication",
-                        "text": "Autenticacion de usuario",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "socialmedia_integration",
-                        "text": "Integración de redes sociales",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "comments",
-                        "text": "Comentarios y opiniones",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "seo",
-                        "text": "Optimización SEO",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "multilanguage",
-                        "text": "Localización y Multilingüismo",
-                        "icon": "fa-duotone fa-window blue",
-                        "selected": "blue"
-                    },
-                    {
-                        "id": "other",
-                        "text": "Otro"
                     }
                 ]
             },
@@ -913,7 +909,7 @@
                     },
                     {
                         "id": "cms",
-                        "text": "Actualización de contenido (CMS)",
+                        "text": "Nuevas funcionalidades",
                         "icon": "fa-duotone fa-pen-to-square orange",
                         "selected": "orange"
                     }
