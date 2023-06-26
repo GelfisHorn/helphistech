@@ -85,7 +85,7 @@ export default function Navbar() {
                 <div className={`flex items-center justify-between h-20 px-10 text-zinc-200`}>
                     <div>
                         <Link href={"/"}>
-                            <Image className="w-auto h-12" src={`${darkMode ? '/logo/dark/full-logo.webp' : '/logo/light/full-logo.webp'}`} width={460} height={113} alt="HelphisTech logo" priority />
+                            <Image className="w-auto h-12" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
                         </Link>
                     </div>
                     <nav className="hidden xl:flex items-center gap-5 font-light text-lg">
