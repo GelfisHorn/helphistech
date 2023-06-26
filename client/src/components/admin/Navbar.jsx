@@ -15,11 +15,11 @@ export default function Navbar() {
     }
 
     return (
-        <div className={`w-full h-28 xs:h-14 px-3 sm:px-10 border-b ${darkMode ? 'border-neutral-900 text-dark' : 'border-neutral-100 text-light'}`}>
+        <div className={`w-full h-28 xs:h-14 px-3 border-b ${darkMode ? 'border-neutral-900 text-dark' : 'border-neutral-100 text-light'}`}>
             <div className="flex flex-col xs:flex-row gap-3 xs:gap-0 items-center justify-center xs:justify-between h-full">
                 <Link href={"/admin"}>
                     <div className="text-light-main uppercase font-semibold text-lg">
-                        <Image src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={84.7} height={40.7} alt="HelphisTech Logo" />
+                        <Image src={`${darkMode ? '/logo/dark/icon-256.webp' : '/logo/light/icon-256.webp'}`} width={45} height={45} alt="HelphisTech Logo" />
                     </div>
                 </Link>
                 <div className="flex items-center gap-5">

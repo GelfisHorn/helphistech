@@ -33,8 +33,13 @@ export default function Footer() {
 
     return (
         <footer className={`${darkMode ? 'text-dark border-neutral-900 bg-darkmode' : 'text-light border-neutral-200'} border-t`}>
-            <div className="flex flex-col items-start gap-16 py-16 px-6 lg:px-10 xl:px-0 max-w-6xl w-full mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 justify-center md:justify-start text-center md:text-left md:gap-y-0 w-full">
+            <div className="flex flex-col items-start gap-16 py-16 px-6 lg:px-10 xl:px-0 max-w-7xl w-full mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-10 justify-center lg:justify-start text-center lg:text-left lg:gap-y-0 w-full">
+                    <FooterColumn>
+                        <Link href={"/"} className={"flex justify-center lg:justify-start"}>
+                            <Image className="w-auto h-[3.8rem]" src={`${router.pathname == '/' ? "/logo/dark/full-256.webp" : darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
+                        </Link>
+                    </FooterColumn>
                     <FooterColumn title={"Navigation"}>
                         <div className={`flex flex-col gap-2 ${darkMode ? 'text-dark' : 'text-light'}`}>
                             <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
@@ -58,7 +63,7 @@ export default function Footer() {
                         </div>
                     </FooterColumn>
                     {/* <FooterColumn title={"Sozialen Medien"}>
-                        <div className="flex flex-col gap-2 items-center md:items-start">
+                        <div className="flex flex-col gap-2 items-center lg:items-start">
                             <Link className="flex items-center gap-2 hover:text-primary transition-colors" href={"https://linkedin.com"}>
                                 <div className="grid place-content-center w-4">
                                     <Image src={darkMode ? "/footer/darkmode/linkedin2.webp" : "/footer/linkedin.webp"} width={30} height={26} alt="Linkedin image" />    
@@ -85,31 +90,19 @@ export default function Footer() {
                             </Link>
                         </div>
                     </FooterColumn> */}
-                    <FooterColumn title={"Kontakt"}>
-                        <div className={`flex flex-col gap-2 items-center md:items-start`}>
-                            <div>
-                                <Link className="flex items-center gap-2 hover:underline hover:text-primary transition-colors" href="mailto:helphis.tech@gmail.com">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-[1.1rem] h-[1.1rem] ${darkMode ? 'text-dark' : 'text-light'}`}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                                    </svg>
-                                    <span>helphis.tech@gmail.com</span>
-                                </Link>
-                            </div>
-                            <div>
-                                <Link className="flex items-center gap-2 hover:underline hover:text-primary transition-colors" href="tel:+4915253409644">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-[1.1rem] h-[1.1rem] ${darkMode ? 'text-dark' : 'text-light'}`}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                                    </svg>
-                                    <span>+4915253409644</span>
-                                </Link>
-                            </div>
-                        </div>
-                    </FooterColumn>
                     <FooterColumn title={"Legal"}>
-                        <div className={`flex flex-col gap-2 items-center md:items-start`}>
+                        <div className={`flex flex-col gap-2 items-center lg:items-start`}>
                             <Link href={"/impressum"} className={"flex items-center gap-2 hover:underline hover:text-primary transition-colors"}>Impressum</Link>
                             <Link href={"/datenschutz"} className={"flex items-center gap-2 hover:underline hover:text-primary transition-colors"}>Datenschutz</Link>
                         </div>
+                    </FooterColumn>
+                    <FooterColumn title={"Kontakt"}>
+                        <Link className="flex items-center justify-center lg:justify-start gap-2 hover:underline hover:text-primary transition-colors" href="mailto:helphis.tech@gmail.com">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-[1.1rem] h-[1.1rem] ${darkMode ? 'text-dark' : 'text-light'}`}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                            <span>helphis.tech@gmail.com</span>
+                        </Link>
                     </FooterColumn>
                 </div>
             </div>
@@ -121,10 +114,15 @@ export default function Footer() {
 }
 
 function FooterColumn({title, children}) {
+    
+    const { darkMode } = useContextProvider();
+
     return (
-        <div className="flex flex-col gap-5 md:w-fit md:mx-auto">
-            <div className="text-2xl font-semibold">{title}</div>
-            <div>{children}</div>
+        <div className="flex flex-col items-center lg:items-start gap-3 lg:w-fit lg:mx-auto h-full">
+            {title && (
+                <div className={`text-lg uppercase font-semibold ${darkMode ? "description-dark" : "description-light"}`}>{title}</div>
+            )}
+            <div className={"h-full"}>{children}</div>
         </div>
     )
 }

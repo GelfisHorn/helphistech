@@ -19,7 +19,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between h-full">
                 <Link href={"/admin"}>
                     <div className="text-light-main uppercase font-semibold text-lg">
-                        <Image src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={84.7} height={40.7} alt="HelphisTech Logo" />
+                        <Image src={`${darkMode ? '/logo/dark/icon-256.webp' : '/logo/light/icon-256.webp'}`} width={45} height={45} alt="HelphisTech Logo" />
                     </div>
                 </Link>
                 <div className="flex items-center gap-3 sm:gap-5">
