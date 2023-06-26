@@ -85,7 +85,7 @@ export default function Navbar() {
                 <div className={`flex items-center justify-between h-20 px-10 text-${darkMode ? 'dark' : 'light'}`}>
                     <div>
                         <Link href={"/es"}>
-                            <Image className="w-auto h-12" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
+                            <Image className="w-auto h-[3.8rem]" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
                         </Link>
                     </div>
                     <nav className={`hidden xl:flex items-center gap-5 ${darkMode ? 'font-light' : 'font-normal'} text-lg`}>
@@ -220,7 +220,7 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
             <div className={`${closeAnimation ? 'full-screen-menu-close' : 'full-screen-menu-open'} fixed top-0 right-0 w-[85vw] h-screen ${darkMode ? 'bg-darkmode text-dark-text border-l border-neutral-900' : 'bg-white text-black'} shadow-lg transition-colors z-20`}>
                 <div className={`${closeAnimation ? 'hidden' : null} h-full`}>
                     <div className="flex items-center justify-between absolute top-4 left-4 right-4">
-                        <Image src={darkMode ? '/logo/dark/logo.webp' : '/logo/light/logo.webp'} width={50} height={50} alt="HelphisTech Logo" />
+                        <Image src={darkMode ? '/logo/dark/icon-256.webp' : '/logo/light/icon-256.webp'} width={50} height={50} alt="HelphisTech Logo" />
                         <button onClick={closeMenu} className="text-3xl">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
