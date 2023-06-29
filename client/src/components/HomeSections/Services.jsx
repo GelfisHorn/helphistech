@@ -106,7 +106,7 @@ export default function ServicesSection({ services }) {
                                 <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Dienstleistungen</span>
                             </div>
                             <div className="flex flex-col xl:flex-row justify-center sm:items-start gap-10 xl:gap-20">
-                                <h2 className={`flex flex-col items-center sm:items-start gap-5 text-3xl sm:text-5xl font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
+                                <h2 className={`flex flex-col items-center sm:items-start gap-4 sm:gap-5 text-3xl leading-[1.4rem] sm:text-5xl sm:leading-[2.3rem] font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>
                                     <div>Welche</div>
                                     <div className="text-primary">Dienstleistungen</div>
                                     <div>{"wir anbieten"}</div>

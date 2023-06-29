@@ -407,14 +407,17 @@ function FormComponent() {
             // budget
         }
         // Send project to server
-        try {
-            await axios.post('/api/sendProject', { project })    
+        Promise.all([
+            axios.post('/api/sendProject', { project }),
+            axios.post('/api/contact/contactPage/sendMail/client', { email: email.current.value, project, language: "de" }),
+            axios.post('/api/contact/contactPage/sendMail/helphistech', { email: email.current.value, project, language: "de" }),
+        ]).then(res => {
             showMessage(false, 'Daten erfolgreich gesendet!', 5000)
-            resetForm();   
+            resetForm();
             router.push('/confirmation');
-        } catch (error) {
+        }).catch(err => {
             showMessage(true, 'Beim Senden der Informationen ist ein Fehler aufgetreten', 5000)
-        }
+        })
     }
 
     // Form steps

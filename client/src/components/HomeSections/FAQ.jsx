@@ -47,7 +47,7 @@ export default function FAQSection({ faqs }) {
             </AnimatePresence>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className={"flex flex-col gap-10"}>
-                    <div className={`text-4xl md:text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}>{title[language]}</div>
+                    <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}>{title[language]}</h2>
                     <div className={"flex flex-col gap-1"}>
                         {faqs.element.map((e, index) => (
                             <Element key={index} element={e} />

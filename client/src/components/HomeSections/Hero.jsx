@@ -75,7 +75,7 @@ export default function HeroSection() {
 					<div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
 						<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[40rem]">
 							<motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
-								<h1 className={`title-dark text-3xl leading-[4rem] md:text-4xl md:leading-[4.5rem] lg:text-5xl lg:leading-[5rem] 2xl:text-6xl 2xl:leading-[5.5rem] font-bold break-words`}>Professionelle Website- und App-Entwicklung</h1>
+								<h1 className={`title-dark text-3xl leading-[2.8rem] md:text-4xl md:leading-[3rem] lg:text-5xl lg:leading-[4rem] 2xl:text-6xl 2xl:leading-[5rem] font-bold break-words`}>Professionelle Website- und App-Entwicklung</h1>
 								<p className={`description-dark font-light 2xl:text-lg`}>Lassen Sie uns Ihre digitale Präsenz gemeinsam neu definieren. Unsere Experten für Website- und App-Entwicklung begleiten Sie auf dem Weg zu einem herausragenden Online-Auftritt.</p>
 							</motion.div>
 							<div className="flex justify-center xl:justify-start">
@@ -94,10 +94,10 @@ export default function HeroSection() {
 			</div>
 			<div className={"sm:hidden"}>
 				<Navbar />
-				<div className={"min-h-[36rem]"} style={{ height: 'calc(100vh - 5rem)' }}>
+				<div className={"min-h-[40rem]"} style={{ height: 'calc(100vh - 5rem)' }}>
 					<div className={"flex flex-col justify-between h-full p-8 px-4 relative"}>
 						<div className={"flex flex-col gap-3 text-center text-white"}>
-							<h1 className={"text-2xl xs:text-4xl text-center font-semibold text-white"}>Professionelle Website- und App-Entwicklung</h1>
+							<h1 className={"text-3xl leading-[2.2rem] xs:text-4xl xs:leading-[2.8rem] text-center font-semibold text-white"}>Professionelle Website- und App-Entwicklung</h1>
 							<div className={"flex flex-col"}>
 								<p className={"font-light"}>Lassen Sie uns Ihre digitale Präsenz gemeinsam neu definieren. Unsere Experten für Website- und App-Entwicklung begleiten Sie auf dem Weg zu einem herausragenden Online-Auftritt.</p>
 								<div className={"font-medium text-lg"}>Jetzt 10 % Rabatt sichern</div>

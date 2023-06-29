@@ -20,9 +20,9 @@ export default function TechnologiesSection() {
                         viewport={{ once: true }}
                     >                        <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-5">
                             <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Technologien</span>
-                            <h2 className={`flex flex-col items-center sm:items-start gap-2 sm:gap-3 text-3xl sm:text-5xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                <div className="flex flex-col md:flex-row gap-3 sm:gap-5 md:gap-2">Dies sind die <span className="text-primary">Technologien</span></div> 
-                                <div className="leading-[3rem] sm:leading-[4rem]">die wir am häufigsten verwenden</div>
+                            <h2 className={`flex flex-col items-center sm:items-start gap-2 text-3xl leading-[2rem] sm:text-5xl sm:leading-[2.3rem] font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>
+                                <div className="flex flex-col md:flex-row gap-2 sm:gap-5 md:gap-2">Dies sind die <span className="text-primary">Technologien</span></div> 
+                                <span className="leading-[2.6rem] sm:leading-[3.4rem]">die wir am häufigsten verwenden</span>
                             </h2>
                         </div>
                         <div className={`2xl:text-lg ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
