@@ -43,7 +43,7 @@ export default function blogFormTemplate(data) {
                                                                                                                 <tr>
                                                                                                                     <td style="padding-right: 0px;padding-left: 0px;" align="left">
 
-                                                                                                                        <img align="left" border="0" src="https://helphistech.com/logo/light/full-logo.webp" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 35%;max-width: 173.6px;" width="173.6" />
+                                                                                                                        <img align="left" border="0" src="https://i.imgur.com/3MFxG3k.png" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 35%;max-width: 173.6px;" width="173.6" />
 
                                                                                                                     </td>
                                                                                                                 </tr>
