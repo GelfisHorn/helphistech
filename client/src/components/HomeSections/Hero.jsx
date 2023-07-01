@@ -70,7 +70,7 @@ export default function HeroSection() {
     return (
         <div className={"hero-background"}>
 			<div className="relative overflow-hidden hidden sm:block" id="hero">
-				<Navbar />
+				<Navbar textColor={"text-dark"} />
 				<section className="relative flex items-center justify-center px-6 sm:px-10 lg:px-20 2xl:px-0 min-h-[57rem] sm:min-h-[55rem] md:min-h-[65rem] lg:min-h-[75rem] xl:min-h-[50rem]" style={{ height: 'calc(100vh - 5rem)', zIndex: '1' }}>
 					<div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
 						<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[40rem]">

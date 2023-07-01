@@ -59,8 +59,8 @@ export default function ServicesSection({ services }) {
     }
 
     function showLessServices() {
-        setShowedMoreServices(false);
         if (servicesMobile.length == 3) {
+            setShowedMoreServices(false);
             return;
         }
         if (servicesMobile.length == 6) {
@@ -68,7 +68,7 @@ export default function ServicesSection({ services }) {
             return;
         }
 
-        if (servicesMobile.length == 9) setServicesMobile(services.slice(0, 6));
+        if (servicesMobile.length >= 7) setServicesMobile(services.slice(0, 6));
     }
 
     const slashMotion = {
@@ -174,13 +174,13 @@ export default function ServicesSection({ services }) {
                                 description={"Wir bieten laufende Wartung und Support für alle unsere Websites und Webanwendungen. Unser Team steht Ihnen zur Verfügung, um eventuell auftretende Probleme zu beheben und sicherzustellen, dass Ihre Website immer auf dem neuesten Stand ist und reibungslos funktioniert."}
                             />
                         </div> */}
-                            <div className={"hidden sm:flex justify-end"}>
+                            {/* <div className={"hidden sm:flex justify-end"}>
                                 {servicesDesktop.length < services.length && (
                                     <button onClick={showMoreServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
-                                        <div>Weitere Dienstleistungen ansehen</div>
+                                       <div>Weitere Dienstleistungen ansehen</div>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
+                                        </svg> 
                                     </button>
                                 )}
                                 {(servicesDesktop.length == services.length && showedMoreServices) && (
@@ -191,7 +191,7 @@ export default function ServicesSection({ services }) {
                                         </svg>
                                     </button>
                                 )}
-                            </div>
+                            </div> */}
                             <div className={"flex sm:hidden justify-center"}>
                                 {servicesMobile.length < services.length && (
                                     <button onClick={showMoreServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
