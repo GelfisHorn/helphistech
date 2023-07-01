@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import useContextProvider from "../hooks/useAppContextProvider";
 // Routes
 import routes from '../lang/routes.json';
+import { AnimatePresence } from "framer-motion";
+import ContactModal from "./Modals/Contact/Index";
 
 // Redirects routes
 const REDIRECTS = {
@@ -18,8 +20,12 @@ const REDIRECTS = {
 }
 
 
-export default function Navbar() {
+export default function Navbar({ textColor }) {
     
+    const [ showModal, setShowModal ] = useState(false);
+    const handleShowModal = () => {
+        setShowModal(!showModal);
+    }
     // Mobile hamburger menu
     const [ showMenu, setShowMenu ] = useState(false);
     const [ closeAnimation, setCloseAnimation ] = useState(false);
@@ -82,7 +88,7 @@ export default function Navbar() {
     return(
         <>
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
-                <div className={`flex items-center justify-between h-20 px-10 text-zinc-200`}>
+                <div className={`flex items-center justify-between h-20 px-10 ${textColor ? `${textColor}` : `text-${darkMode ? 'dark' : 'light'}`}`}>
                     <div>
                         <Link href={"/"}>
                             <Image className="w-auto h-[3.8rem]" src={`${router.pathname == '/' ? "/logo/dark/full-256.webp" : darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
@@ -131,7 +137,7 @@ export default function Navbar() {
                         <Link className="hover:underline hover:text-primary" href="/login">
                             <span>Anmeldung</span>
                         </Link>
-                        <div onClick={() => redirectToSection("my-project")}>
+                        <div onClick={handleShowModal}>
                             <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
                                 <span>Projekt starten</span>
                             </button>
@@ -166,7 +172,12 @@ export default function Navbar() {
                     closeAnimation={closeAnimation} 
                     closeMenu={handleCloseAnimation}
                 />
-            ) }
+            )}
+            <AnimatePresence>
+                {showModal && (
+                    <ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
+                )}
+            </AnimatePresence>
         </>
     )
 }

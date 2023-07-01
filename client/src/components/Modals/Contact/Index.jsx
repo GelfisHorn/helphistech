@@ -202,7 +202,7 @@ export default function ContactModal({ blog, handleClose, language }) {
                                         setTimeout(() => {
                                             setStep(current => current + 1);
                                         }, 250)
-                                    }} className={`${styles.serviceCard} ${darkMode ? "bg-[rgb(27,27,27)]" : "bg-white"} ${formOption == index ? styles[service.selected] : ""} ${index > 1 ? "col-start-1 col-end-3 md:col-start-auto md:col-end-auto" : ""}`}>
+                                    }} className={`${styles.serviceCard} ${darkMode ? "bg-[rgb(27,27,27)]" : "bg-[#f1f4ff]"} ${formOption == index ? styles[service.selected] : ""} ${index > 1 ? "col-start-1 col-end-3 md:col-start-auto md:col-end-auto" : ""}`}>
                                         <div className={`grid place-content-center text-xl rounded-lg ${darkMode ? "bg-neutral-900" : "bg-[#f1f4ff]"} w-10 h-10`}>
                                             {service.icon ? <i className={`${service.icon}`}></i> : (
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
@@ -233,7 +233,7 @@ export default function ContactModal({ blog, handleClose, language }) {
                             <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                 {lang[language].step2[formOption].options.map((service, index) => (
                                     service.id != "other" ? (
-                                        <div onClick={() => handleSetStep2(service)} key={index} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "bg-[rgb(27,27,27)]" : "bg-white"} ${step2.key == service.id ? styles[service.selected] : ""}`}>
+                                        <div onClick={() => handleSetStep2(service)} key={index} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "bg-[rgb(27,27,27)]" : "bg-[#f1f4ff]"} ${step2.key == service.id ? styles[service.selected] : ""}`}>
                                             <div className={`grid place-content-center text-xl rounded-lg ${darkMode ? "bg-neutral-900" : "bg-[#f1f4ff]"} w-10 h-10`}>
                                                 {service.icon ? <i className={`${service.icon}`}></i> : (
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
@@ -268,7 +268,7 @@ export default function ContactModal({ blog, handleClose, language }) {
                             <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                 {lang[language].step3[formOption].options.map((service, index) => (
                                     service.id != "other" ? (
-                                        <div onClick={() => handleSetStep3(service)} key={index} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "bg-[rgb(27,27,27)]" : "bg-white"} ${step3.find(step => step.key == service.id) ? styles[service.selected] : ""}`}>
+                                        <div onClick={() => handleSetStep3(service)} key={index} className={`${styles.serviceCard} border-[.15rem] ${darkMode ? "bg-[rgb(27,27,27)]" : "bg-[#f1f4ff]"} ${step3.find(step => step.key == service.id) ? styles[service.selected] : ""}`}>
                                             <div className={`grid place-content-center text-xl rounded-lg ${darkMode ? "bg-neutral-900" : "bg-[#f1f4ff]"} w-10 h-10`}>
                                                 {service.icon ? <i className={`${service.icon}`}></i> : (
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
