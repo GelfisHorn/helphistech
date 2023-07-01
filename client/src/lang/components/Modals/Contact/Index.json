@@ -190,7 +190,7 @@
                     },
                     {
                         "id": "new_functionality",
-                        "text": "Neue Funktionalitäten",
+                        "text": "Live Chat",
                         "icon": "fa-duotone fa-browser violet",
                         "selected": "violet",
                         "mobile": [
@@ -342,7 +342,7 @@
                     },
                     {
                         "id": "cms",
-                        "text": "Neue Funktionalitäten",
+                        "text": "Live Chat",
                         "mobile": [
                             "Inhalts",
                             "aktualisierung",
