@@ -144,12 +144,12 @@ export default function Navbar({ textColor }) {
                         </div>
                     </div>
                     <div onClick={handleShowMenu} className="block sm:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" className="w-9 h-9">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
                         </svg>
                     </div>
                 </div>
-                <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg ${darkMode ? 'font-light' : 'font-normal'} pb-5`}>
+                <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg text-white pb-5`}>
                     <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                         <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                     </div>
