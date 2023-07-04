@@ -149,7 +149,7 @@ export default function Navbar({ textColor }) {
                         </svg>
                     </div>
                 </div>
-                <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg ${darkMode ? 'font-light' : 'font-normal'} pb-5`}>
+                <nav className={`hidden sm:flex xl:hidden items-center justify-center gap-5 font-light text-lg text-white pb-5`}>
                     <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                         <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                     </div>
