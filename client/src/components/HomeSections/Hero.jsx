@@ -36,7 +36,7 @@ export default function HeroSection() {
 
 	const getCountDown = () => {
 		// Set the date we're counting down to
-		var countDownDate = new Date("Jul 3, 2023 11:00:00").getTime();
+		var countDownDate = new Date("Jul 14, 2023 11:00:00").getTime();
 
 		// Update the count down every 1 second
 		var x = setInterval(function () {
