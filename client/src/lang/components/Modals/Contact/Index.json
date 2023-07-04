@@ -376,7 +376,7 @@
                 },
                 {
                     "id": "message",
-                    "text": "Möchten Sie uns noch etwas mitteilen?"
+                    "text": "Erzählen sie uns mehr über ihre Idee"
                 }
             ],
             "legal": {
@@ -658,7 +658,7 @@
                 },
                 {
                     "id": "message",
-                    "text": "Would you like to tell us anything else?"
+                    "text": "Tell us more about your idea"
                 }
             ],
             "legal": {
@@ -942,7 +942,7 @@
                 },
                 {
                     "id": "message",
-                    "text": "¿Quieres contarnos algo más?"
+                    "text": "Cuéntanos más sobre tu idea"
                 }
             ],
             "legal": {
