@@ -23,7 +23,7 @@ const AppContextProvider = ({children}) => {
 
     // Language and dark mode settings
     const [ language, setLanguage ] = useState('de');
-    const [ darkMode, setDarkMode ] = useState(true);
+    const [ darkMode, setDarkMode ] = useState(false);
     // On component load load:
     useEffect(() => {
         // Use saved localStorage language or 'de'(german)
@@ -40,7 +40,7 @@ const AppContextProvider = ({children}) => {
 
         setCookiesAllowed(localStorage.getItem('allow-cookies'));
         setLanguage(localStorage.getItem('language'));
-        setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == false ? false : true);
+        setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == null ? false : true);
     }, []);
 
     // User Authentication
