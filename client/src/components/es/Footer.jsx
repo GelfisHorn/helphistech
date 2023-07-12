@@ -37,7 +37,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-10 justify-center lg:justify-start text-center lg:text-left lg:gap-y-0 w-full">
                     <FooterColumn>
                         <Link href={"/"} className={"flex justify-center lg:justify-start"}>
-                            <Image className="w-auto h-[3.8rem]" src={`${router.pathname == '/' ? "/logo/dark/full-256.webp" : darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
+                            <Image className="w-auto h-[3.8rem]" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
                         </Link>
                     </FooterColumn>
                     <FooterColumn title={"Navegación"}>
