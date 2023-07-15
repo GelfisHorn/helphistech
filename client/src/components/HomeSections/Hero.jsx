@@ -102,7 +102,7 @@ export default function HeroSection() {
 								<p className={"font-light"}>Lassen Sie uns Ihre digitale Präsenz gemeinsam neu definieren. Unsere Experten für Website- und App-Entwicklung begleiten Sie auf dem Weg zu einem herausragenden Online-Auftritt.</p>
 								<div className={"font-medium text-lg"}>Jetzt 10 % Rabatt sichern</div>
 							</div>
-							<div className={"flex items-center justify-center gap-1 font-medium text-lg text-white"}>
+							{/* <div className={"flex items-center justify-center gap-1 font-medium text-lg text-white"}>
 								<div>
 									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.days}</div>
 								</div>
@@ -115,7 +115,7 @@ export default function HeroSection() {
 								<div>
 									<div className={"grid place-content-center border-2 border-white w-10 h-11 rounded-sm text-xl"}>{countDown.seconds}</div>
 								</div>
-							</div>
+							</div> */}
 						</div>
 						<div className={"flex flex-col gap-5"}>
 							<div className={"flex flex-col gap-3 w-full"}>
