@@ -14,8 +14,9 @@ import MyProjectSection from "@/components/HomeSections/MyProject";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/HomeSections/FAQ";
 import ContactSection from "@/components/HomeSections/Contact/Index";
+import ClientCommentsSection from "@/components/HomeSections/ClientComments";
 
-export default function Home({ services, faqs }) {
+export default function Home({ services, faqs, clientComments }) {
 
 	const router = useRouter();
 
@@ -44,6 +45,7 @@ export default function Home({ services, faqs }) {
 				<ServicesSection services={services} />
 				<ProcessSection />
 				<TechnologiesSection />
+				<ClientCommentsSection comments={clientComments} />
 				<ContactSection language={'de'} />
 				{/* <MyProjectSection /> */}
 				{faqs && Object.keys(faqs).length != 0 && (
@@ -67,19 +69,22 @@ export const getStaticProps = async (context) => {
 	try {
 		const response = await Promise.all([
 			axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=de`, config),
-			axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=de&populate=preview&pagination[pageSize]=9`, config)
+			axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=de&populate=preview&pagination[pageSize]=9`, config),
+			axios.get(`${process.env.STRAPI_URI}/api/client-comments?locale=de`, config)
 		])
 		return {
 			props: {
 				faqs: response[0]?.data?.data?.attributes || {},
-				services: response[1]?.data.data || []
+				services: response[1]?.data.data || [],
+				clientComments: response[2]?.data.data || []
 			}
 		}
 	} catch (error) {
 		return {
 			props: {
 				faqs: {},
-				services: []
+				services: [],
+				clientComments: []
 			}
 		}
 	}
