@@ -28,8 +28,8 @@ export default function ClientCommentsSection({ comments }) {
                         className={`text-center text-3xl sm:text-5xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}
                     >{locales[language.toUpperCase()].title}</h2>
                 </div>
-                <div className={"flex flex-col gap-3"}>
-                    <div className={"hidden 2xl:grid grid-cols-2 gap-3"}>
+                <div className={"flex flex-col gap-3 fade-background"}>
+                    <div className={"hidden 2xl:grid grid-cols-2 gap-3 fade-element"}>
                         <CommentCard
                             name={comments[0]?.attributes?.name}
                             description={comments[0]?.attributes?.description}
@@ -43,7 +43,7 @@ export default function ClientCommentsSection({ comments }) {
                             gender={comments[1]?.attributes?.gender}
                         />
                     </div>
-                    <div className={"hidden 2xl:grid grid-cols-3 gap-3"}>
+                    <div className={"hidden 2xl:grid grid-cols-3 gap-3 fade-element"}>
                         <CommentCard
                             name={comments[2]?.attributes?.name}
                             description={comments[2]?.attributes?.description}
@@ -63,7 +63,7 @@ export default function ClientCommentsSection({ comments }) {
                             gender={comments[4]?.attributes?.gender}
                         />
                     </div>
-                    <div className={"hidden 2xl:grid grid-cols-2 gap-3"}>
+                    <div className={"hidden 2xl:grid grid-cols-2 gap-3 fade-element"}>
                         <CommentCard
                             name={comments[5]?.attributes?.name}
                             description={comments[5]?.attributes?.description}
@@ -116,7 +116,7 @@ function CommentCard({ name, description, stars, gender }) {
     const { darkMode } = useContextProvider();
 
     return (
-        <div className={`flex flex-col gap-4 justify-center ${darkMode ? "bg-neutral-900" : "bg-white"} shadow-sm w-full px-4 py-4 rounded-lg`}>
+        <div className={`flex flex-col gap-4 justify-center ${darkMode ? "bg-neutral-900" : "bg-white"} shadow-sm w-full px-4 py-4 rounded-lg fade-element`}>
             <div className={"flex flex-col gap-2"}>
                 <div className={"flex items-center gap-2"}>
                     <div className={`grid place-content-center w-9 h-9 ${darkMode ? "bg-neutral-800 text-neutral-300" : "section-bg-light"} rounded-full text-primary`}>

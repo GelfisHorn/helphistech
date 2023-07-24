@@ -43,9 +43,9 @@ export default function Home({ services, faqs, clientComments }) {
 				{/* Sections */}
 				<HeroSection />
 				<ServicesSection services={services} />
+				<ClientCommentsSection comments={clientComments} />
 				<ProcessSection />
 				<TechnologiesSection />
-				<ClientCommentsSection comments={clientComments} />
 				<ContactSection language={'de'} />
 				{/* <MyProjectSection /> */}
 				{faqs && Object.keys(faqs).length != 0 && (

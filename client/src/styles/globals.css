@@ -649,3 +649,34 @@ ul ol {
 	left: 0px;
 	opacity: .35;
 }
+
+.fade-background {
+	position: relative;
+}
+
+.fade-background::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 30%;
+	height: 100%;
+	background: linear-gradient(to right, rgba(7, 7, 9, .6), rgba(255, 255, 255, 0));
+	z-index: 10;
+}
+
+.fade-background::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30%;
+	height: 100%;
+	background: linear-gradient(to left, rgba(7, 7, 9, .6), rgba(255, 255, 255, 0));
+	z-index: 10;
+}
+
+.fade-element {
+	position: relative;
+	z-index: 1;
+}
