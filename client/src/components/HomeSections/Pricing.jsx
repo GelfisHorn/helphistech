@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-export default function PricesSection() {
+export default function PricingSection() {
 
     // Get functions and variables from context
     const { darkMode } = useContextProvider();
