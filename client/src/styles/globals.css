@@ -680,3 +680,22 @@ ul ol {
 	position: relative;
 	z-index: 1;
 }
+
+.prices-swiper {
+	display: block;
+}
+
+.swiper-slide {
+	width: 22rem !important;
+	height: unset !important;
+}
+
+.swiper-slide:nth-child(3) {
+	margin-right: 0 !important;
+}
+
+@media (min-width: 1280px) {
+	.prices-swiper {
+		display: none !important;
+	}
+}

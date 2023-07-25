@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/HomeSections/FAQ";
 import ContactSection from "@/components/HomeSections/Contact/Index";
 import ClientCommentsSection from "@/components/HomeSections/ClientComments";
+import PricesSection from "@/components/HomeSections/Prices";
 
 export default function Home({ services, faqs, clientComments }) {
 
@@ -43,6 +44,7 @@ export default function Home({ services, faqs, clientComments }) {
 				{/* Sections */}
 				<HeroSection />
 				<ServicesSection services={services} />
+				<PricesSection />
 				<ClientCommentsSection comments={clientComments} />
 				<ProcessSection />
 				<TechnologiesSection />
