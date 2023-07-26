@@ -93,8 +93,8 @@ export default function ClientCommentsSection({ comments }) {
                             modules={[Pagination]}
                             className={`process-swiper cursor-move ${darkMode ? "bullet-darkmode" : "bullet-lightmode"}`}
                         >
-                            {comments.map(comment => (
-                                <SwiperSlide>
+                            {comments.map((comment, index) => (
+                                <SwiperSlide key={index}>
                                     <CommentCard
                                         name={comment?.attributes?.name}
                                         description={comment?.attributes?.description}
@@ -142,11 +142,11 @@ function Stars({ stars, darkMode }) {
     return (
         <div className={"flex items-center gap-[2px]"}>
             {Array.from(Array(stars), (star, index) => (
-                <i className={"fa-solid fa-star text-primary"}></i>
+                <i key={index} className={"fa-solid fa-star text-primary"}></i>
             ))}
             {remainingStars ? (
                 Array.from(Array(remainingStars), (star, index) => (
-                    <i className={`fa-solid fa-star ${darkMode ? "text-neutral-600" : "text-neutral-300"}`}></i>
+                    <i key={index} className={`fa-solid fa-star ${darkMode ? "text-neutral-600" : "text-neutral-300"}`}></i>
                 ))
             ) : null}
         </div>

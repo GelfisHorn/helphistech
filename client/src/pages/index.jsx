@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/HomeSections/FAQ";
 import ContactSection from "@/components/HomeSections/Contact/Index";
 import ClientCommentsSection from "@/components/HomeSections/ClientComments";
-import PricingSection from "@/components/HomeSections/Pricing";
+import PricingSection from "@/components/HomeSections/Pricing/Index";
 
 export default function Home({ services, faqs, clientComments }) {
 
