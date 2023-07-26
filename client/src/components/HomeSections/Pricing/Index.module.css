@@ -13,3 +13,22 @@
 .button:hover {
     background: #5a43be;
 }
+
+.prices-swiper {
+    display: block;
+}
+
+.swiper-slide-item {
+    width: 22rem !important;
+    height: unset !important;
+}
+
+.swiper-slide-item:nth-child(3) {
+    margin-right: 0 !important;
+}
+
+@media (min-width: 1280px) {
+    .prices-swiper {
+        display: none !important;
+    }
+}

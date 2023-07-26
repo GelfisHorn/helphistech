@@ -225,9 +225,9 @@ export default function PricingSection() {
                                 pagination={{
                                     clickable: true,
                                 }}
-                                className={"prices-swiper"}
+                                className={styles["prices-swiper"]}
                             >
-                                <SwiperSlide>
+                                <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full bg-[#131313] py-16 px-12 border ${darkMode ? "border-neutral-800" : "border-neutral-300"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
@@ -267,7 +267,7 @@ export default function PricingSection() {
                                         </div>
                                     </div>
                                 </SwiperSlide>
-                                <SwiperSlide>
+                                <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"grid place-content-center bg-primary h-10 text-center rounded-t-xl"}>
                                             <div className={"uppercase text-sm"}>Más popular</div>
@@ -309,7 +309,7 @@ export default function PricingSection() {
                                         </div>
                                     </div>
                                 </SwiperSlide>
-                                <SwiperSlide>
+                                <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full bg-[#131313] py-16 px-12 border ${darkMode ? "border-neutral-800" : "border-neutral-300"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
