@@ -44,6 +44,10 @@ export default function ClientCommentsSection({ comments }) {
                         spaceBetween={20}
                         breakpoints={{
                             768: {
+                                slidesPerView: 2,
+                                spaceBetween: 20
+                            },
+                            1024: {
                                 slidesPerView: 2.5,
                                 spaceBetween: 20
                             }
@@ -82,23 +86,27 @@ function CommentCard({ title, description, name, gender }) {
             <div className={"flex flex-col justify-between h-full gap-6"}>
                 <div className={"text-xl font-light"}>{title}</div>
                 <div className={`font-light ${darkMode ? "description-dark" : "description-light"}`}>{description}</div>
-                <div className={"flex items-center gap-4"}>
-                    <div className={`grid place-content-center w-16 h-16 ${darkMode ? "bg-neutral-800 text-neutral-300" : "section-bg-light"} rounded-full text-zinc-500`}>
-                        {gender == 'male' ? (
-                            <i className="fa-solid fa-user-hair text-3xl"></i>
-                        ) : (
-                            <i className="fa-solid fa-user-hair-long text-3xl"></i>
-                        )}
+               <div className={"flex flex-col md:flex-row md:items-center justify-between gap-5 md:gap-0"}>
+                    <div className={"flex items-center gap-4"}>
+                        <div className={`grid place-content-center w-16 h-16 ${darkMode ? "bg-neutral-800 text-neutral-300" : "section-bg-light"} rounded-full text-zinc-500`}>
+                            {gender == 'male' ? (
+                                <i className="fa-solid fa-user-hair text-3xl text-primary"></i>
+                            ) : (
+                                <i className="fa-solid fa-user-hair-long text-3xl text-primary"></i>
+                            )}
+                        </div>
+                        <div className={`font-light text-lg ${darkMode ? "text-neutral-300" : "text-neutral-700"}`}>{name}</div>
                     </div>
-                    <div className={`font-light text-lg ${darkMode ? "text-neutral-300" : "text-neutral-700"}`}>{name}</div>
-                </div>
+                    <div className={'flex justify-end'}>
+                        <Stars stars={5} darkMode={darkMode} />
+                    </div>
+               </div>
             </div>
-            {/* <Stars stars={stars} darkMode={darkMode} /> */}
         </div>
     )
 }
 
-/* function Stars({ stars, darkMode }) {
+function Stars({ stars, darkMode }) {
 
     const [ remainingStars ] = useState(5 - stars);
 
@@ -114,4 +122,4 @@ function CommentCard({ title, description, name, gender }) {
             ) : null}
         </div>
     )
-} */
+}
