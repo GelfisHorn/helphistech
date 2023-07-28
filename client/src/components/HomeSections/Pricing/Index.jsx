@@ -20,9 +20,9 @@ import Modal from "../../Modal/Index";
 import axios from "axios";
 
 const PRICING = {
-    basic: 350,
-    pro: 750,
-    premium: 1250
+    basic: 390,
+    pro: 590,
+    premium: 1190
 }
 
 export default function PricingSection() {
@@ -107,112 +107,140 @@ export default function PricingSection() {
                                 <div className={"bg-transparent h-10 text-center"}></div>
                                 <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Plan básico</div>
+                                        <div className={"text-2xl font-light"}>Statische Website</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.basic}</span>
                                             </div>
-                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/month</div>
+                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                         </div>
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Sitio web estático.</span>
+                                            <span>Smartphone & Tablet optimiert</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Diseño responsivo.</span>
+                                            <span>Integration von sozialen Netzwerken</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Integración con un CMS.</span>
+                                            <span>Kontaktformular</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Formulario de contacto.</span>
+                                            <span>Google-Indexierung</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Costo asequible y tiempo de entrega rápido.</span>
+                                            <span>Impressum und Datenschutz</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Bis zu 5 Menüpunkte</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Persönliche Ansprechpartner</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Kundenbewertungen</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span className={"font-semibold text-[#FFA500]"}>5 Tage Lieferzeit</span>
                                         </div>
                                     </div>
-                                    <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Empezar</button>
+                                    <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
                             </div>
                             <div className={"w-[22rem] h-full"}>
                                 <div className={"grid place-content-center bg-primary text-white h-10 text-center rounded-t-xl"}>
-                                    <div className={"uppercase text-sm"}>Más popular</div>
+                                    <div className={"uppercase text-sm"}>Bekannter</div>
                                 </div>
-                                <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`}>
+                                <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{height: "calc(100% - 2.5rem)"}}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Plan pro</div>
+                                        <div className={"text-2xl font-light"}>Dynamische Website</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.pro}</span>
                                             </div>
-                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/month</div>
+                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                         </div>
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Todo lo del Plan Básico.</span>
+                                            <span>Alles aus der statischen Website</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Sitio web dinámico.</span>
+                                            <span>Premium-Design</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Integración de base de datos.</span>
+                                            <span>Registrierung und Login für Benutzer</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Autenticación de usuarios.</span>
+                                            <span>Content-Management-System (CMS)</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Optimización de rendimiento.</span>
+                                            <span>Datenbankintegration</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Kostenloses Hosting und Domain für 12 Monate</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Bis zu 10 Menüpunkte</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span className={"font-semibold text-[#FFA500]"}>15 Tage Lieferzeit</span>
                                         </div>
                                     </div>
-                                    <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Empezar</button>
+                                    <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
                             </div>
                             <div className={"w-[22rem] h-full"}>
                                 <div className={"bg-transparent h-10 text-center"}></div>
                                 <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Plan premium</div>
+                                        <div className={"text-2xl font-light"}>Kostenlose Beratung</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.premium}</span>
                                             </div>
-                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/month</div>
+                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                         </div>
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Todo lo del Plan Avanzado.</span>
+                                            <span>Alles aus der dynamischen Website</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Aplicación Full-stack.</span>
+                                            <span>Maßgeschneiderte Designs und Funktionen</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Admin panel.</span>
+                                            <span>Admin Panel</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Soporte prioritario.</span>
+                                            <span>Kunden Panel</span>
                                         </div>
                                     </div>
-                                    <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Empezar</button>
+                                    <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
                             </div>
                         </div>
@@ -232,80 +260,108 @@ export default function PricingSection() {
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Plan básico</div>
+                                                <div className={"text-2xl font-light"}>Statische Website</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.basic}</span>
                                                     </div>
-                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/month</div>
+                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                                 </div>
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Sitio web estático.</span>
+                                                    <span>Smartphone & Tablet optimiert</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Diseño responsivo.</span>
+                                                    <span>Integration von sozialen Netzwerken</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Integración con un CMS.</span>
+                                                    <span>Kontaktformular</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Formulario de contacto.</span>
+                                                    <span>Google-Indexierung</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Costo asequible y tiempo de entrega rápido.</span>
+                                                    <span>Impressum und Datenschutz</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Bis zu 5 Menüpunkte</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Persönliche Ansprechpartner</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Kundenbewertungen</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span className={"font-semibold text-[#FFA500]"}>5 Tage Lieferzeit</span>
                                                 </div>
                                             </div>
-                                            <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Empezar</button>
+                                            <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                         </div>
                                     </div>
                                 </SwiperSlide>
                                 <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"grid place-content-center bg-primary text-white h-10 text-center rounded-t-xl"}>
-                                            <div className={"uppercase text-sm"}>Más popular</div>
+                                            <div className={"uppercase text-sm"}>Bekannter</div>
                                         </div>
-                                        <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-neutral-200"} py-16 px-12 rounded-b-xl text-center`}>
+                                        <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Plan pro</div>
+                                                <div className={"text-2xl font-light"}>Dynamische Website</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.pro}</span>
                                                     </div>
-                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/month</div>
+                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                                 </div>
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Todo lo del Plan Básico.</span>
+                                                    <span>Alles aus der statischen Website</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Sitio web dinámico.</span>
+                                                    <span>Premium-Design</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Integración de base de datos.</span>
+                                                    <span>Registrierung und Login für Benutzer</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Autenticación de usuarios.</span>
+                                                    <span>Content-Management-System (CMS)</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Optimización de rendimiento.</span>
+                                                    <span>Datenbankintegration</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Kostenloses Hosting und Domain für 12 Monate</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Bis zu 10 Menüpunkte</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span className={"font-semibold text-[#FFA500]"}>15 Tage Lieferzeit</span>
                                                 </div>
                                             </div>
-                                            <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Empezar</button>
+                                            <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                         </div>
                                     </div>
                                 </SwiperSlide>
@@ -314,34 +370,34 @@ export default function PricingSection() {
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Plan premium</div>
+                                                <div className={"text-2xl font-light"}>Kostenlose Beratung</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.premium}</span>
                                                     </div>
-                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/month</div>
+                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                                 </div>
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Todo lo del Plan Avanzado.</span>
+                                                    <span>Alles aus der dynamischen Website</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Aplicación Full-stack.</span>
+                                                    <span>Maßgeschneiderte Designs und Funktionen</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Admin panel.</span>
+                                                    <span>Admin Panel</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Soporte prioritario.</span>
+                                                    <span>Kunden Panel</span>
                                                 </div>
                                             </div>
-                                            <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Empezar</button>
+                                            <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                         </div>
                                     </div>
                                 </SwiperSlide>
