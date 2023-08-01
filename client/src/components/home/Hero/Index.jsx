@@ -1,13 +1,14 @@
 
 // React
 import { useRef, useState } from 'react';
+// Nextjs
+import Image from 'next/image';
 // Components
 import ContactModal from '@/components/Modals/Contact/Index';
 // Styles
 import styles from './Index.module.css'
 // Animations
 import { AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 
 export default function HomeHero() {
 
@@ -18,10 +19,16 @@ export default function HomeHero() {
 
     return (
         <div className={styles.backgroundImage}>
-            <div className={"grid grid-cols-1 lg:grid-cols-2 h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
+            <div className={"h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
                 <div className={"flex flex-col gap-14 justify-center items-center lg:items-start h-full text-center lg:text-left"}>
-                    <h1 className={"text-6xl leading-[4.3rem] font-medium uppercase"}>Segel in die digitale Zukunft: Ihre Agentur für umfassende Transformation</h1>
-                    <button onClick={handleShowModal} className={"bg-primary hover:bg-primary-2 transition-colors px-4 xl:px-8 py-2 xl:py-3 text-base sm:text-xl w-fit rounded-sm"}>Kostenlose Beratung buchen</button>
+                    <div className={"flex flex-col gap-3"}>
+                        <h1 className={"text-8xl leading-[6.5rem] font-black uppercase"}>Segel in die <span className={"text-primary"}>digitale Zukunft</span>: Ihre Agentur für umfassende <span className={"text-primary"}>Transformation</span></h1>
+                        <p className={"font-light text-lg"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    <button onClick={handleShowModal} className={"flex items-center gap-4 bg-primary hover:bg-primary-2 text-white transition-colors px-4 xl:px-8 py-2 xl:py-3 text-base sm:text-xl w-fit rounded-full"}>
+                        <div>Kostenlose Beratung buchen</div>
+                        <i class="fa-light fa-arrow-up-right"></i>
+                    </button>
                 </div>
                 {/* <div className={"hidden lg:block"}>
                     <VideoPlayer
