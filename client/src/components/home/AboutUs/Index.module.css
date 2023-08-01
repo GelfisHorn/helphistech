@@ -1,0 +1,24 @@
+.background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.rowHorizontalLineWidth {
+    width: calc(50% - 0.65rem);
+}
+
+.cardGlassEffect {
+    background: rgba(0, 0, 0, 0.01);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(150, 150, 150, 0.1);
+    word-break: break-word;
+}
+
+.userGlassEffect {
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(150, 150, 150, 0.1);
+}

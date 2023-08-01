@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* font-family: 'Poppins', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* font-family: 'Overpass', sans-serif; */
 
 @tailwind base;
 @tailwind components;
@@ -12,6 +14,10 @@ html {
 
 body {
 	font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Overpass', sans-serif;
 }
 
 h1,
@@ -684,4 +690,37 @@ ul ol {
 .client-comment .swiper-wrapper {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
+}
+
+.swiper-grid-3 .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.swiper-grid-4 .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.break-word {
+	word-break: break-word;
+}
+
+.home-background {
+	position: relative;
+}
+
+.home-background::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url("/lightmode.webp");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: right;
+	width: 100vw;
+	height: 100%;
+	opacity: .2;
+	z-index: 1;
 }
