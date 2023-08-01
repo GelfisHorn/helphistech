@@ -45,7 +45,7 @@ export default function Home({ services, faqs, clientComments }) {
 				<HeroSection />
 				<ServicesSection services={services} />
 				<PricingSection />
-				{/* <ClientCommentsSection comments={clientComments} /> */}
+				<ClientCommentsSection comments={clientComments} />
 				<ProcessSection />
 				<TechnologiesSection />
 				<ContactSection language={'de'} />
@@ -72,13 +72,13 @@ export const getStaticProps = async (context) => {
 		const response = await Promise.all([
 			axios.get(`${process.env.STRAPI_URI}/api/faq?populate=element&locale=de`, config),
 			axios.get(`${process.env.STRAPI_URI}/api/blogs?locale=de&populate=preview&filters[showOnHomePage][$eq]=true`, config),
-			// axios.get(`${process.env.STRAPI_URI}/api/client-comments?locale=de`, config)
+			axios.get(`${process.env.STRAPI_URI}/api/client-comments?locale=de`, config)
 		])
 		return {
 			props: {
 				faqs: response[0]?.data?.data?.attributes || {},
 				services: response[1]?.data.data || [],
-				// clientComments: response[2]?.data.data || []
+				clientComments: response[2]?.data.data || []
 			}
 		}
 	} catch (error) {
