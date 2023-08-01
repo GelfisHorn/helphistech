@@ -43,7 +43,7 @@ export default function Home({ services, faqs, clientComments }) {
 				{/* Sections */}
 				<HeroSection />
 				<ServicesSection services={services} />
-				<ClientCommentsSection comments={clientComments} />
+				{/* <ClientCommentsSection comments={clientComments} /> */}
 				<ProcessSection />
 				<TechnologiesSection />
 				<ContactSection language={'de'} />
