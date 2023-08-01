@@ -10,8 +10,8 @@ import ProcessSection from "@/components/en/HomeSections/Process";
 import TechnologiesSection from "@/components/en/HomeSections/Technologies";
 import MyProjectSection from "@/components/en/HomeSections/MyProject";
 import Footer from "@/components/en/Footer";
-import FAQSection from "@/components/HomeSections/FAQ";
-import ContactSection from "@/components/HomeSections/Contact/Index";
+import FAQSection from "@/components/website/FAQ";
+import ContactSection from "@/components/website/Contact/Index";
 
 export default function Home({ services, faqs }) {
 

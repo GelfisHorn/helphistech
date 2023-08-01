@@ -68,13 +68,13 @@ export default function Navbar({ textColor }) {
     }
 
     function handleNavButton(hash) {
-        if(router.pathname === '/') {
+        /* if(router.pathname === '/') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             return;
-        }
+        } */
         router.push(REDIRECTS[hash]);
     }
 
@@ -91,7 +91,7 @@ export default function Navbar({ textColor }) {
                 <div className={`flex items-center justify-between h-20 px-10 ${textColor ? `${textColor}` : `text-${darkMode ? 'dark' : 'light'}`}`}>
                     <div>
                         <Link href={"/"}>
-                            <Image className="w-auto h-[3.8rem]" src={`${router.pathname == '/' ? "/logo/dark/full-256.webp" : darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
+                            <Image className="w-auto h-[3.8rem]" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
                         </Link>
                     </div>
                     <nav className="hidden xl:flex items-center gap-5 font-light text-lg">
@@ -208,13 +208,13 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
     }
 
     function handleNavButton(hash) {
-        if(router.pathname === '/en') {
+        /* if(router.pathname === '/en') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             return;
-        }
+        } */
         router.push(REDIRECTS[hash]);
     }
 
