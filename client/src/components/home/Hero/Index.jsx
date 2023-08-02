@@ -7,6 +7,7 @@ import ContactModal from '@/components/Modals/Contact/Index';
 import styles from './Index.module.css'
 // Animations
 import { AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function HomeHero() {
 
@@ -39,7 +40,7 @@ export default function HomeHero() {
                     <ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
                 )}
             </AnimatePresence>
-        </section>  
+        </section> 
     )
 }
 
