@@ -1,6 +1,41 @@
+.background {
+    position: relative;
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/lightmode.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    width: 100vw;
+    height: 100%;
+    opacity: .2;
+    z-index: -1;
+}
+
 .cardGlassEffect {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(150, 150, 150, 0.1);
     word-break: break-word;
+}
+
+.button {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    background: #866bfe;
+    padding: .4rem .8rem;
+    transition: background .2s;
+    border-radius: .2rem;
+}
+
+.button:hover {
+    background: #5a43be;
 }

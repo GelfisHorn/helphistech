@@ -17,7 +17,7 @@ export default function HomeAboutUs() {
             <div className={"flex flex-col gap-28"}>
                 <div className={"flex flex-col gap-4 text-center"}>
                     <h2 className={"font-bold text-3xl sm:text-5xl"}>Über Uns</h2>
-                    <p className={"text-base sm:text-lg"}>HelphisTech ist ein innovatives Technologie-Startup mit der Mission, Unternehmen und Geschäften bei ihrer Digitalisierung zu unterstützen. Dazu verfügen wir über vier Teams von erstklassigen Fachleuten auf ihren jeweiligen Gebieten, um einen qualitativ hochwertigen Service zu bieten.</p>
+                    <p className={"text-base sm:text-lg"}><span className={"font-semibold text-primary"}>HelphisTech</span> ist ein innovatives Technologie-Startup mit der Mission, Unternehmen und Geschäften bei ihrer Digitalisierung zu unterstützen. Dazu verfügen wir über <span className={"font-semibold text-primary"}>vier</span> Teams von erstklassigen Fachleuten auf ihren jeweiligen Gebieten, um einen qualitativ hochwertigen Service zu bieten.</p>
                 </div>
                 <div className={"hidden xl:grid grid-cols-3"}>
                     <LeftRow

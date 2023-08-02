@@ -22,11 +22,11 @@ export default function HomeHero() {
             <div className={"flex items-center gap-20 h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
                 <div className={"flex flex-col gap-14 justify-center items-center lg:items-start h-full text-center lg:text-left"}>
                     <div className={"flex flex-col gap-3"}>
-                        <h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}>Segel in die <span className={"text-primary"}>digitale Zukunft</span>: Ihre Agentur für umfassende <span className={"text-primary"}>Transformation</span></h1>
-                        <p className={"font-light md:text-lg"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}>Die Macht der <span className={"text-primary"}>Digitalisierung</span>: Kunden begeistern, Gewinne <span className={"text-primary"}>maximieren</span></h1>
+                        <p className={"font-light md:text-lg"}>Erfolgreich in der digitalen Ära mit HelphisTech</p>
                     </div>
                     <button onClick={handleShowModal} className={"flex items-center gap-4 bg-primary hover:bg-primary-2 text-white transition-colors px-4 md:px-8 py-2 md:py-3 text-base sm:text-lg w-fit rounded-full"}>
-                        <div>Kostenlose Beratung buchen</div>
+                        <div>Kostenloses Angebot erhalten</div>
                         <i className="fa-light fa-arrow-up-right"></i>
                     </button>
                 </div>

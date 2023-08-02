@@ -34,8 +34,8 @@ export default function HomeIntroduction() {
                         <p className={"lg:text-xl"}>Gemeinsam lassen wir Ihre digitale Vision Wirklichkeit werden! Wir freuen uns darauf, Teil Ihres Erfolgs zu sein.</p>
                     </div>
                     <div className={"flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5"}>
-                        <button onClick={handleShowModal} className={"w-full sm:w-fit px-8 py-2 sm:py-3 border-2 border-transparent bg-primary hover:bg-primary-2 transition-colors text-white rounded-full"}>Ich bin interessiert</button>
-                        <a href={"/#home-services"} className={"w-full sm:w-fit px-8 py-2 sm:py-3 border-2 border-primary hover:bg-primary text-primary hover:text-white transition-colors rounded-full"}>Preise ansehen</a>
+                        <button onClick={handleShowModal} className={"w-full sm:w-fit px-8 py-2 sm:py-3 border-2 border-transparent bg-primary hover:bg-primary-2 transition-colors text-white rounded-full"}>Mehr Erfahren</button>
+                        {/* <a href={"/#home-services"} className={"w-full sm:w-fit px-8 py-2 sm:py-3 border-2 border-primary hover:bg-primary text-primary hover:text-white transition-colors rounded-full"}>Preise ansehen</a> */}
                     </div>
                 </div>
                 <div className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-6 h-6 rounded-full top-20 left-24 bg-[#ff98d0]`} style={{ zIndex: "0"}}></div>
