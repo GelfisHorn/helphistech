@@ -31,9 +31,7 @@ export default function Home({ faqs, clientComments }) {
                 <Navbar />
                 <HomeHero />
                 <HomeIntroduction />
-                <div className={"home-background"}>
-                    <HomeServices />
-                </div>
+                <HomeServices />
                 <ClientCommentsSection comments={clientComments} />
                 <ContactSection language={"de"} />
                 <HomeAboutUs />
