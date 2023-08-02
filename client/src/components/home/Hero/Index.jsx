@@ -1,8 +1,6 @@
 
 // React
 import { useRef, useState } from 'react';
-// Nextjs
-import Image from 'next/image';
 // Components
 import ContactModal from '@/components/Modals/Contact/Index';
 // Styles
