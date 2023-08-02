@@ -18,16 +18,16 @@ export default function HomeHero() {
     }
 
     return (
-        <div className={styles.backgroundImage}>
+        <section className={styles.backgroundImage}>
             <div className={"h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
                 <div className={"flex flex-col gap-14 justify-center items-center lg:items-start h-full text-center lg:text-left"}>
                     <div className={"flex flex-col gap-3"}>
-                        <h1 className={"text-8xl leading-[6.5rem] font-black uppercase"}>Segel in die <span className={"text-primary"}>digitale Zukunft</span>: Ihre Agentur für umfassende <span className={"text-primary"}>Transformation</span></h1>
-                        <p className={"font-light text-lg"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h1 className={"text-4xl leading-[3.2rem] sm:text-5xl sm:leading-[3.8rem] md:text-6xl md:leading-[4.8rem] lg:text-7xl lg:leading-[5.5rem] 2xl:text-8xl 2xl:leading-[6.5rem] font-black uppercase break-word"}>Segel in die <span className={"text-primary"}>digitale Zukunft</span>: Ihre Agentur für umfassende <span className={"text-primary"}>Transformation</span></h1>
+                        <p className={"font-light md:text-lg lg:w-2/3"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
-                    <button onClick={handleShowModal} className={"flex items-center gap-4 bg-primary hover:bg-primary-2 text-white transition-colors px-4 xl:px-8 py-2 xl:py-3 text-base sm:text-xl w-fit rounded-full"}>
+                    <button onClick={handleShowModal} className={"flex items-center gap-4 bg-primary hover:bg-primary-2 text-white transition-colors px-4 md:px-8 py-2 md:py-3 text-base sm:text-lg w-fit rounded-full"}>
                         <div>Kostenlose Beratung buchen</div>
-                        <i class="fa-light fa-arrow-up-right"></i>
+                        <i className="fa-light fa-arrow-up-right"></i>
                     </button>
                 </div>
                 {/* <div className={"hidden lg:block"}>
@@ -41,7 +41,7 @@ export default function HomeHero() {
                     <ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
                 )}
             </AnimatePresence>
-        </div>  
+        </section>  
     )
 }
 

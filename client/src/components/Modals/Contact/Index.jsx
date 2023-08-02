@@ -212,8 +212,8 @@ export default function ContactModal({ blog, handleClose, language }) {
                                         </div>
                                         <div className={'flex flex-col'}>
                                             {windowSize < 768 && service.mobile ? (
-                                                service.mobile.map(text => (
-                                                    <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
+                                                service.mobile.map((text, index) => (
+                                                    <div key={index} className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
                                                 ))
                                             ) : (
                                                 <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
@@ -243,8 +243,8 @@ export default function ContactModal({ blog, handleClose, language }) {
                                             </div>
                                             <div className={'flex flex-col'}>
                                                 {windowSize < 768 && service.mobile ? (
-                                                    service.mobile.map(text => (
-                                                        <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
+                                                    service.mobile.map((text, index) => (
+                                                        <div key={index} className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
                                                     ))
                                                 ) : (
                                                     <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{service.text}</div>
@@ -278,8 +278,8 @@ export default function ContactModal({ blog, handleClose, language }) {
                                             </div>
                                             <div className={'flex flex-col'}>
                                                 {windowSize < 768 && service.mobile ? (
-                                                    service.mobile.map(text => (
-                                                        <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
+                                                    service.mobile.map((text, index) => (
+                                                        <div key={index} className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{text}</div>
                                                     ))
                                                 ) : (
                                                     <div className={"text-sm xs:text-base md:uppercase md:font-medium md:text-lg"}>{service.text}</div>

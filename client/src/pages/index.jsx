@@ -30,8 +30,8 @@ export default function Home({ faqs, clientComments }) {
             <main className={darkMode ? 'bg-black text-zinc-200' : 'bg-white text-black'} >
                 <Navbar />
                 <HomeHero />
+                <HomeIntroduction />
                 <div className={"home-background"}>
-                    <HomeIntroduction />
                     <HomeServices />
                 </div>
                 <ClientCommentsSection comments={clientComments} />

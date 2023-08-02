@@ -22,9 +22,9 @@ export default function HomeServices() {
     const { darkMode } = useContextProvider();
 
     return (
-        <div className={`relative px-6 sm:px-20 py-20`} style={{zIndex: "2"}}>
+        <section className={`relative px-6 sm:px-20 py-28`} style={{zIndex: "2"}} id={"home-services"}>
             <div className={"flex flex-col items-center gap-20"}>
-                <h2 className={"text-3xl lg:text-4xl font-semibold text-center break-word"}>Unsere Haupt-dienstleistungen umfassen</h2>
+                <h2 className={"text-3xl lg:text-5xl font-bold text-center break-word"}>Unsere Haupt-dienstleistungen umfassen</h2>
                 <div className={"hidden xl:grid grid-cols-2 gap-5 "}>
                     <Card 
                         icon={"fa-regular fa-window"} 
@@ -95,7 +95,7 @@ export default function HomeServices() {
                     </Swiper>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 
@@ -110,7 +110,7 @@ function Card({ icon, title, description, price, redirect, classes }) {
         <div className={`flex flex-col justify-between gap-8 rounded-xl p-8 shadow-md text-center ${styles.cardGlassEffect} ${classes} h-full`} style={{ background: darkMode ? "rgba(22, 22, 36, .8)" : "rgba(198, 192, 218, .1)"}}>
             <div className={"flex flex-col gap-7"}>
                 <i className={`${icon} text-6xl text-primary`}></i>
-                <h3 className={"text-2xl font-medium"}>{title}</h3>
+                <h3 className={"text-2xl font-bold"}>{title}</h3>
                 <p className={darkMode ? "text-neutral-300" : "text-neutral-800"}>{description}</p>
                 <div className={"text-lg font-semibold"}>ab <span className={"text-2xl"}>{currencyFormatter(price, "EUR")}</span></div>
             </div>
