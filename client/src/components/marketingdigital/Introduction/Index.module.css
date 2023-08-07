@@ -1,0 +1,19 @@
+.animationScrollDown {
+    position: relative;
+    animation-name: scrolldown;
+    animation-duration: .8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes scrolldown {
+    0% {
+        top: -4px;
+    }
+    50% {
+        top: 4px
+    }
+    100% {
+        top: -4px
+    }
+}

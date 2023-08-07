@@ -455,7 +455,39 @@ function client(data) {
                     
             <div style="font-size: 16px; line-height: 140%; text-align: left; word-wrap: break-word;">
                 <div>
-            <div>${name}, ${message}</div>
+            <div>${message[0]}</div>
+            </div>
+            </div>
+
+                </td>
+                </tr>
+            </tbody>
+            </table>
+
+            <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+            <tbody>
+                <tr>
+                <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+
+            <div style="font-size: 16px; line-height: 140%; text-align: left; word-wrap: break-word;">
+                <div>
+            <div>${message[1]}</div>
+            </div>
+            </div>
+
+                </td>
+                </tr>
+            </tbody>
+            </table>
+
+            <table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+            <tbody>
+                <tr>
+                <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+
+            <div style="font-size: 16px; line-height: 140%; text-align: left; word-wrap: break-word;">
+                <div>
+            <div>${message[2]}</div>
             </div>
             </div>
 
@@ -472,7 +504,7 @@ function client(data) {
                 </div>
             </div>
             </div>
-            
+
 
 
                 <!--[if (mso)|(IE)]></td></tr></table><![endif]-->

@@ -37,7 +37,7 @@ export default function HomeServices() {
     return (
         <section className={`relative px-6 sm:px-20 py-28 ${styles.background}`} id={"home-services"}>
             <div className={"flex flex-col items-center gap-20"}>
-                <h2 className={"text-3xl lg:text-5xl font-bold text-center break-word"}>Unsere Haupt-dienstleistungen umfassen</h2>
+                <h2 className={"text-3xl lg:text-5xl font-bold text-center break-word"}>Unsere <span className={"text-primary"}>Haupt-dienstleistungen</span> umfassen</h2>
                 <div className={"hidden xl:grid grid-cols-2 gap-5 "}>
                     <Card 
                         icon={"fa-regular fa-window"} 
@@ -176,9 +176,7 @@ function ContactModal({ service, handleClose }) {
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
         ]).then(res => {
             toast.success(LANG["de"].notifications.success);
-            console.log(res)
         }).catch(err => {
-            console.log(err)
             toast.error(LANG["de"].notifications.error.catch);
         });
 

@@ -59,14 +59,16 @@ export default function PricingSection() {
             return toast.error(formIsValid.msg);
         }
         
-        try {
-            await axios.post('/api/pricing/sendMail', { pricing: { plan: LANG.es.plans[pricing.plan], price: pricing.price }, name, email, phoneNumber, description });
+        Promise.all([
+            axios.post('/api/pricing/sendMail', { pricing: { plan: LANG.es.plans[pricing.plan], price: pricing.price }, name, email, phoneNumber, description }),
+            axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
+        ]).then(res => {
             toast.success(LANG[language].notifications.success);
-        } catch (error) {
+        }).catch(err => {
             toast.error(LANG[language].notifications.error.catch);
-        } finally {
-            resetForm();
-        }
+        });
+
+        resetForm();
     }
 
     function validateForm() {
@@ -96,10 +98,10 @@ export default function PricingSection() {
                 <div className={"flex flex-col gap-20"}>
                     <div className={"flex flex-col gap-8 text-center px-6 sm:px-10 lg:px-20"}>
                         <div className={"flex flex-col gap-5"}>
-                            <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Encuentra el plan perfecto para llevar tu proyecto al siguiente nivel</div>
-                            <h2 className={"text-3xl sm:text-5xl font-bold"}>Servicios de Desarrollo Web a la medida</h2>
+                            {/* <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Encuentra el plan perfecto para llevar tu proyecto al siguiente nivel</div> */}
+                            <h2 className={"text-3xl sm:text-5xl font-bold"}><span className={"text-primary"}>Benutzer-definierte</span> Webentwicklung-sdienste</h2>
                         </div>
-                        <p className={`${darkMode ? "description-dark" : "description-light"}`}>A continuación, te presentamos nuestros tres paquetes diseñados para satisfacer las necesidades de cualquier proyecto, desde pequeñas empresas hasta aplicaciones web de gran escala.</p>
+                        <p className={`${darkMode ? "description-dark" : "description-light"}`}>Hier sind unsere drei Pakete, die auf die Anforderungen jedes Projekts zugeschnitten sind, von kleinen Unternehmen bis hin zu großen Webanwendungen.</p>
                     </div>
                     <div className={"flex justify-center w-full"}>
                         <div className={"hidden xl:flex items-start gap-6"}>
@@ -113,7 +115,6 @@ export default function PricingSection() {
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.basic}</span>
                                             </div>
-                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                         </div>
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
@@ -169,7 +170,6 @@ export default function PricingSection() {
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.pro}</span>
                                             </div>
-                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                         </div>
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
@@ -219,7 +219,6 @@ export default function PricingSection() {
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.premium}</span>
                                             </div>
-                                            <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                         </div>
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
@@ -244,7 +243,7 @@ export default function PricingSection() {
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div className={"flex flex-col gap-10"}>
                             <Swiper
                                 slidesPerView={3}
                                 centeredSlides={true}
@@ -266,7 +265,6 @@ export default function PricingSection() {
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.basic}</span>
                                                     </div>
-                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                                 </div>
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
@@ -324,7 +322,6 @@ export default function PricingSection() {
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.pro}</span>
                                                     </div>
-                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                                 </div>
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
@@ -376,7 +373,6 @@ export default function PricingSection() {
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.premium}</span>
                                                     </div>
-                                                    <div className={`${darkMode ? "text-neutral-500" : "text-neutral-500"} uppercase font-semibold`}>/monat</div>
                                                 </div>
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
@@ -402,6 +398,9 @@ export default function PricingSection() {
                                     </div>
                                 </SwiperSlide>
                             </Swiper>
+                            <div className={"flex xl:hidden relative justify-center items-center text-5xl text-neutral-500"}>
+                                <i className="fa-thin fa-arrows-left-right"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

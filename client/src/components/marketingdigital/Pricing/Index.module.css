@@ -1,0 +1,75 @@
+.backgroundImage {
+    position: relative;
+    padding: 9rem 0;
+    padding-top: 5rem;
+}
+
+.backgroundImage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: .2;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1015%26quot%3b)' fill='none'%3e%3cpath d='M473.64 656.36C593.21 621.79 524.07 300.96 805.13 284.9 1086.19 268.84 1297.8 129.16 1468.11 128.1' stroke='rgba(134%2c 107%2c 254%2c 0.52)' stroke-width='2'%3e%3c/path%3e%3cpath d='M476.84 658.62C622.34 603.5 562.5 165.78 854.11 163.66 1145.72 161.54 1412.67 374.44 1608.65 376.46' stroke='rgba(134%2c 107%2c 254%2c 0.52)' stroke-width='2'%3e%3c/path%3e%3cpath d='M499.36 576.04C619.22 552.78 586.36 248.16 860.84 247.63 1135.32 247.1 1398.86 403.53 1583.8 404.43' stroke='rgba(134%2c 107%2c 254%2c 0.52)' stroke-width='2'%3e%3c/path%3e%3cpath d='M276.4 566.41C468.89 554.35 608.27 195.17 952.04 194.06 1295.81 192.95 1456.23 311.22 1627.68 311.66' stroke='rgba(134%2c 107%2c 254%2c 0.52)' stroke-width='2'%3e%3c/path%3e%3cpath d='M183.91 574.1C297.15 571.22 393.65 409.52 606.03 409.37 818.41 409.22 817.09 479.37 1028.15 479.37 1239.21 479.37 1343.3 409.61 1450.27 409.37' stroke='rgba(134%2c 107%2c 254%2c 0.52)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1015'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.cardGlassEffect {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.button {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    background: #866bfe;
+    padding: .4rem .8rem;
+    transition: background .2s;
+    border-radius: .2rem;
+}
+
+.button:hover {
+    background: #5a43be;
+}
+
+.swiper-slide-item {
+    width: 22rem !important;
+    height: unset !important;
+}
+
+.swiper-slide-item:nth-child(3) {
+    margin-right: 0 !important;
+}
+
+.prices-swiper {
+    width: 100%;
+}
+
+.animationScrollRight {
+    position: relative;
+    animation-name: scrollright;
+    animation-duration: .6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes scrollright {
+    0% {
+        left: 1rem;
+    }
+
+    50% {
+        left: 1.5rem;
+    }
+
+    100% {
+        left: 1rem;
+    }
+}

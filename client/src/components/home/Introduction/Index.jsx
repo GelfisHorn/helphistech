@@ -8,6 +8,7 @@ import styles from "./Index.module.css";
 import ContactModal from '@/components/Modals/Contact/Index';
 // Animations
 import { AnimatePresence } from 'framer-motion';
+import Link from "next/link";
 
 export default function HomeIntroduction() {
 
@@ -29,7 +30,7 @@ export default function HomeIntroduction() {
                         </div>
                         <div className={"lg:text-xl"}>
                             <p>Wir sind ein leidenschaftliches Team von Entwicklern und Designern, das sich dafür einsetzt, die digitale Transformation Ihres Unternehmens voranzutreiben.</p>
-                            <p>Wir bieten Webdesign-, App-Entwicklungs- und digitale Marketingdienstleistungen an, um Sie auf die nächste Stufe der technologischen Welt zu bringen.</p>
+                            <p>Wir bieten <Link href={"/website"} className={"text-primary underline hover:text-primary-2 transition-colors"}>Webdesign</Link>-, <Link href={"/apps"} className={"text-primary underline hover:text-primary-2 transition-colors"}>App-Entwicklungs</Link>- und <Link href={"/marketingdigital"} className={"text-primary underline hover:text-primary-2 transition-colors"}>digitale Marketingdienstleistungen</Link> an, um Sie auf die nächste Stufe der technologischen Welt zu bringen.</p>
                         </div>
                         <p className={"lg:text-xl"}>Gemeinsam lassen wir Ihre digitale Vision Wirklichkeit werden! Wir freuen uns darauf, Teil Ihres Erfolgs zu sein.</p>
                     </div>

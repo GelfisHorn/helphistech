@@ -7,9 +7,9 @@ export default async function handler(req, res) {
     const { name, email, lang } = req.body || {};
 
     const message = {
-        de: "Wir haben Ihre Informationen erhalten und werden uns so schnell wie möglich mit Ihnen in Verbindung setzen!",
-        en: "We have received your information, we will contact you as soon as possible!",
-        es: "hemos recibido tu información, nos pondremos en contacto contigo lo antes posible!"
+        de: [`Hallo ${name},`, "Vielen Dank, dass Sie unser Formular ausgefüllt haben.", "Wir haben Ihre Informationen erhalten und werden uns so schnell wie möglich mit Ihnen in Verbindung setzen!"],
+        en: [`Hello ${name},`, "Thank you for completing our form.", "We have received your information and we will contact you as soon as possible!"],
+        es: [`Hola ${name},`, "Gracias por completar nuestro formulario.", "Hemos recibido tu información y nos pondremos en contacto contigo lo antes posible!"]
     }
 
     try {

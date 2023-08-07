@@ -2,8 +2,10 @@
 /* font-family: 'Poppins', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* font-family: 'Overpass', sans-serif; */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-/* font-family: 'Bebas Neue', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap');
+/* font-family: 'Ramabhadra', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+/* font-family: 'Sofia Sans Semi Condensed', sans-serif; */
 
 @tailwind base;
 @tailwind components;
@@ -19,7 +21,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Overpass', sans-serif;
+	font-family: 'Sofia Sans Semi Condensed', sans-serif;
+	font-weight: 900 !important;
+	text-transform: uppercase;
 }
 
 h1,
@@ -30,6 +34,10 @@ p,
 span,
 div {
 	transition: color 50ms;
+}
+
+button {
+	user-select: none;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -725,4 +733,10 @@ ul ol {
 	height: 100%;
 	opacity: .2;
 	z-index: 0;
+}
+
+.md-pricing-swiper .swiper-wrapper {
+	padding: 0rem 0rem 4rem 0rem !important;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
 }

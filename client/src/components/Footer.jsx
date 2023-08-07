@@ -96,13 +96,33 @@ export default function Footer() {
                             <Link href={"/datenschutz"} className={"flex items-center gap-2 hover:underline hover:text-primary transition-colors"}>Datenschutz</Link>
                         </div>
                     </FooterColumn>
-                    <FooterColumn title={"Kontakt"}>
-                        <Link className="flex items-center justify-center lg:justify-start gap-2 hover:underline hover:text-primary transition-colors" href="mailto:helphis.tech@gmail.com">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-[1.1rem] h-[1.1rem] ${darkMode ? 'text-dark' : 'text-light'}`}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                            </svg>
-                            <span>helphis.tech@gmail.com</span>
-                        </Link>
+                    <FooterColumn title={"Socials"}>
+                        <div className={`flex flex-col gap-2 ${darkMode ? 'text-dark' : 'text-light'}`}>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#FF0000] transition-colors" href="https://www.youtube.com/@HelphisTech" target={"_blank"}>
+                                <i className="fa-brands fa-youtube w-5 grid place-content-center"></i>
+                                <span>Youtube</span>
+                            </Link>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#C13584] transition-colors" href="https://www.instagram.com/helphistech" target={"_blank"}>
+                                <i className="fa-brands fa-instagram w-5 grid place-content-center"></i>
+                                <span>Instagram</span>
+                            </Link>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#4267B2] transition-colors" href="https://www.facebook.com/helphistech" target={"_blank"}>
+                                <i className="fa-brands fa-square-facebook w-5 grid place-content-center"></i>
+                                <span>Facebook</span>
+                            </Link>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#ff0050] transition-colors" href="#" target={"_blank"}>
+                                <i className="fa-brands fa-tiktok w-5 grid place-content-center"></i>
+                                <span>Tiktok</span>
+                            </Link>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#0A66C2] transition-colors" href="https://www.linkedin.com/in/helphistech" target={"_blank"}>
+                                <i className="fa-brands fa-linkedin w-5 grid place-content-center"></i>
+                                <span>Linkedin</span>
+                            </Link>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-primary transition-colors" href="mailto:helphis.tech@gmail.com">
+                                <i className="fa-light fa-envelope w-5 grid place-content-center"></i>
+                                <span>helphis.tech@gmail.com</span>
+                            </Link>
+                        </div>
                     </FooterColumn>
                 </div>
             </div>
