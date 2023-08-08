@@ -112,7 +112,7 @@ export default function ServicesSection({ services }) {
                                     <div>{"wir anbieten"}</div>
                                 </h2>
                                 <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-                                    <p className="text-center sm:text-left">Bei HelphisTech bieten wir eine breite Palette von Webentwicklungsdiensten an, um Unternehmen dabei zu helfen, eine starke Online-Präsenz zu schaffen und ihre digitalen Ziele zu erreichen. Unser Team aus erfahrenen Entwicklern ist in der Erstellung benutzerdefinierter Websites, Webanwendungen und E-Commerce-Plattformen geschult, die auf die individuellen Bedürfnisse jedes Kunden zugeschnitten sind.</p>
+                                    <p className="text-center sm:text-left">Eine hochwertige Webseite ist für eine starke Online-Präsenz entscheidend. Bei Helphistech bieten wir moderne und anpassungsfähige Designs, die Sie von der Konkurrenz abheben lassen. Unser Ziel ist es, Ihre Identität zu reflektieren und ein herausragendes Benutzererlebnis zu schaffen. Lassen Sie uns Ihre Online-Präsenz auf die nächste Stufe bringen!</p>
                                     {/* We use the latest technologies and industry best practices to ensure that our projects are of the highest quality, and we work closely with our clients to ensure that they are satisfied with the final product. */}
                                 </div>
                             </div>

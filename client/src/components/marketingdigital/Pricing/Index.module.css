@@ -52,6 +52,28 @@
     width: 100%;
 }
 
+.animationScrollLeft {
+    position: relative;
+    animation-name: scrollleft;
+    animation-duration: .6s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes scrollleft {
+    0% {
+        right: 1rem;
+    }
+
+    50% {
+        right: .5rem;
+    }
+
+    100% {
+        right: 1rem;
+    }
+}
+
 .animationScrollRight {
     position: relative;
     animation-name: scrollright;

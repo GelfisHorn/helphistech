@@ -184,23 +184,30 @@ function Card({ plan, title, description, price, popular, benefits, handleModal 
 
 function CardsMobile({ setPlan, showModal }) {
 
-    const [ actualPlan, setActualPlan ] = useState(0);
+    const [ actualPlan, setActualPlan ] = useState(2);
     const handleSetPlan = (plan) => {
         setActualPlan(plan);
     }
 
     return (
-        <div className={"flex flex-col gap-5"}>
+        <section className={"flex flex-col gap-5"}>
             <div className={"flex flex-col gap-2"}>
-                <div>
-                    <i className={`fa-regular fa-arrow-right-long text-2xl text-primary ${styles.animationScrollRight}`}></i>
+                <div className={"flex justify-between"}>
+                    <div className={"flex justify-start w-fit h-10"}>
+                        <i className={`fa-regular fa-arrow-right-long text-2xl text-primary ${styles.animationScrollRight}`}></i>
+                    </div>
+                    <div className={"flex justify-end w-fit h-10"}>
+                        <i className={`fa-regular fa-arrow-left-long text-2xl mr-2 text-primary ${styles.animationScrollLeft}`}></i>
+                    </div>
                 </div>
-                <div className={`flex gap-1 items-center whitespace-nowrap overflow-x-scroll scrollbar-thin hide-scroll pb-2 px-3 w-full`}>
-                    <button onClick={() => handleSetPlan(0)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 0 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Marketinginhalte</button>
-                    <button onClick={() => handleSetPlan(1)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 1 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Suchmaschinenoptimierung</button>
-                    <button onClick={() => handleSetPlan(2)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 2 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Social-Media-Marketing</button>
-                    <button onClick={() => handleSetPlan(3)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 3 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Online-Werbung</button>
-                    <button onClick={() => handleSetPlan(4)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 4 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Premium Digital Marketing Paket</button>
+                <div className={"overflow-x-scroll scrollbar-thin hide-scroll pb-2 px-3"}>
+                    <div className={`relative flex min-w-max gap-1 items-center justify-center whitespace-nowrap`}>
+                        <button onClick={() => handleSetPlan(0)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 0 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Marketinginhalte</button>
+                        <button onClick={() => handleSetPlan(1)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 1 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Suchmaschinenoptimierung</button>
+                        <button onClick={() => handleSetPlan(2)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 2 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Premium Digital Marketing Paket</button>
+                        <button onClick={() => handleSetPlan(3)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 3 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Social-Media-Marketing</button>
+                        <button onClick={() => handleSetPlan(4)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 4 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Online-Werbung</button>
+                    </div>
                 </div>
             </div>
             <div className={"px-3 min-w-[350px]"}>
@@ -229,6 +236,18 @@ function CardsMobile({ setPlan, showModal }) {
                 {actualPlan == 2 && (
                     <Card
                         icon={"fa-solid fa-chart-mixed"}
+                        title={"Premium Digital Marketing Paket"}
+                        description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
+                        price={PRICING["05"].price}
+                        handleModal={showModal}
+                        benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
+                        popular={true}
+                        plan={{ get: PRICING["05"].name, set: setPlan }}
+                    />
+                )}
+                {actualPlan == 3 && (
+                    <Card
+                        icon={"fa-solid fa-chart-mixed"}
                         title={"Social-Media-Marketing"}
                         description={"Nutzung von Plattformen wie Facebook, Instagram, Twitter, LinkedIn, TikTok usw., um mit Followern zu interagieren, Inhalte zu teilen und Produkte oder Dienstleistungen zu bewerben."}
                         price={PRICING["03"].price}
@@ -237,7 +256,7 @@ function CardsMobile({ setPlan, showModal }) {
                         plan={{ get: PRICING["03"].name, set: setPlan }}
                     />
                 )}
-                {actualPlan == 3 && (
+                {actualPlan == 4 && (
                     <Card
                         icon={"fa-solid fa-chart-mixed"}
                         title={"Online-Werbung (SEM)"}
@@ -248,20 +267,9 @@ function CardsMobile({ setPlan, showModal }) {
                         plan={{ get: PRICING["04"].name, set: setPlan }}
                     />
                 )}
-                {actualPlan == 4 && (
-                    <Card
-                        icon={"fa-solid fa-chart-mixed"}
-                        title={"Premium Digital Marketing Paket"}
-                        description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
-                        price={PRICING["05"].price}
-                        handleModal={showModal}
-                        benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
-                        popular={true}
-                        plan={{ get: PRICING["05"].name, set: setPlan }}
-                    />
-                )}
+                
             </div>
-        </div>
+        </section>
     )
 }
 
@@ -287,9 +295,7 @@ function ContactModal({ service, handleClose }) {
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
         ]).then(res => {
             toast.success(LANG["de"].notifications.success);
-            console.log(res)
         }).catch(err => {
-            console.log(err)
             toast.error(LANG["de"].notifications.error.catch);
         });
 

@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      gridTemplateRows: {
+        '11': 'repeat(11, minmax(0, 1fr))'
+      },
       screens: {
         xs: '400px'
       },

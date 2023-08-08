@@ -138,7 +138,7 @@ export default function Navbar({ textColor }) {
                             <span>Anmeldung</span>
                         </Link>
                         <div onClick={handleShowModal}>
-                            <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
+                            <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-lg">
                                 <span>Projekt starten</span>
                             </button>
                         </div>

@@ -19,7 +19,7 @@ export default function MarketingDigital() {
             <MDIntroduction />
             <MDPricing />
             <MDComments comments={comments.de} />
-            <ContactSection language={"de"} />
+            {/* <ContactSection language={"de"} /> */}
         </Layout>
     )
 }

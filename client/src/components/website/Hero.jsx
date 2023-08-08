@@ -75,11 +75,11 @@ export default function HeroSection() {
 					<div className="max-w-7xl 2xl:max-w-[90rem] flex flex-col xl:flex-row items-center gap-12 2xl:gap-20 w-full">
 						<div className="flex flex-col gap-10 text-center xl:text-left xl:max-w-[33rem] 2xl:max-w-[40rem]">
 							<motion.div initial={{ x: -40, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ type: "spring", bounce: 0, duration: .8 }} viewport={{ once: true }} className={`flex flex-col gap-5`}>
-								<h1 className={`title-dark text-3xl leading-[2.8rem] md:text-4xl md:leading-[3rem] lg:text-5xl lg:leading-[4rem] 2xl:text-6xl 2xl:leading-[5rem] font-bold break-words`}>Professionelle Website- und App-Entwicklung</h1>
-								<p className={`description-dark font-light 2xl:text-lg`}>Lassen Sie uns Ihre digitale Präsenz gemeinsam neu definieren. Unsere Experten für Website- und App-Entwicklung begleiten Sie auf dem Weg zu einem herausragenden Online-Auftritt.</p>
+								<h1 className={`title-dark text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word`}><span className="text-primary">Professionelle</span> Website Entwicklung</h1>
+								<p className={`description-dark font-light 2xl:text-lg`}>Lassen Sie uns Ihre digitale Präsenz gemeinsam neu definieren. Unsere Experten für Website-Entwicklung begleiten Sie auf dem Weg zu einem herausragenden Online-Auftritt.</p>
 							</motion.div>
 							<div className="flex justify-center xl:justify-start">
-								<button onClick={handleShowModal} className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-sm">kostenloses Angebot erhalten</button>
+								<button onClick={handleShowModal} className="btn-primary text-white uppercase w-fit py-2 sm:py-4 px-4 sm:px-8 font-medium bg-primary hover:bg-primary-2 transition-colors 2xl:text-lg rounded-full">Kostenloses Angebot erhalten</button>
 								{/* <Link href={"/contact"}>
                             </Link> */}
 							</div>
