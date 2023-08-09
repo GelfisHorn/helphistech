@@ -3,8 +3,9 @@
 import Link from "next/link";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
+import Image from "next/image";
 // Styles
-// import styles from "./Index.module.css";
+import styles from "./Index.module.css";
 
 export default function Projects() {
 
@@ -23,18 +24,34 @@ export default function Projects() {
                     </div>
                 </div>
                 <div className={"hidden xl:grid grid-cols-2 grid-rows-16 gap-4 w-full h-[60rem] max-w-7xl mx-auto"}>
-                    <div className={`col-start-1 col-end-2 row-start-1 row-end-6 ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
-                    <div className={`col-start-2 col-end-3 row-start-1 row-end-4 ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden col-start-1 col-end-2 row-start-1 row-end-6 ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl`}>
+                        <Image loading={"eager"} src={"/website/vertical-1.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden col-start-2 col-end-3 row-start-1 row-end-4 ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl`}>
+                        <Image loading={"eager"} src={"/website/horizontal-1.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
 
-                    <div className={`col-start-1 col-end-2 row-start-6 row-end-[9] ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
-                    <div className={`col-start-2 col-end-3 row-start-4 row-end-[9] ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden col-start-1 col-end-2 row-start-6 row-end-[9] ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl`}>
+                        <Image loading={"eager"} src={"/website/horizontal-2.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden col-start-2 col-end-3 row-start-4 row-end-[9] ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl`}>
+                        <Image loading={"eager"} src={"/website/vertical-2.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
                 </div>
                 <div className={"xl:hidden grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-3 aspect-[7/16] md:aspect-video w-full"}>
-                    <div className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
-                    <div className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl aspect-video`}>
+                        <Image loading={"eager"} src={"/website/vertical-1.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl aspect-video`}>
+                        <Image loading={"eager"} src={"/website/horizontal-1.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
 
-                    <div className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
-                    <div className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}></div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl aspect-video`}>
+                        <Image loading={"eager"} src={"/website/horizontal-2.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
+                    <div className={`border-2 ${styles.imageContainer} overflow-hidden ${darkMode ? "bg-neutral-800 border-neutral-200" : "bg-neutral-200"} rounded-xl aspect-video`}>
+                        <Image loading={"eager"} src={"/website/vertical-2.webp?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                    </div>
                 </div>
             </div>
         </section>
