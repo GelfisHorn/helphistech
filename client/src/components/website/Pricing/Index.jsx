@@ -96,12 +96,15 @@ export default function PricingSection() {
         <section className={`relative overflow-hidden ${darkMode ? 'section-bg-dark border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 border-t`} id="our-technologies">
             <div className="xl:max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className={"flex flex-col gap-20"}>
-                    <div className={"flex flex-col gap-8 text-center px-6 sm:px-10 lg:px-20"}>
-                        <div className={"flex flex-col gap-5"}>
-                            {/* <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Encuentra el plan perfecto para llevar tu proyecto al siguiente nivel</div> */}
-                            <h2 className={"text-3xl sm:text-5xl font-bold"}><span className={"text-primary"}>Benutzer-definierte</span> Webentwicklung-sdienste</h2>
+                    <div className={"flex flex-col gap-5 items-center"}>
+                        <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Dienstleistungen</span>
+                        <div className={"flex flex-col gap-8 text-center px-6 sm:px-10 lg:px-20"}>
+                            <div className={"flex flex-col gap-5"}>
+                                {/* <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Encuentra el plan perfecto para llevar tu proyecto al siguiente nivel</div> */}
+                                <h2 className={"text-3xl sm:text-5xl font-bold"}>Welche <span className={"text-primary"}>Dienstleistungen</span> wir anbieten</h2>
+                            </div>
+                            <p className={`${darkMode ? "description-dark" : "description-light"}`}>Eine hochwertige Webseite ist für eine starke Online-Präsenz entscheidend. Bei Helphistech bieten wir moderne und anpassungsfähige Designs, die Sie von der Konkurrenz abheben lassen. Unser Ziel ist es, Ihre Identität zu reflektieren und ein herausragendes Benutzererlebnis zu schaffen. Lassen Sie uns Ihre Online-Präsenz auf die nächste Stufe bringen!</p>
                         </div>
-                        <p className={`${darkMode ? "description-dark" : "description-light"}`}>Hier sind unsere drei Pakete, die auf die Anforderungen jedes Projekts zugeschnitten sind, von kleinen Unternehmen bis hin zu großen Webanwendungen.</p>
                     </div>
                     <div className={"flex justify-center w-full"}>
                         <div className={"hidden xl:flex items-start gap-6"}>
@@ -213,7 +216,7 @@ export default function PricingSection() {
                                 <div className={"bg-transparent h-10 text-center"}></div>
                                 <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Kostenlose Beratung</div>
+                                        <div className={"text-2xl font-light"}>Full-Stack-Anwendung</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -252,6 +255,7 @@ export default function PricingSection() {
                                 pagination={{
                                     clickable: true,
                                 }}
+                                initialSlide={1}
                                 className={styles["prices-swiper"]}
                             >
                                 <SwiperSlide className={styles["swiper-slide-item"]}>
@@ -367,7 +371,7 @@ export default function PricingSection() {
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Kostenlose Beratung</div>
+                                                <div className={"text-2xl font-light"}>Full-Stack-Anwendung</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>

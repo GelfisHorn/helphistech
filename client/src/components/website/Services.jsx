@@ -100,21 +100,14 @@ export default function ServicesSection({ services }) {
                         <motion.div
                             initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
                             viewport={{ once: true }}
-                            className="flex flex-col items-center sm:items-start gap-5 relative"
+                            className="flex flex-col items-center gap-5 relative"
                         >
                             <div className="flex flex-col">
-                                <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Dienstleistungen</span>
+                                <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Blogs</span>
                             </div>
-                            <div className="flex flex-col xl:flex-row justify-center sm:items-start gap-10 xl:gap-20">
-                                <h2 className={`flex flex-col items-center sm:items-start gap-4 sm:gap-5 text-3xl leading-[1.4rem] sm:text-5xl sm:leading-[2.3rem] font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                    <div>Welche</div>
-                                    <div className="text-primary">Dienstleistungen</div>
-                                    <div>{"wir anbieten"}</div>
-                                </h2>
-                                <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-                                    <p className="text-center sm:text-left">Eine hochwertige Webseite ist für eine starke Online-Präsenz entscheidend. Bei Helphistech bieten wir moderne und anpassungsfähige Designs, die Sie von der Konkurrenz abheben lassen. Unser Ziel ist es, Ihre Identität zu reflektieren und ein herausragendes Benutzererlebnis zu schaffen. Lassen Sie uns Ihre Online-Präsenz auf die nächste Stufe bringen!</p>
-                                    {/* We use the latest technologies and industry best practices to ensure that our projects are of the highest quality, and we work closely with our clients to ensure that they are satisfied with the final product. */}
-                                </div>
+                            <div className="flex flex-col gap-8 text-center">
+                                <h2 className={"text-3xl sm:text-5xl font-bold"}>Die Welt der <span className={"text-primary"}>Webentwicklung</span> erkunden</h2>
+                                <p className={`${darkMode ? "description-dark" : "description-light"}`}>Entdecke die neuesten Trends, Tipps und Techniken in der Webentwicklung. Von Design bis zur Programmierung erhältst du wertvolle Einblicke, um beeindruckende und funktionale Websites zu erstellen.</p>
                             </div>
                         </motion.div>
                         <div className={"flex flex-col gap-5"}>
