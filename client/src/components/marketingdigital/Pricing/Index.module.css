@@ -1,7 +1,6 @@
 .backgroundImage {
     position: relative;
-    padding: 9rem 0;
-    padding-top: 5rem;
+    padding: 7rem 0;
 }
 
 .backgroundImage::before {
@@ -39,59 +38,65 @@
     background: #5a43be;
 }
 
-.swiper-slide-item {
-    width: 22rem !important;
-    height: unset !important;
-}
-
-.swiper-slide-item:nth-child(3) {
-    margin-right: 0 !important;
-}
-
 .prices-swiper {
+    display: block;
     width: 100%;
+}
+
+@media (min-width: 1280px) {
+    .prices-swiper {
+        display: none !important;
+    }
 }
 
 .animationScrollLeft {
     position: relative;
     animation-name: scrollleft;
-    animation-duration: .6s;
+    animation-duration: 1.5s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
 
 @keyframes scrollleft {
     0% {
-        right: 1rem;
+        display: block;
+        opacity: 0;
+        left: 0rem;
     }
-
-    50% {
-        right: .5rem;
+    70% {
+        opacity: 1;
+        left: -4rem;
     }
-
     100% {
-        right: 1rem;
+        display: none;
+        opacity: 0;
+        left: -4rem;
     }
 }
 
 .animationScrollRight {
     position: relative;
     animation-name: scrollright;
-    animation-duration: .6s;
+    animation-duration: 1.5s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
 
 @keyframes scrollright {
     0% {
-        left: 1rem;
+        display: block;
+        opacity: 0;
+        right: 0rem;
     }
 
-    50% {
-        left: 1.5rem;
+    70% {
+        opacity: 1;
+        right: -4rem;
     }
 
     100% {
-        left: 1rem;
+        display: none;
+        opacity: 0;
+        right: -4rem;
     }
 }

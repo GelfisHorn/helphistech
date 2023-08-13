@@ -36,7 +36,7 @@ const PRICING = {
     },
     "04": {
         name: "Online-Werbung",
-        price: 100
+        price: 200
     },
     "05": {
         name: "Premium Digital Marketing",
@@ -71,7 +71,7 @@ export default function MDPricing() {
                             <p className={`${darkMode ? "description-dark" : "description-light"}`}>Hier sind unsere drei Pakete, die auf die Anforderungen jedes Projekts zugeschnitten sind, von kleinen Unternehmen bis hin zu großen Webanwendungen.</p>
                         </div>
                     </div>
-                    <div className={"flex justify-center w-full overflow-x-scroll sm:overflow-x-hidden scrollbar-thin pb-2"}>
+                    <div className={"flex justify-center w-full pb-2"}>
                         <div className={`hidden xl:flex flex-col items-center gap-10 w-full`}>
                             <div className={"grid grid-cols-3 gap-5 w-[75rem]"}>
                                 <Card
@@ -144,7 +144,6 @@ function Card({ plan, title, description, price, popular, benefits, handleModal 
     const { darkMode } = useContextProvider();
 
     const handleClickButton = () => {
-        console.log(handleModal)
         handleModal();
         plan.set(plan.get);
     }
@@ -184,90 +183,145 @@ function Card({ plan, title, description, price, popular, benefits, handleModal 
 
 function CardsMobile({ setPlan, showModal }) {
 
+    const NAMES = {
+        "0": "Marketinginhalte",
+        "1": "Suchmaschinenoptimierung",
+        "2": "Premium Digital Marketing",
+        "3": "Social-Media-Marketing",
+        "4": "Online-Werbung",
+    }
+
+    const { darkMode } = useContextProvider();
+ 
+    const [ swiperInstance, setSwiperInstance ] = useState();
+
+    const [ planName, setPlanName ] = useState();
     const [ actualPlan, setActualPlan ] = useState(2);
-    const handleSetPlan = (plan) => {
-        setActualPlan(plan);
+
+    const handleSlideChange = (e) => {
+        setActualPlan(e.activeIndex);
+        setPlanName(NAMES[e.activeIndex]);
+    }
+
+    useEffect(() => {
+        setPlanName(NAMES[actualPlan]);
+    }, [])
+
+    // Plans Navigator
+    const handleNextPlan = () => {
+        if(actualPlan == 4) {
+            return;
+        }
+        setActualPlan(actualPlan + 1);
+        swiperInstance.slideTo(actualPlan + 1);
+        setPlanName(NAMES[actualPlan + 1]);
+    }
+    const handlePrevPlan = () => {
+        if(actualPlan == 0) {
+            return;
+        }
+        setActualPlan(actualPlan - 1);
+        swiperInstance.slideTo(actualPlan - 1);
+        setPlanName(NAMES[actualPlan - 1]);
     }
 
     return (
-        <section className={"flex flex-col gap-5"}>
-            <div className={"flex flex-col gap-2"}>
-                <div className={"flex justify-between"}>
-                    <div className={"flex justify-start w-fit h-10"}>
-                        <i className={`fa-regular fa-arrow-right-long text-2xl text-primary ${styles.animationScrollRight}`}></i>
-                    </div>
-                    <div className={"flex justify-end w-fit h-10"}>
-                        <i className={`fa-regular fa-arrow-left-long text-2xl mr-2 text-primary ${styles.animationScrollLeft}`}></i>
-                    </div>
-                </div>
-                <div className={"overflow-x-scroll scrollbar-thin hide-scroll pb-2 px-3"}>
+        <section className={"flex flex-col gap-2"}>
+            <div className={"flex flex-col gap-5"}>
+                {/* <div className={`overflow-x-scroll hide-scroll scrollbar-thin ${darkMode ? "scrollbar-track-[#101010]" : "scrollbar-track-[#eeeef3]"} pb-2 px-3`}>
                     <div className={`relative flex min-w-max gap-1 items-center justify-center whitespace-nowrap`}>
-                        <button onClick={() => handleSetPlan(0)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 0 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Marketinginhalte</button>
-                        <button onClick={() => handleSetPlan(1)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 1 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Suchmaschinenoptimierung</button>
-                        <button onClick={() => handleSetPlan(2)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 2 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Premium Digital Marketing Paket</button>
-                        <button onClick={() => handleSetPlan(3)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 3 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Social-Media-Marketing</button>
-                        <button onClick={() => handleSetPlan(4)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 4 ? "border-primary" : "border-transparent"} transition-colors text-white rounded-t-md`}>Online-Werbung</button>
+                        <button onClick={() => handleSetPlan(0)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 0 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Marketinginhalte</button>
+                        <button onClick={() => handleSetPlan(1)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 1 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Suchmaschinenoptimierung</button>
+                        <button onClick={() => handleSetPlan(2)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 2 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Premium Digital Marketing Paket</button>
+                        <button onClick={() => handleSetPlan(3)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 3 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Social-Media-Marketing</button>
+                        <button onClick={() => handleSetPlan(4)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 4 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Online-Werbung</button>
+                    </div>
+                </div> */}
+                <div className={"flex items-center gap-2 justify-center"}>
+                    <button className={"grid place-content-center w-8 h-8 bg-primary rounded-full text-lg"} onClick={handlePrevPlan}><i className="fa-solid fa-angle-left"></i></button>
+                    <div>{planName}</div>
+                    <button className={"grid place-content-center w-8 h-8 bg-primary rounded-full text-lg"} onClick={handleNextPlan}><i className="fa-solid fa-angle-right"></i></button>
+                </div>
+                <div className={"flex justify-center"}>
+                    <div className={"flex h-10"}>
+                        <i className={`fa-regular fa-arrow-left-long text-2xl text-primary ${styles.animationScrollLeft}`}></i>
+                    </div>
+                    <div className={"flex h-10"}>
+                        <i className={`fa-regular fa-arrow-right-long text-2xl mr-2 text-primary ${styles.animationScrollRight}`}></i>
                     </div>
                 </div>
             </div>
             <div className={"px-3 min-w-[350px]"}>
-                {actualPlan == 0 && (
-                    <Card
-                        icon={"fa-regular fa-window"}
-                        title={"Marketinginhalte"}
-                        description={"Erstellen und Teilen relevanter und wertvoller Inhalte wie Blogs, Videos, Infografiken usw., um die Zielgruppe anzuziehen und zu begeistern."}
-                        price={PRICING["01"].price}
-                        handleModal={showModal}
-                        benefits={[{ name: "Blogs" }, { name: "Nachrichtenseite" }]}
-                        plan={{ get: PRICING["01"].name, set: setPlan }}
-                    />
-                )}
-                {actualPlan == 1 && (
-                    <Card
-                        icon={"fa-regular fa-mobile"}
-                        title={"Suchmaschinen-optimierung (SEO)"}
-                        description={"Verbesserung der Sichtbarkeit der Website in den organischen Suchergebnissen durch Techniken wie."}
-                        price={PRICING["02"].price}
-                        handleModal={showModal}
-                        benefits={[{ name: "Schlüsselwörter" }, { name: "Meta-Tags" }, { name: "Hochwertige Links" }]}
-                        plan={{ get: PRICING["02"].name, set: setPlan }}
-                    />
-                )}
-                {actualPlan == 2 && (
-                    <Card
-                        icon={"fa-solid fa-chart-mixed"}
-                        title={"Premium Digital Marketing Paket"}
-                        description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
-                        price={PRICING["05"].price}
-                        handleModal={showModal}
-                        benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
-                        popular={true}
-                        plan={{ get: PRICING["05"].name, set: setPlan }}
-                    />
-                )}
-                {actualPlan == 3 && (
-                    <Card
-                        icon={"fa-solid fa-chart-mixed"}
-                        title={"Social-Media-Marketing"}
-                        description={"Nutzung von Plattformen wie Facebook, Instagram, Twitter, LinkedIn, TikTok usw., um mit Followern zu interagieren, Inhalte zu teilen und Produkte oder Dienstleistungen zu bewerben."}
-                        price={PRICING["03"].price}
-                        handleModal={showModal}
-                        benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
-                        plan={{ get: PRICING["03"].name, set: setPlan }}
-                    />
-                )}
-                {actualPlan == 4 && (
-                    <Card
-                        icon={"fa-solid fa-chart-mixed"}
-                        title={"Online-Werbung (SEM)"}
-                        description={"Durchführung bezahlter Werbekampagnen auf Suchmaschinen und Social-Media-Plattformen, um die Sichtbarkeit zu erhöhen und den Traffic auf der Website zu steigern."}
-                        price={PRICING["04"].price}
-                        handleModal={showModal}
-                        benefits={[{ name: "Erstellung und Pflege von Werbekampagnen mit Google Ads, TikTok Ads und Facebook Ads." }]}
-                        plan={{ get: PRICING["04"].name, set: setPlan }}
-                    />
-                )}
-                
+                <Swiper
+                    slidesPerView={1}
+                    centeredSlides={true}
+                    spaceBetween={15}
+                    grabCursor={true}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    initialSlide={actualPlan}
+                    className={`${styles["prices-swiper"]} swiper-grid-5`}
+                    onSwiper={instance => setSwiperInstance(instance)}
+                    onSlideChange={e => handleSlideChange(e)}
+                >
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-regular fa-window"}
+                            title={"Marketinginhalte"}
+                            description={"Erstellen und Teilen relevanter und wertvoller Inhalte wie Blogs, Videos, Infografiken usw., um die Zielgruppe anzuziehen und zu begeistern."}
+                            price={PRICING["01"].price}
+                            handleModal={showModal}
+                            benefits={[{ name: "Blogs" }, { name: "Nachrichtenseite" }]}
+                            plan={{ get: PRICING["01"].name, set: setPlan }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-regular fa-mobile"}
+                            title={"Suchmaschinen-optimierung (SEO)"}
+                            description={"Verbesserung der Sichtbarkeit der Website in den organischen Suchergebnissen durch Techniken wie."}
+                            price={PRICING["02"].price}
+                            handleModal={showModal}
+                            benefits={[{ name: "Schlüsselwörter" }, { name: "Meta-Tags" }, { name: "Hochwertige Links" }]}
+                            plan={{ get: PRICING["02"].name, set: setPlan }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-solid fa-chart-mixed"}
+                            title={"Premium Digital Marketing Paket"}
+                            description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
+                            price={PRICING["05"].price}
+                            handleModal={showModal}
+                            benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
+                            popular={true}
+                            plan={{ get: PRICING["05"].name, set: setPlan }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-solid fa-chart-mixed"}
+                            title={"Social-Media-Marketing"}
+                            description={"Nutzung von Plattformen wie Facebook, Instagram, Twitter, LinkedIn, TikTok usw., um mit Followern zu interagieren, Inhalte zu teilen und Produkte oder Dienstleistungen zu bewerben."}
+                            price={PRICING["03"].price}
+                            handleModal={showModal}
+                            benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
+                            plan={{ get: PRICING["03"].name, set: setPlan }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-solid fa-chart-mixed"}
+                            title={"Online-Werbung (SEM)"}
+                            description={"Durchführung bezahlter Werbekampagnen auf Suchmaschinen und Social-Media-Plattformen, um die Sichtbarkeit zu erhöhen und den Traffic auf der Website zu steigern."}
+                            price={PRICING["04"].price}
+                            handleModal={showModal}
+                            benefits={[{ name: "Erstellung und Pflege von Werbekampagnen mit Google Ads, TikTok Ads und Facebook Ads." }]}
+                            plan={{ get: PRICING["04"].name, set: setPlan }}
+                        />
+                    </SwiperSlide>
+                </Swiper>
             </div>
         </section>
     )
