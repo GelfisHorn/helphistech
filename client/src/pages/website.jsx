@@ -44,13 +44,13 @@ export default function Website({ services, faqs, clientComments }) {
 			<main className={darkMode ? 'bg-black text-zinc-200' : 'bg-white text-black'}>
 				{/* Sections */}
 				<HeroSection />
-				<ServicesSection services={services} />
 				<PricingSection />
 				<ClientCommentsSection comments={clientComments} />
 				{/* <TechnologiesSection /> */}
 				{/* <ContactSection language={'de'} /> */}
 				<Projects />
 				<ProcessSection />
+				<ServicesSection services={services} />
 				{/* <MyProjectSection /> */}
 				{/* {faqs && Object.keys(faqs).length != 0 && (
 					<FAQSection faqs={faqs} />

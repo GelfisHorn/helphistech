@@ -712,6 +712,11 @@ ul ol {
 	grid-template-columns: repeat(4, 1fr);
 }
 
+.swiper-grid-5 .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
 .break-word {
 	word-break: break-word;
 }

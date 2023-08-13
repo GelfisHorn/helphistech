@@ -7,7 +7,7 @@ import MDHero from "@/components/marketingdigital/Hero/Index";
 import MDIntroduction from "@/components/marketingdigital/Introduction/Index";
 import MDPricing from "@/components/marketingdigital/Pricing/Index";
 import MDComments from "@/components/marketingdigital/Comments/Index";
-import ContactSection from "@/components/website/Contact/Index";
+import ContactSection from "@/components/ContactSection";
 // Mock Data
 import comments from "@/mockData/marketingdigital/comments";
 
@@ -19,6 +19,7 @@ export default function MarketingDigital() {
             <MDIntroduction />
             <MDPricing />
             <MDComments comments={comments.de} />
+            <ContactSection fromPage={"marketingdigital"} />
             {/* <ContactSection language={"de"} /> */}
         </Layout>
     )
