@@ -17,6 +17,7 @@ import ContactSection from "@/components/website/Contact/Index";
 import ClientCommentsSection from "@/components/website/ClientComments";
 import PricingSection from "@/components/website/Pricing/Index";
 import Projects from "@/components/website/Projects/Index";
+import WhatsAppButton from "@/components/WhatsAppButton/Index";
 
 export default function Website({ services, faqs, clientComments }) {
 
@@ -57,6 +58,7 @@ export default function Website({ services, faqs, clientComments }) {
 				)} */}
 				{/* Footer */}
 				<Footer />
+				<WhatsAppButton />
 			</main>
 		</>
 	)

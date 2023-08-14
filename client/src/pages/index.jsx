@@ -16,6 +16,7 @@ import FAQSection from "@/components/website/FAQ";
 import TechnologiesSection from "@/components/website/Technologies";
 import ContactSection from "@/components/website/Contact/Index";
 import HomeAboutUs from "@/components/home/AboutUs/Index";
+import WhatsAppButton from "@/components/WhatsAppButton/Index";
 
 export default function Home({ faqs, clientComments }) {
 
@@ -38,6 +39,7 @@ export default function Home({ faqs, clientComments }) {
                 <TechnologiesSection />
                 <FAQSection faqs={faqs} />
                 <Footer />
+                <WhatsAppButton />
             </main>
         </>
     )

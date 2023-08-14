@@ -358,6 +358,13 @@ button.btn-primary:hover {
 	overflow: hidden;
 }
 
+.text-ellipsis-3 {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 .rdp {
 	margin: 0 !important;
 }
