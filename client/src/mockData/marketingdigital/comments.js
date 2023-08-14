@@ -1,79 +1,79 @@
 const de = [
     {
-        title: "Außergewöhnliche Erfahrung in der Webentwicklung",
-        description: "Ich hatte das Vergnügen, diese Plattform zur Erstellung meiner Website zu verwenden, und bin wirklich beeindruckt. Die intuitive Benutzeroberfläche und die Design-Tools ermöglichten es mir, meine Vision nahtlos umzusetzen. Das Support-Team war auch bei jedem Schritt äußerst hilfreich. Sehr empfehlenswert für alle, die eine qualitativ hochwertige Website erstellen möchten!",
-        name: "Juan M",
+        title: "Helphistech's Rezept für Online-Sichtbarkeit und Erfolg",
+        description: "Die Experten von HelphisTech haben wirklich die richtige Mischung aus SEO und Social Media Marketing gefunden. Unser Umsatz hat sich gesteigert und wir haben viele neue Kunden gewonnen. Sehr empfehlenswert!",
+        name: "Felix S.",
         gender: "male"
     },
     {
-        title: "Eine umfassende Lösung für Websites",
-        description: "Als Inhaber eines kleinen Unternehmens habe ich immer nach einer effizienten Möglichkeit gesucht, meine Website zu erstellen und zu verwalten. Diese Plattform hat es möglich gemacht. Von der Auswahl der Vorlagen bis zur Anpassung und zum Hosting verlief alles reibungslos. Ich habe Zeit und Geld gespart, und das Endergebnis hat meine Erwartungen übertroffen.",
-        name: "Andrea S",
-        gender: "female"
-    },
-    {
-        title: "Meine Leidenschaft dank dieser Plattform in eine Website verwandelt",
-        description: "Ich hatte schon immer einen Online-Blog haben wollen, um meine Kochrezepte zu teilen. Mit dieser Plattform konnte ich diese Leidenschaft in eine wunderschöne Website umwandeln. Die breite Palette an Tools und Widgets ermöglichte es mir, meine Ideen umzusetzen. Ich bin kein Technikexperte, aber diese Plattform hat mir alles gegeben, was ich zum Erfolg brauchte.",
-        name: "Mauro M",
+        title: "Steigerung des Umsatzes und Kundenzuwachs",
+        description: "Als kleines Unternehmen suchten wir nach einer Möglichkeit, unsere Online-Sichtbarkeit zu erhöhen. Das Premium Digital Marketing Paket von Helphistech hat genau das bewirkt! Wir sind beeindruckt von der Professionalität und dem Engagement des Teams",
+        name: "Max H.",
         gender: "male"
     },
     {
-        title: "Professionelles Design ohne Kopfschmerzen",
-        description: "Als Grafikdesignerin war ich immer kritisch gegenüber der Ästhetik meiner Projekte. Diese Webentwicklungsplattform hat mich positiv überrascht. Die Anpassungsmöglichkeiten sind umfangreich und ermöglichen es mir, ein Design genau so umzusetzen, wie ich es mir vorgestellt habe. Mein Online-Portfolio sieht jetzt beeindruckend aus, und ich bin stolz darauf, potenzielle Kunden auf meine Website zu lenken.",
-        name: "Laura K",
+        title: "Nachhaltige Ergebnisse und Zusammenarbeit",
+        description: "Wir sind sehr zufriden und werden definitv weiter mit Helphistech arbeiten",
+        name: "Andreas K.",
         gender: "female"
+    },
+    {
+        title: "Premium-Paket, Premium-Erfolg",
+        description: "Wir haben uns für das Premium-Paket entschieden. Helphistech hat unser SEO optimiert und Inhalte für unsere sozialen Netzwerke erstellt sowie regelmäßig gepostet. Bereits nach dem ersten Monat erhielten wir zahlreiche neue Kundenanfragen. Wir sind äußerst zufrieden",
+        name: "Christian M.",
+        gender: "male"
     }
 ]
 const en = [
     {
-        title: "Exceptional Experience in Web Development",
-        description: "I've had the pleasure of using this platform to create my website, and I'm truly impressed. The intuitive interface and design tools allowed me to bring my vision to life seamlessly. The support team was also extremely helpful every step of the way. Highly recommended for anyone looking to create a quality website!",
-        name: "Juan M",
+        title: "Helphitech's recipe for online visibility and success",
+        description: "The experts at HelphisTech really found the right mix of SEO and social media marketing. Our turnover has increased and we have gained many new customers. Highly recommended!",
+        name: "Felix S.",
         gender: "male"
     },
     {
-        title: "An All-Inclusive Solution for Websites",
-        description: "As a small business owner, I've always been on the lookout for an efficient way to build and manage my website. This platform made it possible. From template selection to customization and hosting, everything was seamless. I saved time and money, and the end result exceeded my expectations.",
-        name: "Andrea S",
-        gender: "female"
-    },
-    {
-        title: "Turning My Passion into a Website Thanks to This Platform",
-        description: "I had always wanted to have an online blog to share my cooking recipes. With this platform, I was able to turn that passion into a beautiful website. The wide range of tools and widgets allowed me to bring my ideas to life. I'm not a tech expert, but this platform provided me with everything I needed to succeed.",
-        name: "Mauro M",
+        title: "Increase in sales and customer growth",
+        description: "As a small business, we were looking for a way to increase our online visibility. Helphitech's Premium Digital Marketing Package did just that! We are impressed by the professionalism and commitment of the team",
+        name: "Max H.",
         gender: "male"
     },
     {
-        title: "Professional Design Without the Headache",
-        description: "As a graphic designer, I've always been critical about the aesthetics of my projects. This web development platform pleasantly surprised me. The customization options are extensive, allowing me to achieve a design exactly as I envisioned. My online portfolio now looks stunning, and I take pride in directing potential clients to my site.",
-        name: "Laura K",
+        title: "Sustainable results and collaboration",
+        description: "We are very satisfied and will definitely continue to work with Helphitech",
+        name: "Andreas K.",
         gender: "female"
+    },
+    {
+        title: "Premium Package, Premium Success",
+        description: "We opted for the premium package. Helphitech optimized our SEO and created and regularly posted content for our social networks. Already after the first month we received numerous new customer inquiries. We are extremely satisfied",
+        name: "Christian M.",
+        gender: "male"
     }
 ]
 const es = [
     {
-        title: "Experiencia excepcional en desarrollo web",
-        description: "He tenido el placer de utilizar esta plataforma para crear mi sitio web y estoy realmente impresionado. La interfaz intuitiva y las herramientas de diseño me permitieron plasmar mi visión sin problemas. El equipo de soporte también fue extremadamente servicial en cada paso del camino. ¡Altamente recomendado para cualquiera que busque crear un sitio web de calidad!",
-        name: "Juan M",
+        title: "La receta de Helphitech para la visibilidad y el éxito en línea",
+        description: "Los expertos de HelphisTech realmente encontraron la combinación correcta de SEO y marketing en redes sociales. Nuestra facturación ha aumentado y hemos ganado muchos nuevos clientes. ¡Muy recomendable!",
+        name: "Felix S.",
         gender: "male"
     },
     {
-        title: "Una solución integral para sitios web",
-        description: "Como propietario de una pequeña empresa, siempre he buscado una forma eficiente de construir y administrar mi sitio web. Esta plataforma lo hizo posible. Desde la selección de plantillas hasta la personalización y el alojamiento, todo fue fluido. Ahorré tiempo y dinero, y el resultado final superó mis expectativas.",
-        name: "Andrea S",
-        gender: "female"
-    },
-    {
-        title: "Transformé mi pasión en un sitio web gracias a esta plataforma",
-        description: "Siempre había querido tener un blog en línea para compartir mis recetas de cocina. Con esta plataforma, pude convertir esa pasión en un hermoso sitio web. La amplia gama de herramientas y widgets me permitió dar vida a mis ideas. No soy un experto en tecnología, pero esta plataforma me brindó todo lo que necesitaba para tener éxito.",
-        name: "Mauro M",
+        title: "Aumento de ventas y crecimiento de clientes",
+        description: "Como pequeña empresa, buscábamos una manera de aumentar nuestra visibilidad en línea. ¡El Paquete Premium de Marketing Digital de Helphitech hizo precisamente eso! Estamos impresionados por la profesionalidad y el compromiso del equipo.",
+        name: "Max H.",
         gender: "male"
     },
     {
-        title: "Diseño profesional sin el dolor de cabeza",
-        description: "Como diseñadora gráfica, siempre he sido crítica con la estética de mis proyectos. Esta plataforma de desarrollo web me sorprendió gratamente. Las opciones de personalización son extensas, lo que me permitió lograr un diseño exactamente como lo imaginaba. Mi cartera en línea ahora se ve impresionante y me enorgullezco de dirigir a los clientes potenciales a mi sitio.",
-        name: "Laura K",
+        title: "Resultados sostenibles y colaboración",
+        description: "Estamos muy satisfechos y definitivamente seguiremos trabajando con Helphitech",
+        name: "Andreas K.",
         gender: "female"
+    },
+    {
+        title: "Paquete Premium, Éxito Premium",
+        description: "Optamos por el paquete premium. Helphitech optimizó nuestro SEO y creó y publicó regularmente contenido para nuestras redes sociales. Ya después del primer mes recibimos numerosas consultas de nuevos clientes. estamos muy satisfechos",
+        name: "Christian M.",
+        gender: "male"
     }
 ]
 

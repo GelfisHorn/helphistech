@@ -90,9 +90,11 @@ function CommentCard({ title, description, name, gender }) {
     return (
         <div className={`flex flex-col gap-4 justify-center ${darkMode ? "bg-neutral-900" : "bg-white"} shadow-sm w-full h-full px-10 py-8 rounded-lg`}>
             <div className={"flex flex-col justify-between h-full gap-6"}>
-                <div className={"text-xl font-light"}>{title}</div>
-                <div className={`font-light ${darkMode ? "description-dark" : "description-light"}`}>{description}</div>
-               <div className={"flex flex-col md:flex-row md:items-center justify-between gap-5 md:gap-0"}>
+                <div className={"flex flex-col gap-5"}>
+                    <div className={"text-xl font-light"}>{title}</div>
+                    <div className={`font-light ${darkMode ? "description-dark" : "description-light"}`}>{description}</div>
+                </div>
+                <div className={"flex flex-col md:flex-row md:items-center justify-between gap-5 md:gap-0"}>
                     <div className={"flex items-center gap-4"}>
                         <div className={`grid place-content-center w-16 h-16 ${darkMode ? "bg-neutral-800 text-neutral-300" : "section-bg-light"} rounded-full text-zinc-500`}>
                             {gender == 'male' ? (

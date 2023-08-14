@@ -66,9 +66,9 @@ export default function MDPricing() {
                         <div className={"flex flex-col gap-8 text-center px-6 sm:px-10 lg:px-20 "}>
                             <div className={"flex flex-col gap-5"}>
                                 {/* <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Encuentra el plan perfecto para llevar tu proyecto al siguiente nivel</div> */}
-                                <h2 className={"text-3xl sm:text-5xl font-bold"}><span className={"text-primary"}>Benutzer-definierte</span> Web-entwicklung-sdienste</h2>
+                                <h2 className={"text-3xl sm:text-5xl font-bold"}>Die <span className={"text-primary"}>besten aktuellen</span> Marketingstrategien im <span className={"text-primary"}>digitalen Bereich</span></h2>
                             </div>
-                            <p className={`${darkMode ? "description-dark" : "description-light"}`}>Hier sind unsere drei Pakete, die auf die Anforderungen jedes Projekts zugeschnitten sind, von kleinen Unternehmen bis hin zu großen Webanwendungen.</p>
+                            <p className={`${darkMode ? "description-dark" : "description-light"}`}>Wähle unser Premium-Paket und sichere deinen digitalen Erfolg</p>
                         </div>
                     </div>
                     <div className={"flex justify-center w-full pb-2"}>

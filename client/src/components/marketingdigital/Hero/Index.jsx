@@ -32,7 +32,7 @@ export default function MDHero() {
             <div className={"flex items-center gap-20 h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
                 <div className={"flex flex-col gap-14 justify-center items-center lg:items-start h-full text-center lg:text-left"}>
                     <div className={"flex flex-col gap-3"}>
-                        <h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}>Mehr <span className="text-primary">Kunden</span>, mehr <span className="text-primary">Umsatz</span>: Die Macht des <span className="text-primary">Digital Marketings</span></h1>
+                        <h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}><span className={"text-primary"}>Digitales Marketing</span>: Die Kunst der <span className={"text-primary"}>Kundenakquise</span> im Online-Zeitalter</h1>
                         <p className={"font-light md:text-lg"}>Steigern Sie Ihren Erfolg: Entdecken Sie die Macht des Digital Marketings für mehr Kunden und Umsatz!</p>
                     </div>
                     <motion.button 
