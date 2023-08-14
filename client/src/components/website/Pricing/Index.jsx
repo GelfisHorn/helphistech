@@ -107,7 +107,11 @@ export default function PricingSection() {
                         </div>
                     </div>
                     <div className={"flex justify-center w-full"}>
-                        <div className={"hidden xl:flex items-start gap-6"}>
+                        <motion.div 
+                            className={"hidden xl:flex items-start gap-6"}
+                            initial={{ opacity: 0, x: 100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                        >
                             <div className={"w-[22rem] h-full"}>
                                 <div className={"bg-transparent h-10 text-center"}></div>
                                 <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
@@ -245,7 +249,7 @@ export default function PricingSection() {
                                     <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                         <div className={"flex flex-col gap-10"}>
                             <Swiper
                                 slidesPerView={3}

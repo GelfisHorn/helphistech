@@ -47,7 +47,11 @@ export default function FAQSection({ faqs }) {
             </AnimatePresence>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className={"flex flex-col gap-10"}>
-                    <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}>{title[language]}</h2>
+                    <motion.h2 
+                        className={`text-3xl sm:text-4xl md:text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                    >{title[language]}</motion.h2>
                     <div className={"flex flex-col gap-1"}>
                         {faqs.element.map((e, index) => (
                             <Element key={index} element={e} />
@@ -55,14 +59,18 @@ export default function FAQSection({ faqs }) {
                     </div>
                 </div>
             </div>
-            <div className={'flex justify-center'}>
+            <motion.div 
+                className={'flex justify-center'}
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+            >
                 <motion.button onClick={handleShowModal} initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-3 sm:px-6 rounded-full uppercase sm:font-medium text-sm xs:text-base md:text-lg"}>
                     <span>{lang[language]}</span>
                     <motion.svg variants={slashMotion} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                     </motion.svg>
                 </motion.button>
-            </div>
+            </motion.div>
         </section>
     )
 }

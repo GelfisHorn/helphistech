@@ -8,7 +8,7 @@ import ContactModal from '@/components/Modals/Contact/Index';
 // Styles
 import styles from './Index.module.css'
 // Animations
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function HomeHero() {
 
@@ -30,9 +30,14 @@ export default function HomeHero() {
                         <i className="fa-light fa-arrow-up-right"></i>
                     </button>
                 </div>
-                <div className={"hidden xl:block image-container min-w-[30rem]"}>
+                <motion.div 
+                    className={"hidden xl:block image-container min-w-[30rem]"}
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={"1s"}
+                >
                     <Image src={"/home/hero/side-image-1.webp?v=1005"} className={"image"} fill />
-                </div>
+                </motion.div>
                 {/* <div className={"hidden lg:block"}>
                     <VideoPlayer
                         url={"https://res.cloudinary.com/drdor2wz7/video/upload/v1681591174/helphistech_eynapv.mp4"}

@@ -12,6 +12,8 @@ import "swiper/css/pagination";;
 import { Pagination } from "swiper";
 // Lang
 import locales from "@/lang/components/HomeSections/ClientComments";
+// Animations
+import { motion } from "framer-motion";
 
 export default function ClientCommentsSection({ comments }) {
 
@@ -38,7 +40,11 @@ export default function ClientCommentsSection({ comments }) {
                         </div>
                     </div>
                 </div>
-                <div className={"client-comment"}>
+                <motion.div 
+                    className={"client-comment"}
+                    initial={{ opacity: 0, x: 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                >
                     <Swiper
                         slidesPerView={1}
                         spaceBetween={20}
@@ -71,7 +77,7 @@ export default function ClientCommentsSection({ comments }) {
                             ))}
                         </div>
                     </Swiper>
-                </div>
+                </motion.div>
             </div>
         </section>
     )

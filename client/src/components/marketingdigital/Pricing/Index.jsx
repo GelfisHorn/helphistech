@@ -5,7 +5,7 @@ import Link from "next/link";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Notifications
 import { toast } from "react-toastify";
 // Hooks
@@ -73,7 +73,11 @@ export default function MDPricing() {
                     </div>
                     <div className={"flex justify-center w-full pb-2"}>
                         <div className={`hidden xl:flex flex-col items-center gap-10 w-full`}>
-                            <div className={"grid grid-cols-3 gap-5 w-[75rem]"}>
+                            <motion.div 
+                                className={"grid grid-cols-3 gap-5 w-[75rem]"}
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                            >
                                 <Card
                                     icon={"fa-regular fa-window"}
                                     title={"Marketinginhalte"}
@@ -101,8 +105,12 @@ export default function MDPricing() {
                                     benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
                                     plan={{ get: PRICING["03"].name, set: setPlan }}
                                 />
-                            </div>
-                            <div className={"grid grid-cols-2 gap-5 w-[50rem]"}>
+                            </motion.div>
+                            <motion.div 
+                                className={"grid grid-cols-2 gap-5 w-[50rem]"}
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                            >
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
                                     title={"Online-Werbung (SEM)"}
@@ -122,7 +130,7 @@ export default function MDPricing() {
                                     popular={true}
                                     plan={{ get: PRICING["05"].name, set: setPlan }}
                                 />
-                            </div>
+                            </motion.div>
                         </div>
                         <div className={"block xl:hidden w-full"}>
                             <CardsMobile setPlan={setPlan} showModal={handleModal.show} />

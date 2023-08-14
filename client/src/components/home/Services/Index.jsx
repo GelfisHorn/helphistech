@@ -11,7 +11,7 @@ import Modal from "@/components/Modal/Index";
 import currencyFormatter from "@/hooks/currencyFormatter";
 import useContextProvider from "@/hooks/useAppContextProvider"
 // Animations
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Slides
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
@@ -38,7 +38,11 @@ export default function HomeServices() {
         <section className={`relative px-6 sm:px-20 py-28 ${styles.background}`} id={"home-services"}>
             <div className={"flex flex-col items-center gap-20"}>
                 <h2 className={"text-3xl lg:text-5xl font-bold text-center break-word"}>Unsere <span className={"text-primary"}>Haupt-dienstleistungen</span> umfassen</h2>
-                <div className={"hidden xl:grid grid-cols-2 gap-5 "}>
+                <motion.div 
+                    className={"hidden xl:grid grid-cols-2 gap-5"}
+                    initial={{ opacity: 0, x: 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                >
                     <Card 
                         icon={"fa-regular fa-window"} 
                         title={"Webseiten-Design und-Entwicklung"}
@@ -67,7 +71,7 @@ export default function HomeServices() {
                         handleModal={handleModal.show}
                         setService={() => setService("Marketing digital")}
                     />
-                </div>
+                </motion.div>
                 <div className={"block xl:hidden w-full swiper-grid-3"}>
                     <Swiper
                         slidesPerView={1}

@@ -11,7 +11,7 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Styles
 import styles from "./Index.module.css";
 // Animations
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Languages
 import LANG from "@/lang/components/Modals/Pricing/Index";
 // Notifications
@@ -43,7 +43,12 @@ export default function MDIntroduction() {
                             </div>
                         </div>
                         <div className={"flex flex-col items-center gap-8"}>
-                            <button onClick={handleModal.show} className={"bg-primary hover:bg-primary-2 transition-colors text-white rounded-full py-2 sm:py-3 px-6 sm:px-8 w-fit text-lg sm:text-xl"}>Kontakt uns</button>
+                            <motion.button 
+                                onClick={handleModal.show} 
+                                className={"bg-primary hover:bg-primary-2 transition-colors text-white rounded-full py-2 sm:py-3 px-6 sm:px-8 w-fit text-lg sm:text-xl"}
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                            >Kontakt uns</motion.button>
                             <div className={`flex flex-col items-center gap-3 text-primary text-lg`}>
                                 <span>Entdecken Sie unsere Leistungen</span>
                                 <i className={`fa-regular fa-arrow-down-long ${styles.animationScrollDown}`}></i>

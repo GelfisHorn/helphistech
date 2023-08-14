@@ -6,6 +6,8 @@ import styles from './Index.module.css'
 // Slides
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
+// Animations
+import { motion } from 'framer-motion';
 
 export default function HomeAboutUs() { 
 
@@ -114,7 +116,11 @@ function LeftRow({ title, description, name, position, contact }) {
     
     return (
         <>
-            <div className={`flex flex-col gap-8 ${styles.cardGlassEffect} px-4 sm:px-8 py-6 sm:py-8 rounded-xl`}>
+            <motion.div 
+                className={`flex flex-col gap-8 ${styles.cardGlassEffect} px-4 sm:px-8 py-6 sm:py-8 rounded-xl`}
+                initial={{ opacity: 0, x: -150 }}
+                whileInView={{ opacity: 1, x: 0 }}
+            >
                 <div className={"flex flex-col gap-2"}>
                     <h3 className={"text-xl font-semibold text-primary"}>{title}</h3>
                     <p>{description}</p>
@@ -129,7 +135,7 @@ function LeftRow({ title, description, name, position, contact }) {
                         <div className={"text-sm font-semibold"}><a className={"underline text-primary hover:text-primary-2 transition-colors"} href={`mailto:${contact}`}>{contact}</a></div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
             <div className={"relative"}>
                 <div className={`w-[2px] h-full ${darkMode ? "bg-neutral-800" : "bg-neutral-400"} mx-auto`}>
                 </div>
@@ -154,7 +160,11 @@ function RightRow({ title, description, name, position, contact }) {
                 <div className={"absolute w-5 h-5 bg-primary top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 rounded-full"}></div>
                 <div className={`absolute ${styles.rowHorizontalLineWidth} h-[2px] ${darkMode ? "bg-neutral-800" : "bg-neutral-400"} top-1/2 -translate-y-1/2 right-0`}></div>
             </div>
-            <div className={`flex flex-col items-end gap-8 ${styles.cardGlassEffect} px-4 sm:px-8 py-6 sm:py-8 rounded-xl`}>
+            <motion.div 
+                className={`flex flex-col items-end gap-8 ${styles.cardGlassEffect} px-4 sm:px-8 py-6 sm:py-8 rounded-xl`}
+                initial={{ opacity: 0, x: 150 }}
+                whileInView={{ opacity: 1, x: 0 }}
+            >
                 <div className={"flex flex-col gap-2 text-right"}>
                     <h3 className={"text-xl font-semibold text-primary"}>{title}</h3>
                     <p>{description}</p>
@@ -169,7 +179,7 @@ function RightRow({ title, description, name, position, contact }) {
                         <i className={"fa-regular fa-user text-3xl text-neutral-600"}></i>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }
