@@ -10,6 +10,7 @@ import NavbarES from "./es/Navbar";
 import FooterES from "./es/Footer";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider";
+import WhatsAppButton from "./WhatsAppButton/Index";
 
 export default function Layout({ title, metaDesc, lang, children, styles }) {
 
@@ -34,6 +35,7 @@ export default function Layout({ title, metaDesc, lang, children, styles }) {
                 { lang == 'en' && <FooterEN /> }
                 { lang == 'es' && <FooterES /> }
             </div>
+            <WhatsAppButton />
         </>
     )
 }
