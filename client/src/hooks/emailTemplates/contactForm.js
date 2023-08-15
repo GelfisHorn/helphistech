@@ -2,7 +2,7 @@ import './style.css'
 
 export default function blogFormTemplate(data) {
 
-    const { name, email, phoneNumber, description } = data;
+    const { fromPage, name, email, phoneNumber, description } = data;
 
     return `
             <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -174,6 +174,10 @@ export default function blogFormTemplate(data) {
                     
             <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
                 <p style="line-height: 140%;">${name} está interesando/a en empezar un proyecto con HelphisTech.</p>
+            </div>
+
+            <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
+                <p style="line-height: 140%;">Desde la página: <a href="https://helphistech.com/${fromPage}">/${fromPage}</a></p>
             </div>
 
                 </td>

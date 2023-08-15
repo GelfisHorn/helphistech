@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import contactFormTemplate from '@/hooks/emailTemplates/contactForm';
 
 export default async function handler(req, res) {
-    const { name, email, phoneNumber, description } = req.body || {};
+    const { fromPage, name, email, phoneNumber, description } = req.body || {};
 
     try {
         const transporter = nodemailer.createTransport({
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
                 Correo electrónico: ${email}\n
                 ${phoneNumber ? `Número de teléfono: ${phoneNumber}` : ""}
             `,
-            html: contactFormTemplate({ name, email, phoneNumber, description })
+            html: contactFormTemplate({ fromPage, name, email, phoneNumber, description })
         });
 
         return res.status(200).json({ msg: "ok" });

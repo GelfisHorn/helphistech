@@ -32,7 +32,7 @@ export default function ContactSection({ fromPage }) {
             return;
         }
         Promise.all([
-            axios.post('/api/contact/contactForm/sendMail', { name, email, phoneNumber, description }),
+            axios.post('/api/contact/contactForm/sendMail', { fromPage, name, email, phoneNumber, description }),
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
         ]).then(res => {
             router.push('/confirmation')
@@ -64,7 +64,7 @@ export default function ContactSection({ fromPage }) {
     }
 
     return (
-        <div className={`${darkMode ? "bg-[#101010]" : "bg-white"}`}>
+        <section>
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 py-20 sm:py-28 max-w-6xl mx-auto px-6 sm:px-10`}>
                 <div className={"flex flex-col gap-8"}>
                     <div className={"flex flex-col gap-3"}>
@@ -106,6 +106,6 @@ export default function ContactSection({ fromPage }) {
                     </form>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

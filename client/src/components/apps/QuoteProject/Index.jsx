@@ -17,7 +17,7 @@ import LANG from "@/lang/components/Modals/Pricing/Index";
 // Notifications
 import { toast } from "react-toastify";
 
-export default function AppsServices() {
+export default function AppsQuote() {
 
     const { darkMode } = useContextProvider();
 

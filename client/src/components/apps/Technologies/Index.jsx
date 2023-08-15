@@ -1,9 +1,10 @@
 
+// Nextjs
+import Link from "next/link";
 // Hooks
 import useContextProvider from "@/hooks/useAppContextProvider"
 // Animations
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const TECHNOLOGIES = {
     de: {
@@ -20,7 +21,7 @@ export default function AppsTechnologies() {
     const { darkMode } = useContextProvider();
 
     return (
-        <div className={`${darkMode ? "bg-[#101010]" : "section-bg-light"} py-20`}>
+        <div className={`py-20`}>
             <div className={"flex flex-col items-center gap-20"}>
                 <div className={"flex flex-col items-center gap-8 text-center px-6 sm:px-10 lg:px-20 "}>
                     <div className={"flex flex-col gap-5"}>
