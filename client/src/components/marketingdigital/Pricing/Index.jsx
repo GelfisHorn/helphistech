@@ -50,13 +50,13 @@ export default function MDPricing() {
     const { darkMode } = useContextProvider();
 
     // Modal
-    const [ showModal, setShowModal ] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const handleModal = {
         show: () => setShowModal(true),
         close: () => setShowModal(false)
     }
 
-    const [ plan, setPlan ] = useState("");
+    const [plan, setPlan] = useState("");
 
     return (
         <section className={`${styles.backgroundImage} relative overflow-hidden ${darkMode ? 'bg-[#101010]' : 'section-bg-light'} flex items-center pb-20`} id="our-technologies">
@@ -73,10 +73,11 @@ export default function MDPricing() {
                     </div>
                     <div className={"flex justify-center w-full pb-2"}>
                         <div className={`hidden xl:flex flex-col items-center gap-10 w-full`}>
-                            <motion.div 
+                            <motion.div
                                 className={"grid grid-cols-3 gap-5 w-[75rem]"}
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: .2, origin: 1 }}
                             >
                                 <Card
                                     icon={"fa-regular fa-window"}
@@ -106,10 +107,11 @@ export default function MDPricing() {
                                     plan={{ get: PRICING["03"].name, set: setPlan }}
                                 />
                             </motion.div>
-                            <motion.div 
+                            <motion.div
                                 className={"grid grid-cols-2 gap-5 w-[50rem]"}
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: .2, origin: 1 }}
                             >
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
@@ -168,7 +170,7 @@ function Card({ plan, title, description, price, popular, benefits, handleModal 
                             <div className={"relative flex items-center gap-1 font-medium text-5xl"}>
                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                 <span>{price}</span>
-                                <div className={"absolute bottom-0 w-full h-3 bg-primary opacity-50"} style={{zIndex: "-1"}}></div>
+                                <div className={"absolute bottom-0 w-full h-3 bg-primary opacity-50"} style={{ zIndex: "-1" }}></div>
                             </div>
                         </div>
                     </div>
@@ -200,11 +202,11 @@ function CardsMobile({ setPlan, showModal }) {
     }
 
     const { darkMode } = useContextProvider();
- 
-    const [ swiperInstance, setSwiperInstance ] = useState();
 
-    const [ planName, setPlanName ] = useState();
-    const [ actualPlan, setActualPlan ] = useState(2);
+    const [swiperInstance, setSwiperInstance] = useState();
+
+    const [planName, setPlanName] = useState();
+    const [actualPlan, setActualPlan] = useState(2);
 
     const handleSlideChange = (e) => {
         setActualPlan(e.activeIndex);
@@ -217,7 +219,7 @@ function CardsMobile({ setPlan, showModal }) {
 
     // Plans Navigator
     const handleNextPlan = () => {
-        if(actualPlan == 4) {
+        if (actualPlan == 4) {
             return;
         }
         setActualPlan(actualPlan + 1);
@@ -225,7 +227,7 @@ function CardsMobile({ setPlan, showModal }) {
         setPlanName(NAMES[actualPlan + 1]);
     }
     const handlePrevPlan = () => {
-        if(actualPlan == 0) {
+        if (actualPlan == 0) {
             return;
         }
         setActualPlan(actualPlan - 1);

@@ -51,6 +51,7 @@ export default function FAQSection({ faqs }) {
                         className={`text-3xl sm:text-4xl md:text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}
                         initial={{ opacity: 0, x: -100 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: .2, origin: 1 }}
                     >{title[language]}</motion.h2>
                     <div className={"flex flex-col gap-1"}>
                         {faqs.element.map((e, index) => (
@@ -63,6 +64,7 @@ export default function FAQSection({ faqs }) {
                 className={'flex justify-center'}
                 initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: .2, origin: 1 }}
             >
                 <motion.button onClick={handleShowModal} initial="rest" whileHover="hover" animate="rest" className={"flex items-center gap-1 bg-primary hover:bg-primary-2 transition-colors text-white py-2 px-3 sm:px-6 rounded-full uppercase sm:font-medium text-sm xs:text-base md:text-lg"}>
                     <span>{lang[language]}</span>

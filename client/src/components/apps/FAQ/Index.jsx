@@ -13,7 +13,7 @@ const lang = {
     en: {
         headTitle: "FAQ",
         title: "Frequently asked questions",
-        description: "Here you will find answers to the most common questions about our mobile app development process, pricing, technologies, and more."  
+        description: "Here you will find answers to the most common questions about our mobile app development process, pricing, technologies, and more."
     },
     es: {
         headTitle: "FAQ",
@@ -37,6 +37,7 @@ export default function AppsFAQ({ faqs }) {
                                 className={"text-3xl sm:text-5xl font-bold text-primary"}
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: .2, origin: 1 }}
                             >{lang[language].title}</motion.h2>
                         </div>
                         <p className={`${darkMode ? "description-dark" : "description-light"} w-full xl:w-2/3`}>{lang[language].description}</p>
@@ -45,6 +46,7 @@ export default function AppsFAQ({ faqs }) {
                         className={"flex flex-col gap-1"}
                         initial={{ opacity: 0, x: 150 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: .2, origin: 1 }}
                     >
                         {faqs.map((e, index) => (
                             <Element key={index} element={e} />

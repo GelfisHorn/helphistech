@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function HomeIntroduction() {
 
     const { darkMode } = useContextProvider();
-    
+
     const [showModal, setShowModal] = useState(false);
     const handleShowModal = () => {
         setShowModal(!showModal);
@@ -35,30 +35,31 @@ export default function HomeIntroduction() {
                         <p className={"lg:text-xl"}>Gemeinsam lassen wir Ihre digitale Vision Wirklichkeit werden! Wir freuen uns darauf, Teil Ihres Erfolgs zu sein.</p>
                     </div>
                     <div className={"flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5"}>
-                        <motion.button 
-                            onClick={handleShowModal} 
+                        <motion.button
+                            onClick={handleShowModal}
                             className={"w-full sm:w-fit px-8 py-2 sm:py-3 border-2 border-transparent bg-primary hover:bg-primary-2 transition-colors text-white rounded-full"}
                             initial={{ opacity: 0, x: 100 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: .2, origin: 1 }}
                         >Mehr Erfahren</motion.button>
                         {/* <a href={"/#home-services"} className={"w-full sm:w-fit px-8 py-2 sm:py-3 border-2 border-primary hover:bg-primary text-primary hover:text-white transition-colors rounded-full"}>Preise ansehen</a> */}
                     </div>
                 </div>
-                <motion.div 
-                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-6 h-6 rounded-full top-20 left-24 bg-[#ff98d0]`} 
-                    style={{ zIndex: "0"}}
+                <motion.div
+                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-6 h-6 rounded-full top-20 left-24 bg-[#ff98d0]`}
+                    style={{ zIndex: "0" }}
                 ></motion.div>
-                <motion.div 
-                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-4 h-4 rounded-full top-20 right-24 bg-[#5566ff]`} 
-                    style={{ zIndex: "0"}}
+                <motion.div
+                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-4 h-4 rounded-full top-20 right-24 bg-[#5566ff]`}
+                    style={{ zIndex: "0" }}
                 > </motion.div>
-                <motion.div 
-                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-4 h-4 rounded-full bottom-20 left-36 bg-[#a5d570]`} 
-                    style={{ zIndex: "0"}}
+                <motion.div
+                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-4 h-4 rounded-full bottom-20 left-36 bg-[#a5d570]`}
+                    style={{ zIndex: "0" }}
                 ></motion.div>
-                <motion.div 
-                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-6 h-6 rounded-full bottom-20 right-36 bg-[#ffbe16]`} 
-                    style={{ zIndex: "0"}}
+                <motion.div
+                    className={`${darkMode ? "opacity-50" : null} hidden lg:block absolute w-6 h-6 rounded-full bottom-20 right-36 bg-[#ffbe16]`}
+                    style={{ zIndex: "0" }}
                 ></motion.div>
             </div>
             <AnimatePresence>

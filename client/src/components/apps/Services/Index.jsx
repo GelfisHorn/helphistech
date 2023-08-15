@@ -14,7 +14,7 @@ export function AppsServices() {
     const { darkMode } = useContextProvider();
 
     return (
-        <section className={`${darkMode ? "bg-[#101010] border-[#242424]" : "section-bg-light border-[#e0e0e0]"} py-20 border-t`}>
+        <section className={`${darkMode ? "bg-[#101010] border-[#242424]" : "section-bg-light border-[#e0e0e0]"} py-20 border-t overflow-hidden`}>
             <div className={"flex flex-col items-center gap-20"}>
                 <div className={"flex flex-col items-center gap-8 text-center px-6 sm:px-10 lg:px-20 "}>
                     <div className={"flex flex-col gap-5"}>
@@ -23,6 +23,7 @@ export function AppsServices() {
                             className={"text-3xl sm:text-5xl font-bold"}
                             initial={{ opacity: 0, x: 100 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: .2, origin: 1 }}
                         >Unsere <span className={"text-primary"}>Entwicklungs-leistungen</span></motion.h2>
                     </div>
                     <p className={`${darkMode ? "description-dark" : "description-light"} w-full xl:w-2/3`}>Wir verwandeln deine Ideen in maßgeschneiderte, funktionale mobile Anwendungen, die einzigartige Erlebnisse für deine Nutzer schaffen.</p>
@@ -32,6 +33,7 @@ export function AppsServices() {
                         className={`grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 w-fit gap-5 px-6 sm:px-10 lg:px-20`}
                         initial={{ opacity: 0, x: 150 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: .2, origin: 1 }}
                     >
                         <div className={`flex flex-col items-center text-center gap-4 2xl:w-96 border-2 bg-transparent ${darkMode ? "border-[#2e2e2e2d]" : "border-[#e0e0e07a]"} ${styles.glassmorphism} px-6 py-10 rounded-2xl`}>
                             <div className={`w-[4.5rem] h-[4.5rem] ${darkMode ? "bg-[#866bfe73]" : "bg-[#866bfea4]"} rounded-xl p-2`}>

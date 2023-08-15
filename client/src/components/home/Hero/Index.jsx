@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function HomeHero() {
 
-    const [ showModal, setShowModal ] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const handleShowModal = () => {
         setShowModal(!showModal);
     }
@@ -30,11 +30,11 @@ export default function HomeHero() {
                         <i className="fa-light fa-arrow-up-right"></i>
                     </button>
                 </div>
-                <motion.div 
+                <motion.div
                     className={"hidden xl:block image-container min-w-[30rem]"}
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={"1s"}
+                    transition={{ duration: 1, origin: 1 }}
                 >
                     <Image src={"/home/hero/side-image-1.webp?v=1005"} className={"image"} fill />
                 </motion.div>
@@ -49,7 +49,7 @@ export default function HomeHero() {
                     <ContactModal blog={{ title: 'Home', url: "" }} handleClose={handleShowModal} language={'de'} />
                 )}
             </AnimatePresence>
-        </section> 
+        </section>
     )
 }
 

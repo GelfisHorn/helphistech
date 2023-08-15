@@ -65,13 +65,14 @@ export default function ContactSection({ fromPage }) {
 
     return (
         <section>
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 py-20 sm:py-28 max-w-6xl mx-auto px-6 sm:px-10`}>
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 py-20 sm:py-28 max-w-6xl mx-auto px-6 sm:px-10 overflow-hidden`}>
                 <div className={"flex flex-col gap-8"}>
                     <div className={"flex flex-col gap-3"}>
                         <motion.div 
                             className={"font-semibold uppercase text-lg text-primary"}
                             initial={{ opacity: 0, x: 100 }}
-                            whileInView={{ opacity: 1, x: 0 }}    
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: .2, origin: 1 }}
                         >Kontaktiere uns</motion.div>
                         <div className={"text-3xl font-semibold"}>Die Welt der Webentwicklung erkunden</div>
                         <p className={"text-lg"}>Gemeinsam zu großartigen Lösungen finden</p>
@@ -80,6 +81,7 @@ export default function ContactSection({ fromPage }) {
                         className={"flex flex-col gap-5"}
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: .2, origin: 1 }}
                     >
                         <a href={"mailto:helphis.tech@gmail.com"} className={"w-fit flex items-center gap-3 hover:text-primary transition-colors"}>
                             <div className={"grid place-content-center w-12 h-12 border-2 rounded-full border-primary text-primary text-xl"}><i className="fa-solid fa-envelope"></i></div>

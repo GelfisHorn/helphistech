@@ -21,7 +21,7 @@ export default function AppsTechnologies() {
     const { darkMode } = useContextProvider();
 
     return (
-        <div className={`py-20`}>
+        <div className={`py-20 overflow-hidden`}>
             <div className={"flex flex-col items-center gap-20"}>
                 <div className={"flex flex-col items-center gap-8 text-center px-6 sm:px-10 lg:px-20 "}>
                     <div className={"flex flex-col gap-5"}>
@@ -30,14 +30,16 @@ export default function AppsTechnologies() {
                             className={"text-3xl sm:text-5xl font-bold"}
                             initial={{ opacity: 0, x: 100 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: .2, origin: 1 }}
                         >Unser <span className={"text-primary"}>Technologie-Stack</span></motion.h2>
                     </div>
                     <p className={`${darkMode ? "description-dark" : "description-light"} w-full xl:w-2/3`}>Wir unterstützen unsere Kreationen mit einer Reihe robuster Spitzentechnologien. Von vielseitigen Programmiersprachen bis hin zu innovativen Designtools sorgt unser Technologie-Stack für modernste mobile Lösungen.</p>
                 </div>
-                <motion.div 
+                <motion.div
                     className={"grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-4 w-fit gap-5 px-6 sm:px-10 lg:px-20 2xl:px-0"}
                     initial={{ opacity: 0, x: 150 }}
-                    whileInView={{ opacity: 1, x: 0}}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: .2, origin: 1 }}
                 >
                     <div className={`flex flex-col gap-5 bg-[#e84e3614] w-full 2xl:w-[22rem] p-7 rounded-3xl border-2 border-transparent hover:border-[#e84e36] transition-colors`}>
                         <div className={`grid place-content-center w-20 h-20 bg-[#e84e3641] rounded-2xl`}>

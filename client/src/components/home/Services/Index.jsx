@@ -32,19 +32,20 @@ export default function HomeServices() {
         close: () => setShowModal(false)
     }
 
-    const [ service, setService ] = useState("");
+    const [service, setService] = useState("");
 
     return (
         <section className={`relative px-6 sm:px-20 py-28 ${styles.background}`} id={"home-services"}>
             <div className={"flex flex-col items-center gap-20"}>
                 <h2 className={"text-3xl lg:text-5xl font-bold text-center break-word"}>Unsere <span className={"text-primary"}>Haupt-dienstleistungen</span> umfassen</h2>
-                <motion.div 
+                <motion.div
                     className={"hidden xl:grid grid-cols-2 gap-5"}
                     initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: .2, origin: 1 }}
                 >
-                    <Card 
-                        icon={"fa-regular fa-window"} 
+                    <Card
+                        icon={"fa-regular fa-window"}
                         title={"Webseiten-Design und-Entwicklung"}
                         description={"Wir erstellen ansprechende und funktionale Websites, die die Identität Ihres Unternehmens hervorheben und eine außergewöhnliche Benutzererfahrung bieten."}
                         price={"390"}
@@ -143,7 +144,7 @@ function Card({ setService, icon, title, description, price, redirect, classes, 
     }
 
     return (
-        <div className={`flex flex-col justify-between gap-8 rounded-xl p-8 shadow-md text-center ${styles.cardGlassEffect} ${classes} h-full`} style={{ background: darkMode ? "rgba(22, 22, 36, .8)" : "rgba(198, 192, 218, .1)"}}>
+        <div className={`flex flex-col justify-between gap-8 rounded-xl p-8 shadow-md text-center ${styles.cardGlassEffect} ${classes} h-full`} style={{ background: darkMode ? "rgba(22, 22, 36, .8)" : "rgba(198, 192, 218, .1)" }}>
             <div className={"flex flex-col gap-7"}>
                 <i className={`${icon} text-6xl text-primary`}></i>
                 <h3 className={"text-2xl font-bold"}>{title}</h3>
@@ -161,7 +162,7 @@ function Card({ setService, icon, title, description, price, redirect, classes, 
 function ContactModal({ service, handleClose }) {
 
     const { darkMode } = useContextProvider();
- 
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("");

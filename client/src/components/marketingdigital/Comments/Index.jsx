@@ -44,6 +44,7 @@ export default function MDComments({ comments }) {
                     className={"client-comment"}
                     initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: .2, origin: 1 }}
                 >
                     <Swiper
                         slidesPerView={1}

@@ -28,7 +28,7 @@ export default function Home({ faqs, clientComments }) {
                 <title>Startseite | HelphisTech</title>
                 <meta name="description" content="Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind." />
             </Head>
-            <main className={darkMode ? 'bg-black text-zinc-200' : 'bg-white text-black'} >
+            <main className={`${darkMode ? 'bg-black text-zinc-200' : 'bg-white text-black'} overflow-hidden`} >
                 <Navbar />
                 <HomeHero />
                 <HomeIntroduction />

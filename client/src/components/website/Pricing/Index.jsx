@@ -111,6 +111,7 @@ export default function PricingSection() {
                             className={"hidden xl:flex items-start gap-6"}
                             initial={{ opacity: 0, x: 100 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: .2, origin: 1 }}
                         >
                             <div className={"w-[22rem] h-full"}>
                                 <div className={"bg-transparent h-10 text-center"}></div>
