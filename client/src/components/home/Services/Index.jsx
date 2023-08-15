@@ -207,13 +207,14 @@ function ContactModal({ service, handleClose }) {
 
     return (
         <Modal handleClose={handleClose}>
-            <form className={"flex flex-col gap-5 sm:gap-10 p-5"} onSubmit={handleSubmit}>
-                <div className={"flex flex-col gap-3 text-center"}>
+            <form className={"flex flex-col gap-3 sm:gap-10 p-5 relative"} onSubmit={handleSubmit}>
+                <div className={"flex flex-col gap-1 text-center"}>
+                    <div onClick={handleClose} className={"absolute top-1 right-2 text-2xl cursor-pointer"}><i class="fa-regular fa-xmark"></i></div>
                     <div className={"text-2xl uppercase font-semibold"}>{LANG["de"].title}</div>
                     <div>{LANG["de"].subtitle}</div>
                 </div>
-                <div className={"flex flex-col gap-5"}>
-                    <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-5"}>
+                <div className={"flex flex-col gap-3"}>
+                    <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-3"}>
                         <div className={"flex flex-col items-start gap-1"}>
                             <label htmlFor={`step4-name`}>{LANG["de"].labels.name}</label>
                             <input value={name} onChange={e => setName(e.target.value)} id={`step4-name`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={LANG["de"].labels.name} />

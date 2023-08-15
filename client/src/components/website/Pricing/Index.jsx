@@ -5,7 +5,7 @@ import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 // Notifications
 import { toast } from "react-toastify";
 // Languages
@@ -414,50 +414,53 @@ export default function PricingSection() {
                     </div>
                 </div>
             </div>
-            {showModal && (
-                <Modal handleClose={handleModal.close}>
-                    <form className={"flex flex-col gap-5 sm:gap-10 p-5"} onSubmit={handleSubmit}>
-                        <div className={"flex flex-col gap-3 text-center"}>
-                            <div className={"text-2xl uppercase font-semibold"}>{LANG[language].title}</div>
-                            <div>{LANG[language].subtitle}</div>
-                        </div>
-                        <div className={"flex flex-col gap-5"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-5"}>
-                                <div className={"flex flex-col items-start gap-1"}>
-                                    <label htmlFor={`step4-name`}>{LANG[language].labels.name}</label>
-                                    <input value={name} onChange={e => setName(e.target.value)} id={`step4-name`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={LANG[language].labels.name} />
-                                </div>
-                                <div className={"flex flex-col items-start gap-1"}>
-                                    <label htmlFor={`step4-email`}>{LANG[language].labels.email}</label>
-                                    <input value={email} onChange={e => setEmail(e.target.value)} id={`step4-email`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="email" placeholder={LANG[language].labels.email} />
-                                </div>
-                                <div className={"flex flex-col items-start gap-1"}>
-                                    <label htmlFor={`step4-phone`}>{LANG[language].labels.phoneNumber}</label>
-                                    <input value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} id={`step4-phone`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="number" placeholder={LANG[language].labels.phoneNumber} />
-                                </div>
-                                <div className={"flex flex-col items-start gap-1"}>
-                                    <label htmlFor={`step4-message`}>{LANG[language].labels.description}</label>
-                                    <textarea value={description} onChange={e => setDescription(e.target.value)} id={`step4-message`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full resize-none`} rows={5} type="text" placeholder={LANG[language].labels.description} />
-                                </div>
+            <AnimatePresence>
+                {showModal && (
+                    <Modal handleClose={handleModal.close}>
+                        <form className={"flex flex-col gap-3 sm:gap-10 p-5 relative"} onSubmit={handleSubmit}>
+                            <div className={"flex flex-col gap-1 text-center"}>
+                                <div onClick={handleModal.close} className={"absolute top-1 right-2 text-2xl cursor-pointer"}><i class="fa-regular fa-xmark"></i></div>
+                                <div className={"text-2xl uppercase font-semibold"}>{LANG["de"].title}</div>
+                                <div>{LANG["de"].subtitle}</div>
                             </div>
-                            <div className={"flex gap-2 select-none"}>
-                                <div className={"flex items-start gap-2"}>
-                                    <div className="form-control">
-                                        <input ref={legalTerms} id={"legal"} type="checkbox" className="accent-primary w-5 h-5" />
+                            <div className={"flex flex-col gap-3"}>
+                                <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-3"}>
+                                    <div className={"flex flex-col items-start gap-1"}>
+                                        <label htmlFor={`step4-name`}>{LANG[language].labels.name}</label>
+                                        <input value={name} onChange={e => setName(e.target.value)} id={`step4-name`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="text" placeholder={LANG[language].labels.name} />
                                     </div>
-                                    <label className={"w-fit text-left"} htmlFor={"legal"}>{LANG[language].legal.text1} {<Link className={"link"} target={"_blank"} href={LANG[language].legal.link1.href}>{LANG[language].legal.link1.text}</Link>} {LANG[language].legal.text2} {<Link className={"link"} target={"_blank"} href={LANG[language].legal.link2.href}>{LANG[language].legal.link2.text}</Link>}</label>
+                                    <div className={"flex flex-col items-start gap-1"}>
+                                        <label htmlFor={`step4-email`}>{LANG[language].labels.email}</label>
+                                        <input value={email} onChange={e => setEmail(e.target.value)} id={`step4-email`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="email" placeholder={LANG[language].labels.email} />
+                                    </div>
+                                    <div className={"flex flex-col items-start gap-1"}>
+                                        <label htmlFor={`step4-phone`}>{LANG[language].labels.phoneNumber}</label>
+                                        <input value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} id={`step4-phone`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full`} type="number" placeholder={LANG[language].labels.phoneNumber} />
+                                    </div>
+                                    <div className={"flex flex-col items-start gap-1"}>
+                                        <label htmlFor={`step4-message`}>{LANG[language].labels.description}</label>
+                                        <textarea value={description} onChange={e => setDescription(e.target.value)} id={`step4-message`} className={`${darkMode ? "bg-neutral-800" : "bg-neutral-200"} py-2 px-3 outline-none rounded-md w-full resize-none`} rows={5} type="text" placeholder={LANG[language].labels.description} />
+                                    </div>
+                                </div>
+                                <div className={"flex gap-2 select-none"}>
+                                    <div className={"flex items-start gap-2"}>
+                                        <div className="form-control">
+                                            <input ref={legalTerms} id={"legal"} type="checkbox" className="accent-primary w-5 h-5" />
+                                        </div>
+                                        <label className={"w-fit text-left"} htmlFor={"legal"}>{LANG[language].legal.text1} {<Link className={"link"} target={"_blank"} href={LANG[language].legal.link1.href}>{LANG[language].legal.link1.text}</Link>} {LANG[language].legal.text2} {<Link className={"link"} target={"_blank"} href={LANG[language].legal.link2.href}>{LANG[language].legal.link2.text}</Link>}</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <button className={`${styles.button} w-full`} type={"submit"}>
-                            <span>{LANG[language].submit}</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                            </svg>
-                        </button>
-                    </form>
-                </Modal>
-            )}
+                            <button className={`${styles.button} w-full`} type={"submit"}>
+                                <span>{LANG[language].submit}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                </svg>
+                            </button>
+                        </form>
+                    </Modal>
+                )}
+            </AnimatePresence>
         </section>
     )
 }
