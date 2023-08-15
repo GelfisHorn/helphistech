@@ -49,7 +49,7 @@ export default function AppsTechnologies() {
                         <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.swift}</div>
                         <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#e84e36] hover:text-[#e84e36c4] transition-colors"}>
                             <span>{TECHNOLOGIES.de.showMore}</span>
-                            <i class="fa-regular fa-arrow-right-long"></i>
+                            <i className="fa-regular fa-arrow-right-long"></i>
                         </Link>
                     </div>
                     <div className={`flex flex-col gap-5 bg-[#d42fa914] w-full 2xl:w-[22rem] p-7 rounded-3xl border-2 border-transparent hover:border-[#d42fa9] transition-colors`}>
@@ -60,7 +60,7 @@ export default function AppsTechnologies() {
                         <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.kotlin}</div>
                         <Link target={"_blank"} href={"https://kotlinlang.org"} className={"flex items-center gap-2 w-fit text-[#d42fa9] hover:text-[#d42fa9c4] transition-colors"}>
                             <span>{TECHNOLOGIES.de.showMore}</span>
-                            <i class="fa-regular fa-arrow-right-long"></i>
+                            <i className="fa-regular fa-arrow-right-long"></i>
                         </Link>
                     </div>
                     <div className={`flex flex-col gap-5 bg-[#01549614] w-full 2xl:w-[22rem] p-7 rounded-3xl border-2 border-transparent hover:border-[#015496] transition-colors`}>
@@ -71,7 +71,7 @@ export default function AppsTechnologies() {
                         <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.flutter}</div>
                         <Link target={"_blank"} href={"https://flutter.dev"} className={"flex items-center gap-2 w-fit text-[#015496] hover:text-[#015496c4] transition-colors"}>
                             <span>{TECHNOLOGIES.de.showMore}</span>
-                            <i class="fa-regular fa-arrow-right-long"></i>
+                            <i className="fa-regular fa-arrow-right-long"></i>
                         </Link>
                     </div>
                     <div className={`flex flex-col gap-5 bg-[#61dafb14] w-full 2xl:w-[22rem] p-7 rounded-3xl border-2 border-transparent hover:border-[#61dafb] transition-colors`}>
@@ -82,7 +82,7 @@ export default function AppsTechnologies() {
                         <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.react}</div>
                         <Link target={"_blank"} href={"https://reactnative.dev"} className={"flex items-center gap-2 w-fit text-[#61dafb] hover:text-[#61dafbc4] transition-colors"}>
                             <span>{TECHNOLOGIES.de.showMore}</span>
-                            <i class="fa-regular fa-arrow-right-long"></i>
+                            <i className="fa-regular fa-arrow-right-long"></i>
                         </Link>
                     </div>
                 </motion.div>

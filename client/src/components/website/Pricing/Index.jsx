@@ -419,7 +419,7 @@ export default function PricingSection() {
                     <Modal handleClose={handleModal.close}>
                         <form className={"flex flex-col gap-3 sm:gap-10 p-5 relative"} onSubmit={handleSubmit}>
                             <div className={"flex flex-col gap-1 text-center"}>
-                                <div onClick={handleModal.close} className={"absolute top-1 right-2 text-2xl cursor-pointer"}><i class="fa-regular fa-xmark"></i></div>
+                                <div onClick={handleModal.close} className={"absolute top-1 right-2 text-2xl cursor-pointer"}><i className="fa-regular fa-xmark"></i></div>
                                 <div className={"text-2xl uppercase font-semibold"}>{LANG["de"].title}</div>
                                 <div>{LANG["de"].subtitle}</div>
                             </div>
