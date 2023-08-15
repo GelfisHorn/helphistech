@@ -67,7 +67,7 @@ export default function ContactSection({ fromPage }) {
         <section>
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 py-20 sm:py-28 max-w-6xl mx-auto px-6 sm:px-10 overflow-hidden`}>
                 <div className={"flex flex-col gap-8"}>
-                    <div className={"flex flex-col gap-3"}>
+                    <div className={"flex flex-col items-center lg:items-start text-center lg:text-left gap-3"}>
                         <motion.div 
                             className={"font-semibold uppercase text-lg text-primary"}
                             initial={{ opacity: 0, x: 100 }}
@@ -77,7 +77,7 @@ export default function ContactSection({ fromPage }) {
                         <div className={"text-3xl font-semibold"}>Die Welt der Webentwicklung erkunden</div>
                         <p className={"text-lg"}>Gemeinsam zu großartigen Lösungen finden</p>
                     </div>
-                    <motion.div 
+                    <motion.div
                         className={"flex flex-col gap-5"}
                         initial={{ opacity: 0, x: 100 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -100,7 +100,7 @@ export default function ContactSection({ fromPage }) {
                         <input value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="tel" placeholder={"Ihre Telefonnummer"} />
                         <textarea value={description} onChange={e => setDescription(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md resize-none focus:border-primary transition-colors bg-transparent outline-none`} name="" id="" rows="5" placeholder={"Worum geht es in Ihrem Projekt?"}></textarea>
                         <motion.button 
-                            className={"bg-primary hover:bg-primary-2 transition-colors w-fit px-8 py-3 rounded-md text-white"} 
+                            className={"bg-primary hover:bg-primary-2 transition-colors py-3 rounded-md text-white w-full"} 
                             type={"submit"}
                             initial={{ opacity: 0, x: 100 }}
                             whileInView={{ opacity: 1, x: 0 }}
