@@ -248,9 +248,9 @@ function CardsMobile({ setPlan, showModal }) {
                     </div>
                 </div> */}
                 <div className={"flex items-center gap-2 justify-center"}>
-                    <button className={"grid place-content-center w-8 h-8 bg-primary rounded-full text-lg"} onClick={handlePrevPlan}><i className="fa-solid fa-angle-left"></i></button>
+                    <button className={"grid place-content-center w-8 h-8 bg-primary text-white rounded-full text-lg"} onClick={handlePrevPlan}><i className="fa-solid fa-angle-left"></i></button>
                     <div>{planName}</div>
-                    <button className={"grid place-content-center w-8 h-8 bg-primary rounded-full text-lg"} onClick={handleNextPlan}><i className="fa-solid fa-angle-right"></i></button>
+                    <button className={"grid place-content-center w-8 h-8 bg-primary text-white rounded-full text-lg"} onClick={handleNextPlan}><i className="fa-solid fa-angle-right"></i></button>
                 </div>
                 <div className={"flex justify-center"}>
                     <div className={"flex h-10"}>

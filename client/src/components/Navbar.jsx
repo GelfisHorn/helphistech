@@ -88,7 +88,7 @@ export default function Navbar({ textColor }) {
     return(
         <>
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
-                <div className={`flex items-center justify-between h-20 px-10 ${textColor ? `${textColor}` : `text-${darkMode ? 'dark' : 'light'}`}`}>
+                <div className={`flex items-center justify-between h-20 px-6 sm:px-10 ${textColor ? `${textColor}` : `text-${darkMode ? 'dark' : 'light'}`}`}>
                     <div className={"hover:scale-105 transition-transform"}>
                         <Link href={"/"}>
                             <Image className="w-auto h-[3.8rem]" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
