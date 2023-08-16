@@ -14,7 +14,7 @@ export default function Projects() {
     const { darkMode } = useContextProvider();
 
     return (
-        <section className={`${darkMode ? 'bg-[#101010]' : 'bg-white'} overflow-hidden`}>
+        <section className={`${darkMode ? 'bg-[#101010]' : 'section-bg-light'} overflow-hidden`}>
             <div className={"flex flex-col items-center gap-14 px-6 sm:px-10 py-28 text-center"}>
                 <div className={"flex flex-col gap-4"}>
                     <div className={"flex flex-col gap-8 text-center px-6 sm:px-10 lg:px-20 "}>

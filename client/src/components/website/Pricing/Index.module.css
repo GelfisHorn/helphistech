@@ -32,3 +32,11 @@
         display: none !important;
     }
 }
+
+.cardShadowLeft {
+    box-shadow: -5px 0 20px rgba(0, 0, 0, .1);
+}
+
+.cardShadowRight {
+    box-shadow: 5px 0 20px rgba(0, 0, 0, .1);
+}

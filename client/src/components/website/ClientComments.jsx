@@ -20,7 +20,7 @@ export default function ClientCommentsSection({ comments }) {
     const { darkMode, language } = useContextProvider();
 
     return (
-        <section className={`${darkMode ? 'section-bg-dark border-neutral-900' : 'section-bg-light border-zinc-300'} py-28 overflow-hidden border-t`} id="client-comments">
+        <section className={`${darkMode ? 'border-neutral-900' : 'border-zinc-300'} py-28 overflow-hidden border-t`} id="client-comments">
             <div className={"flex flex-col gap-20 px-6 sm:px-10"}>
                 <div className="flex flex-col gap-5 items-center">
                     <span
@@ -89,7 +89,7 @@ function CommentCard({ title, description, name, gender }) {
     const { darkMode } = useContextProvider();
 
     return (
-        <div className={`flex flex-col gap-4 justify-center ${darkMode ? "bg-neutral-900" : "bg-white"} shadow-sm w-full h-full px-10 py-8 rounded-lg`}>
+        <div className={`flex flex-col gap-4 justify-center ${darkMode ? "bg-neutral-900" : "section-bg-light"} shadow-sm w-full h-full px-10 py-8 rounded-lg`}>
             <div className={"flex flex-col justify-between h-full gap-6"}>
                 <div className={"text-xl font-light"}>{title}</div>
                 <div className={`font-light ${darkMode ? "description-dark" : "description-light"}`}>{description}</div>

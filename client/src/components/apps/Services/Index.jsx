@@ -41,8 +41,8 @@ export function AppsServices() {
                                     <Image src={"/apps/services/native.webp?v=1"} className={"image opacity-75"} fill alt={"Custom development"} />
                                 </div>
                             </div>
-                            <div className={"text-2xl font-semibold"}>Native App Development</div>
-                            <p>We are working on Native applications specifically for a particular operating system Android & iOS.</p>
+                            <div className={"text-2xl font-semibold"}>Native App-Entwicklung</div>
+                            <p>Wir arbeiten an nativen Anwendungen speziell für ein bestimmtes Betriebssystem Android und iOS.</p>
                         </div>
                         <div className={`flex flex-col items-center text-center gap-4 2xl:w-96 border-2 bg-transparent ${darkMode ? "border-[#2e2e2e2d]" : "border-[#e0e0e07a]"} ${styles.glassmorphism} px-6 py-10 rounded-2xl`}>
                             <div className={`w-[4.5rem] h-[4.5rem] ${darkMode ? "bg-[#866bfe73]" : "bg-[#866bfea4]"} rounded-xl p-2`}>
@@ -50,8 +50,8 @@ export function AppsServices() {
                                     <Image src={"/apps/services/hybrid.webp?v=1"} className={"image opacity-75"} fill alt={"Custom development"} />
                                 </div>
                             </div>
-                            <div className={"text-2xl font-semibold"}>Hybrid App Development</div>
-                            <p>We know what we have to serve our clients. Hybrid applications are run on both devices.</p>
+                            <div className={"text-2xl font-semibold"}>Hybride App-Entwicklung</div>
+                            <p>Wir wissen, was wir unseren Kunden zu bieten haben. Hybridanwendungen werden auf beiden Geräten ausgeführt.</p>
                         </div>
                         <div className={`flex flex-col items-center lg:col-start-1 2xl:col-start-auto 2xl:col-end-auto lg:col-end-3 w-full 2xl:w-96 text-center gap-4 border-2 bg-transparent ${darkMode ? "border-[#2e2e2e2d]" : "border-[#e0e0e07a]"} ${styles.glassmorphism} px-6 py-10 rounded-2xl`}>
                             <div className={`w-[4.5rem] h-[4.5rem] ${darkMode ? "bg-[#866bfe73]" : "bg-[#866bfea4]"} rounded-xl p-2`}>
@@ -59,8 +59,8 @@ export function AppsServices() {
                                     <Image src={"/apps/services/custom.webp?v=1"} className={"image opacity-75"} fill alt={"Custom development"} />
                                 </div>
                             </div>
-                            <div className={"text-2xl font-semibold"}>Custom App Development</div>
-                            <p>We have a team who works on your custom projects to offer your customers what you want in your design way.</p>
+                            <div className={"text-2xl font-semibold"}>Benutzerdefinierte App-Entwicklung</div>
+                            <p>Wir haben ein Team, das an Ihren individuellen Projekten arbeitet, um Ihren Kunden das zu bieten, was Sie sich von Ihrem Design wünschen.</p>
                         </div>
                     </motion.div>
                 </div>

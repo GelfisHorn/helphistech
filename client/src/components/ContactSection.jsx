@@ -95,9 +95,9 @@ export default function ContactSection({ fromPage }) {
                 </div>
                 <div>
                     <form className={"flex flex-col gap-3"} onSubmit={handleSubmit}>
-                        <input value={name} onChange={e => setName(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="text" placeholder={"Dein Name"} />
-                        <input value={email} onChange={e => setEmail(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="email" placeholder={"Di E-Mail"} />
-                        <input value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="tel" placeholder={"Ihre Telefonnummer"} />
+                        <input value={name} onChange={e => setName(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="text" placeholder={"Name"} />
+                        <input value={email} onChange={e => setEmail(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="email" placeholder={"E-Mail"} />
+                        <input value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md focus:border-primary transition-colors bg-transparent outline-none`} type="tel" placeholder={"Telefonnummer"} />
                         <textarea value={description} onChange={e => setDescription(e.target.value)} className={`p-3 border-2 ${darkMode ? "border-neutral-800" : "border-neutral-200"} rounded-md resize-none focus:border-primary transition-colors bg-transparent outline-none`} name="" id="" rows="5" placeholder={"Worum geht es in Ihrem Projekt?"}></textarea>
                         <motion.button 
                             className={"bg-primary hover:bg-primary-2 transition-colors py-3 rounded-md text-white w-full"} 

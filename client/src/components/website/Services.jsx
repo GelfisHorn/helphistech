@@ -89,13 +89,13 @@ export default function ServicesSection({ services }) {
     }
 
     return (
-        <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
+        <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'bg-[#101010]' : 'section-bg-light'} py-28 overflow-hidden`} id="our-services">
             <AnimatePresence>
                 {showModal && <VideoCallModal closeVideoCallForm={handleShowModal} language={'de'} />}
             </AnimatePresence>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                 <div className="flex items-center gap-20 justify-between w-full">
-                    <div className="blur-shadow -left-28 -top-28"></div>
+                    {/* <div className="blur-shadow -left-28 -top-28"></div> */}
                     <div className="flex flex-col gap-20">
                         <motion.div
                             initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}

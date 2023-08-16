@@ -18,33 +18,24 @@ export default function ProcessSection() {
 
     return (
         <>
-            <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 ${darkMode ? 'section-bg-dark' : 'section-bg-light'} py-28 overflow-hidden`} id="our-process">
+            <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 overflow-hidden`} id="our-process">
                 <div className="flex flex-col gap-20 max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                     <motion.div className="flex flex-col gap-5 items-center sm:items-start "
                         initial={{ y: 60, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: .9 }}
                         viewport={{ once: true }}
                     >
-                        {/* <div className="blur-shadow -left-28 -top-28 -z-10"></div> */}
-                        <div className="flex flex-col">
-                            <span className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Entwicklungsprozess</span>
-                        </div>
-                        <div className="flex flex-col gap-10">
-                            <div>
-                                <h2 className={`flex flex-col items-center sm:items-start gap-4 sm:gap-5 text-3xl leading-[1.4rem] sm:text-5xl sm:leading-[2.3rem] font-bold whitespace-nowrap ${darkMode ? 'title-dark' : 'title-light'}`}>
-                                    <div className="hidden xs:block">Wie der <span className="text-primary">Entwicklung</span></div>
-                                    <div className="hidden xs:block">prozess funktioniert</div>
-                                    <div className="xs:hidden">Wie der</div>
-                                    <div className="xs:hidden text-primary">Entwicklung</div>
-                                    <div className="xs:hidden">prozess</div>
-                                    <div className="xs:hidden">funktioniert</div>
-                                </h2>
+                        <div className="flex flex-col gap-5 items-center text-center">
+                            <div className={"flex flex-col items-center gap-3"}>
+                                <span
+                                    className={`uppercase font-semibold ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}
+                                >Entwicklungs-prozess</span>
+                                <h2 className={`text-3xl sm:text-5xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}
+                                >Wie der <span className="text-primary">Entwicklung</span> prozess funktioniert</h2>
                             </div>
-                            <div className={`flex flex-col gap-5 ${darkMode ? 'description-dark font-light' : 'description-light'}`}>
-                                <p className="text-center sm:text-left">Wenn Sie für Ihr Unternehmen oder Projekt eine effektive Online-Präsenz benötigen, ist eine Website ein wesentlicher Bestandteil des Prozesses. Hier ist eine Aufschlüsselung des Webentwicklungsprozesses, damit Sie wissen, was Sie erwartet, wenn Sie mit uns zusammenarbeiten.</p>
-                            </div>
+                            <p>Wenn Sie für Ihr Unternehmen oder Projekt eine effektive Online-Präsenz benötigen, ist eine Website ein wesentlicher Bestandteil des Prozesses. Hier ist eine Aufschlüsselung des Webentwicklungsprozesses, damit Sie wissen, was Sie erwartet, wenn Sie mit uns zusammenarbeiten.</p>
                         </div>
                     </motion.div>
-                    <div>
+                    <div className={"select-none"}>
                         <Swiper
                             slidesPerView={1}
                             breakpoints={{

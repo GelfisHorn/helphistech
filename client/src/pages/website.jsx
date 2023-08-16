@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
-import HeroSection from "@/components/website/Hero";
+import HeroSection from "@/components/website/Hero/Index";
 import ServicesSection from "@/components/website/Services";
 import ProcessSection from "@/components/website/Process";
 import TechnologiesSection from "@/components/website/Technologies";
@@ -18,6 +18,7 @@ import ClientCommentsSection from "@/components/website/ClientComments";
 import PricingSection from "@/components/website/Pricing/Index";
 import Projects from "@/components/website/Projects/Index";
 import WhatsAppButton from "@/components/WhatsAppButton/Index";
+import Layout from "@/components/Layout";
 
 export default function Website({ services, faqs, clientComments }) {
 
@@ -37,30 +38,15 @@ export default function Website({ services, faqs, clientComments }) {
 	}, [language])
 
 	return (
-		<>
-			<Head>
-				<title>Webseiten | HelphisTech</title>
-				<meta name="description" content="Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind." />
-			</Head>
-			<main className={darkMode ? 'bg-black text-zinc-200' : 'bg-white text-black'}>
-				{/* Sections */}
-				<HeroSection />
-				<PricingSection />
-				<ClientCommentsSection comments={clientComments} />
-				{/* <TechnologiesSection /> */}
-				{/* <ContactSection language={'de'} /> */}
-				<Projects />
-				<ProcessSection />
-				<ServicesSection services={services} />
-				{/* <MyProjectSection /> */}
-				{/* {faqs && Object.keys(faqs).length != 0 && (
-					<FAQSection faqs={faqs} />
-				)} */}
-				{/* Footer */}
-				<Footer />
-				<WhatsAppButton />
-			</main>
-		</>
+		<Layout title={"Webseiten"} lang={"de"} metaDesc={"Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."}>
+			<HeroSection />
+			<PricingSection />
+			<ClientCommentsSection comments={clientComments} />
+			<Projects />
+			<ProcessSection />
+			<ServicesSection services={services} />
+			<WhatsAppButton />
+		</Layout>
 	)
 }
 

@@ -93,7 +93,7 @@ export default function PricingSection() {
     }
 
     return (
-        <section className={`relative overflow-hidden ${darkMode ? 'section-bg-dark border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 border-t`} id="our-technologies">
+        <section className={`relative overflow-hidden ${darkMode ? 'bg-[#101010] border-[#19191F]' : 'section-bg-light border-zinc-300'} flex items-center py-28 border-t`} id="our-technologies">
             <div className="xl:max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className={"flex flex-col gap-20"}>
                     <div className={"flex flex-col gap-5 items-center"}>
@@ -113,11 +113,11 @@ export default function PricingSection() {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: .2, origin: 1 }}
                         >
-                            <div className={"w-[22rem] h-full"}>
+                            <div className={"w-[22rem] h-full -skew-y-[5deg]"}>
                                 <div className={"bg-transparent h-10 text-center"}></div>
-                                <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
+                                <div className={`${styles.cardShadowLeft} flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Statische Website</div>
+                                        <div className={"text-2xl font-medium text-primary"}>Statische Website</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -172,7 +172,7 @@ export default function PricingSection() {
                                 </div>
                                 <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{height: "calc(100% - 2.5rem)"}}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Dynamische Website</div>
+                                        <div className={"text-2xl font-medium text-primary"}>Dynamische Website</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -217,11 +217,11 @@ export default function PricingSection() {
                                     <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
                             </div>
-                            <div className={"w-[22rem] h-full"}>
+                            <div className={"w-[22rem] h-full skew-y-[5deg]"}>
                                 <div className={"bg-transparent h-10 text-center"}></div>
-                                <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
+                                <div className={`${styles.cardShadowRight} flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-light"}>Full-Stack-Anwendung</div>
+                                        <div className={"text-2xl font-medium text-primary"}>Full-Stack-Anwendung</div>
                                         <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -266,9 +266,9 @@ export default function PricingSection() {
                                 <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"bg-transparent h-10 text-center"}></div>
-                                        <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
+                                        <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Statische Website</div>
+                                                <div className={"text-2xl font-medium text-primary"}>Statische Website</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -325,7 +325,7 @@ export default function PricingSection() {
                                         </div>
                                         <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Dynamische Website</div>
+                                                <div className={"text-2xl font-medium text-primary"}>Dynamische Website</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -374,9 +374,9 @@ export default function PricingSection() {
                                 <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"bg-transparent h-10 text-center"}></div>
-                                        <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#131313]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
+                                        <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-light"}>Full-Stack-Anwendung</div>
+                                                <div className={"text-2xl font-medium text-primary"}>Full-Stack-Anwendung</div>
                                                 <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
