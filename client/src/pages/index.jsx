@@ -15,6 +15,7 @@ import ClientCommentsSection from "@/components/website/ClientComments";
 import FAQSection from "@/components/website/FAQ";
 import TechnologiesSection from "@/components/website/Technologies";
 import ContactSection from "@/components/website/Contact/Index";
+import ContactForm from "@/components/ContactSection";
 import HomeAboutUs from "@/components/home/AboutUs/Index";
 import WhatsAppButton from "@/components/WhatsAppButton/Index";
 
@@ -38,6 +39,7 @@ export default function Home({ faqs, clientComments }) {
                 <HomeAboutUs />
                 <TechnologiesSection />
                 <FAQSection faqs={faqs} />
+                <ContactForm fromPage={""} />
                 <Footer />
                 <WhatsAppButton />
             </main>
