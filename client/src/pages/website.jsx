@@ -9,11 +9,7 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 import HeroSection from "@/components/website/Hero/Index";
 import ServicesSection from "@/components/website/Services";
 import ProcessSection from "@/components/website/Process";
-import TechnologiesSection from "@/components/website/Technologies";
-import MyProjectSection from "@/components/website/MyProject";
-import Footer from "@/components/Footer";
-import FAQSection from "@/components/website/FAQ";
-import ContactSection from "@/components/website/Contact/Index";
+import ContactSection from "@/components/ContactSection";
 import ClientCommentsSection from "@/components/website/ClientComments";
 import PricingSection from "@/components/website/Pricing/Index";
 import Projects from "@/components/website/Projects/Index";
@@ -46,6 +42,7 @@ export default function Website({ services, faqs, clientComments }) {
 			<ProcessSection />
 			<ServicesSection services={services} />
 			<WhatsAppButton />
+			<ContactSection fromPage={"website"} />
 		</Layout>
 	)
 }
