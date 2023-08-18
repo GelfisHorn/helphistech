@@ -1,0 +1,42 @@
+.button {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    background: #866bfe;
+    padding: .4rem .8rem;
+    transition: background .2s;
+    border-radius: .2rem;
+}
+
+.button:hover {
+    background: #5a43be;
+}
+
+.prices-swiper {
+    display: block;
+}
+
+.swiper-slide-item {
+    width: 22rem !important;
+    height: unset !important;
+}
+
+.swiper-slide-item:nth-child(3) {
+    margin-right: 0 !important;
+}
+
+@media (min-width: 1280px) {
+    .prices-swiper {
+        display: none !important;
+    }
+}
+
+.cardShadowLeft {
+    box-shadow: -5px 0 20px rgba(0, 0, 0, .1);
+}
+
+.cardShadowRight {
+    box-shadow: 5px 0 20px rgba(0, 0, 0, .1);
+}

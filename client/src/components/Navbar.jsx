@@ -13,9 +13,9 @@ import ContactModal from "./Modals/Contact/Index";
 // Redirects routes
 const REDIRECTS = {
     "hero": "/",
-    "our-services": "/internetseite",
-    "our-process": "/custom-web-entwicklung",
-    "our-technologies": "/technologien",
+    "digitalmarketing": "/marketingdigital",
+    "app": "/mobile-application",
+    "website": "/website",
     "my-project": "/contact",
 }
 
@@ -68,13 +68,13 @@ export default function Navbar({ textColor }) {
     }
 
     function handleNavButton(hash) {
-        if(router.pathname === '/') {
+        /* if(router.pathname === '/') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             return;
-        }
+        } */
         router.push(REDIRECTS[hash]);
     }
 
@@ -88,24 +88,24 @@ export default function Navbar({ textColor }) {
     return(
         <>
             <header className="relative flex flex-col" style={{zIndex: '1'}}>
-                <div className={`flex items-center justify-between h-20 px-10 ${textColor ? `${textColor}` : `text-${darkMode ? 'dark' : 'light'}`}`}>
-                    <div>
+                <div className={`flex items-center justify-between h-20 px-6 sm:px-10 ${textColor ? `${textColor}` : `text-${darkMode ? 'dark' : 'light'}`}`}>
+                    <div className={"hover:scale-105 transition-transform"}>
                         <Link href={"/"}>
-                            <Image className="w-auto h-[3.8rem]" src={`${router.pathname == '/' ? "/logo/dark/full-256.webp" : darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
+                            <Image className="w-auto h-[3.8rem]" src={`${darkMode ? '/logo/dark/full-256.webp' : '/logo/light/full-256.webp'}`} width={255} height={122} alt="HelphisTech logo" priority />
                         </Link>
                     </div>
                     <nav className="hidden xl:flex items-center gap-5 font-light text-lg">
                         <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                             <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
-                            <span className="hover:underline hover:text-primary transition-colors">Dienstleistungen</span>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("digitalmarketing")}>
+                            <span className="hover:underline hover:text-primary transition-colors">Digital Marketing</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
-                            <span className="hover:underline hover:text-primary transition-colors">Verfahren</span>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("app")}>
+                            <span className="hover:underline hover:text-primary transition-colors">App Entwicklung</span>
                         </div>
-                        <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
-                            <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
+                        <div className="cursor-pointer" onClick={() => handleNavButton("website")}>
+                            <span className="hover:underline hover:text-primary transition-colors">Website Entwicklung</span>
                         </div>
                         <Link href={"/contact"}>
                             <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
@@ -138,13 +138,13 @@ export default function Navbar({ textColor }) {
                             <span>Anmeldung</span>
                         </Link>
                         <div onClick={handleShowModal}>
-                            <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-sm">
+                            <button className="btn-primary py-2 px-4 uppercase font-medium text-white bg-primary hover:bg-primary-2 transition-colors rounded-lg">
                                 <span>Projekt starten</span>
                             </button>
                         </div>
                     </div>
                     <div onClick={handleShowMenu} className="block sm:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#fff" className="w-9 h-9">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke={darkMode ? "#fff" : "#000"} className="w-9 h-9">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
                         </svg>
                     </div>
@@ -153,14 +153,14 @@ export default function Navbar({ textColor }) {
                     <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                         <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
-                        <span className="hover:underline hover:text-primary transition-colors">Dienstleistungen</span>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("digitalmarketing")}>
+                        <span className="hover:underline hover:text-primary transition-colors">Digital Marketing</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
-                        <span className="hover:underline hover:text-primary transition-colors">Verfahren</span>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("app")}>
+                        <span className="hover:underline hover:text-primary transition-colors">App Entwicklung</span>
                     </div>
-                    <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
-                        <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
+                    <div className="cursor-pointer" onClick={() => handleNavButton("website")}>
+                        <span className="hover:underline hover:text-primary transition-colors">Website Entwicklung</span>
                     </div>
                     <Link href={"/contact"}>
                         <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
@@ -208,13 +208,13 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
     }
 
     function handleNavButton(hash) {
-        if(router.pathname === '/en') {
+        /* if(router.pathname === '/en') {
             const element = document.getElementById(`${hash}`);
             if(element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
             return;
-        }
+        } */
         router.push(REDIRECTS[hash]);
     }
 
@@ -245,14 +245,14 @@ function NavbarMobileMenu({ closeAnimation, closeMenu }) {
                                 <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                                     <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
-                                    <span className="hover:underline hover:text-primary transition-colors">Dienstleistungen</span>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("digitalmarketing")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Digital Marketing</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
-                                    <span className="hover:underline hover:text-primary transition-colors">Verfahren</span>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("app")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">App Entwicklung</span>
                                 </div>
-                                <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
-                                    <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
+                                <div className="cursor-pointer" onClick={() => handleNavButton("website")}>
+                                    <span className="hover:underline hover:text-primary transition-colors">Website Entwicklung</span>
                                 </div>
                                 <Link href={"/contact"}>
                                     <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>

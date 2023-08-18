@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* font-family: 'Poppins', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* font-family: 'Overpass', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap');
+/* font-family: 'Ramabhadra', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap');
+/* font-family: 'Sofia Sans Semi Condensed', sans-serif; */
 
 @tailwind base;
 @tailwind components;
@@ -14,6 +20,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Sofia Sans Semi Condensed', sans-serif;
+	font-weight: 900 !important;
+	text-transform: uppercase;
+}
+
 h1,
 h2,
 h3,
@@ -22,6 +34,10 @@ p,
 span,
 div {
 	transition: color 50ms;
+}
+
+button {
+	user-select: none;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -342,6 +358,13 @@ button.btn-primary:hover {
 	overflow: hidden;
 }
 
+.text-ellipsis-3 {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 .rdp {
 	margin: 0 !important;
 }
@@ -587,6 +610,7 @@ ul ol {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	-ms-overflow-style: none;
 		scrollbar-width: none;
 }
@@ -679,4 +703,59 @@ ul ol {
 .fade-element {
 	position: relative;
 	z-index: 1;
+}
+
+.technologies-swiper .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	cursor: move;
+}
+
+.client-comment .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.swiper-grid-3 .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.swiper-grid-4 .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.swiper-grid-5 .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.break-word {
+	word-break: break-word;
+}
+
+.home-background {
+	position: relative;
+}
+
+.home-background::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url("/lightmode.webp");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: right;
+	width: 100vw;
+	height: 100%;
+	opacity: .2;
+	z-index: 0;
+}
+
+.md-pricing-swiper .swiper-wrapper {
+	padding: 0rem 0rem 4rem 0rem !important;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
 }
