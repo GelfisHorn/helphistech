@@ -37,7 +37,18 @@ export default function HomeServices() {
     return (
         <section className={`relative px-6 sm:px-20 py-28 ${styles.background}`} id={"home-services"}>
             <div className={"flex flex-col items-center gap-20"}>
-                <h2 className={"text-3xl lg:text-5xl font-bold text-center break-word"}>Unsere <span className={"text-primary"}>Haupt-dienstleistungen</span> umfassen</h2>
+                <div className={"flex flex-col items-center gap-8 text-center px-6 sm:px-10 lg:px-20 "}>
+                    <div className={"flex flex-col gap-5"}>
+                        <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Unsere Dienstleistungen</div>
+                        <motion.h2
+                            className={"text-3xl sm:text-5xl font-bold"}
+                            initial={{ opacity: 0, x: 100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: .2, origin: 1 }}
+                        >Unsere <span className={"text-primary"}>Haupt-dienstleistungen</span> umfassen</motion.h2>
+                    </div>
+                    <p className={`${darkMode ? "description-dark" : "description-light"} w-full xl:w-2/3`}>Von Web- und Mobilentwicklung bis hin zu digitalen Marketingstrategien – wir sind hier, um Ihre Visionen in der Online-Welt in die Realität umzusetzen. Steigern Sie Ihre digitale Präsenz mit unseren umfassenden Lösungen und erreichen Sie Ihr Publikum effektiv.</p>
+                </div>
                 <motion.div
                     className={"hidden xl:grid grid-cols-2 gap-5"}
                     initial={{ opacity: 0, x: 100 }}
