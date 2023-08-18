@@ -92,7 +92,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.react}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#61dafb] hover:text-[#61dafbc4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://react.dev"} className={"flex items-center gap-2 w-fit text-[#61dafb] hover:text-[#61dafbc4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -106,7 +106,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.next}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={`flex items-center gap-2 w-fit ${darkMode ? "text-[#ffffff] hover:text-[#ffffffc4]" : "text-[#000000] hover:text-[#000000c4]"} transition-colors`}>
+                            <Link target={"_blank"} href={"https://nextjs.org"} className={`flex items-center gap-2 w-fit ${darkMode ? "text-[#ffffff] hover:text-[#ffffffc4]" : "text-[#000000] hover:text-[#000000c4]"} transition-colors`}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -120,7 +120,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.tailwind}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#38bdf8] hover:text-[#38bdf8c4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://tailwindcss.com"} className={"flex items-center gap-2 w-fit text-[#38bdf8] hover:text-[#38bdf8c4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -134,7 +134,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.node}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#7ad253] hover:text-[#7ad253c4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://nodejs.org"} className={"flex items-center gap-2 w-fit text-[#7ad253] hover:text-[#7ad253c4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -148,7 +148,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.mongo}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#11934f] hover:text-[#11934fc4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://www.mongodb.com"} className={"flex items-center gap-2 w-fit text-[#11934f] hover:text-[#11934fc4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -162,7 +162,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.mysql}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#006189] hover:text-[#006189c4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://www.mysql.com"} className={"flex items-center gap-2 w-fit text-[#006189] hover:text-[#006189c4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -190,7 +190,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.kotlin}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#d42fa9] hover:text-[#d42fa9c4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://kotlinlang.org"} className={"flex items-center gap-2 w-fit text-[#d42fa9] hover:text-[#d42fa9c4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -204,7 +204,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.flutter}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#015496] hover:text-[#015496c4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://flutter.dev"} className={"flex items-center gap-2 w-fit text-[#015496] hover:text-[#015496c4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
@@ -218,7 +218,7 @@ export default function TechnologiesSection() {
                                 </div>
                             </div>
                             <div className={`${darkMode ? "description-dark" : "description-light"} text-ellipsis-3`}>{TECHNOLOGIES.de.reactNative}</div>
-                            <Link target={"_blank"} href={"https://www.swift.org"} className={"flex items-center gap-2 w-fit text-[#03a6d1] hover:text-[#03a6d1c4] transition-colors"}>
+                            <Link target={"_blank"} href={"https://reactnative.dev"} className={"flex items-center gap-2 w-fit text-[#03a6d1] hover:text-[#03a6d1c4] transition-colors"}>
                                 <span>{TECHNOLOGIES.de.showMore}</span>
                                 <i className="fa-regular fa-arrow-right-long"></i>
                             </Link>
