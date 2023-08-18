@@ -20,7 +20,7 @@ export default function Modal({ handleClose, children, classes }) {
         <ModalBackdrop onClick={handleClose}>
             <motion.div
                 onClick={(e) => e.stopPropagation()}
-                className={`modal ${darkMode ? "bg-neutral-900" : "bg-white"} rounded-md ${classes}`}
+                className={`modal ${darkMode ? "bg-neutral-900" : "bg-white"} rounded-md ${classes} overflow-y-scroll sm:overflow-y-auto h-screen sm:h-auto`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
