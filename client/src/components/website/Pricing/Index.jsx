@@ -246,6 +246,10 @@ export default function PricingSection() {
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
                                             <span>Kunden Panel</span>
                                         </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                            <span>Online shop</span>
+                                        </div>
                                     </div>
                                     <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
@@ -400,6 +404,10 @@ export default function PricingSection() {
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
                                                     <span>Kunden Panel</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                                    <span>Online shop</span>
                                                 </div>
                                             </div>
                                             <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
