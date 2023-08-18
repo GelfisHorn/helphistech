@@ -8,9 +8,9 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Redirects routes
 const REDIRECTS = {
     "hero": "/",
-    "our-services": "/internetseite",
-    "our-process": "/custom-web-entwicklung",
-    "our-technologies": "/technologien",
+    "digitalmarketing": "/marketingdigital",
+    "app": "/mobile-application",
+    "website": "/website",
     "my-project": "/contact",
 }
 
@@ -21,13 +21,6 @@ export default function Footer() {
     const { darkMode } = useContextProvider();
 
     function handleNavButton(hash) {
-        if(router.pathname === '/') {
-            const element = document.getElementById(`${hash}`);
-            if(element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-            return;
-        }
         router.push(REDIRECTS[hash]);
     }
 
@@ -45,14 +38,14 @@ export default function Footer() {
                             <div className="cursor-pointer" onClick={() => handleNavButton("hero")}>
                                 <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                             </div>
-                            <div className="cursor-pointer" onClick={() => handleNavButton("our-services")}>
-                                <span className="hover:underline hover:text-primary transition-colors">Dienstleistungen</span>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("digitalmarketing")}>
+                                <span className="hover:underline hover:text-primary transition-colors">Digital Marketing</span>
                             </div>
-                            <div className="cursor-pointer" onClick={() => handleNavButton("our-process")}>
-                                <span className="hover:underline hover:text-primary transition-colors">Verfahren</span>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("app")}>
+                                <span className="hover:underline hover:text-primary transition-colors">App Entwicklung</span>
                             </div>
-                            <div className="cursor-pointer" onClick={() => handleNavButton("our-technologies")}>
-                                <span className="hover:underline hover:text-primary transition-colors">Technologien</span>
+                            <div className="cursor-pointer" onClick={() => handleNavButton("website")}>
+                                <span className="hover:underline hover:text-primary transition-colors">Website Entwicklung</span>
                             </div>
                             <div className="cursor-pointer" onClick={() => handleNavButton("my-project")}>
                                 <span className="hover:underline hover:text-primary transition-colors">Kontakt</span>
