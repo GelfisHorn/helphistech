@@ -704,6 +704,12 @@ ul ol {
 	z-index: 1;
 }
 
+.technologies-swiper .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	cursor: move;
+}
+
 .client-comment .swiper-wrapper {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
