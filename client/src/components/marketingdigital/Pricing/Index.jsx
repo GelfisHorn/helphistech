@@ -40,7 +40,7 @@ const PRICING = {
     },
     "05": {
         name: "Premium Digital Marketing",
-        price: 490
+        price: 390
     },
 }
 
@@ -105,6 +105,7 @@ export default function MDPricing() {
                                     handleModal={handleModal.show}
                                     benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
                                     plan={{ get: PRICING["03"].name, set: setPlan }}
+                                    perMonth={true}
                                 />
                             </motion.div>
                             <motion.div
@@ -121,6 +122,7 @@ export default function MDPricing() {
                                     handleModal={handleModal.show}
                                     benefits={[{ name: "Erstellung und Pflege von Werbekampagnen mit Google Ads, TikTok Ads und Facebook Ads." }]}
                                     plan={{ get: PRICING["04"].name, set: setPlan }}
+                                    perMonth={true}
                                 />
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
@@ -131,6 +133,7 @@ export default function MDPricing() {
                                     benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
                                     popular={true}
                                     plan={{ get: PRICING["05"].name, set: setPlan }}
+                                    perMonth={true}
                                 />
                             </motion.div>
                         </div>
@@ -149,7 +152,7 @@ export default function MDPricing() {
     )
 }
 
-function Card({ plan, title, description, price, popular, benefits, handleModal }) {
+function Card({ plan, title, description, price, popular, benefits, handleModal, perMonth }) {
 
     const { darkMode } = useContextProvider();
 
@@ -166,12 +169,15 @@ function Card({ plan, title, description, price, popular, benefits, handleModal 
                     <div className={"flex flex-col items-center gap-5"}>
                         <div className={"text-2xl font-semibold text-primary"}>{title}</div>
                         <div>{description}</div>
-                        <div className={"flex items-center"}>
+                        <div className={"flex flex-col gap-1 items-center"}>
                             <div className={"relative flex items-center gap-1 font-medium text-5xl"}>
                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                 <span>{price}</span>
                                 <div className={"absolute bottom-0 w-full h-3 bg-primary opacity-50"} style={{ zIndex: "-1" }}></div>
                             </div>
+                            {perMonth && (
+                                <div>/monat</div>
+                            )}
                         </div>
                     </div>
                     <div className={"flex flex-col items-center gap-3 list-disc w-full text-left"}>
@@ -307,6 +313,7 @@ function CardsMobile({ setPlan, showModal }) {
                             benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
                             popular={true}
                             plan={{ get: PRICING["05"].name, set: setPlan }}
+                            perMonth={true}
                         />
                     </SwiperSlide>
                     <SwiperSlide className={styles["swiper-slide-item"]}>
@@ -318,6 +325,7 @@ function CardsMobile({ setPlan, showModal }) {
                             handleModal={showModal}
                             benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
                             plan={{ get: PRICING["03"].name, set: setPlan }}
+                            perMonth={true}
                         />
                     </SwiperSlide>
                     <SwiperSlide className={styles["swiper-slide-item"]}>
@@ -329,6 +337,7 @@ function CardsMobile({ setPlan, showModal }) {
                             handleModal={showModal}
                             benefits={[{ name: "Erstellung und Pflege von Werbekampagnen mit Google Ads, TikTok Ads und Facebook Ads." }]}
                             plan={{ get: PRICING["04"].name, set: setPlan }}
+                            perMonth={true}
                         />
                     </SwiperSlide>
                 </Swiper>
