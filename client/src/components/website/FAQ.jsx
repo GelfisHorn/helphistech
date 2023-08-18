@@ -7,20 +7,26 @@ import useContextProvider from "@/hooks/useAppContextProvider"
 import { motion, AnimatePresence } from "framer-motion"
 import VideoCallModal from "../Modals/VideoCall/Index";
 
-const lang = {
-    "de": "KOSTENLOSE BERATUNG BUCHEN",
-    "en": "BOOK A FREE CONSULTATION",
-    "es": "RESERVA UNA CONSULTA GRATUITA"
-}
-
 export default function FAQSection({ faqs }) {
     
     const { darkMode, language } = useContextProvider();
 
-    const title = {
-        "de": "Häufig gestellte Fragen",
-        "en": "Frequently asked questions",
-        "es": "Preguntas frequentes"
+    const lang = {
+        de: {
+            headTitle: "FAQ",
+            title: "Häufig gestellte Fragen",
+            description: "Hier finden Sie Antworten auf die häufigsten Fragen zu unserem Entwicklungsprozess, Preisen, Technologien und mehr."
+        },
+        en: {
+            headTitle: "FAQ",
+            title: "Frequently asked questions",
+            description: "Here you will find answers to the most common questions about our development process, prices, technologies and more."
+        },
+        es: {
+            headTitle: "FAQ",
+            title: "Preguntas frequentes",
+            description: "Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro proceso de desarrollo precios, tecnologías y más."
+        }
     }
 
     const slashMotion = {
@@ -47,12 +53,18 @@ export default function FAQSection({ faqs }) {
             </AnimatePresence>
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto w-full relative">
                 <div className={"flex flex-col gap-10"}>
-                    <motion.h2 
-                        className={`text-3xl sm:text-4xl md:text-5xl font-bold ${darkMode ? "title-dark" : "title-light"}`}
-                        initial={{ opacity: 0, x: -100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: .2, origin: 1 }}
-                    >{title[language]}</motion.h2>
+                    <div className={"flex flex-col items-center gap-8 text-center px-6 sm:px-10 lg:px-20 "}>
+                        <div className={"flex flex-col gap-5"}>
+                            <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>{lang[language].headTitle}</div>
+                            <motion.h2
+                                className={"text-3xl sm:text-5xl font-bold text-primary"}
+                                initial={{ opacity: 0, x: 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: .2, origin: 1 }}
+                            >{lang[language].title}</motion.h2>
+                        </div>
+                        <p className={`${darkMode ? "description-dark" : "description-light"} w-full xl:w-2/3`}>{lang[language].description}</p>
+                    </div>
                     <div className={"flex flex-col gap-1"}>
                         {faqs.element.map((e, index) => (
                             <Element key={index} element={e} />
@@ -60,7 +72,7 @@ export default function FAQSection({ faqs }) {
                     </div>
                 </div>
             </div>
-            <motion.div 
+            {/* <motion.div 
                 className={'flex justify-center'}
                 initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -72,7 +84,7 @@ export default function FAQSection({ faqs }) {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                     </motion.svg>
                 </motion.button>
-            </motion.div>
+            </motion.div> */}
         </section>
     )
 }
