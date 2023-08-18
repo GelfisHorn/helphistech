@@ -58,7 +58,7 @@ export default function HomeServices() {
                         title={"Entwicklung von Web-und mobilen Apps"}
                         description={"Wir entwickeln maßgeschneiderte Anwendungen, die es Ihren Kunden ermöglichen, schnell und bequem von jedem Gerät aus mit Ihnen zu interagieren."}
                         price={"1190"}
-                        redirect={"/apps"}
+                        redirect={"/mobile-application"}
                         handleModal={handleModal.show}
                         setService={() => setService("Aplicación móvil")}
                     />
@@ -106,7 +106,7 @@ export default function HomeServices() {
                                 title={"Entwicklung von Web-und mobilen Apps"}
                                 description={"Wir entwickeln maßgeschneiderte Anwendungen, die es Ihren Kunden ermöglichen, schnell und bequem von jedem Gerät aus mit Ihnen zu interagieren."}
                                 price={"1190"}
-                                redirect={"/apps"}
+                                redirect={"/mobile-application"}
                                 handleModal={handleModal.show}
                                 setService={() => setService("Aplicación móvil")}
                             />

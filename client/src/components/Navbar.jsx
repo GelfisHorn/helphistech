@@ -14,7 +14,7 @@ import ContactModal from "./Modals/Contact/Index";
 const REDIRECTS = {
     "hero": "/",
     "digitalmarketing": "/marketingdigital",
-    "app": "/apps",
+    "app": "/mobile-application",
     "website": "/website",
     "my-project": "/contact",
 }
