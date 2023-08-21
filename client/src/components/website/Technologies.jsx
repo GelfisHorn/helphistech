@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 const TECHNOLOGIES = {
     de: {
         react: "React ist eine Open-Source-Javascript-Bibliothek zur Erstellung von Benutzeroberflächen mit dem Ziel, die Entwicklung von Einzelseitenanwendungen zu erleichtern.",
-        next: "Nächste. js ist ein React-Framework, das eine Vielzahl von Funktionen und Vorteilen bietet, die es ideal für die Erstellung moderner und skalierbarer Webanwendungen machen.",
+        next: "Next.js ist ein React-Framework, das eine Vielzahl von Funktionen und Vorteilen bietet, die es ideal für die Erstellung moderner und skalierbarer Webanwendungen machen.",
         tailwind: "Tailwind CSS ist ein Open-Source-CSS-Framework für das Webseitendesign.",
         node: "Node.js ist eine plattformübergreifende Open-Source-Laufzeitumgebung für die Serverschicht, die auf der Programmiersprache JavaScript basiert.",
         mongo: "MongoDB ist ein dokumentenorientiertes Open-Source-NoSQL-Datenbanksystem.",
