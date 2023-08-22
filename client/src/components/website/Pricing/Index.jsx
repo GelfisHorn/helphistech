@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 // Nextjs
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
@@ -29,6 +30,8 @@ export default function PricingSection() {
 
     // Get functions and variables from context
     const { darkMode, language } = useContextProvider();
+
+    const router = useRouter();
 
     // Modal
     const [ showModal, setShowModal ] = useState(false);
@@ -63,7 +66,7 @@ export default function PricingSection() {
             axios.post('/api/pricing/sendMail', { pricing: { plan: LANG.es.plans[pricing.plan], price: pricing.price }, name, email, phoneNumber, description }),
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
         ]).then(res => {
-            toast.success(LANG[language].notifications.success);
+            router.push('/confirmation');
         }).catch(err => {
             toast.error(LANG[language].notifications.error.catch);
         });

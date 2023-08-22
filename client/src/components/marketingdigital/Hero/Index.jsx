@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 // Nextjs
 import Image from 'next/image';
 import Link from "next/link";
+import { useRouter } from "next/router";
 // Components
 import Modal from "@/components/Modal/Index";
 // Hooks
@@ -63,6 +64,8 @@ function ContactModal({ service, handleClose }) {
 
     const { darkMode } = useContextProvider();
 
+    const router = useRouter();
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -80,7 +83,7 @@ function ContactModal({ service, handleClose }) {
             axios.post('/api/services/sendMail/helphistech', { service, name, email, phoneNumber, description }),
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
         ]).then(res => {
-            toast.success(LANG["de"].notifications.success);
+            router.push('/confirmation')
         }).catch(err => {
             toast.error(LANG["de"].notifications.error.catch);
         });
