@@ -600,12 +600,9 @@ ul ol {
 }
 
 .modal {
-	/* max-height: 90vh; */
-	overflow-y: scroll;
-	/* width: clamp(50%, 700px, 90%);
-	height: min(50%, 300px); */
-	/* margin: 2rem; */
-	/* padding: 1.5rem 2rem; */
+	margin: .5rem;
+	max-height: 80vh;
+	height: fit-content !important;
 	border-radius: 6px;
 	display: flex;
 	flex-direction: column;
@@ -620,12 +617,11 @@ ul ol {
 	display: none;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 640px) {
 	.modal {
-		margin: 1rem;
-		padding: 1rem;
+		height: 100% !important;
 	}
-} */
+}
 
 .violet {
 	color: #866bfe;

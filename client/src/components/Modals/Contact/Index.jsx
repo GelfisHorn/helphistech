@@ -177,15 +177,17 @@ export default function ContactModal({ blog, handleClose, language }) {
     }
 
     return (
-        <Modal handleClose={handleClose} classes={"p-5 m-0 sm:m:10 h-full sm:h-auto sm:max-w-[90vw]"}>
-            <div className={"relative flex flex-col gap-5 sm:gap-10 w-full text-center"}>
-                <button onClick={handleClose} className={"absolute z-10 -top-3 md:-top-4 -right-3 md:-right-4 hover:text-primary"}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-                <div className={`w-full h-1 ${darkMode ? "bg-neutral-800" : "bg-neutral-300"} rounded-full mt-4`}>
-                    <div className={`${styles.stepBar} ${stepBar[step]} h-1 bg-primary transition-transform rounded-full`}></div>
+        <Modal handleClose={handleClose}>
+            <div className={"flex flex-col gap-5 sm:gap-10 w-full text-center h-full p-5"}>
+                <div className={"flex flex-col items-end"}>
+                    <button onClick={handleClose} className={"hover:text-primary w-fit"}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <div className={`w-full h-1 ${darkMode ? "bg-neutral-800" : "bg-neutral-300"} rounded-full mt-4`}>
+                        <div className={`${styles.stepBar} ${stepBar[step]} h-1 bg-primary transition-transform rounded-full`}></div>
+                    </div>
                 </div>
                 { step == 1 && (
                     <div className={"flex flex-col gap-5 sm:gap-10"}>
@@ -332,7 +334,7 @@ export default function ContactModal({ blog, handleClose, language }) {
                         </div>
                     </div>
                 )}
-                <div className={"flex items-center justify-between gap-5"}>
+                <div className={"flex items-center justify-between gap-5 pb-5"}>
                     { step > 1 && (
                         <>
                             <button className={`${styles.button} w-1/2`} onClick={handlePrevStep}>

@@ -63,13 +63,15 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
     }
 
     return (
-        <Modal handleClose={closeVideoCallForm} classes={"p-5 m-4"}>
-            <motion.div exit={{ opacity: 0 }} className={"relative w-full"}>
-                <button onClick={closeVideoCallForm} className={"absolute z-10 -top-2 md:-top-4 -right-2 md:-right-4 hover:text-primary"}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+        <Modal handleClose={closeVideoCallForm} classes={"p-5 m-4 w-full sm:w-[550px]"}>
+            <motion.div exit={{ opacity: 0 }} className={"h-full w-full"}>
+                <div className={"flex justify-end"}>
+                    <button onClick={closeVideoCallForm} className={"hover:text-primary"}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-7 h-7">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
                 <motion.div
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: .3 }}
@@ -108,7 +110,7 @@ export default function VideoCallModal({ closeVideoCallForm, language }) {
                                         </div>
                                         <DayPicker setDate={setDate} setHour={setHour} date={date} hour={hour} />
                                     </div>
-                                    <div className="flex items-center gap-4 text-white w-full justify-center">
+                                    <div className="flex items-center gap-4 text-white w-full justify-center pb-5">
                                         <button
                                             type="button"
                                             onClick={() => setFormStep(FORM_STEPS.CONTACT_INFO)}

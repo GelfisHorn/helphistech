@@ -425,9 +425,9 @@ export default function PricingSection() {
             <AnimatePresence>
                 {showModal && (
                     <Modal handleClose={handleModal.close}>
-                        <form className={"flex flex-col gap-3 sm:gap-10 p-5 relative"} onSubmit={handleSubmit}>
+                        <form className={"flex flex-col gap-3 sm:gap-10 p-5 h-full"} onSubmit={handleSubmit}>
                             <div className={"flex flex-col gap-1 text-center"}>
-                                <div onClick={handleModal.close} className={"absolute top-1 right-2 text-2xl cursor-pointer"}><i className="fa-regular fa-xmark"></i></div>
+                                <div onClick={handleModal.close} className={"flex justify-end text-2xl cursor-pointer"}><i className="fa-regular fa-xmark"></i></div>
                                 <div className={"text-2xl uppercase font-semibold"}>{LANG["de"].title}</div>
                                 <div>{LANG["de"].subtitle}</div>
                             </div>
@@ -459,12 +459,14 @@ export default function PricingSection() {
                                     </div>
                                 </div>
                             </div>
-                            <button className={`${styles.button} w-full`} type={"submit"}>
-                                <span>{LANG[language].submit}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                                </svg>
-                            </button>
+                            <div className={"pb-5"}>
+                                <button className={`${styles.button} w-full`} type={"submit"}>
+                                    <span>{LANG[language].submit}</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                                    </svg>
+                                </button>
+                            </div>
                         </form>
                     </Modal>
                 )}
