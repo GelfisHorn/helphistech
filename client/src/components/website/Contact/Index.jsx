@@ -178,7 +178,7 @@ export default function ContactSection({ language }) {
     }
 
     return (
-        <section className="px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 text-center bg-cover bg-fixed bg-center" id="my-project" style={{ backgroundImage: darkMode ? "url(home/waves-variant.svg)" : "url(home/waves-light.svg)" }}>
+        <section className={`px-6 sm:px-10 lg:px-20 2xl:px-0 py-28 text-center ${darkMode ? "bg-[#101010]" : "section-bg-light"}`} id="my-project">
             <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto z-10 relative">
                 <div className={"flex flex-col gap-5 sm:gap-10 w-full text-center"}>
                     <div className={`w-full h-1 ${darkMode ? "bg-neutral-800" : "bg-neutral-300"} rounded-full`}>
@@ -187,8 +187,8 @@ export default function ContactSection({ language }) {
                     {step == 1 && (
                         <div className={"flex flex-col gap-5 sm:gap-10"}>
                             <div className={"flex flex-col gap-2"}>
-                                <div className={"text-2xl uppercase font-semibold"}>{lang[language].step1.title}</div>
-                                <div className={"text-lg"}>{lang[language].step1.subtitle}</div>
+                                <h2 className={`uppercase text-3xl sm:text-4xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>{lang[language].step1.title}</h2>
+                                <div className={`${darkMode ? "description-dark" : "description-light"}`}>{lang[language].step1.subtitle}</div>
                             </div>
                             <div className={"flex flex-col gap-3"}>
                                 <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
@@ -225,7 +225,7 @@ export default function ContactSection({ language }) {
                     )}
                     {step == 2 && (
                         <div className={"flex flex-col gap-5 sm:gap-10"}>
-                            <div className={"text-2xl uppercase font-semibold"}>{lang[language].step2[formOption].title}</div>
+                            <h2 className={`uppercase text-3xl sm:text-4xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>{lang[language].step2[formOption].title}</h2>
                             <div className={"flex flex-col gap-3"}>
                                 <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                     {lang[language].step2[formOption].options.map((service, index) => (
@@ -260,7 +260,7 @@ export default function ContactSection({ language }) {
                     )}
                     {step == 3 && (
                         <div className={"flex flex-col gap-5 sm:gap-10"}>
-                            <div className={"text-2xl uppercase font-semibold"}>{lang[language].step3[formOption].title}</div>
+                            <h2 className={`uppercase text-3xl sm:text-4xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>{lang[language].step3[formOption].title}</h2>
                             <div className={"flex flex-col gap-3"}>
                                 <div className={"grid grid-cols-2 md:grid-cols-3 items-center justify-center gap-3"}>
                                     {lang[language].step3[formOption].options.map((service, index) => (
@@ -296,8 +296,8 @@ export default function ContactSection({ language }) {
                     {step == 4 && (
                         <div className={"flex flex-col gap-5 sm:gap-10"}>
                             <div className={"flex flex-col gap-3"}>
-                                <div className={"text-2xl uppercase font-semibold"}>{lang[language].step4.title}</div>
-                                <div>{lang[language].step4.subtitle}</div>
+                                <h2 className={`uppercase text-3xl sm:text-4xl font-bold ${darkMode ? 'title-dark' : 'title-light'}`}>{lang[language].step4.title}</h2>
+                                <div className={`${darkMode ? "description-dark" : "description-light"}`}>{lang[language].step4.subtitle}</div>
                             </div>
                             <div className={"flex flex-col gap-5"}>
                                 <div className={"grid grid-cols-1 sm:grid-cols-2 items-start justify-center gap-5"}>
