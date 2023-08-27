@@ -66,7 +66,7 @@ export default function HomeServices() {
                             icon={"fa-regular fa-window"}
                             title={"Webseiten-Design und-Entwicklung"}
                             description={"Wir erstellen ansprechende und funktionale Websites, die die Identität Ihres Unternehmens hervorheben und eine außergewöhnliche Benutzererfahrung bieten."}
-                            price={"390"}
+                            price={"590"}
                             redirect={"/website"}
                             handleModal={handleModal.show}
                             service={{ get: service, set: () => setService(0) }}
@@ -116,7 +116,7 @@ export default function HomeServices() {
                                     icon={"fa-regular fa-window"}
                                     title={"Webseiten-Design und-Entwicklung"}
                                     description={"Wir erstellen ansprechende und funktionale Websites, die die Identität Ihres Unternehmens hervorheben und eine außergewöhnliche Benutzererfahrung bieten."}
-                                    price={"390"}
+                                    price={"590"}
                                     redirect={"/website"}
                                     handleModal={handleModal.show}
                                     service={{ get: service, set: () => setService(0) }}
