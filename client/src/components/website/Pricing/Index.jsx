@@ -20,9 +20,9 @@ import Modal from "../../Modal/Index";
 import axios from "axios";
 
 const PRICING = {
-    basic: 390,
-    pro: 590,
-    premium: 1190
+    basic: 590,
+    pro: 790,
+    premium: 1390
 }
 
 export default function PricingSection() {
