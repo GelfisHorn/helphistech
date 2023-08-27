@@ -168,7 +168,7 @@ export default function PricingSection() {
                             </div>
                             <div className={"w-[22rem] h-full"}>
                                 <div className={"grid place-content-center bg-primary text-white h-10 text-center rounded-t-xl"}>
-                                    <div className={"uppercase text-sm"}>Bekannter</div>
+                                    <div className={"uppercase text-sm"}>Beliebt</div>
                                 </div>
                                 <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{height: "calc(100% - 2.5rem)"}}>
                                     <div className={"flex flex-col items-center gap-5"}>
@@ -325,7 +325,7 @@ export default function PricingSection() {
                                 <SwiperSlide className={styles["swiper-slide-item"]}>
                                     <div className={"w-[22rem] h-full mx-auto"}>
                                         <div className={"grid place-content-center bg-primary text-white h-10 text-center rounded-t-xl"}>
-                                            <div className={"uppercase text-sm"}>Bekannter</div>
+                                            <div className={"uppercase text-sm"}>beliebt</div>
                                         </div>
                                         <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
