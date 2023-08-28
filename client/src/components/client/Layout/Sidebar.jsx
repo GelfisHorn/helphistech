@@ -3,12 +3,12 @@ import { useEffect } from "react";
 // Nextjs
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 import axiosHeaders from "@/hooks/axiosHeaders";
 // Languages
 import lang from '../../../lang/client/sidebar.json';
-import Image from "next/image";
 
 export default function ClientSidebar() {
     
@@ -65,7 +65,7 @@ export default function ClientSidebar() {
                 <SidebarSection title={"Admin"} permissions={["superadmin", "admin"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin"]}
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
                         }
@@ -75,7 +75,7 @@ export default function ClientSidebar() {
                 <SidebarSection title={"Proyectos"} permissions={["developer"]}>
                     <SidebarItem 
                         permissions={["developer"]}
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
                         }
@@ -85,29 +85,29 @@ export default function ClientSidebar() {
                 <SidebarSection title={lang[language].home.title} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                         </svg>
                         }
-                        href={`/client`}
+                        href={`/dashboard`}
                     >{lang[language].home.home}</SidebarItem>
                 </SidebarSection>
                 <SidebarSection title={lang[language].project.title} permissions={["client"]}>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122" />
                         </svg>
                         }
-                        href={`${!clientProject?.project?.client?._id ? '/client' : `/client/project/${clientProject?.project?.client?._id}`}`}
+                        href={`${!clientProject?.project?.client?._id ? '/dashboard' : `/dashboard/project/${clientProject?.project?.client?._id}`}`}
                     >{lang[language].project["my-project"]}</SidebarItem>
                     <SidebarItem 
                         permissions={["superadmin", "admin", "client"]}
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                         </svg>
                         }
-                        href={`${!clientProject?.project?._id ? '/client' : `/client/process/${clientProject?.project?._id}`}`}
+                        href={`${!clientProject?.project?._id ? '/dashboard' : `/dashboard/process/${clientProject?.project?._id}`}`}
                     >{lang[language].project.process}</SidebarItem>
                 </SidebarSection>
             </div>
@@ -115,7 +115,7 @@ export default function ClientSidebar() {
                 <div className="flex flex-col gap-1">
                     <SidebarItem
                         permissions={["superadmin", "admin", "client", "developer"]}
-                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
                         }
@@ -133,8 +133,8 @@ function SidebarSection({ children, title, permissions }) {
     const { darkMode, auth } = useContextProvider();
 
     return (
-        <div className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex flex-col gap-2 px-5`}>
-            <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} hidden lg:block uppercase font-semibold text-sm`}>{title}</div>
+        <div className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex flex-col gap-2`}>
+            <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} hidden lg:block uppercase font-semibold text-sm ml-6`}>{title}</div>
             <div className="flex flex-col gap-1">{children}</div>
         </div>
     )
@@ -144,11 +144,18 @@ function SidebarItem({ children, icon, href, permissions }) {
     
     const { darkMode, auth } = useContextProvider();
 
+    const router = useRouter();
+    const actualRoute = router.pathname.split('/')[1];
+    console.log(actualRoute);
+
     return (
         <Link href={href} className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex justify-center`}>
-            <button className={`${darkMode ? 'text-dark-text' : 'text-black'} hover:bg-primary flex items-center justify-center lg:justify-start gap-2 lg:rounded-md py-2 lg:px-4 w-full hover:text-white uppercase font-semibold text-left transition-colors select-none`}>
-                <div className="text-neutral-400">{icon}</div>
-                <div className="hidden lg:block">{children}</div>
+            <button className={`${darkMode ? 'text-dark-text' : 'text-black'} flex items-center justify-center lg:justify-start gap-5 py-2 lg:pr-6 w-full hover:text-primary uppercase font-medium text-left transition-colors select-none`}>
+                <div className={"w-1 h-full bg-primary rounded-r-md"}></div>
+                <div className={"flex items-center gap-3"}>
+                    <div className="">{icon}</div>
+                    <div className="hidden lg:block">{children}</div>
+                </div>
             </button>
         </Link>
     )
