@@ -22,7 +22,7 @@ export default function AdminLayout({ children, title }) {
         }
 
         if(!fetchingAuth && auth.permissions === 'client') {
-            router.push('/client');
+            router.push('/dashboard');
         }
     }, [auth, fetchingAuth])
 

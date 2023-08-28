@@ -19,7 +19,7 @@ export default function Login() {
             return;
         }
         if(auth.permissions === 'client') {
-            router.push('/client');
+            router.push('/dashboard');
             return;
         }
         router.push('/admin');

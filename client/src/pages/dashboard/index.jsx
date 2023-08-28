@@ -116,7 +116,7 @@ export default function ClientIndex() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5">
                             <div className="flex flex-col gap-2">
                                 <h4 className="uppercase font-medium text-lg">{lang[language]["my-project"].title}</h4>
-                                <Link className={`w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} p-5 rounded-md`} href={`/client/project/${project._id}`}>
+                                <Link className={`w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} p-5 rounded-md`} href={`/dashboard/project/${project._id}`}>
                                     <div className="flex flex-col gap-2">
                                         <div className="flex flex-col">
                                             <div className="uppercase font-medium">{lang[language]["my-project"]["company-name"]}</div>
@@ -138,7 +138,7 @@ export default function ClientIndex() {
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2">
                                     <h4 className="uppercase font-medium text-lg">{lang[language].process.title}</h4>
-                                    <Link className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors" href={`/client/process/${project._id}`}>
+                                    <Link className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors" href={`/dashboard/process/${project._id}`}>
                                         <span>{lang[language].process["see-process"]}</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -156,7 +156,7 @@ export default function ClientIndex() {
                                                 <div className="uppercase font-medium">{lang[language].process["last-tickets"]}</div>
                                                 <div className="flex flex-col gap-1">
                                                     {processEntries.length > 0 ? processEntries.map((entry, index) => (
-                                                        <Link key={index} href={`/client/process/entry/${entry._id}`}>
+                                                        <Link key={index} href={`/dashboard/process/entry/${entry._id}`}>
                                                             <div className={`flex items-center justify-between ${darkMode ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-neutral-300 hover:bg-neutral-400'} transition-colors px-3 py-2 rounded-lg`}>
                                                                 <div className="flex flex-col">
                                                                     <div>{entry.title}</div>

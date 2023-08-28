@@ -292,7 +292,7 @@ export default function ClientProject() {
                             <div onClick={() => setShowProjectInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showProjectInfo ? lang[language].hide : lang[language].show}</div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t pt-3`}>
-                            <Link href={`/client/process/${clientProject.project._id}`} className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors">
+                            <Link href={`/dashboard/process/${clientProject.project._id}`} className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors">
                                 <span>{lang[language]["go-tickets"]}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />

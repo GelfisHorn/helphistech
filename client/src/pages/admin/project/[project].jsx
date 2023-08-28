@@ -320,7 +320,7 @@ export default function ProjectDynamic() {
             const { data } = await axios.post('/api/admin/projects/project/entry/create', { projectId, entry, config });
             await resetForm();
             showToast("Creaste la entrada correctamente", "success");
-            // router.push(`/client/process/entry/${data._id}`);
+            // router.push(`/dashboard/process/entry/${data._id}`);
         } catch (err) {
             const error = new Error(err);
             console.error(error.message);
@@ -574,7 +574,7 @@ export default function ProjectDynamic() {
                             <div className={`flex flex-col gap-5 border-t ${darkMode ? 'border-neutral-900' : 'border-neutral-200'} pt-5 pb-2`}>
                                 <div className="uppercase font-medium text-lg">Desarrollador</div>
                                 <div className="flex items-center justify-between ">
-                                    <button className="text-primary hover:text-primary-2 transition-colors hover:underline" onClick={() => router.push(`/client/process/${projectId}`)}>Ver entradas</button>
+                                    <button className="text-primary hover:text-primary-2 transition-colors hover:underline" onClick={() => router.push(`/dashboard/process/${projectId}`)}>Ver entradas</button>
                                     <button className="text-primary hover:text-primary-2 transition-colors hover:underline" onClick={handleShowEntryModal}>Crear entrada</button>
                                 </div>
                             </div>
