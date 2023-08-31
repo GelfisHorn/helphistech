@@ -83,13 +83,13 @@ export default function ContactSection({ fromPage }) {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: .2, origin: 1 }}
                     >
-                        <a href={"mailto:helphis.tech@gmail.com"} className={"w-fit flex items-center gap-3 hover:text-primary transition-colors"}>
+                        <a href={"mailto:g.horn@helphistech.com"} className={"w-fit flex items-center gap-3 hover:text-primary transition-colors"}>
                             <div className={"grid place-content-center w-12 h-12 border-2 rounded-full border-primary text-primary text-xl"}><i className="fa-solid fa-envelope"></i></div>
-                            <div className={"text-lg"}>helphis.tech@gmail.com</div>
+                            <div className={"text-lg"}>G.horn@helphistech.com</div>
                         </a>
                         <a href={"tel:+4915253409644"} className={"w-fit flex items-center gap-3 hover:text-primary transition-colors"}>
                             <div className={"grid place-content-center w-12 h-12 border-2 rounded-full border-primary text-primary text-lg"}><i className="fa-solid fa-phone"></i></div>
-                            <div className={"text-lg"}>+4915253409644</div>
+                            <div className={"text-lg"}>+49 15253 409644</div>
                         </a>
                     </motion.div>
                 </div>
