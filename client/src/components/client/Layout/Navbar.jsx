@@ -15,7 +15,7 @@ export default function Navbar() {
     }
 
     return (
-        <div className={`w-full h-14 px-2 lg:px-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-100'}`}>
+        <div className={`w-full h-14 px-2 lg:px-4 border-b ${darkMode ? 'border-neutral-900' : 'border-neutral-200'}`}>
             <div className="flex items-center justify-between h-full">
                 <Link href={"/admin"}>
                     <div className="text-light-main uppercase font-semibold text-lg">
@@ -34,7 +34,7 @@ export default function Navbar() {
                             </svg>
                         )}
                     </div>
-                    <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-[0.35rem] sm:py-2 px-2 sm:px-4 rounded-sm transition-colors" onClick={handleLogout}>Cerrar sesión</button>
+                    <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-[0.35rem] sm:py-2 px-2 sm:px-4 rounded-lg transition-colors" onClick={handleLogout}>Cerrar sesión</button>
                 </div>
                 {/* <div className="block sm:hidden text-2xl"><i className="fa-regular fa-bars"></i></div> */}
             </div>

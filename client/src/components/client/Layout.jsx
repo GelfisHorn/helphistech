@@ -4,7 +4,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 // Components
 import Navbar from "./Layout/Navbar";
-import Sidebar from "./Layout/Sidebar";
+import DashboardSidebar from "../DashboardSidebar";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider"
 
@@ -33,9 +33,9 @@ export default function ClientLayout({ children, title }) {
                     </div>
                     <div className="flex overflow-hidden">
                         <div>
-                            <Sidebar />
+                            <DashboardSidebar />
                         </div>
-                        <div className={`${darkMode ? 'blog-bg-dark' : 'blog-bg-light'} w-full py-6 px-4 lg:px-8 overflow-y-scroll lazy-load-1`} style={{height: 'calc(100vh - 3.5rem)'}}>
+                        <div className={`${darkMode ? 'bg-[#0D0D0D]' : 'bg-[#FFFFFF]'} w-full py-6 px-4 lg:px-8 overflow-y-scroll lazy-load-1`} style={{height: 'calc(100vh - 3.5rem)'}}>
                             {children}
                         </div>
                     </div>

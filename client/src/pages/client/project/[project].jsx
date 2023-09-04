@@ -10,6 +10,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Hooks
 import uploadImages from "@/hooks/uploadImages";
+import deleteImages from "@/hooks/deleteImages";
 // Date and Hour Formatter
 import moment from "moment";
 // Languages
@@ -19,7 +20,8 @@ import showToast from "@/hooks/showToast";
 // Notifications
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import deleteImages from "@/hooks/deleteImages";
+// Styles
+import styles from './project.module.css'
 
 // Supported files to upload
 const SUPPORTED_FILES = {
@@ -139,12 +141,12 @@ export default function ClientProject() {
                 </div>
             )}
             {!loading && Object.keys(clientProject).length != 0 && (
-                <div className={`${darkMode ? 'text-dark-text' : 'text-black'} break-words flex flex-col gap-3 lg:px-5 rounded-lg`}>
+                <div className={`${darkMode ? 'text-dark-text' : 'text-black'} break-words flex flex-col gap-3 rounded-lg`}>
                     <ToastContainer />
                     <div className={`flex flex-col pt-3`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 pb-3">
                             <div className="flex flex-col sm:flex-row sm:gap-2 text-xl">
-                                <div className="uppercase font-semibold">{lang[language]["project-name"]}</div>
+                                <div className="uppercase font-semibold">{lang[language]["project-name"]}:</div>
                                 <div>{clientProject.project.contact_information.company_name}</div>    
                             </div>
                             <div className="flex sm:justify-end font-semibold">{moment(clientProject.project.createdAt).format('LLL')}</div>
@@ -169,39 +171,39 @@ export default function ClientProject() {
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
                             <div className="text-lg font-semibold uppercase">{lang[language].contact.title}</div>
                             <div className="flex flex-col gap-2">
-                                <div className="flex flex-col">
-                                    <div className="uppercase font-medium">{lang[language].contact["full-name"]}</div>
+                                <ItemCard>
+                                    <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].contact["full-name"]}</div>
                                     <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.contact_information.full_name}</div>
-                                </div>
-                                <div className="flex flex-col">
-                                    <div className="uppercase font-medium">{lang[language].contact.email}</div>
+                                </ItemCard>
+                                <ItemCard>
+                                    <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].contact.email}</div>
                                     <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
                                         <a href={`mailto:${clientProject.project.contact_information.email}`}>{clientProject.project.contact_information.email}</a>
                                     </div>
-                                </div>
+                                </ItemCard>
                             </div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
                             <div className="text-lg font-semibold uppercase">{lang[language].company.title}</div>
                             { showCompanyInfo && (
                                 <div className="flex flex-col gap-2">
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].company["business-type"].title}</div>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].company["business-type"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{lang[language].company["business-type"][clientProject.project.company_info.business_type]}</div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].company["company-vision"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].company["company-vision"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.company_info.company_vision.map((vision, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {lang[language].company["company-vision"][vision]}
+                                                    {lang[language].company["company-vision"][vision] || vision}
                                                     {(clientProject.project.company_info.company_vision.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].company["target-audience"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].company["target-audience"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.company_info.target_audience.map((audience, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
@@ -210,19 +212,19 @@ export default function ClientProject() {
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].company["service-or-product"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].company["service-or-product"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                            {lang[language].company["service-or-product"][clientProject.project.company_info.service_or_product]}
+                                            {lang[language].company["service-or-product"][clientProject.project.company_info.service_or_product] || clientProject.project.company_info.service_or_product}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].company["expected-deilvertime"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].company["expected-deilvertime"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
                                             {lang[language].company["expected-deilvertime"][clientProject.project.company_info.expected_deilvertime.from]}
                                         </div>
-                                    </div>
+                                    </ItemCard>
                                 </div>
                             )}
                             <div onClick={() => setShowCompanyInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showCompanyInfo ? lang[language].hide : lang[language].show}</div>
@@ -231,27 +233,27 @@ export default function ClientProject() {
                             <div className="text-lg font-semibold uppercase">{lang[language].project.title}</div>
                             {showProjectInfo && (
                                 <div className="flex flex-col gap-2">
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].project.functionalities.title}</div>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project.functionalities.title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.project_info.functionalities.map((func, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {lang[language].project.functionalities[func]}
+                                                    {lang[language].project.functionalities[func] || func}
                                                     {(clientProject.project.project_info.functionalities.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].project["ecommerce-functionalities"].title}</div>
-                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.project_info.ecommerce_funtionabilites ? 'Ja' : 'No'}</div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].project["client-content"].title}</div>
-                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.project_info.content_to_include ? 'Ja' : 'No'}</div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].project["preferred-technologies"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project["ecommerce-functionalities"].title}</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.project_info.ecommerce_funtionabilites ? lang[language].yes : lang[language].no}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project["client-content"].title}</div>
+                                        <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{clientProject.project.project_info.content_to_include ? lang[language].yes : lang[language].no}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project["preferred-technologies"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.project_info.preferred_technologies.map((tech, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
@@ -260,32 +262,32 @@ export default function ClientProject() {
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].project["responsible-for-managing"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project["responsible-for-managing"].title}</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{lang[language].project["responsible-for-managing"][clientProject.project.project_info.responsible_for_managing]}</div>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <div className="uppercase font-medium">{lang[language].project["marketing-strategy"].title}</div>
+                                    </ItemCard>
+                                    <ItemCard>
+                                        <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project["marketing-strategy"].title}</div>
                                         <div className="flex flex-col">
                                             {clientProject.project.project_info.marketing_strategy.map((strat, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {lang[language].project["marketing-strategy"][strat]}
+                                                    {lang[language].project["marketing-strategy"][strat] || strat}
                                                     {(clientProject.project.project_info.marketing_strategy.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
+                                    </ItemCard>
                                     { clientProject.project.project_info.competitor_websites ? (
-                                        <div className="flex flex-col">
-                                            <div className="uppercase font-medium">{lang[language].project["competitor-websites"].title}</div>
+                                        <ItemCard>
+                                            <div className={`${darkMode ? styles.titleDark : styles.titleLight} ${styles.title}`}>{lang[language].project["competitor-websites"].title}</div>
                                             {clientProject.project.project_info?.competitor_websites_examples ? clientProject.project.project_info.competitor_websites_examples.split(',').map((url, index) => (
                                                 <div className="flex items-center">
-                                                    <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url.slice(0,6) == 'https://' ? url.trim() : `https://${url.trim()}`} target="_blank">{url}</Link>
+                                                    <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url.slice(0, 6) == 'https://' ? url.trim() : `https://${url.trim()}`} target="_blank">{url}</Link>
                                                     {(clientProject.project.project_info.competitor_websites_examples.split(',').length - 1) > index ? ',' : ''}
                                                 </div>
                                             )) : null}
-                                        </div>
+                                        </ItemCard>
                                     ) : null}
                                 </div>
                             )}
@@ -362,6 +364,17 @@ export default function ClientProject() {
                 </div>
             )}
         </Layout>
+    )
+}
+
+function ItemCard({ children }) {
+
+    const { darkMode } = useContextProvider();
+
+    return (
+        <div className={`flex flex-col rounded-lg py-2 px-3 ${darkMode ? "bg-[#151515]" : "bg-neutral-100 shadow-sm"}`}>
+            {children}
+        </div>
     )
 }
 

@@ -401,38 +401,38 @@ export default function ProjectDynamic() {
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
                             <div className="text-lg font-semibold uppercase">Información de contacto</div>
                             <div className="flex flex-col gap-2">
-                                <div className="flex flex-col">
+                                <ItemCard>
                                     <div className="uppercase font-medium">Nombre completo</div>
                                     <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{contact_information.full_name}</div>
-                                </div>
-                                <div className="flex flex-col">
+                                </ItemCard>
+                                <ItemCard>
                                     <div className="uppercase font-medium">Correo electrónico</div>
                                     <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
                                         <a href={`mailto:${contact_information.email}`}>{contact_information.email}</a>
                                     </div>
-                                </div>
+                                </ItemCard>
                             </div>
                         </div>
                         <div className={`${darkMode ? 'border-neutral-900' : 'border-neutral-200'} flex flex-col gap-2 border-t py-3`}>
                             <div className="text-lg font-semibold uppercase">Información de la compañía</div>
                             { showCompanyInfo && (
                                 <div className="flex flex-col gap-2">
-                                    <div className="flex flex-col">
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Tipo de negocio</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{COMPANY["business_type"][company_info.business_type]}</div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Visión</div>
                                         <div className="flex flex-col">
                                             {company_info.company_vision.map((vision, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {COMPANY["company_vision"][vision]}
+                                                    {COMPANY["company_vision"][vision] || vision}
                                                     {(company_info.company_vision.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Público objetivo</div>
                                         <div className="flex flex-col">
                                             {company_info.target_audience.map((audience, index) => (
@@ -442,19 +442,19 @@ export default function ProjectDynamic() {
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Negocio</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                            {COMPANY["service_or_product"][company_info.service_or_product]}
+                                            {COMPANY["service_or_product"][company_info.service_or_product] || company_info.service_or_product}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Plazo de entrega</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
                                             {COMPANY["expected_deilvertime"][company_info.expected_deilvertime.from]}
                                         </div>
-                                    </div>
+                                    </ItemCard>
                                 </div>
                             )}
                             <div onClick={() => setShowCompanyInfo(current => !current)} className="text-primary hover:text-primary-2 cursor-pointer w-fit">{showCompanyInfo ? 'Ocultar' : 'Mostrar'}</div>
@@ -463,37 +463,37 @@ export default function ProjectDynamic() {
                             <div className="text-lg font-semibold uppercase">Información del proyecto</div>
                             {showProjectInfo && (
                                 <div className="flex flex-col gap-2">
-                                    <div className="flex flex-col">
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Funcionabilidades</div>
                                         <div className="flex flex-col">
                                             {project_info.functionalities.map((func, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {PROJECT["functionalities"][func]}
+                                                    {PROJECT["functionalities"][func] || func}
                                                     {(project_info.functionalities.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Tipo de diseño</div>
                                         <div className="flex flex-col">
                                             {project_info.web_design_type.map((design, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {PROJECT["web_design_type"][design]}
+                                                    {PROJECT["web_design_type"][design] || design}
                                                     {(project_info.web_design_type.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Funcionabilidades de e-commerce</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{project_info.ecommerce_funtionabilites ? 'Sí' : 'No'}</div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Contenido del cliente</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{project_info.content_to_include ? 'Sí' : 'No'}</div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Tecnologías preferidas</div>
                                         <div className="flex flex-col">
                                             {project_info.preferred_technologies.map((tech, index) => (
@@ -503,32 +503,32 @@ export default function ProjectDynamic() {
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Responsable del matenimiento</div>
                                         <div className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>{PROJECT["responsible_for_managing"][project_info.responsible_for_managing]}</div>
-                                    </div>
-                                    <div className="flex flex-col">
+                                    </ItemCard>
+                                    <ItemCard>
                                         <div className="uppercase font-medium">Estrategia de marketing</div>
                                         <div className="flex flex-col">
                                             {project_info.marketing_strategy.map((strat, index) => (
                                                 <div key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'}>
-                                                    {PROJECT["marketing_strategy"][strat]}
+                                                    {PROJECT["marketing_strategy"][strat] || strat}
                                                     {(project_info.marketing_strategy.length - 1) > index ? ',' : ''}
                                                 </div>
                                             ))}
                                         </div>
-                                    </div>
+                                    </ItemCard>
                                     { project_info.competitor_websites ? (
-                                        <div className="flex flex-col">
+                                        <ItemCard>
                                             <div className="uppercase font-medium">Sitios web de la cometencia</div>
                                             {project_info?.competitor_websites_examples ? project_info.competitor_websites_examples.split(',').map((url, index) => (
                                                 <div className="flex items-center">
-                                                    <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url.slice(0,6) == 'https://' ? url.trim() : `https://${url.trim()}`} target="_blank">{url}</Link>
+                                                    <Link key={index} className={darkMode ? 'text-zinc-400' : 'text-zinc-600'} href={url.slice(0, 6) == 'https://' ? url.trim() : `https://${url.trim()}`} target="_blank">{url}</Link>
                                                     {(project_info.competitor_websites_examples.split(',').length - 1) > index ? ',' : ''}
                                                 </div>
                                             )) : null}
-                                        </div>
+                                        </ItemCard>
                                     ) : null}
                                 </div>
                             )}
@@ -545,7 +545,7 @@ export default function ProjectDynamic() {
                                 <div className="uppercase font-semibold text-lg">Asignar cliente</div>
                                 <div className={`flex gap-2 justify-start`}>
                                     <input className={`${darkMode ? 'border-neutral-600' : 'border-neutral-400'} border bg-transparent rounded-md px-2 outline-none`} type="email" name="" id="" placeholder="Email del cliente" value={clientEmail} onChange={e => setClientEmail(e.target.value)} />
-                                    <button className="py-2 px-4 bg-primary hover:bg-primary-2 rounded-sm transition-colors text-white" onClick={assignClient}>Asignar</button>
+                                    <button className="py-2 px-4 bg-primary hover:bg-primary-2 rounded-md transition-colors text-white" onClick={assignClient}>Asignar</button>
                                 </div>
                             </div>
                         )}
@@ -554,7 +554,7 @@ export default function ProjectDynamic() {
                         <div className="flex flex-col gap-5">
                             <div className="flex flex-col gap-2">
                                 <div className="uppercase font-semibold text-lg">Cambiar Estado</div>
-                                <select value={projectState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-white text-black' : 'bg-black text-white'} py-1 rounded-lg outline-none w-fit px-4`}>
+                                <select value={projectState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-neutral-300 text-black' : 'bg-neutral-500 text-white'} py-2 rounded-lg outline-none w-fit px-4`}>
                                     <option value="onhold">En espera</option>
                                     <option value="inprogress">En desarrollo</option>
                                     <option value="completed">Completado</option>
@@ -614,8 +614,8 @@ export default function ProjectDynamic() {
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-between gap-2">
-                                        <button className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-sm" onClick={handleShowEntryModal}>Cancelar</button>
-                                        <button className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-sm" onClick={handleCreateEntry}>Crear</button>
+                                        <button className="py-2 px-4 bg-red-500 hover:bg-red-800 transition-colors text-white rounded-md" onClick={handleShowEntryModal}>Cancelar</button>
+                                        <button className="py-2 px-4 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md" onClick={handleCreateEntry}>Crear</button>
                                     </div>
                                 </div>
                             </Modal>
@@ -627,12 +627,12 @@ export default function ProjectDynamic() {
                             <form className="flex flex-col gap-2" onSubmit={handleSendComment}>
                                 <textarea 
                                     ref={commentTextarea}
-                                    className={`bg-transparent border ${darkMode ? 'border-neutral-900 placeholder:text-neutral-500' : 'border-neutral-200 placeholder:text-neutral-300'} w-full px-3 py-2 resize-none outline-none`} 
+                                    className={`rounded-md bg-transparent border ${darkMode ? 'border-neutral-900 placeholder:text-neutral-500' : 'border-neutral-200 placeholder:text-neutral-300'} w-full px-3 py-2 resize-none outline-none`} 
                                     placeholder="Haz un comentario" 
                                     rows="3">
                                 </textarea>
                                 <div className="flex justify-end">
-                                    <button type="submit" className="py-2 px-6 bg-primary text-white uppercase rounded-sm font-medium">Comentar</button>
+                                    <button type="submit" className="py-2 px-6 bg-primary text-white uppercase rounded-md font-medium">Comentar</button>
                                 </div>
                             </form>
                         </div>
@@ -676,6 +676,17 @@ export default function ProjectDynamic() {
                 </Modal>
             }
         </Layout>
+    )
+}
+
+function ItemCard({ children }) {
+
+    const { darkMode } = useContextProvider();
+
+    return (
+        <div className={`flex flex-col rounded-lg py-2 px-3 ${darkMode ? "bg-[#151515]" : "bg-neutral-100 shadow-sm"}`}>
+            {children}
+        </div>
     )
 }
 

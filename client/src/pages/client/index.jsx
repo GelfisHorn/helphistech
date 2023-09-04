@@ -115,8 +115,8 @@ export default function ClientIndex() {
                         <div className="text-3xl font-medium text-left">{lang[language].welcome}, {auth.name}.</div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5">
                             <div className="flex flex-col gap-2">
-                                <h4 className="uppercase font-medium text-lg">{lang[language]["my-project"].title}</h4>
-                                <Link className={`w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} p-5 rounded-md`} href={`/client/project/${project._id}`}>
+                                <div className="uppercase font-medium text-lg">{lang[language]["my-project"].title}</div>
+                                <Link className={`w-full border ${darkMode ? 'border-neutral-800' : 'border-neutral-200'} hover:border-primary transition-colors p-5 rounded-xl`} href={`/client/project/${project._id}`}>
                                     <div className="flex flex-col gap-2">
                                         <div className="flex flex-col">
                                             <div className="uppercase font-medium">{lang[language]["my-project"]["company-name"]}</div>
@@ -137,7 +137,7 @@ export default function ClientIndex() {
                             </div>
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-2">
-                                    <h4 className="uppercase font-medium text-lg">{lang[language].process.title}</h4>
+                                    <div className="uppercase font-medium text-lg">{lang[language].process.title}</div>
                                     <Link className="flex items-center gap-1 text-primary hover:text-primary-2 transition-colors" href={`/client/process/${project._id}`}>
                                         <span>{lang[language].process["see-process"]}</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -145,22 +145,22 @@ export default function ClientIndex() {
                                         </svg>
                                     </Link>
                                 </div>
-                                <div className={`w-full ${darkMode ? 'bg-neutral-900' : 'bg-neutral-200'} p-5 rounded-md`}>
+                                <div className={`w-full border ${darkMode ? 'border-neutral-800' : 'border-neutral-200'} p-5 rounded-xl`}>
                                     <div className="flex flex-col gap-2">
                                         <div className="flex flex-col gap-3">
                                             <div className="flex items-end gap-2">
                                                 <div className="uppercase font-medium">Tickets</div>
-                                                <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{typeof clientProcess == 'object' && clientProcess.length >= 1 ? `${clientProcess.length} ${clientProcess.length > 1 ? 'Tickets' : 'Ticket'}` : 'Keine Tickets'}</div>
+                                                <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{typeof clientProcess == 'object' && clientProcess.length >= 0 && `${clientProcess.length} ${clientProcess.length > 1 ? 'Tickets' : 'Ticket'}`}</div>
                                             </div>
                                             <div className="flex flex-col gap-1">
                                                 <div className="uppercase font-medium">{lang[language].process["last-tickets"]}</div>
                                                 <div className="flex flex-col gap-1">
                                                     {processEntries.length > 0 ? processEntries.map((entry, index) => (
                                                         <Link key={index} href={`/client/process/entry/${entry._id}`}>
-                                                            <div className={`flex items-center justify-between ${darkMode ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-neutral-300 hover:bg-neutral-400'} transition-colors px-3 py-2 rounded-lg`}>
+                                                            <div className={`flex items-center justify-between border ${darkMode ? 'border-neutral-800' : 'border-neutral-200'} hover:border-primary transition-colors px-3 py-2 rounded-lg`}>
                                                                 <div className="flex flex-col">
                                                                     <div>{entry.title}</div>
-                                                                    <div className={`text-sm uppercase font-semibold ${darkMode ? 'description-dark' : 'description-light'}`}>{moment(entry.createdAt).format('LLL')}</div>
+                                                                    <div className={`text-sm uppercase font-medium ${darkMode ? 'description-dark' : 'description-light'}`}>{moment(entry.createdAt).startOf('hour').fromNow()}</div>
                                                                 </div>
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
