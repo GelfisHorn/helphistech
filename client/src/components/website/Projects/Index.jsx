@@ -37,17 +37,17 @@ export default function Projects() {
                     transition={{ duration: .2, origin: 1 }}
                 >
                     <div className={`${styles.imageContainer} flex overflow-hidden col-start-1 col-end-2 row-start-1 row-end-6 ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}>
-                        <Image loading={"eager"} src={"/website/vertical-1.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/vertical-1.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
                     <div className={`${styles.imageContainer} flex overflow-hidden col-start-2 col-end-3 row-start-1 row-end-4 ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}>
-                        <Image loading={"eager"} src={"/website/horizontal-1.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/horizontal-1.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
 
                     <div className={`${styles.imageContainer} flex overflow-hidden col-start-1 col-end-2 row-start-6 row-end-[9] ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}>
-                        <Image loading={"eager"} src={"/website/horizontal-2.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/horizontal-2.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
                     <div className={`${styles.imageContainer} flex overflow-hidden col-start-2 col-end-3 row-start-4 row-end-[9] ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl`}>
-                        <Image loading={"eager"} src={"/website/vertical-2.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/vertical-2.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
                 </motion.div>
                 <motion.div 
@@ -57,17 +57,17 @@ export default function Projects() {
                     transition={{ duration: .2, origin: 1 }}
                 >
                     <div className={`${styles.imageContainer} flex overflow-hidden ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl aspect-video`}>
-                        <Image loading={"eager"} src={"/website/vertical-1.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/vertical-1.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
                     <div className={`${styles.imageContainer} flex overflow-hidden ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl aspect-video`}>
-                        <Image loading={"eager"} src={"/website/horizontal-1.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/horizontal-1.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
 
                     <div className={`${styles.imageContainer} flex overflow-hidden ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl aspect-video`}>
-                        <Image loading={"eager"} src={"/website/horizontal-2.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/horizontal-2.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
                     <div className={`${styles.imageContainer} flex overflow-hidden ${darkMode ? "bg-neutral-800" : "bg-neutral-200"} rounded-xl aspect-video`}>
-                        <Image loading={"eager"} src={"/website/vertical-2.png?v=1"} className={styles.image} fill alt={"Website Landing page"} />
+                        <Image loading={"eager"} src={"/website/vertical-2.png?v=2"} className={styles.image} fill alt={"Website Landing page"} />
                     </div>
                 </motion.div>
             </div>
