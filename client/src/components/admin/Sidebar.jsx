@@ -135,10 +135,12 @@ function SidebarSection({ children, title, permissions }) {
     const { darkMode, auth } = useContextProvider();
 
     return (
-        <div className={`${permissions.indexOf(auth.permissions) != -1 ? 'flex' : 'hidden'} flex flex-col gap-2`}>
-            <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} hidden lg:block uppercase font-semibold text-sm`}>{title}</div>
-            <div className="flex flex-col gap-1">{children}</div>
-        </div>
+        permissions.indexOf(auth.permissions) != -1 ? (
+            <div className={`flex flex-col gap-2`}>
+                <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} hidden lg:block uppercase font-semibold text-sm`}>{title}</div>
+                <div className="flex flex-col gap-1">{children}</div>
+            </div>
+        ) : null
     )
 }
 

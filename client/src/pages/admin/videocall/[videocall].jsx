@@ -206,7 +206,7 @@ export default function VideoCallDynamic() {
                             <div className="flex flex-col gap-5">
                                 <div className="flex flex-col gap-2">
                                     <div className="uppercase font-semibold text-lg">Cambiar Estado</div>
-                                    <select value={videoCallState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-white text-black' : 'bg-black text-white'} py-1 rounded-lg outline-none w-fit px-4`}>
+                                    <select value={videoCallState} onChange={(e) => handleChangeState(e.target.value)} className={`${darkMode ? 'bg-neutral-300 text-black' : 'bg-neutral-500 text-white'} py-2 rounded-lg outline-none w-fit px-4`}>
                                         <option value="pending">Pendiente</option>
                                         <option value="concluded">Concluido</option>
                                     </select>
@@ -215,7 +215,7 @@ export default function VideoCallDynamic() {
                             <div className="pt-2">
                                 {auth.permissions === 'superadmin' && (
                                     <div className="flex items-start">
-                                        <button onClick={handleShowModal} className={`${videoCallState != 'cancelled' ? 'bg-red-500 hover:border-red-500 hover:text-red-500' : 'bg-light-main hover:border-light-main hover:text-light-main'} hover:bg-transparent text-white py-2 px-4 rounded-sm uppercase font-semibold border-2 border-transparent transition-colors whitespace-nowrap`}>{videoCallState != 'cancelled' ? 'Cancelar videollamada' : 'Recuperar videollamada'}</button>
+                                        <button onClick={handleShowModal} className={`${videoCallState != 'cancelled' ? 'bg-red-500 hover:border-red-500 hover:text-red-500' : 'bg-light-main hover:border-light-main hover:text-light-main'} hover:bg-transparent text-white py-2 px-4 rounded-md uppercase font-semibold border-2 border-transparent transition-colors whitespace-nowrap`}>{videoCallState != 'cancelled' ? 'Cancelar videollamada' : 'Recuperar videollamada'}</button>
                                     </div>
                                 )}
                             </div>

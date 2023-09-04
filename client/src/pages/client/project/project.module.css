@@ -1,0 +1,12 @@
+.title {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.titleDark {
+    color: rgb(190, 190, 190);
+}
+
+.titleLight {
+    color: rgb(65, 65, 65);
+}

@@ -5,8 +5,8 @@
         "entry": {
             "title": "der Überschrift",
             "description": "Beschreibung",
-            "images": "Bilder",
-            "work-hours": "Arbeitsstunden",
+            "images": "bilder",
+            "work-hours": "stunden",
             "date": "Datum"
         }
     },
@@ -16,8 +16,8 @@
         "entry": {
             "title": "Title",
             "description": "Description",
-            "images": "Images",
-            "work-hours": "Work hours",
+            "images": "images",
+            "work-hours": "hours",
             "date": "Date"
         }
     },
@@ -27,8 +27,8 @@
         "entry": {
             "title": "Título",
             "description": "Descripción",
-            "images": "Imágenes",
-            "work-hours": "Horas de trabajo",
+            "images": "imágenes",
+            "work-hours": "horas",
             "date": "Fecha"
         }
     }

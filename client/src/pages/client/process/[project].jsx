@@ -26,7 +26,7 @@ export default function ClientProjectProcess() {
     const router = useRouter();
     const { project } = router.query;
 
-    const { auth, clientProject, clientProcess, setClientProcess, language } = useContextProvider();
+    const { auth, darkMode, setClientProcess, language } = useContextProvider();
 
     const [ loading, setLoading ] = useState(true);
     // Entries/Process state
@@ -97,11 +97,13 @@ export default function ClientProjectProcess() {
             )}
             {!loading && entries.length != 0 && (
                 <>
-                    <div className="flex flex-col divide-y lg:px-3">
-                        <div className="pb-3 text-lg">{lang[language]["total-hours"]}: {hoursCount}</div>
-                        {entries.map((entry, index) => (
-                            <EntryRow key={index} entry={entry} entries={entries} setEntries={setEntries} />
-                        ))}
+                    <div className="flex flex-col">
+                        <div className={`pb-3 text-lg border-b ${darkMode ? "border-neutral-800" : "border-neutral-200"}`}>{lang[language]["total-hours"]}: {hoursCount}</div>
+                        <div className={"flex flex-col gap-4 pt-6"}>
+                            {entries.map((entry, index) => (
+                                <EntryRow key={index} entry={entry} entries={entries} setEntries={setEntries} />
+                            ))}
+                        </div>
                     </div>
                     <ToastContainer />
                 </>
@@ -252,33 +254,21 @@ function EntryRow({ entry, entries, setEntries }) {
     }
 
     return (
-        <div className={`${darkMode ? 'border-neutral-800' : 'border-neutral-400'} rounded-sm py-4 relative`}>
+        <div className={`border ${darkMode ? 'border-neutral-800' : 'border-neutral-200'} hover:border-primary transition-colors rounded-xl px-4 sm:px-8 py-4 sm:py-6 relative`}>
             <div className="flex flex-col gap-2">
-                <div className="flex flex-col">
-                    <div className="uppercase font-semibold">{lang[language].entry.title}</div>
-                    <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.title}</div>
+                <div className={`text-xl font-medium`}>{entry.title}</div>
+                <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.description}</div>
+                <div className={`flex flex-col gap-1 py-2`}>
+                    <div className={"flex items-center gap-2"}>
+                        <i className="text-primary fa-regular fa-clock text-xl"></i>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.work_hours} {lang[language].entry["work-hours"]}</div>
+                    </div>
+                    <div className={"flex items-center gap-2"}>
+                        <i className="text-primary fa-regular fa-image text-xl"></i>
+                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry?.images?.length || [].length} {lang[language].entry.images}</div>
+                    </div>
                 </div>
-                <div className="flex flex-col">
-                    <div className="uppercase font-semibold">{lang[language].entry.description}</div>
-                    <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.description}</div>
-                </div>
-                <div className="flex flex-col">
-                    <div className="uppercase font-semibold">{lang[language].entry.images}</div>
-                    <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry?.images?.length || []}</div>
-                    {/* {entry.images.length != 0 ? (
-                        <div className="text-primary hover:text-primary-2 transition-colors cursor-pointer w-fit">Zeigen</div>
-                    ) : 
-                        <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>Keine Bilder</div>
-                    } */}
-                </div>
-                <div className="flex flex-col">
-                    <div className="uppercase font-semibold">{lang[language].entry["work-hours"]}</div>
-                    <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{entry.work_hours}</div>
-                </div>
-                <div className="flex flex-col">
-                    <div className="uppercase font-semibold">{lang[language].entry.date}</div>
-                    <div className={`${darkMode ? 'description-dark' : 'description-light'}`}>{moment(entry.createdAt).format('LL')}</div>
-                </div>
+                <div className={`uppercase font-medium ${darkMode ? 'text-neutral-300' : 'text-neutral-800'}`}>{moment(entry.createdAt).startOf('hour').fromNow()}</div>
             </div>
             <div className="flex items-center gap-2 xs:absolute pt-4 xs:pt-0 bottom-3 right-3">
                 {auth._id === entry.user && (
@@ -348,11 +338,13 @@ function EntryRow({ entry, entries, setEntries }) {
                         </Modal>
                     </>
                 )}
-                <Link href={`/client/process/entry/${entry._id}`} className={`p-2 rounded-full ${darkMode ? 'bg-neutral-900 hover:bg-neutral-800' : 'bg-neutral-300 hover:bg-neutral-400'} transition-colors`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                </Link>
+                <div className={"flex justify-end w-full"}>
+                    <Link href={`/client/process/entry/${entry._id}`} className={`p-2 rounded-full ${darkMode ? 'bg-neutral-900 hover:bg-neutral-800' : 'bg-neutral-100 hover:bg-neutral-200'} text-primary transition-colors`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </Link>
+                </div>
             </div>
         </div>
     )

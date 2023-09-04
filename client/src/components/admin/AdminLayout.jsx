@@ -4,7 +4,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 // Components
 import Navbar from "./Navbar"
-import Sidebar from "./Sidebar"
+import DashboardSidebar from "../DashboardSidebar"
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider"
 
@@ -38,7 +38,7 @@ export default function AdminLayout({ children, title }) {
                     </div>
                     <div className="flex overflow-hidden">
                         <div>
-                            <Sidebar />
+                            <DashboardSidebar />
                         </div>
                         <div className="w-full py-6 px-2 sm:px-4 lg:px-8 overflow-y-scroll lazy-load-1 h-sidebar xs:h-sidebar-xs">
                             {children}

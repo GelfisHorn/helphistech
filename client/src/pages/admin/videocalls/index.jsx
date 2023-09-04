@@ -12,6 +12,7 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Components
 import Layout from "@/components/admin/AdminLayout";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import VideoCall from "@/components/admin/Videocall";
 
 export default function VideoCalls() {
     
@@ -103,50 +104,5 @@ export default function VideoCalls() {
                 </div>
             </div>
         </Layout>
-    )
-}
-
-function VideoCall({ videocall }) {
-
-    const { darkMode } = useContextProvider();
-
-    const router = useRouter();
-
-    const redirectToVideoCall = (id) => {
-        router.push(`/admin/videocall/${id}`)
-    }
-
-    const { _id, full_name, email, date, hour, state, createdAt } = videocall;
-
-    return (
-        <div className={`gap-5 px-5 py-4 shadow-md rounded-sm ${darkMode ? 'bg-[#101010]' : 'bg-white'}`}>
-            <div className="flex flex-col gap-4">
-                <div className="flex flex-col">
-                    <div className="font-bold uppercase">Nombre completo</div>
-                    <div className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>{full_name}</div>    
-                </div>
-                <div className="flex flex-col">
-                    <div className="font-bold uppercase">Correo electrónico</div>
-                    <a href={`mailto:${email}`} className={`${darkMode ? 'text-zinc-400' : 'text-zinc-600'} text-ellipsis-5`}>{email}</a>    
-                </div>
-                <div className="flex flex-col">
-                    <div className="font-bold uppercase">Fecha y hora</div>
-                    <div className={`flex items-center gap-1 ${darkMode ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                        <div>{moment(date).format('LL')},</div>
-                        <div>a las {hour}</div>
-                    </div>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-5 sm:gap-0 sm:justify-between">
-                    <div className="flex items-center gap-4">
-                        <div className={`${state == 'pending' ? 'bg-orange-500' : state == 'concluded' ? 'bg-primary' : 'bg-red-500'} px-2 py-1 rounded-sm text-white uppercase w-fit font-semibold select-none`}>{state == 'pending' ? 'Pendiente' : state == 'concluded' ? 'Concluido' : 'Cancelado'}</div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="flex items-start w-full">
-                            <button onClick={() => redirectToVideoCall(_id)} className="bg-primary hover:bg-transparent text-white py-1 px-4 rounded-sm uppercase font-semibold border-2 border-transparent hover:border-primary hover:text-primary transition-colors whitespace-nowrap w-full sm:w-fit">Ver más</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     )
 }

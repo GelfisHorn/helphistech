@@ -34,7 +34,7 @@ export default function Navbar() {
                             </svg>
                         )}
                     </div>
-                    <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-2 px-4 rounded-sm transition-colors" onClick={handleLogout}>Cerrar sesión</button>
+                    <button className="flex items-center bg-primary hover:bg-primary-2 text-white py-2 px-4 rounded-md transition-colors" onClick={handleLogout}>Cerrar sesión</button>
                 </div>
                 {/* <div className="block sm:hidden text-2xl"><i className="fa-regular fa-bars"></i></div> */}
             </div>

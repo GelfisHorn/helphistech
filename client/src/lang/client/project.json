@@ -5,6 +5,8 @@
         "show": "Zeigen",
         "hide": "Verkleidung",
         "go-tickets": "Gehe zu den Tickets",
+        "yes": "Ja",
+        "no": "NEIN",
         "contact": {
             "title": "Kontaktinformationen",
             "full-name": "Vollständiger Name",
@@ -114,6 +116,8 @@
         "show": "Show",
         "hide": "Hide",
         "go-tickets": "Go to tickets",
+        "yes": "Yes",
+        "no": "No",
         "contact": {
             "title": "Contact information",
             "full-name": "Full name",
@@ -223,6 +227,8 @@
         "show": "Mostrar",
         "hide": "Ocultar",
         "go-tickets": "Ir a tickets",
+        "yes": "Sí",
+        "no": "No",
         "contact": {
             "title": "Información de contacto",
             "full-name": "Nombre completo",
