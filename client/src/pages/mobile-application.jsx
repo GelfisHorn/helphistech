@@ -22,8 +22,8 @@ export default function AppsPage() {
         <Layout title={"Entwicklung mobiler Anwendungen"} lang={"de"}>
             <AppsHero />
             <BenefitsSection
-                title={"Steigere deine Online-Präsenz"}
-                subtitle={"Erfahre die Vorteile unseres Webentwicklungs-Services"}
+                title={"Stärke deine mobile Präsenz"}
+                subtitle={"Entdecke die Vorteile unseres Dienstes für die Entwicklung von mobilen Apps"}
                 content={[
                     { icon: "fa-light fa-bullseye-pointer", title: "Schneller und Einfacher Zugang", description: "Deine Dienstleistungen sind nur einen Fingertipp entfernt, jederzeit und überall." },
                     { icon: "fa-light fa-bell", title: "Persönliche Kommunikation", description: "Benachrichtigungen und exklusive Angebote, individuell auf die Bedürfnisse der Kunden zugeschnitten." },
