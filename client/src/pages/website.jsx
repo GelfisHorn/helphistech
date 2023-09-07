@@ -36,10 +36,10 @@ export default function Website({ services, faqs, clientComments }) {
 	return (
 		<Layout title={"Webseiten"} lang={"de"} metaDesc={"Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."}>
 			<HeroSection />
+			<ProcessSection />
 			<PricingSection />
 			<ClientCommentsSection comments={clientComments} />
 			<Projects />
-			<ProcessSection />
 			<ServicesSection services={services} />
 			<WhatsAppButton />
 			<ContactSection fromPage={"website"} />

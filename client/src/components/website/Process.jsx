@@ -41,7 +41,7 @@ export default function ProcessSection() {
                             breakpoints={{
                                 768: {
                                     slidesPerView: 2,
-                                    spaceBetween: 60
+                                    spaceBetween: 10
                                 }
                             }}
                             pagination={{
@@ -51,10 +51,10 @@ export default function ProcessSection() {
                             className={`process-swiper cursor-move ${darkMode ? "bullet-darkmode" : "bullet-lightmode"}`}
                         >
                             <SwiperSlide style={{ height: 'initial' }}>
-                                <div className={"flex flex-col gap-3 h-full"}>
+                                <div className={"flex flex-col gap-3 h-full bg-[#866bfe20] border-2 border-[#866bfe20] p-8 px-10 rounded-2xl"}>
                                     <div className="flex items-center gap-10">
                                         <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>1.</div>
-                                        <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
+                                        <div className={`w-full h-[1px] ${darkMode ? "bg-[#ffffff3b]" : "bg-neutral-300"}`}></div>
                                     </div>
                                     <ProcessItem
                                         title={"Planung"}
@@ -64,10 +64,10 @@ export default function ProcessSection() {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide style={{ height: 'initial' }}>
-                                <div className={"flex flex-col gap-3 h-full"}>
+                                <div className={"flex flex-col gap-3 h-full bg-[#866bfe20] border-2 border-[#866bfe20] p-8 px-10 rounded-2xl"}>
                                     <div className="flex items-center gap-10">
                                         <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>2.</div>
-                                        <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
+                                        <div className={`w-full h-[1px] ${darkMode ? "bg-[#ffffff3b]" : "bg-neutral-300"}`}></div>
                                     </div>
                                     <ProcessItem
                                         title={"Design und Prototyping"}
@@ -77,10 +77,10 @@ export default function ProcessSection() {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide style={{ height: 'initial' }}>
-                                <div className={"flex flex-col gap-3 h-full"}>
+                                <div className={"flex flex-col gap-3 h-full bg-[#866bfe20] border-2 border-[#866bfe20] p-8 px-10 rounded-2xl"}>
                                     <div className="flex items-center gap-10">
                                         <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>3.</div>
-                                        <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
+                                        <div className={`w-full h-[1px] ${darkMode ? "bg-[#ffffff3b]" : "bg-neutral-300"}`}></div>
                                     </div>
                                     <ProcessItem
                                         title={"Entwicklung"}
@@ -90,10 +90,10 @@ export default function ProcessSection() {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide style={{ height: 'initial' }}>
-                                <div className={"flex flex-col gap-3 h-full"}>
+                                <div className={"flex flex-col gap-3 h-full bg-[#866bfe20] border-2 border-[#866bfe20] p-8 px-10 rounded-2xl"}>
                                     <div className="flex items-center gap-10">
                                         <div className={`${darkMode ? 'text-neutral-400' : 'text-neutral-600 opacity-80'} text-5xl`}>4.</div>
-                                        <div className={`w-full h-[1px] ${darkMode ? 'bg-[#19191F]' : 'bg-neutral-300'}`}></div>
+                                        <div className={`w-full h-[1px] ${darkMode ? "bg-[#ffffff3b]" : "bg-neutral-300"}`}></div>
                                     </div>
                                     <ProcessItem
                                         title={"Wartung"}
