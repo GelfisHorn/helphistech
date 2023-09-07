@@ -187,7 +187,7 @@ export default function pricingTemplate(data) {
                 <td style="overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px;font-family:arial,helvetica,sans-serif;" align="left">
                     
             <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-                <p style="line-height: 140%;">${pricing.plan} - <strong>€${pricing.price}</strong>.</p>
+                <p style="line-height: 140%;">${pricing.plan}</strong>.</p>
             </div>
 
                 </td>

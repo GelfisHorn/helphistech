@@ -178,7 +178,7 @@ function Card({ index, service, icon, title, description, price, redirect, handl
                 </div>
             </div>
             <div className={"flex flex-col items-center gap-5"}>
-                <div className={`flex flex-col text-lg text-center`}><span className={`ab-span ${service.get == index ? "text-zinc-200" : darkMode ? "description-dark" : "description-light"}`}>ab</span> <span className={"text-3xl font-semibold"}>{currencyFormatter(price, "EUR")}</span></div>
+                {/* <div className={`flex flex-col text-lg text-center`}><span className={`ab-span ${service.get == index ? "text-zinc-200" : darkMode ? "description-dark" : "description-light"}`}>ab</span> <span className={"text-3xl font-semibold"}>{currencyFormatter(price, "EUR")}</span></div> */}
                 <div className={"flex flex-col items-center gap-6"}>
                     <button onClick={handleOpenModal} className={`border-2 border-primary text-white bg-primary hover:bg-primary-2 hover:border-primary-2 transition-colors font-medium text-center py-[.35rem] px-5 rounded-full`}>Kostenlose Beratung</button>
                     <Link href={redirect} className={"flex items-center gap-2 text-primary hover:text-primary-2 transition-colors"}>

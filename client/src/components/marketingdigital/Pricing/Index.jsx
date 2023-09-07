@@ -160,7 +160,7 @@ function Card({ plan, title, description, price, popular, benefits, handleModal,
                     <div className={"flex flex-col items-center gap-5"}>
                         <div className={"text-2xl font-semibold text-primary"}>{title}</div>
                         <div>{description}</div>
-                        <div className={"flex flex-col gap-1 items-center"}>
+                        {/* <div className={"flex flex-col gap-1 items-center"}>
                             <div className={"relative flex items-center gap-1 font-medium text-5xl"}>
                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                 <span>{price}</span>
@@ -169,17 +169,17 @@ function Card({ plan, title, description, price, popular, benefits, handleModal,
                             {perMonth && (
                                 <div>/monat</div>
                             )}
-                        </div>
+                        </div> */}
                     </div>
-                    <div className={"flex flex-col items-center gap-3 list-disc w-full text-left"}>
-                        <div className={"flex flex-col gap-3"}>
-                            {benefits.map((item, index) => (
-                                <div key={index} className={"flex items-start gap-4"}>
-                                    <i className="fa-regular fa-check text-primary mt-1"></i>
-                                    <span>{item.name}</span>
-                                </div>
-                            ))}
-                        </div>
+                </div>
+                <div className={"flex flex-col items-center gap-3 list-disc w-full text-left"}>
+                    <div className={"flex flex-col gap-3"}>
+                        {benefits.map((item, index) => (
+                            <div key={index} className={"flex items-start gap-4"}>
+                                <i className="fa-regular fa-check text-primary mt-1"></i>
+                                <span>{item.name}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <button onClick={handleClickButton} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>

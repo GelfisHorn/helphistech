@@ -21,7 +21,7 @@ export default async function handler(req, res) {
             to: "helphis.tech@gmail.com",
             subject: `${name} está interesado/a en un plan de HelphisTech`,
             text: `${name} está interesado/a en un plan de HelphisTech\n
-                Plan: ${pricing.plan} - EUR ${pricing.price}\n
+                Plan: ${pricing.plan}\n
                 Acerca del proyecto: ${description}\n
                 Información de contacto:\n
                 Nombre: ${name}

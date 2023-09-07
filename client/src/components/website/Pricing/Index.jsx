@@ -60,7 +60,7 @@ export default function PricingSection() {
         }
         
         Promise.all([
-            axios.post('/api/pricing/sendMail', { pricing: { plan: LANG.es.plans[pricing.plan], price: pricing.price }, name, email, phoneNumber, description }),
+            axios.post('/api/pricing/sendMail', { pricing: { plan: LANG.es.plans[pricing.plan] }, name, email, phoneNumber, description }),
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
         ]).then(res => {
             toast.success(LANG[language].notifications.success);
@@ -118,12 +118,12 @@ export default function PricingSection() {
                                 <div className={`${styles.cardShadowLeft} flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
                                         <div className={"text-2xl font-medium text-primary"}>Statische Website</div>
-                                        <div className={"flex items-center"}>
+                                        {/* <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.basic}</span>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
@@ -158,10 +158,10 @@ export default function PricingSection() {
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
                                             <span>Kundenbewertungen</span>
                                         </div>
-                                        <div className={"flex items-start gap-4"}>
+                                        {/* <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
                                             <span className={"font-semibold text-[#FFA500]"}>5 Tage Lieferzeit</span>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
@@ -173,12 +173,12 @@ export default function PricingSection() {
                                 <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{height: "calc(100% - 2.5rem)"}}>
                                     <div className={"flex flex-col items-center gap-5"}>
                                         <div className={"text-2xl font-medium text-primary"}>Dynamische Website</div>
-                                        <div className={"flex items-center"}>
+                                        {/* <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.pro}</span>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
@@ -209,10 +209,10 @@ export default function PricingSection() {
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
                                             <span>Bis zu 10 Menüpunkte</span>
                                         </div>
-                                        <div className={"flex items-start gap-4"}>
+                                        {/* <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
                                             <span className={"font-semibold text-[#FFA500]"}>15 Tage Lieferzeit</span>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                 </div>
@@ -222,12 +222,12 @@ export default function PricingSection() {
                                 <div className={`${styles.cardShadowRight} flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
                                         <div className={"text-2xl font-medium text-primary"}>Full-Stack-Anwendung</div>
-                                        <div className={"flex items-center"}>
+                                        {/* <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                 <span>{PRICING.premium}</span>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
@@ -273,12 +273,12 @@ export default function PricingSection() {
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
                                                 <div className={"text-2xl font-medium text-primary"}>Statische Website</div>
-                                                <div className={"flex items-center"}>
+                                                {/* <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.basic}</span>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
@@ -313,10 +313,10 @@ export default function PricingSection() {
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
                                                     <span>Kundenbewertungen</span>
                                                 </div>
-                                                <div className={"flex items-start gap-4"}>
+                                                {/* <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
                                                     <span className={"font-semibold text-[#FFA500]"}>5 Tage Lieferzeit</span>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                         </div>
@@ -330,12 +330,12 @@ export default function PricingSection() {
                                         <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
                                                 <div className={"text-2xl font-medium text-primary"}>Dynamische Website</div>
-                                                <div className={"flex items-center"}>
+                                                {/* <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.pro}</span>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
@@ -366,10 +366,10 @@ export default function PricingSection() {
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
                                                     <span>Bis zu 10 Menüpunkte</span>
                                                 </div>
-                                                <div className={"flex items-start gap-4"}>
+                                                {/* <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
                                                     <span className={"font-semibold text-[#FFA500]"}>15 Tage Lieferzeit</span>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
                                         </div>
@@ -381,12 +381,12 @@ export default function PricingSection() {
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
                                                 <div className={"text-2xl font-medium text-primary"}>Full-Stack-Anwendung</div>
-                                                <div className={"flex items-center"}>
+                                                {/* <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
                                                         <span>{PRICING.premium}</span>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
