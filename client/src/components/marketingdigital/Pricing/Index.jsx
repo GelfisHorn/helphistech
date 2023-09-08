@@ -65,12 +65,12 @@ export default function MDPricing() {
                     <div className={"flex justify-center w-full pb-2"}>
                         <div className={`hidden xl:flex flex-col items-center gap-10 w-full`}>
                             <motion.div
-                                className={"grid grid-cols-3 gap-5 w-[75rem]"}
+                                className={"grid grid-cols-2 gap-5 w-[50rem]"}
                                 initial={{ opacity: 0, x: 100 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: .2, origin: 1 }}
                             >
-                                <Card
+                                {/* <Card
                                     icon={"fa-regular fa-window"}
                                     title={"Marketinginhalte"}
                                     description={"Erstellen und Teilen relevanter und wertvoller Inhalte wie Blogs, Videos, Infografiken usw., um die Zielgruppe anzuziehen und zu begeistern."}
@@ -78,23 +78,36 @@ export default function MDPricing() {
                                     handleModal={handleModal.show}
                                     benefits={[{ name: "Blogs" }, { name: "Nachrichtenseite" }]}
                                     plan={{ get: PRICING["01"].name, set: setPlan }}
-                                />
+                                /> */}
                                 <Card
                                     icon={"fa-regular fa-mobile"}
-                                    title={"Suchmaschinenoptimierung (SEO)"}
-                                    description={"Verbesserung der Sichtbarkeit der Website in den organischen Suchergebnissen durch Techniken wie."}
+                                    title={"SEO-Optimierung (SEO)"}
+                                    description={"Unser Hauptziel ist es, den hochwertigsten organischen Traffic auf Ihrer Website zu lenken."}
                                     price={PRICING["02"].price}
                                     handleModal={handleModal.show}
-                                    benefits={[{ name: "Schlüsselwörter" }, { name: "Meta-Tags" }, { name: "Hochwertige Links" }]}
+                                    benefits={[
+                                        { name: "Keyword-Recherche", description: "Wir identifizieren hochwirksame Keywords, die relevant für Ihre Branche und Nische sind, um sicherzustellen, dass Ihr Inhalt für das, was für Ihr Unternehmen am wichtigsten ist, gut gerankt wird." }, 
+                                        { name: "On-Page-Optimierung", description: "Wir feinabstimmen die Struktur Ihrer Website, Meta-Tags und Inhalte, um sie suchmaschinenfreundlich und benutzerzentriert zu gestalten." }, 
+                                        { name: "Content-Strategie", description: "Unser Team wird Ihren bestehenden Inhalt erstellen oder optimieren, um Ihre Zielgruppe anzusprechen und die Autorität Ihrer Marke zu stärken." },
+                                        { name: "Lokales SEO", description: "Wir optimieren Ihre Online-Präsenz für lokale Suchanfragen und stellen sicher, dass potenzielle Kunden Ihr Unternehmen leicht finden können." },
+                                        { name: "Technisches SEO", description: "Wir kümmern uns um technische Probleme, die die Leistung Ihrer Website beeinträchtigen könnten, einschließlich der Geschwindigkeit der Website und der Mobilfreundlichkeit." },
+                                        { name: "Wettbewerbsanalyse", description: "Erhalten Sie Einblicke in die Strategien Ihrer Mitbewerber und bleiben Sie in Ihrer Nische einen Schritt voraus." },
+                                    ]}
                                     plan={{ get: PRICING["02"].name, set: setPlan }}
                                 />
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
-                                    title={"Social-Media-Marketing"}
-                                    description={"Nutzung von Plattformen wie Facebook, Instagram, Twitter, LinkedIn, TikTok usw., um mit Followern zu interagieren, Inhalte zu teilen und Produkte oder Dienstleistungen zu bewerben."}
+                                    title={"Social Media Marketing"}
+                                    description={"Unser Hauptziel ist es, Ihre Marke auf den sozialen Plattformen zum Strahlen zu bringen und Ihr Publikum zu begeistern."}
                                     price={PRICING["03"].price}
                                     handleModal={handleModal.show}
-                                    benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
+                                    benefits={[
+                                        { name: "Analyse Ihrer vorhandenen Social-Media-Präsenz", description: "Um Schwachstellen zu erkennen und Chancen zu nutzen." }, 
+                                        { name: "Erstellung hochwirksamer Social-Media-Kampagnen", description: "Um messbare Ergebnisse zu erzielen." },
+                                        { name: "Kreation ansprechender Inhalte und Anzeigen", description: "Um die Interaktion und das Engagement Ihrer Zielgruppe zu steigern." },
+                                        { name: "Zielgerichtete Auswahl von Plattformen und Anzeigeformaten", description: "Um Ihre Marke optimal zu präsentieren und die Reichweite zu maximieren." },
+                                        { name: "Wettbewerbsanalyse", description: "Um herauszufinden, welche Strategien und Inhalte in Ihrer Branche erfolgreich sind und diese zu übertreffen." },
+                                    ]}
                                     plan={{ get: PRICING["03"].name, set: setPlan }}
                                     perMonth={true}
                                 />
@@ -107,11 +120,17 @@ export default function MDPricing() {
                             >
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
-                                    title={"Online-Werbung (SEM)"}
-                                    description={"Durchführung bezahlter Werbekampagnen auf Suchmaschinen und Social-Media-Plattformen, um die Sichtbarkeit zu erhöhen und den Traffic auf der Website zu steigern."}
+                                    title={"Suchmaschinenmarketing (SEM)"}
+                                    description={"Unser Hauptziel ist es, die größtmögliche Anzahl an Conversions zu möglichst geringen Kosten zu generieren."}
                                     price={PRICING["04"].price}
                                     handleModal={handleModal.show}
-                                    benefits={[{ name: "Erstellung und Pflege von Werbekampagnen mit Google Ads, TikTok Ads und Facebook Ads." }]}
+                                    benefits={[
+                                        { name: "Überprüfung Ihres bestehenden Ads-Konto", description: "Um etwaige Probleme zu erkennen und zu beheben." },
+                                        { name: "Hochleistungsfähige Google Ads-Kampagnen", description: "Um greifbare Ergebnisse zu erzielen." },
+                                        { name: "Erstellung effektiver Ad Groups, Ads, und Extensions", description: "Zur Steigerung der Relevanzbewertungen und Verbesserung des Anzeigenrankings." },
+                                        { name: "Strategische Auswahl gezielter Keywords", description: "Zur Verbesserung des Suchmaschinen-Rankings Ihrer Website." },
+                                        { name: "Wettbewerbsanalyse", description: "Zur Identifizierung und Nutzung erstklassiger Keywords, Anzeigentexte und Erweiterungen, um Ihre Konkurrenz zu überflügeln." },
+                                    ]}
                                     plan={{ get: PRICING["04"].name, set: setPlan }}
                                     perMonth={true}
                                 />
@@ -121,7 +140,11 @@ export default function MDPricing() {
                                     description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
                                     price={PRICING["05"].price}
                                     handleModal={handleModal.show}
-                                    benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
+                                    benefits={[
+                                        { name: "SEO-Optimierung" }, 
+                                        { name: "Suchmaschinenmarketing (SEM)" }, 
+                                        { name: "Social Media Marketing" }
+                                    ]}
                                     popular={true}
                                     plan={{ get: PRICING["05"].name, set: setPlan }}
                                     perMonth={true}
@@ -155,7 +178,7 @@ function Card({ plan, title, description, price, popular, benefits, handleModal,
     return (
         <div className={`h-full ${styles.cardGlassEffect}`}>
             <div className={`grid place-content-center ${popular ? "bg-primary" : null} h-10 text-center rounded-t-xl text-zinc-200`}>{popular ? "Popular" : null}</div>
-            <div className={`flex flex-col items-center justify-between gap-12 h-full py-12 px-12 border ${popular ? (darkMode ? "bg-[#0D1020] border-neutral-800" : "bg-[#ddd5ff] border-neutral-300") : `${darkMode ? "border-neutral-800 bg-[#00000031]" : "border-neutral-300 bg-[#ffffff4f]"}`} ${popular ? "rounded-b-xl" : "rounded-xl"} text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
+            <div className={`flex flex-col items-center justify-between gap-12 h-full py-8 sm:py-12 px-6 sm:px-12 border ${popular ? (darkMode ? "bg-[#0D1020] border-neutral-800" : "bg-[#ddd5ff] border-neutral-300") : `${darkMode ? "border-neutral-800 bg-[#00000031]" : "border-neutral-300 bg-[#ffffff4f]"}`} ${popular ? "rounded-b-xl" : "rounded-xl"} text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                 <div className={"flex flex-col gap-12"}>
                     <div className={"flex flex-col items-center gap-5"}>
                         <div className={"text-2xl font-semibold text-primary"}>{title}</div>
@@ -173,17 +196,51 @@ function Card({ plan, title, description, price, popular, benefits, handleModal,
                     </div>
                 </div>
                 <div className={"flex flex-col items-center gap-3 list-disc w-full text-left"}>
-                    <div className={"flex flex-col gap-3"}>
+                    <div className={"flex flex-col items-center gap-3 w-full"}>
                         {benefits.map((item, index) => (
-                            <div key={index} className={"flex items-start gap-4"}>
-                                <i className="fa-regular fa-check text-primary mt-1"></i>
-                                <span>{item.name}</span>
-                            </div>
+                            <CardBenefit key={index} name={item.name} description={item.description} hasDescription={item.hasDescription} />
                         ))}
                     </div>
                 </div>
                 <button onClick={handleClickButton} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
             </div>
+        </div>
+    )
+}
+
+function CardBenefit({ name, description }) {
+
+    const { darkMode } = useContextProvider();
+
+    const [showInformation, setShowInformation] = useState(false);
+
+    return (
+        <div className={"flex items-start justify-center gap-2 relative w-full"}>
+            <div className={"flex items-start gap-4"}>
+                <i className="fa-regular fa-check text-primary mt-1"></i>
+                <span>{name}</span>
+            </div>
+            {description && (
+                <div>
+                    <i
+                        onClick={() => setShowInformation(!showInformation)}
+                        className={`cursor-pointer text-lg fa-sharp fa-solid fa-circle-info ${darkMode ? "text-neutral-400" : "text-neutral-500"}`}
+                    ></i>
+                    <AnimatePresence>
+                        {showInformation && (
+                            <motion.div
+                                onClick={() => setShowInformation(false)}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className={`cursor-pointer absolute left-0 top-10 w-full ${darkMode ? "bg-neutral-300" : "bg-neutral-800"} rounded-lg py-1 px-2 select-none`}
+                                style={{ zIndex: 1 }}>
+                                <div className={`${darkMode ? "text-black" : "text-white"} break-words text-sm`}>{description}</div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            )}
         </div>
     )
 }
@@ -272,7 +329,7 @@ function CardsMobile({ setPlan, showModal }) {
                     onSwiper={instance => setSwiperInstance(instance)}
                     onSlideChange={e => handleSlideChange(e)}
                 >
-                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                    {/* <SwiperSlide className={styles["swiper-slide-item"]}>
                         <Card
                             icon={"fa-regular fa-window"}
                             title={"Marketinginhalte"}
@@ -282,16 +339,59 @@ function CardsMobile({ setPlan, showModal }) {
                             benefits={[{ name: "Blogs" }, { name: "Nachrichtenseite" }]}
                             plan={{ get: PRICING["01"].name, set: setPlan }}
                         />
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                     <SwiperSlide className={styles["swiper-slide-item"]}>
                         <Card
                             icon={"fa-regular fa-mobile"}
-                            title={"Suchmaschinen-optimierung (SEO)"}
-                            description={"Verbesserung der Sichtbarkeit der Website in den organischen Suchergebnissen durch Techniken wie."}
+                            title={"SEO-Optimierung (SEO)"}
+                            description={"Unser Hauptziel ist es, den hochwertigsten organischen Traffic auf Ihrer Website zu lenken."}
                             price={PRICING["02"].price}
                             handleModal={showModal}
-                            benefits={[{ name: "Schlüsselwörter" }, { name: "Meta-Tags" }, { name: "Hochwertige Links" }]}
+                            benefits={[
+                                { name: "Keyword-Recherche", description: "Wir identifizieren hochwirksame Keywords, die relevant für Ihre Branche und Nische sind, um sicherzustellen, dass Ihr Inhalt für das, was für Ihr Unternehmen am wichtigsten ist, gut gerankt wird." },
+                                { name: "On-Page-Optimierung", description: "Wir feinabstimmen die Struktur Ihrer Website, Meta-Tags und Inhalte, um sie suchmaschinenfreundlich und benutzerzentriert zu gestalten." },
+                                { name: "Content-Strategie", description: "Unser Team wird Ihren bestehenden Inhalt erstellen oder optimieren, um Ihre Zielgruppe anzusprechen und die Autorität Ihrer Marke zu stärken." },
+                                { name: "Lokales SEO", description: "Wir optimieren Ihre Online-Präsenz für lokale Suchanfragen und stellen sicher, dass potenzielle Kunden Ihr Unternehmen leicht finden können." },
+                                { name: "Technisches SEO", description: "Wir kümmern uns um technische Probleme, die die Leistung Ihrer Website beeinträchtigen könnten, einschließlich der Geschwindigkeit der Website und der Mobilfreundlichkeit." },
+                                { name: "Wettbewerbsanalyse", description: "Erhalten Sie Einblicke in die Strategien Ihrer Mitbewerber und bleiben Sie in Ihrer Nische einen Schritt voraus." },
+                            ]}
                             plan={{ get: PRICING["02"].name, set: setPlan }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-solid fa-chart-mixed"}
+                            title={"Social Media Marketing"}
+                            description={"Unser Hauptziel ist es, Ihre Marke auf den sozialen Plattformen zum Strahlen zu bringen und Ihr Publikum zu begeistern."}
+                            price={PRICING["03"].price}
+                            handleModal={showModal}
+                            benefits={[
+                                { name: "Analyse Ihrer vorhandenen Social-Media-Präsenz", description: "Um Schwachstellen zu erkennen und Chancen zu nutzen." },
+                                { name: "Erstellung hochwirksamer Social-Media-Kampagnen", description: "Um messbare Ergebnisse zu erzielen." },
+                                { name: "Kreation ansprechender Inhalte und Anzeigen", description: "Um die Interaktion und das Engagement Ihrer Zielgruppe zu steigern." },
+                                { name: "Zielgerichtete Auswahl von Plattformen und Anzeigeformaten", description: "Um Ihre Marke optimal zu präsentieren und die Reichweite zu maximieren." },
+                                { name: "Wettbewerbsanalyse", description: "Um herauszufinden, welche Strategien und Inhalte in Ihrer Branche erfolgreich sind und diese zu übertreffen." },
+                            ]}
+                            plan={{ get: PRICING["03"].name, set: setPlan }}
+                            perMonth={true}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide className={styles["swiper-slide-item"]}>
+                        <Card
+                            icon={"fa-solid fa-chart-mixed"}
+                            title={"Suchmaschinenmarketing (SEM)"}
+                            description={"Unser Hauptziel ist es, die größtmögliche Anzahl an Conversions zu möglichst geringen Kosten zu generieren."}
+                            price={PRICING["04"].price}
+                            handleModal={showModal}
+                            benefits={[
+                                { name: "Überprüfung Ihres bestehenden Ads-Konto", description: "Um etwaige Probleme zu erkennen und zu beheben." },
+                                { name: "Hochleistungsfähige Google Ads-Kampagnen", description: "Um greifbare Ergebnisse zu erzielen." },
+                                { name: "Erstellung effektiver Ad Groups, Ads, und Extensions", description: "Zur Steigerung der Relevanzbewertungen und Verbesserung des Anzeigenrankings." },
+                                { name: "Strategische Auswahl gezielter Keywords", description: "Zur Verbesserung des Suchmaschinen-Rankings Ihrer Website." },
+                                { name: "Wettbewerbsanalyse", description: "Zur Identifizierung und Nutzung erstklassiger Keywords, Anzeigentexte und Erweiterungen, um Ihre Konkurrenz zu überflügeln." },
+                            ]}
+                            plan={{ get: PRICING["04"].name, set: setPlan }}
+                            perMonth={true}
                         />
                     </SwiperSlide>
                     <SwiperSlide className={styles["swiper-slide-item"]}>
@@ -301,33 +401,13 @@ function CardsMobile({ setPlan, showModal }) {
                             description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
                             price={PRICING["05"].price}
                             handleModal={showModal}
-                            benefits={[{ name: "Marketinginhalte" }, { name: "Suchmaschinenoptimierung (SEO)" }, { name: "Social-Media-Marketing" }, { name: "Online-Werbung (SEM)" }, { name: "Geld-zurück-Garantie" }]}
+                            benefits={[
+                                { name: "SEO-Optimierung" },
+                                { name: "Suchmaschinenmarketing (SEM)" },
+                                { name: "Social Media Marketing" }
+                            ]}
                             popular={true}
                             plan={{ get: PRICING["05"].name, set: setPlan }}
-                            perMonth={true}
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide className={styles["swiper-slide-item"]}>
-                        <Card
-                            icon={"fa-solid fa-chart-mixed"}
-                            title={"Social-Media-Marketing"}
-                            description={"Nutzung von Plattformen wie Facebook, Instagram, Twitter, LinkedIn, TikTok usw., um mit Followern zu interagieren, Inhalte zu teilen und Produkte oder Dienstleistungen zu bewerben."}
-                            price={PRICING["03"].price}
-                            handleModal={showModal}
-                            benefits={[{ name: "Erstellung von kreativen Inhalten (Bilder & Videos)" }, { name: "Professionelles Social-Media-Management" }]}
-                            plan={{ get: PRICING["03"].name, set: setPlan }}
-                            perMonth={true}
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide className={styles["swiper-slide-item"]}>
-                        <Card
-                            icon={"fa-solid fa-chart-mixed"}
-                            title={"Online-Werbung (SEM)"}
-                            description={"Durchführung bezahlter Werbekampagnen auf Suchmaschinen und Social-Media-Plattformen, um die Sichtbarkeit zu erhöhen und den Traffic auf der Website zu steigern."}
-                            price={PRICING["04"].price}
-                            handleModal={showModal}
-                            benefits={[{ name: "Erstellung und Pflege von Werbekampagnen mit Google Ads, TikTok Ads und Facebook Ads." }]}
-                            plan={{ get: PRICING["04"].name, set: setPlan }}
                             perMonth={true}
                         />
                     </SwiperSlide>
