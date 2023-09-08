@@ -170,13 +170,9 @@ function Card({ index, service, icon, title, description, price, redirect, handl
     }
 
     return (
-        <div onClick={() => service.set()} className={`${styles.card} flex flex-col justify-between gap-8 rounded-xl p-8 ${featured ? "border-2 border-primary bg-[#866bfe3b]" : `border-2 border-[#866bfe0c] bg-[#866bfe0c]`} ${styles.cardGlassEffect} h-full transition-colors`}>
-            <div className={"flex flex-col gap-7 text-center"}>
-                <div className={"flex flex-col gap-3"}>
-                    <div className={"text-2xl font-medium"}>{title}</div>
-                    <p className={service.get == index ? "text-zinc-100" : darkMode ? "description-dark" : "description-light"}>{description}</p>
-                </div>
-            </div>
+        <div onClick={() => service.set()} className={`${styles.card} flex flex-col justify-between text-center gap-8 rounded-xl p-8 ${featured ? "border-2 border-primary bg-[#866bfe3b]" : `border-2 border-[#866bfe6e] bg-[#866bfe0c]`} ${styles.cardGlassEffect} h-full transition-colors`}>
+            <div className={"text-2xl font-medium underline text-[#dcd5ff]"}>{title}</div>
+            <p className={service.get == index ? "text-zinc-100" : darkMode ? "description-dark" : "description-light"}>{description}</p>
             <div className={"flex flex-col items-center gap-5"}>
                 {/* <div className={`flex flex-col text-lg text-center`}><span className={`ab-span ${service.get == index ? "text-zinc-200" : darkMode ? "description-dark" : "description-light"}`}>ab</span> <span className={"text-3xl font-semibold"}>{currencyFormatter(price, "EUR")}</span></div> */}
                 <div className={"flex flex-col items-center gap-6"}>
