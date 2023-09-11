@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // Context
 import useContextProvider from "@/hooks/useAppContextProvider";
 // Animations
@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import ContactSimple from "@/components/Modals/ContactSimple/Index";
+import useClickOutside from "@/hooks/useClickOutside";
 
 const PRICING = {
     "01": {
@@ -212,7 +213,11 @@ function CardBenefit({ name, description }) {
 
     const { darkMode } = useContextProvider();
 
+    const ref = useRef();
+    useClickOutside(ref, () => setShowInformation(false));
+
     const [showInformation, setShowInformation] = useState(false);
+
 
     return (
         <div className={"flex items-start justify-center gap-2 relative w-full"}>
@@ -223,12 +228,13 @@ function CardBenefit({ name, description }) {
             {description && (
                 <div>
                     <i
-                        onClick={() => setShowInformation(!showInformation)}
+                        onClick={() => setShowInformation(true)}
                         className={`cursor-pointer text-lg fa-sharp fa-solid fa-circle-info ${darkMode ? "text-neutral-400" : "text-neutral-500"}`}
                     ></i>
                     <AnimatePresence>
                         {showInformation && (
                             <motion.div
+                                ref={ref}
                                 onClick={() => setShowInformation(false)}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
