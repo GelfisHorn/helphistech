@@ -220,7 +220,7 @@ function CardBenefit({ name, description }) {
 
 
     return (
-        <div className={"flex items-start justify-center gap-2 relative w-full"}>
+        <div className={"flex items-start justify-between gap-2 relative w-full"}>
             <div className={"flex items-start gap-4"}>
                 <i className="fa-regular fa-check text-primary mt-1"></i>
                 <span>{name}</span>
