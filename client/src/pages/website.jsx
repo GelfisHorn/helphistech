@@ -47,10 +47,10 @@ export default function Website({ services, faqs, clientComments }) {
 					{ icon: "fa-light fa-megaphone", title: "Effektives Marketing", description: "Nutze deine Website als leistungsstarkes Marketinginstrument, um Kunden über digitale Strategien anzuziehen und zu konvertieren." }
 				]}
 			/>
-			<ProcessSection />
 			<PricingSection />
 			<ClientCommentsSection comments={clientComments} />
 			<Projects />
+			<ProcessSection />
 			<ServicesSection services={services} />
 			<WhatsAppButton />
 			<ContactSection fromPage={"website"} />
