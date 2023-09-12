@@ -22,3 +22,15 @@
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(150, 150, 150, 0.1);
 }
+
+.imageContainer {
+    width: fit-content;
+    position: relative !important;
+}
+
+.imageContainer .image {
+    object-fit: contain;
+    width: 5rem !important;
+    position: relative !important;
+    height: 5rem !important;
+}

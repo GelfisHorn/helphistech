@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 // Animations
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function HomeAboutUs() {
 
@@ -28,6 +29,7 @@ export default function HomeAboutUs() {
                         name={"Sheila Waldow"}
                         position={"Head of Design-Team"}
                         contact={"design@helphistech.com"}
+                        img={"/team/sheila.webp"}
                     />
                     <RightRow
                         title={"Full Stack-Entwickler"}
@@ -35,6 +37,7 @@ export default function HomeAboutUs() {
                         name={"Gelfis Horn"}
                         position={"Head of Software Development-Team"}
                         contact={"development@helphistech.com"}
+                        img={"/team/gelfis.webp"}
                     />
                     <LeftRow
                         title={"Digital-Marketing-Spezialisten"}
@@ -42,6 +45,7 @@ export default function HomeAboutUs() {
                         name={"Henrry Feliz"}
                         position={"Head of Digital Marketing-Team"}
                         contact={"marketing@helphistech.com"}
+                        img={"/team/henrry.webp"}
                     />
                     <RightRow
                         title={"Vertriebsmanagement"}
@@ -49,6 +53,7 @@ export default function HomeAboutUs() {
                         name={"Christian Moresi"}
                         position={"Head of Kundenservice-Team"}
                         contact={"info@helphistech.com"}
+                        img={"/team/cristian.webp"}
                     />
                 </div>
                 <div className={`block xl:hidden swiper-grid-4`}>
@@ -110,7 +115,7 @@ export default function HomeAboutUs() {
     )
 }
 
-function LeftRow({ title, description, name, position, contact }) {
+function LeftRow({ img, title, description, name, position, contact }) {
 
     const { darkMode } = useContextProvider();
 
@@ -127,8 +132,11 @@ function LeftRow({ title, description, name, position, contact }) {
                     <p>{description}</p>
                 </div>
                 <div className={"flex items-center gap-4"}>
-                    <div className={`grid place-content-center min-w-[4rem] h-16 rounded-full ${darkMode ? "bg-neutral-800" : styles.userGlassEffect}`}>
+                    {/* <div className={`grid place-content-center min-w-[4rem] h-16 rounded-full ${darkMode ? "bg-neutral-800" : styles.userGlassEffect}`}>
                         <i className={"fa-regular fa-user text-3xl text-neutral-600"}></i>
+                    </div> */}
+                    <div className={`${styles.imageContainer}`}>
+                        <Image src={`${img}`} fill className={`${styles.image} rounded-full`} />
                     </div>
                     <div>
                         <div className={"font-semibold"}>{name}</div>
@@ -148,7 +156,7 @@ function LeftRow({ title, description, name, position, contact }) {
     )
 }
 
-function RightRow({ title, description, name, position, contact }) {
+function RightRow({ img, title, description, name, position, contact }) {
 
     const { darkMode } = useContextProvider();
 
@@ -177,9 +185,12 @@ function RightRow({ title, description, name, position, contact }) {
                         <div className={"text-sm"}>{position}</div>
                         <div className={"text-sm font-semibold"}><a className={"underline text-primary hover:text-primary-2 transition-colors"} href={`mailto:${contact}`} target={"_blank"}>{contact}</a></div>
                     </div>
-                    <div className={`grid place-content-center min-w-[4rem] h-16 rounded-full ${darkMode ? "bg-neutral-800" : styles.userGlassEffect}`}>
-                        <i className={"fa-regular fa-user text-3xl text-neutral-600"}></i>
+                    <div className={`${styles.imageContainer}`}>
+                        <Image src={`${img}`} fill className={`${styles.image} rounded-full`} />
                     </div>
+                    {/* <div className={`grid place-content-center min-w-[4rem] h-16 rounded-full ${darkMode ? "bg-neutral-800" : styles.userGlassEffect}`}>
+                        <i className={"fa-regular fa-user text-3xl text-neutral-600"}></i>
+                    </div> */}
                 </div>
             </motion.div>
         </>
