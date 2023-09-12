@@ -203,7 +203,7 @@ function Card({ plan, title, description, price, popular, benefits, handleModal,
                         ))}
                     </div>
                 </div>
-                <button onClick={handleClickButton} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                <button onClick={handleClickButton} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
             </div>
         </div>
     )

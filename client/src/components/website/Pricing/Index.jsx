@@ -163,7 +163,7 @@ export default function PricingSection() {
                                             <span className={"font-semibold text-[#FFA500]"}>5 Tage Lieferzeit</span>
                                         </div> */}
                                     </div>
-                                    <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                                    <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
                                 </div>
                             </div>
                             <div className={"w-[22rem] h-full"}>
@@ -214,7 +214,7 @@ export default function PricingSection() {
                                             <span className={"font-semibold text-[#FFA500]"}>15 Tage Lieferzeit</span>
                                         </div> */}
                                     </div>
-                                    <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                                    <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
                                 </div>
                             </div>
                             <div className={"w-[22rem] h-full skew-y-[5deg]"}>
@@ -251,7 +251,7 @@ export default function PricingSection() {
                                             <span>Online shop</span>
                                         </div>
                                     </div>
-                                    <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                                    <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
                                 </div>
                             </div>
                         </motion.div>
@@ -318,7 +318,7 @@ export default function PricingSection() {
                                                     <span className={"font-semibold text-[#FFA500]"}>5 Tage Lieferzeit</span>
                                                 </div> */}
                                             </div>
-                                            <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                                            <button onClick={() => handleSelectPackage("basic", PRICING.basic)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
                                         </div>
                                     </div>
                                 </SwiperSlide>
@@ -371,7 +371,7 @@ export default function PricingSection() {
                                                     <span className={"font-semibold text-[#FFA500]"}>15 Tage Lieferzeit</span>
                                                 </div> */}
                                             </div>
-                                            <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                                            <button onClick={() => handleSelectPackage("pro", PRICING.pro)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
                                         </div>
                                     </div>
                                 </SwiperSlide>
@@ -410,7 +410,7 @@ export default function PricingSection() {
                                                     <span>Online shop</span>
                                                 </div>
                                             </div>
-                                            <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Kostenlose Beratung</button>
+                                            <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
                                         </div>
                                     </div>
                                 </SwiperSlide>
