@@ -3,7 +3,7 @@
 import Layout from "@/components/Layout";
 import BootcampBenefits from "@/components/bootcamp/Benefits/Index";
 import BootcampComments from "@/components/bootcamp/Comments/Index";
-/* import BootcampContact from "@/components/bootcamp/Contact/Index"; */
+import BootcampContact from "@/components/bootcamp/Contact/Index";
 import BootcampFAQ from "@/components/bootcamp/FAQ/Index";
 import BootcampHero from "@/components/bootcamp/Hero/Index";
 import BootcampServices from "@/components/bootcamp/Services/Index";
@@ -12,6 +12,8 @@ import useContextProvider from "@/hooks/useAppContextProvider";
 // Mockdata
 import comments from "@/mockData/bootcamp/comments";
 import faqs from '@/mockData/bootcamp/faqs'
+// Notifications
+import { Toaster } from "react-hot-toast";
 
 export default function Bootcamp() {
 
@@ -24,7 +26,8 @@ export default function Bootcamp() {
             <BootcampServices lang={language} />
             <BootcampComments comments={comments.es} />
             <BootcampFAQ faqs={faqs.es} />
-            {/* <BootcampContact /> */}
+            <BootcampContact />
+            <Toaster position={"top-right"} />
         </Layout>
     )
 }
