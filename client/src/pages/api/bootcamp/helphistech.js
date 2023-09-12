@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
         await transporter.sendMail({
             from: `"${name}" <${email}>`,
-            to: email,
+            to: "info@helphistech.com",
             subject: `Nuevo alumno para Bootcamp`,
             text: ``,
             html: template.helphistech({ name, surname, country, phoneNumber, email, age, howYouKnowUs, gender, bootcamp, schedule, motivation })
