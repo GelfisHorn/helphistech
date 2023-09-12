@@ -111,9 +111,9 @@ export default function Footer() {
                                 <i className="fa-brands fa-linkedin w-5 grid place-content-center"></i>
                                 <span>Linkedin</span>
                             </Link>
-                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-primary transition-colors" href="G.horn@helphistech.com">
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-primary transition-colors" href="info@helphistech.com">
                                 <i className="fa-light fa-envelope w-5 grid place-content-center"></i>
-                                <span>G.horn@helphistech.com</span>
+                                <span>info@helphistech.com</span>
                             </Link>
                         </div>
                     </FooterColumn>
