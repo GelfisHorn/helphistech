@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 
 const AppContext = createContext();
 
+const DARKMODE_DEFAULT = true;
+
 const AppContextProvider = ({children}) => {
     
     const router = useRouter();
@@ -23,7 +25,7 @@ const AppContextProvider = ({children}) => {
 
     // Language and dark mode settings
     const [ language, setLanguage ] = useState('de');
-    const [ darkMode, setDarkMode ] = useState(false);
+    const [darkMode, setDarkMode] = useState(DARKMODE_DEFAULT);
     // On component load load:
     useEffect(() => {
         // Use saved localStorage language or 'de'(german)
@@ -40,7 +42,7 @@ const AppContextProvider = ({children}) => {
 
         setCookiesAllowed(localStorage.getItem('allow-cookies'));
         setLanguage(localStorage.getItem('language'));
-        setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == null ? false : true);
+        setDarkMode(JSON.parse(localStorage.getItem('darkmode')) == null ? DARKMODE_DEFAULT : !DARKMODE_DEFAULT);
     }, []);
 
     // User Authentication
