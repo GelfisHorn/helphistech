@@ -34,7 +34,7 @@ export default function MDIntroduction() {
                                 <div className={"lg:text-xl"}>
                                     <p>Um in diesem digitalen Zeitalter erfolgreich zu sein, ist eine solide Online-Präsenz unerlässlich. Dafür benötigen Sie eine gut gestaltete <Link className={"text-primary hover:text-primary-2 transition-colors underline"} href={"/website"}>Website</Link> und strategisches Online-Marketing. Sie ermöglichen es Ihnen nicht nur, ein breiteres Publikum zu erreichen, sondern auch eine starke Marke aufzubauen und neue Kunden zu gewinnen.</p>
                                 </div>
-                                <p className={"lg:text-xl"}>Es gibt eine Vielzahl von Strategien im digitalen Marketing, aber einige, die in der Regel die besten Ergebnisse liefern, sind:</p>
+                                
                             </div>
                         </div>
                         <div className={"flex flex-col items-center gap-8"}>
