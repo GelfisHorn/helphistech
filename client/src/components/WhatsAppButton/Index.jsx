@@ -2,7 +2,7 @@ import Link from 'next/link'
 // Styles
 import styles from './Index.module.css'
 
-const WAPP_NUMBER = "+4915679303700"
+const WAPP_NUMBER = "+491512077952"
 
 export default function WhatsAppButton() {
     return (

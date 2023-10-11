@@ -95,11 +95,11 @@ export default function Footer() {
                                 <i className="fa-brands fa-youtube w-5 grid place-content-center"></i>
                                 <span>Youtube</span>
                             </Link>
-                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#C13584] transition-colors" href="https://www.instagram.com/helphistech" target={"_blank"}>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#C13584] transition-colors" href="https://www.instagram.com/helphis.tech/" target={"_blank"}>
                                 <i className="fa-brands fa-instagram w-5 grid place-content-center"></i>
                                 <span>Instagram</span>
                             </Link>
-                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#4267B2] transition-colors" href="https://www.facebook.com/helphistech" target={"_blank"}>
+                            <Link className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#4267B2] transition-colors" href="https://www.facebook.com/profile.php?id=61551224920707" target={"_blank"}>
                                 <i className="fa-brands fa-square-facebook w-5 grid place-content-center"></i>
                                 <span>Facebook</span>
                             </Link>

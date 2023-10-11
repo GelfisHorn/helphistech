@@ -20,7 +20,7 @@ export default function HomeAboutUs() {
             <div className={"flex flex-col gap-28"}>
                 <div className={"flex flex-col gap-4 text-center"}>
                     <h2 className={"font-bold text-3xl sm:text-5xl"}>Über Uns</h2>
-                    <p className={"text-base sm:text-lg"}><span className={"font-semibold text-primary"}>HelphisTech</span> ist ein innovatives Technologie-Startup mit der Mission, Unternehmen und Geschäften bei ihrer Digitalisierung zu unterstützen. Dazu verfügen wir über <span className={"font-semibold text-primary"}>vier</span> Teams von erstklassigen Fachleuten auf ihren jeweiligen Gebieten, um einen qualitativ hochwertigen Service zu bieten.</p>
+                    <p className={"text-base sm:text-lg"}><span className={"font-semibold text-primary"}>HelphisTech</span> ist ein führender Anbieter mit der Mission, Unternehmen und Geschäften bei ihrer Digitalisierung zu unterstützen. Dazu verfügen wir über <span className={"font-semibold text-primary"}>vier</span> Teams von erstklassigen Fachleuten auf ihren jeweiligen Gebieten, um einen qualitativ hochwertigen Service zu bieten.</p>
                 </div>
                 <div className={"hidden xl:grid grid-cols-3"}>
                     <LeftRow
@@ -28,7 +28,7 @@ export default function HomeAboutUs() {
                         description={"Talentierte Designer nutzen ihre Kreativität und Erfahrung, um hochmoderne Designs zu erstellen, die auf allen Geräten optimal funktionieren."}
                         name={"Sheila Waldow"}
                         position={"Head of Design-Team"}
-                        contact={"design@helphistech.com"}
+                        contact={"info@helphistech.com"}
                         img={"/team/sheila.webp"}
                     />
                     <RightRow
@@ -36,7 +36,7 @@ export default function HomeAboutUs() {
                         description={"Unser Team von Full Stack-Entwicklern ist erfahren in der Erstellung effizienter und umfassender technologischer Lösungen."}
                         name={"Gelfis Horn"}
                         position={"Head of Software Development-Team"}
-                        contact={"development@helphistech.com"}
+                        contact={"G.horn@helphistech.com"}
                         img={"/team/gelfis.webp"}
                     />
                     <LeftRow
@@ -44,7 +44,7 @@ export default function HomeAboutUs() {
                         description={"Die Experten im Bereich digitales Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
                         name={"Henrry Feliz"}
                         position={"Head of Digital Marketing-Team"}
-                        contact={"marketing@helphistech.com"}
+                        contact={"H.anicasio@helphistech.com"}
                         img={"/team/henrry.webp"}
                     />
                     <RightRow
@@ -52,7 +52,7 @@ export default function HomeAboutUs() {
                         description={"Unsere Vertriebsmitarbeiter setzen sich für exzellenten Kundenservice ein und pflegen effektive Geschäftsbeziehungen."}
                         name={"Christian Moresi"}
                         position={"Head of Kundenservice-Team"}
-                        contact={"info@helphistech.com"}
+                        contact={"C.moresi@helphistech.com"}
                         img={"/team/cristian.webp"}
                     />
                 </div>
@@ -78,7 +78,7 @@ export default function HomeAboutUs() {
                                 description={"Talentierte Designer nutzen ihre Kreativität und Erfahrung, um hochmoderne Designs zu erstellen, die auf allen Geräten optimal funktionieren."}
                                 name={"Sheila Waldow"}
                                 position={"Head of Design-Team"}
-                                contact={"design@helphistech.com"}
+                                contact={"info@helphistech.com"}
                             />
                         </SwiperSlide>
                         <SwiperSlide>
@@ -87,7 +87,7 @@ export default function HomeAboutUs() {
                                 description={"Unser Team von Full Stack-Entwicklern ist erfahren in der Erstellung effizienter und umfassender technologischer Lösungen."}
                                 name={"Gelfis Horn"}
                                 position={"Head of Software Development-Team"}
-                                contact={"development@helphistech.com"}
+                                contact={"G.horn@helphistech.com"}
                             />
                         </SwiperSlide>
                         <SwiperSlide>
@@ -96,7 +96,7 @@ export default function HomeAboutUs() {
                                 description={"Die Experten im Bereich digitales Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
                                 name={"Henrry Feliz"}
                                 position={"Head of Digital Marketing-Team"}
-                                contact={"marketing@helphistech.com"}
+                                contact={"H.anicasiog@helphistech.com"}
                             />
                         </SwiperSlide>
                         <SwiperSlide>
@@ -105,7 +105,7 @@ export default function HomeAboutUs() {
                                 description={"Unsere Vertriebsmitarbeiter setzen sich für exzellenten Kundenservice ein und pflegen effektive Geschäftsbeziehungen."}
                                 name={"Christian Moresi"}
                                 position={"Head of Kundenservice-Team"}
-                                contact={"info@helphistech.com"}
+                                contact={"C.moresi@helphistech.com"}
                             />
                         </SwiperSlide>
                     </Swiper>
