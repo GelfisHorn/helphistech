@@ -1,7 +1,7 @@
 {
     "de": {
         "step1": {
-            "title": "WAS MÖCHTEN SIE ENTWICKELN LASSEN?",
+            "title": "WIE KÖNNEN WIR IHNEN HELFEN?",
             "subtitle": "Erhalten Sie ein kostenloses Angebot.",
             "options": [
                 {
@@ -17,13 +17,13 @@
                     "selected": "blue"
                 },
                 {
-                    "id": "modify_website",
-                    "text": "Wartungs & Updates",
+                    "id": "digitales_marketing",
+                    "text": "Digitales Marketing",
                     "icon": "fa-duotone fa-pen-to-square orange",
                     "selected": "orange",
                     "mobile": [
-                        "Wartungs &",
-                        "Updates"
+                        "Digitales Marketing",
+                        "SEO & SEM"
                     ]
                 }
             ]
@@ -287,7 +287,7 @@
                 ]
             },
             {
-                "title": "Wartungs & Updates",
+                "title": "Online Marketing",
                 "options": [
                     {
                         "id": "seo",
@@ -300,53 +300,31 @@
                         "selected": "orange"
                     },
                     {
-                        "id": "marketing",
-                        "text": "Online-Marketing",
+                        "id": "socialmedia_marketing",
+                        "text": "Social Media Marketing",
                         "mobile": [
-                            "Online",
+                            "Social Media",
                             "Marketing"
                         ],
                         "icon": "fa-duotone fa-pen-to-square orange",
                         "selected": "orange"
                     },
                     {
-                        "id": "premium_website",
-                        "text": "Premium Webdesign",
+                        "id": "sem_marketing",
+                        "text": "Suchmaschinenmarketing (SEM)",
                         "mobile": [
-                            "Premium",
-                            "Webdesign"
+                            "Suchmaschinen",
+                            "Marketing (SEM)"
                         ],
                         "icon": "fa-duotone fa-pen-to-square orange",
                         "selected": "orange"
                     },
                     {
                         "id": "user_experience",
-                        "text": "Benutzererfahrung",
+                        "text": "E-Mail Marketing",
                         "mobile": [
-                            "Benutzer",
-                            "erfahrung"
-                        ],
-                        "icon": "fa-duotone fa-pen-to-square orange",
-                        "selected": "orange"
-                    },
-                    {
-                        "id": "website_speed",
-                        "text": "Website-Geschwindigkeit",
-                        "mobile": [
-                            "Website",
-                            "Geschwi-",
-                            "ndigkeit"
-                        ],
-                        "icon": "fa-duotone fa-pen-to-square orange",
-                        "selected": "orange"
-                    },
-                    {
-                        "id": "cms",
-                        "text": "Live Chat",
-                        "mobile": [
-                            "Inhalts",
-                            "aktualisierung",
-                            "(CMS)"
+                            "Email",
+                            "Marketing"
                         ],
                         "icon": "fa-duotone fa-pen-to-square orange",
                         "selected": "orange"
