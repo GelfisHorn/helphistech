@@ -320,16 +320,6 @@
                         "selected": "orange"
                     },
                     {
-                        "id": "user_experience",
-                        "text": "E-Mail Marketing",
-                        "mobile": [
-                            "Email",
-                            "Marketing"
-                        ],
-                        "icon": "fa-duotone fa-pen-to-square orange",
-                        "selected": "orange"
-                    },
-                    {
                         "id": "other",
                         "text": "Sonstige"
                     }
