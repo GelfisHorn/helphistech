@@ -43,7 +43,7 @@ export default function HomeAboutUs() {
                         title={"Digital-Marketing-Spezialisten"}
                         description={"Die Experten im Bereich digitales Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
                         name={"Henrry Feliz"}
-                        position={"Head of Digital Marketing-Team"}
+                        position={"Head of Online Marketing-Team"}
                         contact={"H.anicasio@helphistech.com"}
                         img={"/team/henrry.webp"}
                     />
@@ -95,7 +95,7 @@ export default function HomeAboutUs() {
                                 title={"Digital-Marketing-Spezialisten"}
                                 description={"Die Experten im Bereich digitales Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
                                 name={"Henrry Feliz"}
-                                position={"Head of Digital Marketing-Team"}
+                                position={"Head of Online Marketing-Team"}
                                 contact={"H.anicasiog@helphistech.com"}
                             />
                         </SwiperSlide>

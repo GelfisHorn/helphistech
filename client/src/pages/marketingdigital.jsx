@@ -12,10 +12,10 @@ import ContactSection from "@/components/ContactSection";
 import comments from "@/mockData/marketingdigital/comments";
 import BenefitsSection from "@/components/BenefitsSection/Index";
 
-export default function MarketingDigital() {
+export default function marketingdigital() {
 
     return (
-        <Layout title={"Digitales Marketing"} lang={"de"}>
+        <Layout title={"Online Marketing"} lang={"de"}>
             <MDHero />
             <MDIntroduction />
             <BenefitsSection 

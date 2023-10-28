@@ -177,7 +177,7 @@ function Blog({ blog }) {
 	const { url, title, subtitle, preview } = blog.attributes || {};
 
 	return (
-		<Link href={`/internetseite/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+		<Link href={`/blogs/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
 			<div className="image-container aspect-video overflow-hidden rounded-md">
 				<Image loading="eager" className="relative object-cover rounded-md aspect-video" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
 			</div>

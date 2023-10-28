@@ -7,7 +7,7 @@ const de = [
     },
     {
         title: "Steigerung des Umsatzes und Kundenzuwachs",
-        description: "Als kleines Unternehmen suchten wir nach einer Möglichkeit, unsere Online-Sichtbarkeit zu erhöhen. Das Premium Digital Marketing Paket von Helphistech hat genau das bewirkt! Wir sind beeindruckt von der Professionalität und dem Engagement des Teams",
+        description: "Als kleines Unternehmen suchten wir nach einer Möglichkeit, unsere Online-Sichtbarkeit zu erhöhen. Das Premium Online Marketing Paket von Helphistech hat genau das bewirkt! Wir sind beeindruckt von der Professionalität und dem Engagement des Teams",
         name: "Max H.",
         gender: "male"
     },
@@ -33,7 +33,7 @@ const en = [
     },
     {
         title: "Increase in sales and customer growth",
-        description: "As a small business, we were looking for a way to increase our online visibility. Helphitech's Premium Digital Marketing Package did just that! We are impressed by the professionalism and commitment of the team",
+        description: "As a small business, we were looking for a way to increase our online visibility. Helphitech's Premium Online Marketing Package did just that! We are impressed by the professionalism and commitment of the team",
         name: "Max H.",
         gender: "male"
     },

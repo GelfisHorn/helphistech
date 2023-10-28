@@ -55,7 +55,7 @@ export default function MDIntroduction() {
             </div>
             <AnimatePresence>
                 {showModal && (
-                    <ContactSimple service={"Digital Marketing"} handleClose={handleModal.close} language={"de"} />
+                    <ContactSimple service={"Online Marketing"} handleClose={handleModal.close} language={"de"} />
                 )}
             </AnimatePresence>
         </section>

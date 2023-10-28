@@ -589,7 +589,7 @@ function helphistech(data) {
             <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 
         <div style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
-            <p style="line-height: 140%;">${lang.description1}<a href="https://helphistech.com/internetseite/${blog.url}">${blog.title}</a> ${lang.description2}.</p>
+            <p style="line-height: 140%;">${lang.description1}<a href="https://helphistech.com/blogs/${blog.url}">${blog.title}</a> ${lang.description2}.</p>
         </div>
 
             </td>
