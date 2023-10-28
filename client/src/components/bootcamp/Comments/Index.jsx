@@ -11,7 +11,7 @@ import "swiper/css/pagination";;
 // import required modules
 import { Pagination } from "swiper";
 // Lang
-import locales from "@/lang/components/marketingdigital/Comments";
+import locales from "@/lang/components/MarketingDigital/Comments";
 // Animation
 import { motion } from "framer-motion";
 import Link from "next/link";

@@ -5,7 +5,7 @@ const de = [
     },
     {
         title: "Wie stellen Sie die Qualität und Funktionalität der von Ihnen entwickelten Anwendungen sicher?",
-        description: "Als kleines Unternehmen suchen wir nach einer Möglichkeit, unsere Online-Sichtbarkeit zu erhöhen. Das Premium Online Marketing Package von Helphistech hat genau das bewirkt! Wir sind beeindruckt von der Professionalität und dem Engagement des Teams",
+        description: "Als kleines Unternehmen suchen wir nach einer Möglichkeit, unsere Online-Sichtbarkeit zu erhöhen. Das Premium Digital Marketing Package von Helphistech hat genau das bewirkt! Wir sind beeindruckt von der Professionalität und dem Engagement des Teams",
     },
     {
         title: "Wie lange dauert die Entwicklung einer typischen mobilen App?",

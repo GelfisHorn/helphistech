@@ -138,7 +138,7 @@ function BlogPopularBlog({ blog }) {
     const { darkMode, language } = useContextProvider();
 
     return (
-        <Link href={`/blogs/${url}`} className="flex flex-col gap-3 hover:text-primary hover:scale-[102%] transition-all">
+        <Link href={`/internetseite/${url}`} className="flex flex-col gap-3 hover:text-primary hover:scale-[102%] transition-all">
             <div className="image-container aspect-video overflow-hidden rounded-md">
                 <Image className="relative object-cover rounded-md aspect-video" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
             </div>

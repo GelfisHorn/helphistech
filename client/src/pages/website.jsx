@@ -35,7 +35,7 @@ export default function Website({ services, faqs, clientComments }) {
 	}, [language])
 
 	return (
-		<Layout title={"Website Erstellen Lassen"} lang={"de"} metaDesc={"Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."}>
+		<Layout title={"Webseiten"} lang={"de"} metaDesc={"Maßgeschneiderte Webentwicklungsdienstleistungen für Unternehmen jeder Größe. Wir erstellen Websites, E-Commerce-Plattformen und webbasierte Anwendungen, die perfekt auf Ihre Bedürfnisse zugeschnitten sind."}>
 			<HeroSection />
 			<BenefitsSection
 				title={"Steigere deine Online-Präsenz"}

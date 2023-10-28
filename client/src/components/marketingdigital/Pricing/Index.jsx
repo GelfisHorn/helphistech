@@ -31,7 +31,7 @@ const PRICING = {
         price: 200
     },
     "05": {
-        name: "Premium Online Marketing",
+        name: "Premium Digital Marketing",
         price: 390
     },
 }
@@ -137,7 +137,7 @@ export default function MDPricing() {
                                 />
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
-                                    title={"Premium Online Marketing Paket"}
+                                    title={"Premium Digital Marketing Paket"}
                                     description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
                                     price={PRICING["05"].price}
                                     handleModal={handleModal.show}
@@ -256,7 +256,7 @@ function CardsMobile({ setPlan, showModal }) {
     const NAMES = {
         "0": "Marketinginhalte",
         "1": "Suchmaschinenoptimierung",
-        "2": "Premium Online Marketing",
+        "2": "Premium Digital Marketing",
         "3": "Social-Media-Marketing",
         "4": "Online-Werbung",
     }
@@ -302,7 +302,7 @@ function CardsMobile({ setPlan, showModal }) {
                     <div className={`relative flex min-w-max gap-1 items-center justify-center whitespace-nowrap`}>
                         <button onClick={() => handleSetPlan(0)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 0 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Marketinginhalte</button>
                         <button onClick={() => handleSetPlan(1)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 1 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Suchmaschinenoptimierung</button>
-                        <button onClick={() => handleSetPlan(2)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 2 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Premium Online Marketing Paket</button>
+                        <button onClick={() => handleSetPlan(2)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 2 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Premium Digital Marketing Paket</button>
                         <button onClick={() => handleSetPlan(3)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 3 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Social-Media-Marketing</button>
                         <button onClick={() => handleSetPlan(4)} className={`py-3 px-4 border-b-[3px] ${actualPlan == 4 ? "border-primary" : "border-transparent"} transition-colors rounded-t-md`}>Online-Werbung</button>
                     </div>
@@ -403,7 +403,7 @@ function CardsMobile({ setPlan, showModal }) {
                     <SwiperSlide className={styles["swiper-slide-item"]}>
                         <Card
                             icon={"fa-solid fa-chart-mixed"}
-                            title={"Premium Online Marketing Paket"}
+                            title={"Premium Digital Marketing Paket"}
                             description={"Bringen Sie Ihr Unternehmen oder Geschäft auf die nächste Stufe, indem Sie die effektivsten Strategien des digitalen Marketings nutzen."}
                             price={PRICING["05"].price}
                             handleModal={showModal}

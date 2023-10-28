@@ -24,8 +24,8 @@ export default function MDHero() {
             <div className={"flex items-center gap-20 h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
                 <div className={"flex flex-col gap-14 justify-center items-center lg:items-start h-full text-center lg:text-left"}>
                     <div className={"flex flex-col gap-3"}>
-                        <h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}><span className={"text-primary"}>Online Marketing Agentur</span> Ihr Partner für digitales <span className={"text-primary"}>  Wachstum</span> </h1>
-                        <p className={"font-light md:text-lg"}>Suchen Sie nach einer Agentur, die Ihre Online-Präsenz verstärkt? Entdecken Sie, wie unsere Experten Ihnen helfen können, mehr Kunden online zu gewinnen.</p>
+                        <h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}><span className={"text-primary"}>Digitales Marketing</span>: Die Kunst der <span className={"text-primary"}>Kundenakquise</span> im Online-Zeitalter</h1>
+                        <p className={"font-light md:text-lg"}>Steigern Sie Ihren Erfolg: Entdecken Sie die Macht des Digital Marketings für mehr Kunden und Umsatz!</p>
                     </div>
                     <motion.button 
                         onClick={handleModal.show} 
@@ -44,7 +44,7 @@ export default function MDHero() {
             </div>
             <AnimatePresence>
                 {showModal && (
-                    <ContactSimple service={"Online Marketing"} handleClose={handleModal.close} language={'de'} />
+                    <ContactSimple service={"Digital Marketing"} handleClose={handleModal.close} language={'de'} />
                 )}
             </AnimatePresence>
         </section> 

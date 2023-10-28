@@ -112,7 +112,7 @@ export default function ServicesSection({ services }) {
                         </motion.div>
                         <div className={"flex flex-col gap-5"}>
                             <div className={"flex justify-end"}>
-                                <Link href={"/blogs"}>
+                                <Link href={"/internetseite"}>
                                     <div onClick={showMoreServices} className="flex items-center gap-1 text-primary hover:text-primary-2 hover:underline transition-colors">
                                         <div>Alles sehen</div>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -138,7 +138,7 @@ export default function ServicesSection({ services }) {
                                             <p>Beim Abrufen der Dienste ist ein Problem aufgetreten.</p>
                                             <div>
                                                 <p>Möchten Sie sehen, was wir Ihnen zu bieten haben?</p>
-                                                <Link href={"/blogs"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
+                                                <Link href={"/internetseite"} className={"flex items-center gap-1 text-primary hover:text-primary-2"}>
                                                     <span>Gehen Sie zu Dienstleistungen</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -233,7 +233,7 @@ function Service({ service }) {
             whileInView={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <Link href={`/blogs/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
+            <Link href={`/internetseite/${url}`} className="flex flex-col gap-3 hover:scale-[102%] transition-transform active:scale-100">
                 <div className="image-container aspect-video">
                     <Image loading="eager" className="object-cover rounded-md" src={preview?.data?.attributes?.url} fill alt={preview?.data?.attributes?.hash} />
                 </div>
