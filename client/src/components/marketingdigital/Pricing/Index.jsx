@@ -121,7 +121,7 @@ export default function MDPricing() {
                             >
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
-                                    title={"Suchmaschinenmarketing (SEM)"}
+                                    title={"Suchmaschienenmarketing (SEA)"}
                                     description={"Unser Hauptziel ist es, die größtmögliche Anzahl an Conversions zu möglichst geringen Kosten zu generieren."}
                                     price={PRICING["04"].price}
                                     handleModal={handleModal.show}
@@ -143,7 +143,7 @@ export default function MDPricing() {
                                     handleModal={handleModal.show}
                                     benefits={[
                                         { name: "SEO-Optimierung" }, 
-                                        { name: "Suchmaschinenmarketing (SEM)" }, 
+                                        { name: "Suchmaschienenmarketing (SEA)" }, 
                                         { name: "Social Media Marketing" }
                                     ]}
                                     popular={true}
@@ -385,7 +385,7 @@ function CardsMobile({ setPlan, showModal }) {
                     <SwiperSlide className={styles["swiper-slide-item"]}>
                         <Card
                             icon={"fa-solid fa-chart-mixed"}
-                            title={"Suchmaschinenmarketing (SEM)"}
+                            title={"Suchmaschienenmarketing (SEA)"}
                             description={"Unser Hauptziel ist es, die größtmögliche Anzahl an Conversions zu möglichst geringen Kosten zu generieren."}
                             price={PRICING["04"].price}
                             handleModal={showModal}
@@ -409,7 +409,7 @@ function CardsMobile({ setPlan, showModal }) {
                             handleModal={showModal}
                             benefits={[
                                 { name: "SEO-Optimierung" },
-                                { name: "Suchmaschinenmarketing (SEM)" },
+                                { name: "Suchmaschienenmarketing (SEA)" },
                                 { name: "Social Media Marketing" }
                             ]}
                             popular={true}

@@ -40,8 +40,8 @@ export default function HomeAboutUs() {
                         img={"/team/gelfis.webp"}
                     />
                     <LeftRow
-                        title={"Digital-Marketing-Spezialisten"}
-                        description={"Die Experten im Bereich digitales Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
+                        title={"Online-Marketing-Spezialisten"}
+                        description={"Die Experten im Bereich Online Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
                         name={"Henrry Feliz"}
                         position={"Head of Digital Marketing-Team"}
                         contact={"H.anicasio@helphistech.com"}
@@ -92,10 +92,10 @@ export default function HomeAboutUs() {
                         </SwiperSlide>
                         <SwiperSlide>
                             <SlideRow
-                                title={"Digital-Marketing-Spezialisten"}
-                                description={"Die Experten im Bereich digitales Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
+                                title={"Online-Marketing-Spezialisten"}
+                                description={"Die Experten im Bereich Online Marketing arbeiten daran, Ihre Marke zu positionieren und Ihre Online-Präsenz zu optimieren."}
                                 name={"Henrry Feliz"}
-                                position={"Head of Digital Marketing-Team"}
+                                position={"Head of Online Marketing-Team"}
                                 contact={"H.anicasiog@helphistech.com"}
                             />
                         </SwiperSlide>

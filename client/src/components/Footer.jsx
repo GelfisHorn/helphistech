@@ -39,7 +39,7 @@ export default function Footer() {
                                 <span className="hover:underline hover:text-primary transition-colors">Startseite</span>
                             </div>
                             <div className="cursor-pointer" onClick={() => handleNavButton("digitalmarketing")}>
-                                <span className="hover:underline hover:text-primary transition-colors">Digital Marketing</span>
+                                <span className="hover:underline hover:text-primary transition-colors">Online Marketing</span>
                             </div>
                             <div className="cursor-pointer" onClick={() => handleNavButton("app")}>
                                 <span className="hover:underline hover:text-primary transition-colors">App Entwicklung</span>

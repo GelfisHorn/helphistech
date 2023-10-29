@@ -27,8 +27,8 @@ export default function HeroSection() {
 			<div className={"flex items-center gap-20 h-full place-content-center px-6 sm:px-20"} style={{ position: "relative", zIndex: "2" }}>
 				<div className={"flex flex-col gap-14 justify-center items-center xl:items-start h-full text-center xl:text-left"}>
 					<div className={"flex flex-col gap-3"}>
-						<h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}><span className={"text-primary"}>Professionelle</span> Website Entwicklung</h1>
-						<p className={"font-light md:text-lg w-full 2xl:w-2/3"}>Lassen Sie uns Ihre digitale Präsenz gemeinsam neu definieren. Unsere Experten für Website-Entwicklung begleiten Sie auf dem Weg zu einem herausragenden Online-Auftritt.</p>
+						<h1 className={"text-4xl leading-[3rem] sm:text-5xl sm:leading-[3.6rem] 2xl:text-6xl 2xl:leading-[4.5rem] font-black uppercase break-word"}>Ihre Top <span className={"text-primary"}>Website Agentur</span> für maßgeschneiderte Lösungen</h1>
+						<p className={"font-light md:text-lg w-full 2xl:w-2/3"}>Suchen Sie nach einer vertrauenswürdigen Website Agentur? Lassen Sie uns Ihre Website von Grund auf neu erstellen oder Ihre bestehende Seite überarbeiten. Qualität und Kundenzufriedenheit stehen bei uns an erster Stelle.</p>
 					</div>
 					<motion.button
 						onClick={handleModal.show}

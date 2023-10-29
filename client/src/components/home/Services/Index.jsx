@@ -84,8 +84,8 @@ export default function HomeServices() {
                         />
                         <Card
                             icon={"fa-solid fa-chart-mixed"}
-                            title={"Digitales Marketing"}
-                            description={"Unsere Experten für digitales Marketing helfen Ihnen dabei, Ihre Zielgruppe zu erreichen, Ihre Online-Sichtbarkeit zu erhöhen und eine höhere Rendite Ihrer Investition zu erzielen."}
+                            title={"Online Marketing"}
+                            description={"Unsere Experten für Online Marketing helfen Ihnen dabei, Ihre Zielgruppe zu erreichen, Ihre Online-Sichtbarkeit zu erhöhen und eine höhere Rendite Ihrer Investition zu erzielen."}
                             price={"100"}
                             redirect={"/marketingdigital"}
                             handleModal={handleModal.show}
@@ -138,8 +138,8 @@ export default function HomeServices() {
                             <SwiperSlide>
                                 <Card
                                     icon={"fa-solid fa-chart-mixed"}
-                                    title={"Digitales Marketing"}
-                                    description={"Unsere Experten für digitales Marketing helfen Ihnen dabei, Ihre Zielgruppe zu erreichen, Ihre Online-Sichtbarkeit zu erhöhen und eine höhere Rendite Ihrer Investition zu erzielen."}
+                                    title={"Online Marketing"}
+                                    description={"Unsere Experten für Online Marketing helfen Ihnen dabei, Ihre Zielgruppe zu erreichen, Ihre Online-Sichtbarkeit zu erhöhen und eine höhere Rendite Ihrer Investition zu erzielen."}
                                     price={"100"}
                                     redirect={"/marketingdigital"}
                                     handleModal={handleModal.show}

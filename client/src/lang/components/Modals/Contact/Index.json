@@ -17,12 +17,12 @@
                     "selected": "blue"
                 },
                 {
-                    "id": "digitales_marketing",
-                    "text": "Digitales Marketing",
+                    "id": "online_marketing",
+                    "text": "Online Marketing",
                     "icon": "fa-duotone fa-pen-to-square orange",
                     "selected": "orange",
                     "mobile": [
-                        "Digitales Marketing",
+                        "Online Marketing",
                         "SEO & SEM"
                     ]
                 }
@@ -311,7 +311,7 @@
                     },
                     {
                         "id": "sem_marketing",
-                        "text": "Suchmaschinenmarketing (SEM)",
+                        "text": "Suchmaschienenmarketing (SEA)",
                         "mobile": [
                             "Suchmaschinen",
                             "Marketing (SEM)"
