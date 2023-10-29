@@ -120,7 +120,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className={`${darkMode ? 'border-neutral-900 text-neutral-400' : 'border-neutral-300 text-neutral-600'} text-center border-t  py-3`}>
-                <div className="text-sm">©Helphis Tech 2023</div>
+                <div className="text-sm">©HelphisTech 2023</div>
             </div>
         </footer>
     )
