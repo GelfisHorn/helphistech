@@ -31,20 +31,20 @@ export default function PricingSection() {
     const { darkMode, language } = useContextProvider();
 
     // Modal
-    const [ showModal, setShowModal ] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const handleModal = {
         show: () => setShowModal(true),
         close: () => setShowModal(false)
     }
     // Modal fields
-    const [ pricing, setPricing ] = useState({
+    const [pricing, setPricing] = useState({
         plan: "",
         price: 0
     });
-    const [ name, setName ] = useState("");
-    const [ email, setEmail ] = useState("")
-    const [ phoneNumber, setPhoneNumber ] = useState("");
-    const [ description, setDescription ] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [description, setDescription] = useState("");
     const legalTerms = useRef("")
 
     const handleSelectPackage = (plan, price) => {
@@ -58,7 +58,7 @@ export default function PricingSection() {
         if (!formIsValid.success) {
             return toast.error(formIsValid.msg);
         }
-        
+
         Promise.all([
             axios.post('/api/pricing/sendMail', { pricing: { plan: LANG.es.plans[pricing.plan] }, name, email, phoneNumber, description }),
             axios.post('/api/services/sendMail/client', { name, email, lang: "de" })
@@ -72,10 +72,10 @@ export default function PricingSection() {
     }
 
     function validateForm() {
-        if([pricing, name, email, phoneNumber, description].includes("")) {
+        if ([pricing, name, email, phoneNumber, description].includes("")) {
             return { success: false, msg: LANG[language].notifications.error.fields };
         }
-        if(!legalTerms.current.checked) {
+        if (!legalTerms.current.checked) {
             return { success: false, msg: LANG[language].notifications.error.legal };
         }
         return { success: true, msg: "" };
@@ -103,11 +103,11 @@ export default function PricingSection() {
                                 {/* <div className={`font-semibold uppercase ${darkMode ? 'subtitle-dark' : 'subtitle-light'}`}>Encuentra el plan perfecto para llevar tu proyecto al siguiente nivel</div> */}
                                 <h2 className={"text-3xl sm:text-5xl font-bold"}>Welche <span className={"text-primary"}>Dienstleistungen</span> wir anbieten</h2>
                             </div>
-                            <p className={`${darkMode ? "description-dark" : "description-light"}`}>Eine hochwertige Webseite ist für eine starke Online-Präsenz entscheidend. Bei Helphistech bieten wir moderne und anpassungsfähige Designs, die Sie von der Konkurrenz abheben lassen. Unser Ziel ist es, Ihre Identität zu reflektieren und ein herausragendes Benutzererlebnis zu schaffen. Lassen Sie uns Ihre Online-Präsenz auf die nächste Stufe bringen!</p>
+                            <p className={`${darkMode ? "description-dark" : "description-light"}`}>Egal, ob Sie eine Landing Page, eine komplexe Website oder einen funktionellen Online-Shop benötigen, wir haben die richtige Lösung für Sie. Lassen Sie uns die Online-Arbeit erledigen, während Sie sich auf Ihre Geschäftsziele konzentrieren.</p>
                         </div>
                     </div>
                     <div className={"flex justify-center w-full"}>
-                        <motion.div 
+                        <motion.div
                             className={"hidden xl:flex items-start gap-6"}
                             initial={{ opacity: 0, x: 100 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -117,7 +117,7 @@ export default function PricingSection() {
                                 <div className={"bg-transparent h-10 text-center"}></div>
                                 <div className={`${styles.cardShadowLeft} flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-medium text-primary"}>Statische Website</div>
+                                        <div className={"text-2xl font-medium text-primary"}>Landing Page</div>
                                         {/* <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -148,15 +148,15 @@ export default function PricingSection() {
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Bis zu 5 Menüpunkte</span>
-                                        </div>
-                                        <div className={"flex items-start gap-4"}>
-                                            <i className="fa-regular fa-check text-primary mt-1"></i>
                                             <span>Persönliche Ansprechpartner</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
-                                            <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Kundenbewertungen</span>
+                                            <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                            <span>SEO Optimierung</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                            <span>Design nach ihrer Vorstellung</span>
                                         </div>
                                         {/* <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
@@ -170,9 +170,9 @@ export default function PricingSection() {
                                 <div className={"grid place-content-center bg-primary text-white h-10 text-center rounded-t-xl"}>
                                     <div className={"uppercase text-sm"}>Beliebt</div>
                                 </div>
-                                <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{height: "calc(100% - 2.5rem)"}}>
+                                <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-medium text-primary"}>Dynamische Website</div>
+                                        <div className={"text-2xl font-medium text-primary"}>Professionelle Website</div>
                                         {/* <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -183,7 +183,7 @@ export default function PricingSection() {
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Alles aus der statischen Website</span>
+                                            <span>Verwaltungstool für Inhalte (CMS)</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
@@ -191,23 +191,31 @@ export default function PricingSection() {
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Registrierung und Login für Benutzer</span>
+                                            <span>Kundenpanel</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Content-Management-System (CMS)</span>
+                                            <span>Google-Indexierung</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Hosting und Domain für 12 Monate</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Ideal für Unternehmen</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Bis zu 20 Unterseiten</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                            <span>Professionelle SEO Optimierung</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
                                             <span>Datenbankintegration</span>
-                                        </div>
-                                        <div className={"flex items-start gap-4"}>
-                                            <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Kostenloses Hosting und Domain für 12 Monate</span>
-                                        </div>
-                                        <div className={"flex items-start gap-4"}>
-                                            <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Bis zu 10 Menüpunkte</span>
                                         </div>
                                         {/* <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
@@ -221,7 +229,7 @@ export default function PricingSection() {
                                 <div className={"bg-transparent h-10 text-center"}></div>
                                 <div className={`${styles.cardShadowRight} flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                     <div className={"flex flex-col items-center gap-5"}>
-                                        <div className={"text-2xl font-medium text-primary"}>Full-Stack-Anwendung</div>
+                                        <div className={"text-2xl font-medium text-primary"}>Online Shop</div>
                                         {/* <div className={"flex items-center"}>
                                             <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                 <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -232,23 +240,39 @@ export default function PricingSection() {
                                     <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Alles aus der dynamischen Website</span>
+                                            <span>Warenkorb</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Maßgeschneiderte Designs und Funktionen</span>
+                                            <span>Produktkatalog</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Admin Panel</span>
+                                            <span>Kundenbewertungen</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-check text-primary mt-1"></i>
-                                            <span>Kunden Panel</span>
+                                            <span>Kundenkonto</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Professionelle SEO Optimierung</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Verwaltungstool für Inhalte (CMS)</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-check text-primary mt-1"></i>
+                                            <span>Zahlungsprozess</span>
                                         </div>
                                         <div className={"flex items-start gap-4"}>
                                             <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
-                                            <span>Online shop</span>
+                                            <span>Wartungs & Updates</span>
+                                        </div>
+                                        <div className={"flex items-start gap-4"}>
+                                            <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                            <span>1 Monat SEA Management</span>
                                         </div>
                                     </div>
                                     <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>
@@ -272,7 +296,7 @@ export default function PricingSection() {
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-medium text-primary"}>Statische Website</div>
+                                                <div className={"text-2xl font-medium text-primary"}>Landing Page</div>
                                                 {/* <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -303,15 +327,15 @@ export default function PricingSection() {
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Bis zu 5 Menüpunkte</span>
-                                                </div>
-                                                <div className={"flex items-start gap-4"}>
-                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
                                                     <span>Persönliche Ansprechpartner</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
-                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Kundenbewertungen</span>
+                                                    <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                                    <span>SEO Optimierung</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                                    <span>Design nach ihrer Vorstellung</span>
                                                 </div>
                                                 {/* <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
@@ -329,7 +353,7 @@ export default function PricingSection() {
                                         </div>
                                         <div className={`flex flex-col items-center justify-between gap-12 ${darkMode ? "bg-[#0D1020]" : "bg-[#ddd5ff]"} py-16 px-12 rounded-b-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-medium text-primary"}>Dynamische Website</div>
+                                                <div className={"text-2xl font-medium text-primary"}>Professionelle Website</div>
                                                 {/* <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -340,7 +364,7 @@ export default function PricingSection() {
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Alles aus der statischen Website</span>
+                                                    <span>Verwaltungstool für Inhalte (CMS)</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
@@ -348,23 +372,31 @@ export default function PricingSection() {
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Registrierung und Login für Benutzer</span>
+                                                    <span>Kundenpanel</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Content-Management-System (CMS)</span>
+                                                    <span>Google-Indexierung</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Hosting und Domain für 12 Monate</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Ideal für Unternehmen</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Bis zu 20 Unterseiten</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                                    <span>Professionelle SEO Optimierung</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
                                                     <span>Datenbankintegration</span>
-                                                </div>
-                                                <div className={"flex items-start gap-4"}>
-                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Kostenloses Hosting und Domain für 12 Monate</span>
-                                                </div>
-                                                <div className={"flex items-start gap-4"}>
-                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Bis zu 10 Menüpunkte</span>
                                                 </div>
                                                 {/* <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
@@ -380,7 +412,7 @@ export default function PricingSection() {
                                         <div className={"bg-transparent h-10 text-center"}></div>
                                         <div className={`flex flex-col items-center justify-between gap-12 w-[22rem] h-full py-16 px-12 border ${darkMode ? "border-neutral-800 bg-[#0c0c0c]" : "border-neutral-300 bg-neutral-100"} rounded-xl text-center`} style={{ height: "calc(100% - 2.5rem)" }}>
                                             <div className={"flex flex-col items-center gap-5"}>
-                                                <div className={"text-2xl font-medium text-primary"}>Full-Stack-Anwendung</div>
+                                                <div className={"text-2xl font-medium text-primary"}>Online SHop</div>
                                                 {/* <div className={"flex items-center"}>
                                                     <div className={"flex items-center gap-1 font-medium text-5xl"}>
                                                         <i className="fa-sharp fa-solid fa-euro-sign text-[2.6rem]"></i>
@@ -391,23 +423,39 @@ export default function PricingSection() {
                                             <div className={"flex flex-col gap-3 list-disc w-full text-left"}>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Alles aus der dynamischen Website</span>
+                                                    <span>Warenkorb</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Maßgeschneiderte Designs und Funktionen</span>
+                                                    <span>Produktkatalog</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Admin Panel</span>
+                                                    <span>Kundenbewertungen</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-check text-primary mt-1"></i>
-                                                    <span>Kunden Panel</span>
+                                                    <span>Kundenkonto</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Professionelle SEO Optimierung</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Verwaltungstool für Inhalte (CMS)</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-check text-primary mt-1"></i>
+                                                    <span>Zahlungsprozess</span>
                                                 </div>
                                                 <div className={"flex items-start gap-4"}>
                                                     <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
-                                                    <span>Online shop</span>
+                                                    <span>Wartungs & Updates</span>
+                                                </div>
+                                                <div className={"flex items-start gap-4"}>
+                                                    <i className="fa-regular fa-arrow-right-long text-primary mt-1"></i>
+                                                    <span>1 Monat SEA Management</span>
                                                 </div>
                                             </div>
                                             <button onClick={() => handleSelectPackage("premium", PRICING.premium)} className={"py-3 px-8 bg-primary hover:bg-primary-2 transition-colors text-white rounded-md uppercase font-semibold"}>Auswählen</button>

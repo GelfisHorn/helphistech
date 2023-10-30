@@ -145,7 +145,7 @@ function BlogHeroSection({ blog }) {
                 <div className="flex flex-col gap-20 xs:gap-10 justify-center absolute h-full w-fit col-start-1 col-end-1">
                     <h1 className={`lg:w-2/3 text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl text-white font-semibold uppercase leading-[3rem] md:leading-[3.5rem] xl:leading-[4.4rem] 2xl:leading-[5.5rem]`}>{blog.title}</h1>
                     <div className={`text-right xs:text-left text-xl 2xl:text-2xl text-white font-light`}>
-                        <h4>HelphisTech</h4>
+                        <h4>pepe</h4>
                         <span className="text-base 2xl:text-lg">{lang['es'].slogan.description}</span>
                     </div>
                 </div>
